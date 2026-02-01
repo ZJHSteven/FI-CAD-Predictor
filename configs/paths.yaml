@@ -1,0 +1,74 @@
+# 数据路径配置
+data:
+  # 原始数据文件
+  raw_dir: "data/raw/"
+  covariates_file: "data/raw/2011年协变量.csv"
+  targets_file: "data/raw/2011年FI+CVD及变量新.csv"
+
+  # 数据清洗后的目录
+  cleaned_dir: "data/cleaned/"
+  # 只经过基础清洗（未标准化、未哑变量）的文件
+  basic_cleaned_file: "data/cleaned/basic_cleaned_data.csv"
+  # 经过数据标准化处理后的文件
+  standardized_file: "data/cleaned/standardized_data.csv"
+  # 经过哑变量（one-hot）处理后的文件
+  onehot_file: "data/cleaned/onehot_data.csv"
+  # 同时经过标准化和哑变量（删除参考列）处理后的文件
+  standardized_onehot_dropref_file: "data/cleaned/standardized_onehot_dropref_data.csv"
+
+  # 变量筛选后的目录
+  selected_features_dir: "data/selected_features/"
+  # AutoML（如 PyCaret）筛选出的特征文件
+  automl_selected_features_file: "data/selected_features/automl_selected_features.csv"
+  # 手动筛选出的特征文件
+  manual_selected_features_file: "data/selected_features/manual_selected_features.csv"
+
+# notebooks 目录
+notebooks:
+  notebooks_dir: "notebooks/"
+
+# 配置文件路径
+configures:
+  # 配置文件目录
+  configures_dir: "configs/"
+  # 路径配置文件
+  paths_config: "configs/paths.yaml"
+  # 模型配置文件
+  model_config: "configs/model_config.yaml"
+  # 变量配置文件
+  variables_config: "configs/variables.yaml"
+  # 可视化配置文件
+  visualization_config: "configs/viz_config.yaml"
+  # PyCaret 配置文件
+  pycaret_config: "configs/pycaret_config.yaml"
+  # PyCaret 模型超参数配置文件
+  pycaret_model_config: "configs/pycaret_model_config.yaml"
+
+# 输出路径配置
+output:
+  # 模型保存目录
+  models_dir: "output/models/"
+  # PyCaret 训练的模型目录
+  pycaret_models_dir: "output/models/pycaret/"
+  # 图表输出目录
+  figures_dir: "output/figures/"
+  # 结果输出目录
+  results_dir: "output/results/"
+  # 主模型文件（示例）
+  logistic_model: "logistic_model.pkl"      # 逻辑回归模型文件
+  xgboost_model: "xgboost_model.pkl"        # XGBoost 模型文件
+  rf_model: "random_forest_model.pkl"       # 随机森林模型文件
+  mlp_model: "mlp_model.pkl"                # 多层感知机模型文件
+
+# 日志路径
+logs:
+  logs_dir: "logs/"
+  main_log: "logs/main.log"
+  error_log: "logs/error.log"
+
+# 虚拟环境与项目说明等
+env:
+  venv_dir: "venv/"
+  requirements: "requirements.txt"
+  main_script: "main.py"
+  readme: "README.md"

@@ -1,0 +1,11 @@
+Model,AUC,Accuracy,Recall,Precision,F1,Kappa
+LogisticRegression,0.7754,0.7059,0.7091,0.2657,0.3865,0.2426
+GradientBoostingClassifier,0.7711,0.8698,0.08,0.5116,0.1384,0.1068
+RidgeClassifier,0.7742,0.6233,0.8182,0.2324,0.362,0.1991
+LinearDiscriminantAnalysis,0.7755,0.8632,0.12,0.4177,0.1864,0.1361
+AdaBoostClassifier,0.7702,0.8665,0.0327,0.375,0.0602,0.0401
+LGBMClassifier,0.7733,0.8684,0.0618,0.4722,0.1093,0.0815
+GaussianNB,0.7562,0.8665,0.04,0.3929,0.0726,0.0497
+QuadraticDiscriminantAnalysis,0.7646,0.8508,0.2291,0.3818,0.2864,0.2088
+RandomForestClassifier,0.7609,0.8694,0.0,0.0,0.0,0.0
+ExtraTreesClassifier,0.7581,0.8708,0.0618,0.5484,0.1111,0.0869

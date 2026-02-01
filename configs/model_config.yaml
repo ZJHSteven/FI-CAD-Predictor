@@ -1,0 +1,73 @@
+# 模型参数配置
+
+# Logistic回归模型参数
+logistic:
+  # 是否使用交叉验证
+  use_cv: true
+  # 交叉验证折数
+  cv_folds: 5
+  # 正则化参数
+  C: 1.0
+  # 正则化类型 (l1, l2, elasticnet, none)
+  penalty: "l2"
+  # 最大迭代次数
+  max_iter: 1000
+  # 随机种子
+  random_state: 42
+
+# XGBoost模型参数
+xgboost:
+  # 学习率
+  eta: 0.1
+  # 最大树深度
+  max_depth: 4
+  # 子采样比例
+  subsample: 0.8
+  # 列采样比例
+  colsample_bytree: 0.8
+  # L1正则化参数
+  alpha: 0.0
+  # L2正则化参数
+  lambda: 1.0
+  # 目标函数
+  objective: "binary:logistic"
+  # 评估指标
+  eval_metric: "auc"
+  # 提升轮数
+  num_boost_round: 300
+  # 早停轮数
+  early_stopping_rounds: 20
+  # 随机种子
+  random_state: 42
+
+# 随机森林模型参数
+random_forest:
+  # 树的数量
+  n_estimators: 100
+  # 最大树深度
+  max_depth: 10
+  # 最小叶节点样本数
+  min_samples_leaf: 1
+  # 最小分裂样本数
+  min_samples_split: 2
+  # 特征采样方式 (auto, sqrt, log2)
+  max_features: "sqrt"
+  # 随机种子
+  random_state: 42
+
+# 多层感知机模型参数
+mlp:
+  # 隐藏层大小
+  hidden_layer_sizes: [100, 50]
+  # 激活函数 (identity, logistic, tanh, relu)
+  activation: "relu"
+  # 优化器 (lbfgs, sgd, adam)
+  solver: "adam"
+  # 学习率 (constant, invscaling, adaptive)
+  learning_rate: "adaptive"
+  # 学习率初始值
+  learning_rate_init: 0.001
+  # 最大迭代次数
+  max_iter: 500
+  # 随机种子
+  random_state: 42

@@ -1,0 +1,71 @@
+# 可视化配置
+
+# 全局设置
+global:
+  # 图表尺寸
+  figure_size: [10, 7]
+  # 字体设置
+  font_family: "SimHei"
+  # 是否显示网格
+  show_grid: true
+  # DPI设置
+  dpi: 100
+  # 保存格式
+  save_format: "png"
+
+# ROC曲线设置
+roc_curve:
+  # 线条宽度
+  line_width: 2
+  # 线条样式
+  line_style: "-"
+  # 是否显示对角线
+  show_diagonal: true
+  # 是否显示AUC值
+  show_auc: true
+  # 图例位置
+  legend_loc: "lower right"
+  # 标题
+  title: "ROC曲线对比"
+  # 坐标轴标签
+  xlabel: "假阳性率"
+  ylabel: "真阳性率"
+
+# 特征重要性图设置
+feature_importance:
+  # 显示的特征数量
+  top_n: 20
+  # 颜色映射
+  color_map: "viridis"
+  # 是否水平显示
+  horizontal: true
+  # 标题
+  title: "特征重要性 Top {n}"
+  # 坐标轴标签
+  xlabel: "重要性"
+  ylabel: "特征"
+
+# SHAP值图设置
+shap:
+  # 显示的特征数量
+  top_n: 20
+  # 颜色映射
+  color_map: "RdBu"
+  # 标题
+  title: "SHAP值摘要图"
+  # 最大显示点数
+  max_display: 200
+
+# 相关性热图设置
+correlation:
+  # 颜色映射
+  color_map: "coolwarm"
+  # 是否显示数值
+  annot: false
+  # 中心值
+  center: 0
+  # 标题
+  title: "变量相关性热图"
+  # 旋转角度
+  xticklabels_rotation: 45
+  yticklabels_rotation: 0
