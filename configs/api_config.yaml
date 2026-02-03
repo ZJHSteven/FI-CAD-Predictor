@@ -1,0 +1,41 @@
+# API 服务配置
+# 该配置用于控制模型选择、集成策略、输入缺省值等行为。
+
+model_selection:
+  # 仅保留 AUC 不低于该阈值的模型
+  auc_threshold: 0.77
+  # 过滤召回率过低（接近 0）的模型
+  recall_min: 0.05
+  # 允许显式指定白名单（为空表示不启用）
+  allow_models: []
+  # 黑名单（如需强制排除某些模型，可在这里填入模型名称）
+  deny_models: []
+
+ensemble:
+  # 集成权重策略：auc 表示用 AUC 作为权重
+  weight_by: "auc"
+  # 是否对权重做归一化
+  normalize: true
+
+input:
+  # 最小必填字段
+  required_fields: ["FI", "Age", "Gender"]
+  # 是否允许输入中出现训练特征之外的字段
+  allow_unknown_fields: false
+
+# 缺省值策略：用于前端只给少量字段时的自动补全
+# numeric: 数值型字段默认填充方式
+# categorical: 分类型字段默认填充方式
+# 可选值: median / mean / mode
+# 说明：分类字段建议使用 mode
+
+defaults:
+  numeric: "median"
+  categorical: "mode"
+
+paths:
+  metrics_csv: "output/results/pycaret_model_metrics.csv"
+  models_dir: "output/models/pycaret"
+  training_data: "data/cleaned/basic_cleaned_data.csv"
+  figures_dir: "output/figures"
+  pycaret_figures_dir: "output/figures/pycaret"
