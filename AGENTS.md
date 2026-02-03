@@ -8,3 +8,5 @@
 - 2026-02-03：新增 `configs/api_config.yaml`，用于API模型筛选与输入配置。
 
 - 2026-02-03：新增 `src/api/schemas.py`，定义预测请求与响应结构。
+
+- 2026-02-03：新增 `src/api/errors.py`，集中处理API异常与统一错误响应。
