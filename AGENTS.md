@@ -38,3 +38,5 @@
 - 2026-02-04：使用 `uv init` 初始化 `pyproject.toml`。
 
 - 2026-02-04：设置 `.python-version` 为 3.10 以兼容 PyCaret。
+
+- 2026-02-04：更新 `pyproject.toml`，将 Python 版本要求调整为 3.10。
