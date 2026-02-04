@@ -58,9 +58,10 @@ class PredictRequest(BaseModel):
     return_viz: bool = Field(True, description="是否返回可视化资源列表")
 
     class Config:
-        # 允许前端传入未知字段时忽略，避免因为多余字段导致整体失败
+        # 允许前端传入未知字段（会保留到dict里）
+        # 后端会根据配置决定是否允许这些字段继续流入预测
         # 如果你希望严格校验，可将其改为 "forbid"
-        extra = "ignore"
+        extra = "allow"
 
     def to_feature_dict(self) -> Dict[str, Any]:
         """
