@@ -36,3 +36,5 @@
 - 2026-02-04：删除 `requirements.txt` 并清理旧虚拟环境目录（venv/.venv）。
 
 - 2026-02-04：使用 `uv init` 初始化 `pyproject.toml`。
+
+- 2026-02-04：设置 `.python-version` 为 3.10 以兼容 PyCaret。
