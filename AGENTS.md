@@ -14,3 +14,5 @@
 - 2026-02-03：新增 `src/api/model_loader.py`，实现模型与配置的统一加载。
 
 - 2026-02-03：新增 `src/api/predictor.py`，实现模型推理与集成逻辑。
+
+- 2026-02-03：新增 `src/api/app.py`，实现FastAPI应用入口与路由。
