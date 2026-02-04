@@ -46,27 +46,41 @@ class PredictService:
 
         # 逐个模型预测概率
         model_details: Dict[str, float] = {}
+        failed_models: Dict[str, str] = {}
+
         for name, model in self.bundle.models.items():
-            model_details[name] = self._predict_proba(model, feature_df)
+            try:
+                model_details[name] = self._predict_proba(model, feature_df)
+            except ApiError as exc:
+                # 记录失败原因，但不中断整体预测
+                failed_models[name] = exc.details.get("error", exc.message)
 
         if not model_details:
             raise ApiError("无可用模型完成预测。", 500)
 
+        # 仅对成功模型进行权重归一化
+        used_weights = self._normalize_weights(
+            {name: self.bundle.weights.get(name, 1.0) for name in model_details.keys()}
+        )
+
         # 按权重求加权平均
-        probability = self._ensemble_probability(model_details)
+        probability = self._ensemble_probability(model_details, used_weights)
         label = int(probability >= 0.5)
 
         figures = None
         if return_viz:
             figures = self._collect_figures()
 
-        return {
+        result = {
             "label": label,
             "probability": probability,
             "model_details": model_details,
-            "used_models": self.bundle.weights,
+            "used_models": used_weights,
             "figures": figures,
         }
+        if failed_models:
+            result["failed_models"] = failed_models
+        return result
 
     def _build_feature_row(self, input_features: Dict[str, Any]) -> pd.DataFrame:
         """
@@ -129,14 +143,14 @@ class PredictService:
         except Exception as exc:
             raise ApiError("模型预测失败", 500, {"error": str(exc)})
 
-    def _ensemble_probability(self, model_details: Dict[str, float]) -> float:
+    def _ensemble_probability(self, model_details: Dict[str, float], weights: Dict[str, float]) -> float:
         """
         对多个模型的概率做加权平均。
         """
         total = 0.0
         weight_sum = 0.0
         for name, prob in model_details.items():
-            weight = self.bundle.weights.get(name, 1.0)
+            weight = weights.get(name, 1.0)
             total += prob * weight
             weight_sum += weight
 
@@ -145,6 +159,15 @@ class PredictService:
             return float(sum(model_details.values()) / len(model_details))
 
         return float(total / weight_sum)
+
+    def _normalize_weights(self, weights: Dict[str, float]) -> Dict[str, float]:
+        """
+        对权重进行归一化，确保总和为1。
+        """
+        total = sum(weights.values())
+        if total <= 0:
+            return {k: 1.0 / len(weights) for k in weights}
+        return {k: v / total for k, v in weights.items()}
 
     def _collect_figures(self) -> List[str]:
         """

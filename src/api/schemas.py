@@ -93,3 +93,4 @@ class PredictResponse(BaseModel):
     model_details: Dict[str, float] = Field(..., description="各子模型的预测概率")
     used_models: Dict[str, float] = Field(..., description="各子模型的权重")
     figures: Optional[list] = Field(None, description="可视化资源URL列表")
+    failed_models: Optional[Dict[str, str]] = Field(None, description="预测失败的模型及原因")

@@ -64,3 +64,5 @@
 - 2026-02-04：重新通过 `uv add` 安装 pycaret（版本 3.0.0）以支持模型加载。
 
 - 2026-02-04：使用 `uv add` 升级 scikit-learn 至 1.3.2 以兼容已训练模型。
+
+- 2026-02-04：更新 `src/api/predictor.py` 与 `src/api/schemas.py`，允许跳过失败模型并返回失败原因。
