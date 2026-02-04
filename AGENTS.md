@@ -34,3 +34,5 @@
 - 2026-02-03：更新 `src/api/predictor.py`，修正静态资源URL路径计算。
 
 - 2026-02-04：删除 `requirements.txt` 并清理旧虚拟环境目录（venv/.venv）。
+
+- 2026-02-04：使用 `uv init` 初始化 `pyproject.toml`。
