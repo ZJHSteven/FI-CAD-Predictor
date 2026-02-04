@@ -1,0 +1,28 @@
+version = 1
+revision = 3
+requires-python = "==3.10.*"
+
+[[package]]
+name = "fi-cad-predictor"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "numpy" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "numpy", specifier = "==1.23.5" }]
+
+[[package]]
+name = "numpy"
+version = "1.23.5"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/42/38/775b43da55fa7473015eddc9a819571517d9a271a9f8134f68fb9be2f212/numpy-1.23.5.tar.gz", hash = "sha256:1b1766d6f397c18153d40015ddfc79ddb715cabadc04d2d228d4e5a8bc4ded1a", size = 10731755, upload-time = "2022-11-20T01:31:41.068Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0f/ae/dad4b8e7c65494cbbd1c063de114efaf9acd0f5f6171f044f0d4b6299787/numpy-1.23.5-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:9c88793f78fca17da0145455f0d7826bcb9f37da4764af27ac945488116efe63", size = 18118138, upload-time = "2022-11-20T01:21:22.661Z" },
+    { url = "https://files.pythonhosted.org/packages/4d/39/d33202cc56c21123a50c6d5e160d00c18ff685ab864dbd4bf80dd40a7af9/numpy-1.23.5-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:e9f4c4e51567b616be64e05d517c79a8a22f3606499941d97bb76f2ca59f982d", size = 13350465, upload-time = "2022-11-20T01:21:43.839Z" },
+    { url = "https://files.pythonhosted.org/packages/67/6b/d7c93d458d16464da9b3f560a20c363a19e242ebbb019bd1e1d797523851/numpy-1.23.5-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:7903ba8ab592b82014713c491f6c5d3a1cde5b4a3bf116404e08f5b52f6daf43", size = 13946528, upload-time = "2022-11-20T01:22:04.839Z" },
+    { url = "https://files.pythonhosted.org/packages/e4/f3/679b3a042a127de0d7c84874913c3e23bb84646eb3bc6ecab3f8c872edc9/numpy-1.23.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5e05b1c973a9f858c74367553e236f287e749465f773328c8ef31abe18f691e1", size = 17059657, upload-time = "2022-11-20T01:22:30.262Z" },
+    { url = "https://files.pythonhosted.org/packages/af/92/8efba008b9bda66456a1844a0e133dc76c08c5fb68c67a674f046211db29/numpy-1.23.5-cp310-cp310-win32.whl", hash = "sha256:522e26bbf6377e4d76403826ed689c295b0b238f46c28a7251ab94716da0b280", size = 12197097, upload-time = "2022-11-20T01:22:49.117Z" },
+    { url = "https://files.pythonhosted.org/packages/6a/03/ae6c3c307f9c5c7516de3df3e764ebb1de33e54e197f0370992138433ef4/numpy-1.23.5-cp310-cp310-win_amd64.whl", hash = "sha256:dbee87b469018961d1ad79b1a5d50c0ae850000b639bcb1b694e9981083243b6", size = 14647128, upload-time = "2022-11-20T01:23:11.326Z" },
+]
