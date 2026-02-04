@@ -82,3 +82,7 @@
 - 2026-02-04：更新 `src/api/app.py`，加入CORS配置以便前端访问。
 
 - 2026-02-04：使用Vite创建 `frontend` React TS 最小项目结构。
+
+- 2026-02-04：更新 `frontend/src/App.tsx`，实现最小可用的预测测试页面。
+
+- 2026-02-04：更新 `frontend/src/App.css`，提供最小页面样式。
