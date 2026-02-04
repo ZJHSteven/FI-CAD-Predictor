@@ -159,7 +159,9 @@ class PredictService:
         def to_url(file_path: str) -> str:
             # 统一使用output作为静态根目录
             rel = os.path.relpath(file_path, start=output_root)
-            return f"/static/{rel.replace('\\', '/')}"
+            # 将Windows路径分隔符转换为URL风格
+            rel = rel.replace("\\", "/")
+            return f"/static/{rel}"
 
         for root_dir in [self.bundle.figures_dir, self.bundle.pycaret_figures_dir]:
             if not os.path.exists(root_dir):

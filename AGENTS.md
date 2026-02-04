@@ -54,3 +54,5 @@
 - 2026-02-04：更新 `README.md`，改为UV环境与运行说明。
 
 - 2026-02-04：使用 `uv add` 新增 httpx 以支持 TestClient 测试。
+
+- 2026-02-04：修复 `src/api/predictor.py` 的路径拼接，避免反斜杠导致语法错误。
