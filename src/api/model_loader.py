@@ -53,11 +53,12 @@ class ModelRepository:
 
         # 读取配置路径
         paths = self.api_config["paths"]
-        self.metrics_csv = paths["metrics_csv"]
-        self.models_dir = paths["models_dir"]
-        self.training_data = paths["training_data"]
-        self.figures_dir = paths["figures_dir"]
-        self.pycaret_figures_dir = paths["pycaret_figures_dir"]
+        self.project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+        self.metrics_csv = self._resolve_path(paths["metrics_csv"])
+        self.models_dir = self._resolve_path(paths["models_dir"])
+        self.training_data = self._resolve_path(paths["training_data"])
+        self.figures_dir = self._resolve_path(paths["figures_dir"])
+        self.pycaret_figures_dir = self._resolve_path(paths["pycaret_figures_dir"])
 
         # 读取训练数据与模型指标
         self.training_df = self._load_training_data()
@@ -98,6 +99,18 @@ class ModelRepository:
         if not os.path.exists(self.metrics_csv):
             raise ApiError(f"模型指标文件不存在: {self.metrics_csv}", 500)
         return pd.read_csv(self.metrics_csv)
+
+    def _resolve_path(self, path_value: str) -> str:
+        """
+        将配置中的路径转换为绝对路径。
+
+        规则：
+        - 如果已经是绝对路径，直接返回
+        - 如果是相对路径，则以项目根目录为基准拼接
+        """
+        if os.path.isabs(path_value):
+            return path_value
+        return os.path.abspath(os.path.join(self.project_root, path_value))
 
     def _infer_is_categorical(self, series: pd.Series) -> bool:
         """
