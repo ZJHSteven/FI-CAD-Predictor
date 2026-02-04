@@ -5,5 +5,22 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10,<3.11"
 dependencies = [
+    "catboost==1.2",
+    "fastapi==0.99.1",
+    "joblib==1.2.0",
+    "kaleido==0.2.1",
+    "lightgbm==3.3.5",
+    "matplotlib==3.7.1",
     "numpy==1.23.5",
+    "optuna==3.2.0",
+    "pandas==1.5.3",
+    "plotly==5.14.1",
+    "pycaret==3.0.4",
+    "pyyaml==6.0",
+    "scikit-learn==1.2.2",
+    "scipy==1.10.1",
+    "seaborn==0.12.2",
+    "tqdm==4.65.0",
+    "uvicorn==0.22.0",
+    "xgboost==1.7.5",
 ]
