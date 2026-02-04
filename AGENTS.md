@@ -70,3 +70,5 @@
 - 2026-02-04：更新 `src/api/model_loader.py` 与 `src/api/predictor.py`，改用PyCaret加载与预测。
 
 - 2026-02-04：更新 `src/api/model_loader.py`，尝试修复feature_selection的拟合状态。
+
+- 2026-02-04：更新 `src/api/model_loader.py`，补齐LightGBM的silent属性以完成特征选择拟合。

@@ -299,6 +299,11 @@ class ModelRepository:
             pre_pipeline = Pipeline(pre_steps)
             X_trans = pre_pipeline.transform(X)
 
+            # 兼容旧版LightGBM：补齐silent属性，避免fit时报错
+            estimator = getattr(transformer, "estimator_", None) or getattr(transformer, "estimator", None)
+            if estimator is not None and not hasattr(estimator, "silent"):
+                setattr(estimator, "silent", False)
+
             # 重新拟合特征选择器，生成support_
             transformer.fit(X_trans, y)
         except Exception:
