@@ -11,6 +11,7 @@ import os
 from typing import Dict, Any
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from src.api.schemas import PredictRequest, PredictResponse
@@ -29,6 +30,15 @@ def _get_project_root() -> str:
 # ===== 应用初始化 =====
 app = FastAPI(title="FI/CVD 预测 API", version="0.1.0")
 app.add_exception_handler(ApiError, api_error_handler)
+
+# 允许前端在本地开发环境访问API（前后端分离时需要）
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ===== 静态资源挂载 =====
 # 说明：将 output 目录挂载为 /static，便于前端访问图表

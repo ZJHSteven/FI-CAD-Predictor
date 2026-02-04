@@ -78,3 +78,5 @@
 - 2026-02-04：更新 `src/api/model_loader.py`，加入固定特征选择器兜底逻辑。
 
 - 2026-02-04：更新 `src/api/model_loader.py`，使用特征名选择器确保列匹配。
+
+- 2026-02-04：更新 `src/api/app.py`，加入CORS配置以便前端访问。
