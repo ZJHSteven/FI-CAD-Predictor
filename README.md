@@ -38,15 +38,16 @@ project/
 
 ## 使用方法
 1. 配置 `configs/paths.yaml` 中的数据路径
-2. 运行 `main.py` 执行完整的数据处理和模型训练流程
-3. 查看 `output/` 目录下的结果
+2. 使用 `setup_env.bat`（或手动执行 `uv sync`）准备环境
+3. 运行 `run_project.bat`（等价于 `uv run python main.py`）执行完整流程
+4. 查看 `output/` 目录下的结果
 
 ## API 服务（FastAPI）
 本项目已提供一个最小可用的推理API，方便前端或其他系统调用。
 
 ### 启动方式
 1. 先安装依赖（或双击 `setup_env.bat`）
-2. 双击运行 `run_api.bat`
+2. 双击运行 `run_api.bat`（等价于 `uv run uvicorn ...`）
 3. 默认地址：`http://127.0.0.1:8000`
 
 ### 常用接口
