@@ -136,13 +136,13 @@ class ModelRepository:
             is_categorical = self._infer_is_categorical(series)
 
             if is_categorical:
-                defaults[col] = self._get_mode(series)
+                defaults[col] = self._coerce_value(self._get_mode(series))
             else:
                 numeric_strategy = defaults_cfg.get("numeric", "median")
                 if numeric_strategy == "mean":
                     defaults[col] = float(series.mean())
                 elif numeric_strategy == "mode":
-                    defaults[col] = self._get_mode(series)
+                    defaults[col] = self._coerce_value(self._get_mode(series))
                 else:
                     defaults[col] = float(series.median())
 
@@ -156,6 +156,14 @@ class ModelRepository:
         if not mode.empty:
             return mode.iloc[0]
         return 0
+
+    def _coerce_value(self, value: Any) -> Any:
+        """
+        将numpy标量等类型转换为Python原生类型，方便JSON序列化。
+        """
+        if isinstance(value, (np.generic,)):
+            return value.item()
+        return value
 
     def _select_models(self) -> pd.DataFrame:
         """

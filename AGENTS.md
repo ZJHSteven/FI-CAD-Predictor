@@ -28,3 +28,5 @@
 - 2026-02-03：更新 `README.md`，补充API服务使用说明。
 
 - 2026-02-03：更新 `src/api/model_loader.py`，统一将路径解析为绝对路径。
+
+- 2026-02-03：更新 `src/api/model_loader.py`，补充默认值类型转换以便JSON序列化。
