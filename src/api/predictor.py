@@ -124,11 +124,24 @@ class PredictService:
         获取单个模型的正类概率。
 
         兼容策略：
+        - 优先尝试使用 PyCaret 的 predict_model（用于加载的PyCaret Pipeline）
         - 优先使用 predict_proba
         - 其次使用 decision_function + sigmoid
         - 最后使用 predict 结果作为概率兜底
         """
         try:
+            # 1) PyCaret推理路径（若可用）
+            try:
+                from pycaret.classification import predict_model as pycaret_predict_model
+                pred_df = pycaret_predict_model(model, data=feature_df)
+                # 常见的概率列名：Score_1 或 Score
+                for col in ["Score_1", "Score", "prediction_score"]:
+                    if col in pred_df.columns:
+                        return float(pred_df.loc[0, col])
+            except Exception:
+                # 如果PyCaret不可用或预测失败，继续走通用路径
+                pass
+
             if hasattr(model, "predict_proba"):
                 proba = model.predict_proba(feature_df)
                 return float(proba[0][1])

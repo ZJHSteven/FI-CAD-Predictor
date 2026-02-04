@@ -208,6 +208,12 @@ class ModelRepository:
         models: Dict[str, Any] = {}
         weights: Dict[str, float] = {}
 
+        # 尝试优先使用PyCaret的load_model（可确保Pipeline与预处理一致）
+        try:
+            from pycaret.classification import load_model as pycaret_load_model
+        except Exception:
+            pycaret_load_model = None
+
         weight_by = self.api_config["ensemble"].get("weight_by", "auc")
         for _, row in df.iterrows():
             model_name = row["Model"]
@@ -218,7 +224,12 @@ class ModelRepository:
                 # 若模型文件缺失，直接跳过并继续处理其他模型
                 continue
 
-            models[model_name] = joblib.load(model_path)
+            if pycaret_load_model is not None:
+                # PyCaret的load_model通常传入不带扩展名的路径
+                base_path = os.path.splitext(model_path)[0]
+                models[model_name] = pycaret_load_model(base_path)
+            else:
+                models[model_name] = joblib.load(model_path)
 
             # 权重策略：目前仅支持按AUC加权
             if weight_by == "auc":
