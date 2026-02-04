@@ -1,27 +1,22 @@
 @echo off
-echo ===== 运行FI预测CVD项目 =====
+setlocal
+
+echo ===== 运行FI预测CVD项目 (UV) =====
 echo.
 
-REM 检查虚拟环境是否存在
-IF NOT EXIST venv\Scripts\activate.bat (
-    echo 虚拟环境未创建，请先运行 setup_env.bat
+REM 检查uv是否可用
+uv --version
+IF %ERRORLEVEL% NEQ 0 (
+    echo 未检测到uv，请先安装uv并确保加入PATH
     pause
     exit /b 1
 )
 
-REM 激活虚拟环境
-echo 正在激活虚拟环境...
-call venv\Scripts\activate.bat
-
-echo.
-echo 环境已激活，正在运行项目...
-echo.
-
-REM 运行主程序
-python main.py
+echo 正在运行主流程...
+uv run python main.py
 
 echo.
 echo 程序执行完毕
 echo.
-
 pause
+endlocal
