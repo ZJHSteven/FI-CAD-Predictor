@@ -41,6 +41,54 @@ project/
 2. 运行 `main.py` 执行完整的数据处理和模型训练流程
 3. 查看 `output/` 目录下的结果
 
+## API 服务（FastAPI）
+本项目已提供一个最小可用的推理API，方便前端或其他系统调用。
+
+### 启动方式
+1. 先安装依赖（或双击 `setup_env.bat`）
+2. 双击运行 `run_api.bat`
+3. 默认地址：`http://127.0.0.1:8000`
+
+### 常用接口
+- `GET /health`：健康检查，返回模型数量与权重
+- `GET /models`：返回当前参与集成的模型列表与权重
+- `GET /features`：返回特征列表与默认值（便于前端生成表单）
+- `POST /predict`：提交特征并返回预测结果
+
+### 预测请求示例
+```json
+{
+  "FI": 0.25,
+  "Age": 65,
+  "Gender": 1,
+  "return_viz": true
+}
+```
+
+### 预测返回示例
+```json
+{
+  "label": 1,
+  "probability": 0.78,
+  "model_details": {
+    "LogisticRegression": 0.76,
+    "RidgeClassifier": 0.80
+  },
+  "used_models": {
+    "LogisticRegression": 0.51,
+    "RidgeClassifier": 0.49
+  },
+  "figures": [
+    "/static/figures/correlation_heatmap.png",
+    "/static/figures/pycaret/pycaret_logisticregression_roc.png"
+  ]
+}
+```
+
+### 静态图表访问
+所有 `output/figures` 下的图表会挂载到 `/static`。  
+例如：`output/figures/correlation_heatmap.png` → `/static/figures/correlation_heatmap.png`
+
 ## 模型说明
 项目支持多种模型：
 - Logistic回归
