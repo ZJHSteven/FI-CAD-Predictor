@@ -20,3 +20,7 @@
 - 2026-02-03：更新 `src/api/schemas.py`，允许保留未知字段以便后端校验。
 
 - 2026-02-03：更新 `requirements.txt`，新增FastAPI与Uvicorn依赖。
+
+- 2026-02-03：新增 `run_api.bat`，用于启动FastAPI服务。
+
+- 2026-02-03：修正 `run_api.bat` 路径转义问题。
