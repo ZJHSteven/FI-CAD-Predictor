@@ -231,6 +231,9 @@ class ModelRepository:
             else:
                 models[model_name] = joblib.load(model_path)
 
+            # 尝试修复feature_selection步骤（若缺少support_会导致预测失败）
+            self._repair_feature_selection(models[model_name])
+
             # 权重策略：目前仅支持按AUC加权
             if weight_by == "auc":
                 weights[model_name] = float(row["AUC"])
@@ -244,3 +247,60 @@ class ModelRepository:
                 weights = {k: v / total for k, v in weights.items()}
 
         return models, weights
+
+    def _repair_feature_selection(self, model: Any) -> None:
+        """
+        修复PyCaret Pipeline中feature_selection步骤的拟合状态。
+
+        背景：
+        部分已保存的PyCaret模型在加载后，feature_selection内部的
+        SelectFromModel可能未包含support_，会导致transform时报错。
+
+        修复策略：
+        1) 检测Pipeline是否包含feature_selection步骤
+        2) 用训练数据通过“feature_selection之前的预处理步骤”生成X
+        3) 对SelectFromModel执行fit，生成support_
+        """
+        try:
+            if not hasattr(model, "steps"):
+                return
+
+            step_dict = dict(model.steps)
+            if "feature_selection" not in step_dict:
+                return
+
+            fs_wrapper = step_dict["feature_selection"]
+            transformer = getattr(fs_wrapper, "transformer", None)
+            if transformer is None:
+                return
+
+            # 如果已经存在support_，说明已拟合，无需处理
+            if hasattr(transformer, "support_"):
+                return
+
+            # 构造预处理流水线（feature_selection之前的步骤）
+            from sklearn.pipeline import Pipeline
+
+            pre_steps = []
+            for name, step in model.steps:
+                if name == "feature_selection":
+                    break
+                pre_steps.append((name, step))
+
+            if not pre_steps:
+                return
+
+            if "CVD" not in self.training_df.columns:
+                return
+
+            X = self.training_df.drop(columns=["CVD"], errors="ignore")
+            y = self.training_df["CVD"]
+
+            pre_pipeline = Pipeline(pre_steps)
+            X_trans = pre_pipeline.transform(X)
+
+            # 重新拟合特征选择器，生成support_
+            transformer.fit(X_trans, y)
+        except Exception:
+            # 若修复失败，保持原状，交由预测阶段处理失败
+            return

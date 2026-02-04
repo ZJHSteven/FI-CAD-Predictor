@@ -68,3 +68,5 @@
 - 2026-02-04：更新 `src/api/predictor.py` 与 `src/api/schemas.py`，允许跳过失败模型并返回失败原因。
 
 - 2026-02-04：更新 `src/api/model_loader.py` 与 `src/api/predictor.py`，改用PyCaret加载与预测。
+
+- 2026-02-04：更新 `src/api/model_loader.py`，尝试修复feature_selection的拟合状态。
