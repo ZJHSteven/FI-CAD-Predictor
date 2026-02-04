@@ -52,3 +52,5 @@
 - 2026-02-04：更新 `run_api.bat`，改为使用UV启动API服务。
 
 - 2026-02-04：更新 `README.md`，改为UV环境与运行说明。
+
+- 2026-02-04：使用 `uv add` 新增 httpx 以支持 TestClient 测试。
