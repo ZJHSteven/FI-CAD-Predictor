@@ -41,6 +41,28 @@ class ModelBundle:
     pycaret_figures_dir: str
 
 
+class FixedFeatureSelector:
+    """
+    固定特征选择器（兜底方案）。
+
+    当PyCaret的feature_selection步骤损坏时，用此选择器保证维度一致。
+    该选择器只保留输入的前N个特征，避免模型因特征数不匹配报错。
+    """
+
+    def __init__(self, n_features: int) -> None:
+        self.n_features = n_features
+
+    def fit(self, X: Any, y: Any = None) -> "FixedFeatureSelector":
+        # 无需训练，直接返回自身
+        return self
+
+    def transform(self, X: Any) -> Any:
+        # 同时兼容DataFrame与numpy数组
+        if hasattr(X, "iloc"):
+            return X.iloc[:, : self.n_features]
+        return X[:, : self.n_features]
+
+
 class ModelRepository:
     """
     模型仓库：负责加载配置、读取指标、筛选模型并完成加载。
@@ -320,6 +342,16 @@ class ModelRepository:
                 # 强制使用已训练模型作为重要性来源
                 transformer.estimator_ = trained_model
                 transformer.prefit = True
+
+                # 如果仍可能失败，使用固定特征选择器兜底（按模型期望特征数裁剪）
+                n_features = getattr(trained_model, "n_features_in_", None)
+                if n_features is None:
+                    return
+
+                model.steps = [
+                    (name, step) if name != "feature_selection" else ("feature_selection", FixedFeatureSelector(n_features))
+                    for name, step in model.steps
+                ]
         except Exception:
             # 若修复失败，保持原状，交由预测阶段处理失败
             return

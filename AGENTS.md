@@ -74,3 +74,5 @@
 - 2026-02-04：更新 `src/api/model_loader.py`，补齐LightGBM的silent属性以完成特征选择拟合。
 
 - 2026-02-04：完善 `src/api/model_loader.py` 的特征选择修复，失败时回退到已训练模型。
+
+- 2026-02-04：更新 `src/api/model_loader.py`，加入固定特征选择器兜底逻辑。
