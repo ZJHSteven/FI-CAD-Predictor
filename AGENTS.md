@@ -18,3 +18,5 @@
 - 2026-02-03：新增 `src/api/app.py`，实现FastAPI应用入口与路由。
 
 - 2026-02-03：更新 `src/api/schemas.py`，允许保留未知字段以便后端校验。
+
+- 2026-02-03：更新 `requirements.txt`，新增FastAPI与Uvicorn依赖。
