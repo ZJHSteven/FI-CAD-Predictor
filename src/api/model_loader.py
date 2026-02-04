@@ -63,6 +63,37 @@ class FixedFeatureSelector:
         return X[:, : self.n_features]
 
 
+class NamedFeatureSelector:
+    """
+    按特征名选择列的选择器（更精确的兜底方案）。
+
+    优先使用训练好的模型 feature_names_in_ 来匹配正确列名，
+    确保推理阶段的特征与训练阶段一致。
+    """
+
+    def __init__(self, feature_names: list, input_names: list | None = None) -> None:
+        self.feature_names = list(feature_names)
+        self.input_names = list(input_names) if input_names is not None else None
+
+    def fit(self, X: Any, y: Any = None) -> "NamedFeatureSelector":
+        # 无需训练，直接返回自身
+        return self
+
+    def transform(self, X: Any) -> Any:
+        # 如果是DataFrame，直接按列名选择
+        if hasattr(X, "loc"):
+            return X.loc[:, self.feature_names]
+
+        # 如果是numpy数组，则尝试用input_names构造DataFrame再选择
+        if self.input_names is not None:
+            import pandas as pd
+            X_df = pd.DataFrame(X, columns=self.input_names)
+            return X_df.loc[:, self.feature_names].values
+
+        # 再次兜底：按特征数量裁剪
+        return X[:, : len(self.feature_names)]
+
+
 class ModelRepository:
     """
     模型仓库：负责加载配置、读取指标、筛选模型并完成加载。
@@ -344,12 +375,19 @@ class ModelRepository:
                 transformer.prefit = True
 
                 # 如果仍可能失败，使用固定特征选择器兜底（按模型期望特征数裁剪）
+                feature_names = getattr(trained_model, "feature_names_in_", None)
+                input_names = getattr(fs_wrapper, "feature_names_in_", None)
                 n_features = getattr(trained_model, "n_features_in_", None)
-                if n_features is None:
+
+                if feature_names is not None:
+                    selector = NamedFeatureSelector(feature_names, input_names)
+                elif n_features is not None:
+                    selector = FixedFeatureSelector(n_features)
+                else:
                     return
 
                 model.steps = [
-                    (name, step) if name != "feature_selection" else ("feature_selection", FixedFeatureSelector(n_features))
+                    (name, step) if name != "feature_selection" else ("feature_selection", selector)
                     for name, step in model.steps
                 ]
         except Exception:
