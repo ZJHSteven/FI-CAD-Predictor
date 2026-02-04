@@ -90,6 +90,19 @@ project/
 所有 `output/figures` 下的图表会挂载到 `/static`。  
 例如：`output/figures/correlation_heatmap.png` → `/static/figures/correlation_heatmap.png`
 
+## 前端最小测试页（React + TS）
+项目内置了一个最小测试页面，便于人工验证API。
+
+### 启动方式
+1. 进入前端目录：`cd frontend`
+2. 安装依赖：`npm install`
+3. 启动开发服务器：`npm run dev`
+4. 浏览器打开控制台给出的本地地址（通常是 `http://127.0.0.1:5173`）
+
+### 使用说明
+- 默认API地址为 `http://127.0.0.1:8000`
+- 先启动后端API，再启动前端页面
+
 ## 模型说明
 项目支持多种模型：
 - Logistic回归
