@@ -152,10 +152,13 @@ class PredictService:
         """
         figures: List[str] = []
 
+        # 计算output根目录，用于生成相对路径
+        output_root = os.path.abspath(os.path.join(self.bundle.figures_dir, ".."))
+
         # 将本地路径转换为URL路径，保持与StaticFiles挂载一致
         def to_url(file_path: str) -> str:
             # 统一使用output作为静态根目录
-            rel = os.path.relpath(file_path, start="output")
+            rel = os.path.relpath(file_path, start=output_root)
             return f"/static/{rel.replace('\\', '/')}"
 
         for root_dir in [self.bundle.figures_dir, self.bundle.pycaret_figures_dir]:
