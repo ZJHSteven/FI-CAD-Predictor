@@ -305,7 +305,21 @@ class ModelRepository:
                 setattr(estimator, "silent", False)
 
             # 重新拟合特征选择器，生成support_
-            transformer.fit(X_trans, y)
+            try:
+                transformer.fit(X_trans, y)
+                return
+            except Exception:
+                # 拟合失败时，尝试用已训练模型作为特征选择器
+                trained_model = step_dict.get("trained_model")
+                if trained_model is None:
+                    return
+
+                if not (hasattr(trained_model, "coef_") or hasattr(trained_model, "feature_importances_")):
+                    return
+
+                # 强制使用已训练模型作为重要性来源
+                transformer.estimator_ = trained_model
+                transformer.prefit = True
         except Exception:
             # 若修复失败，保持原状，交由预测阶段处理失败
             return
