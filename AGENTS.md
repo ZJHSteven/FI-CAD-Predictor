@@ -80,3 +80,5 @@
 - 2026-02-04：更新 `src/api/model_loader.py`，使用特征名选择器确保列匹配。
 
 - 2026-02-04：更新 `src/api/app.py`，加入CORS配置以便前端访问。
+
+- 2026-02-04：使用Vite创建 `frontend` React TS 最小项目结构。
