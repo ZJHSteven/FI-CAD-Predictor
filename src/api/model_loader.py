@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # 本文件负责模型与配置的加载：
-# 1) 读取API配置（阈值、路径、默认值策略等）
-# 2) 读取训练数据用于计算默认值与特征列
-# 3) 读取模型指标并筛选可用模型
-# 4) 加载最终参与集成的模型
+# 1) 读取API配置（特征列、默认值、模型清单）
+# 2) 加载模型并处理权重
+# 3) 尝试修复特征选择器的兼容性问题
+# 4) 提供静态资源路径信息（用于可选图表）
 
 from __future__ import annotations
 
@@ -291,8 +291,8 @@ class ModelRepository:
 
         修复策略：
         1) 检测Pipeline是否包含feature_selection步骤
-        2) 用训练数据通过“feature_selection之前的预处理步骤”生成X
-        3) 对SelectFromModel执行fit，生成support_
+        2) 优先使用已训练模型作为重要性来源（trained_model）
+        3) 用特征名选择器或固定特征数选择器兜底
         """
         try:
             if not hasattr(model, "steps"):
