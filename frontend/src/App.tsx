@@ -123,7 +123,7 @@ function App() {
 
       <section className="card">
         <h2>可选字段（JSON）</h2>
-        <p className="hint">示例：{"{"Marital":1, "EducationLevel":2}"}</p>
+        <p className="hint">示例：{"{\"Marital\":1, \"EducationLevel\":2}"}</p>
         <textarea
           rows={6}
           value={extraJson}

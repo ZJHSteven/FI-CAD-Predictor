@@ -88,3 +88,5 @@
 - 2026-02-04：更新 `frontend/src/App.css`，提供最小页面样式。
 
 - 2026-02-04：更新 `README.md`，补充前端最小测试页使用说明。
+
+- 2026-02-04：修复 `frontend/src/App.tsx` 的JSON示例字符串转义，避免Vite解析错误。
