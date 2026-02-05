@@ -1,5 +1,7 @@
 @echo off
 setlocal
+REM 解决中文乱码：切换为UTF-8代码页
+chcp 65001 >nul
 
 echo ===== 运行FI预测CVD项目 (UV) =====
 echo.

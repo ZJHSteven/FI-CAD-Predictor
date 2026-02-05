@@ -92,3 +92,5 @@
 - 2026-02-04：修复 `frontend/src/App.tsx` 的JSON示例字符串转义，避免Vite解析错误。
 
 - 2026-02-04：更新 `src/api/app.py`，限定CORS允许的本地前端来源。
+
+- 2026-02-04：更新 `run_api.bat`、`run_project.bat`、`setup_env.bat`，添加UTF-8代码页避免中文乱码。
