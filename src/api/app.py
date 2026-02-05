@@ -34,7 +34,12 @@ app.add_exception_handler(ApiError, api_error_handler)
 # 允许前端在本地开发环境访问API（前后端分离时需要）
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    # 浏览器在携带凭据时不允许使用 "*"
+    # 这里显式列出本地前端常见地址，避免跨域失败
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
