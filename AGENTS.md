@@ -98,3 +98,13 @@
 - 2026-02-04：将 `run_api.bat`、`run_project.bat`、`setup_env.bat` 改为GBK编码并使用chcp 936。
 
 - 2026-02-04：更新 `configs/pycaret_config.yaml`，降低CV与调参次数以缩短训练时间。
+
+- 2026-02-05：新增部署版 `configs/api_config.yaml`，改为显式配置特征列、默认值与模型清单。
+
+- 2026-02-05：更新 `src/api/model_loader.py` 与 `src/api/predictor.py`，移除训练数据依赖并收紧静态资源挂载。
+
+- 2026-02-05：更新 `src/api/app.py`、`run_api.bat`、`setup_env.bat` 与 `README.md`，聚焦推理服务部署说明。
+
+- 2026-02-05：删除训练流程与前端相关文件（训练脚本、数据、图表、结果与前端目录）。
+
+- 2026-02-04：恢复 `configs/pycaret_config.yaml` 并收敛模型对比与调参范围以缩短训练时间。
