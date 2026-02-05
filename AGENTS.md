@@ -109,4 +109,6 @@
 
 - 2026-02-05：更新 `src/api/model_loader.py` 注释说明，使其与部署版逻辑一致。
 
+- 2026-02-05：运行 `uv lock` 更新 `uv.lock`，同步部署版依赖变化。
+
 - 2026-02-04：恢复 `configs/pycaret_config.yaml` 并收敛模型对比与调参范围以缩短训练时间。
