@@ -1,41 +1,111 @@
-# API 服务配置
-# 该配置用于控制模型选择、集成策略、输入缺省值等行为。
-
-model_selection:
-  # 仅保留 AUC 不低于该阈值的模型
-  auc_threshold: 0.77
-  # 过滤召回率过低（接近 0）的模型
-  recall_min: 0.05
-  # 允许显式指定白名单（为空表示不启用）
-  allow_models: []
-  # 黑名单（如需强制排除某些模型，可在这里填入模型名称）
-  deny_models: []
-
-ensemble:
-  # 集成权重策略：auc 表示用 AUC 作为权重
-  weight_by: "auc"
-  # 是否对权重做归一化
-  normalize: true
+# API 服务配置（部署版）
+# 目标：仅保留推理所需信息，不依赖训练数据与评估指标。
+#
+# 说明：
+# 1) features.columns 必须按训练时的列顺序填写（顺序不一致会导致推理错误）。
+# 2) features.defaults 用于补齐用户缺失字段（最小可用输入只需 required_fields）。
+# 3) models 为参与集成的模型清单，每个模型包含 name / path / weight。
+# 4) ensemble.normalize 为 true 时，会在加载后对权重做归一化。
+# 5) paths.figures_dir 与 paths.pycaret_figures_dir 可为空或不存在，缺失时将不返回图表。
 
 input:
-  # 最小必填字段
+  # 最小必填字段（前端或调用方至少要提供这些）
   required_fields: ["FI", "Age", "Gender"]
   # 是否允许输入中出现训练特征之外的字段
   allow_unknown_fields: false
 
-# 缺省值策略：用于前端只给少量字段时的自动补全
-# numeric: 数值型字段默认填充方式
-# categorical: 分类型字段默认填充方式
-# 可选值: median / mean / mode
-# 说明：分类字段建议使用 mode
+features:
+  # ===== 特征列（顺序必须与训练一致）=====
+  columns:
+    - Age
+    - Gender
+    - Marital
+    - EducationLevel
+    - chestPainWhenClimbingOrWalkingQuickly
+    - sleepWasRestless
+    - feelAnyBodyPain
+    - weightChange
+    - feelDepressed
+    - selfCommentOfHealth
+    - Smoke
+    - DrinkAlcohol
+    - pulse
+    - whiteBloodCell_inThousands
+    - meanCorpuscularVolume
+    - platelets_10e9perL
+    - bloodUreaNitrogen_mgperdl
+    - glucose_mgperdl
+    - creatinine_mgperdl
+    - totalCholesterol_mgperdl
+    - triglycerides_mgperdl
+    - hdlCholesterol_mgperdl
+    - ldlCholesterol_mgperdl
+    - cReactiveProtein_mgperdl
+    - glycatedHemoglobin
+    - uricAcid_mgperdl
+    - hematocrit
+    - hemoglobin_gperdl
+    - cystatinC_mgperl
+    - FI
 
-defaults:
-  numeric: "median"
-  categorical: "mode"
+  # ===== 默认值（用于补齐缺失字段）=====
+  defaults:
+    Age: 58.0
+    Gender: 0.0
+    Marital: 1.0
+    EducationLevel: 1.0
+    chestPainWhenClimbingOrWalkingQuickly: 0.0
+    sleepWasRestless: 0.0
+    feelAnyBodyPain: 0.0
+    weightChange: 0.0
+    feelDepressed: 1.0
+    selfCommentOfHealth: 4.0
+    Smoke: 0.0
+    DrinkAlcohol: 0.0
+    pulse: 72.0
+    whiteBloodCell_inThousands: 6.0
+    meanCorpuscularVolume: 91.3000030517578
+    platelets_10e9perL: 207.0
+    bloodUreaNitrogen_mgperdl: 15.1534099578857
+    glucose_mgperdl: 102.419998168945
+    creatinine_mgperdl: 0.757099986076355
+    totalCholesterol_mgperdl: 190.593795776367
+    triglycerides_mgperdl: 105.315002441406
+    hdlCholesterol_mgperdl: 49.098201751709
+    ldlCholesterol_mgperdl: 114.046997070312
+    cReactiveProtein_mgperdl: 1.03999996185303
+    glycatedHemoglobin: 5.09999990463257
+    uricAcid_mgperdl: 4.294080018997191
+    hematocrit: 41.5
+    hemoglobin_gperdl: 14.1999998092651
+    cystatinC_mgperl: 0.980000019073486
+    FI: 0.136363636
+
+models:
+  - name: "LinearDiscriminantAnalysis"
+    path: "output/models/pycaret/pycaret_lineardiscriminantanalysis_model.pkl"
+    weight: 0.7755
+  - name: "LogisticRegression"
+    path: "output/models/pycaret/pycaret_logisticregression_model.pkl"
+    weight: 0.7754
+  - name: "RidgeClassifier"
+    path: "output/models/pycaret/pycaret_ridgeclassifier_model.pkl"
+    weight: 0.7742
+  - name: "LGBMClassifier"
+    path: "output/models/pycaret/pycaret_lgbmclassifier_model.pkl"
+    weight: 0.7733
+  - name: "GradientBoostingClassifier"
+    path: "output/models/pycaret/pycaret_gradientboostingclassifier_model.pkl"
+    weight: 0.7711
+
+ensemble:
+  # 是否对权重做归一化
+  normalize: true
 
 paths:
-  metrics_csv: "output/results/pycaret_model_metrics.csv"
+  # 模型目录（可选字段，仅用于约定）
   models_dir: "output/models/pycaret"
-  training_data: "data/cleaned/basic_cleaned_data.csv"
+  # 可视化图表目录（可选，缺失时不返回图表）
   figures_dir: "output/figures"
+  # PyCaret图表目录（可选，缺失时不返回图表）
   pycaret_figures_dir: "output/figures/pycaret"

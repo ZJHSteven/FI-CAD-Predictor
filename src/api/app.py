@@ -20,13 +20,6 @@ from src.api.model_loader import ModelRepository
 from src.api.predictor import PredictService
 
 
-def _get_project_root() -> str:
-    """
-    获取项目根目录的绝对路径。
-    """
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-
-
 # ===== 应用初始化 =====
 app = FastAPI(title="FI/CVD 预测 API", version="0.1.0")
 app.add_exception_handler(ApiError, api_error_handler)
@@ -45,18 +38,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ===== 静态资源挂载 =====
-# 说明：将 output 目录挂载为 /static，便于前端访问图表
-project_root = _get_project_root()
-output_dir = os.path.join(project_root, "output")
-if os.path.exists(output_dir):
-    app.mount("/static", StaticFiles(directory=output_dir), name="static")
-
 # ===== 预测服务初始化 =====
-repository = ModelRepository()
-bundle = repository.build_bundle()
-allow_unknown_fields = repository.api_config["input"].get("allow_unknown_fields", False)
-predict_service = PredictService(bundle=bundle, allow_unknown_fields=allow_unknown_fields)
+# 说明：启动时加载模型与配置，若配置错误会直接报错，避免“带病运行”
+repository = ModelRepository()  # 初始化模型仓库
+bundle = repository.build_bundle()  # 构建模型包
+allow_unknown_fields = repository.api_config["input"].get("allow_unknown_fields", False)  # 读取字段策略
+predict_service = PredictService(bundle=bundle, allow_unknown_fields=allow_unknown_fields)  # 构建预测服务
+
+# ===== 静态资源挂载 =====
+# 说明：仅挂载“图表目录”，避免误暴露模型文件
+static_root = bundle.static_root
+if static_root and os.path.exists(static_root):
+    app.mount("/static", StaticFiles(directory=static_root), name="static")
 
 
 @app.get("/health")

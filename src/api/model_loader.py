@@ -11,7 +11,6 @@ from dataclasses import dataclass
 from typing import Dict, Any, List, Tuple
 import os
 
-import pandas as pd
 import numpy as np
 import joblib
 
@@ -27,10 +26,11 @@ class ModelBundle:
     Attributes:
         models: 模型对象字典（key为模型名称）
         weights: 模型权重字典（key为模型名称）
-        feature_columns: 训练特征列名列表
-        defaults: 各特征的默认值字典
-        figures_dir: 可视化图表目录
-        pycaret_figures_dir: PyCaret图表目录
+        feature_columns: 模型特征列名列表（来自配置）
+        defaults: 各特征的默认值字典（来自配置）
+        figures_dir: 可视化图表目录（可选）
+        pycaret_figures_dir: PyCaret图表目录（可选）
+        static_root: 静态资源根目录（用于FastAPI静态挂载）
     """
 
     models: Dict[str, Any]
@@ -39,6 +39,7 @@ class ModelBundle:
     defaults: Dict[str, Any]
     figures_dir: str
     pycaret_figures_dir: str
+    static_root: str
 
 
 class FixedFeatureSelector:
@@ -100,30 +101,29 @@ class ModelRepository:
     """
 
     def __init__(self) -> None:
-        # 加载API配置
-        config_loader = create_config_loader()
-        self.api_config = config_loader.load_config("api_config")
+        # ===== 配置加载 =====
+        # 使用统一配置加载器读取API配置，确保部署环境仅依赖配置即可运行
+        config_loader = create_config_loader()  # 创建配置加载器
+        self.api_config = config_loader.load_config("api_config")  # 读取api_config.yaml
 
-        # 读取配置路径
-        paths = self.api_config["paths"]
-        self.project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-        self.metrics_csv = self._resolve_path(paths["metrics_csv"])
-        self.models_dir = self._resolve_path(paths["models_dir"])
-        self.training_data = self._resolve_path(paths["training_data"])
-        self.figures_dir = self._resolve_path(paths["figures_dir"])
-        self.pycaret_figures_dir = self._resolve_path(paths["pycaret_figures_dir"])
+        # ===== 路径配置 =====
+        # 读取可选路径配置，部署版允许路径为空
+        paths = self.api_config.get("paths", {})  # 获取路径配置（可为空字典）
+        self.project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))  # 项目根目录
+        self.models_dir = self._resolve_optional_path(paths.get("models_dir"))  # 模型目录（可为空）
+        self.figures_dir = self._resolve_optional_path(paths.get("figures_dir"))  # 图表目录（可为空）
+        self.pycaret_figures_dir = self._resolve_optional_path(paths.get("pycaret_figures_dir"))  # PyCaret图表目录（可为空）
 
-        # 读取训练数据与模型指标
-        self.training_df = self._load_training_data()
-        self.metrics_df = self._load_metrics()
+        # ===== 特征与默认值 =====
+        # 部署版不再读取训练数据，而是直接从配置获取特征列表与默认值
+        self.feature_columns, self.defaults = self._load_feature_schema()
 
     def build_bundle(self) -> ModelBundle:
         """
         构建完整的模型包，供预测器使用。
         """
-        feature_columns = [c for c in self.training_df.columns if c != "CVD"]
-        defaults = self._compute_defaults(self.training_df, feature_columns)
-        models, weights = self._load_models()
+        # 加载模型并获取权重
+        models, weights = self._load_models()  # 读取模型与权重配置
 
         if not models:
             raise ApiError("未加载到任何可用模型，请检查模型文件与筛选条件。", 500)
@@ -131,27 +131,24 @@ class ModelRepository:
         return ModelBundle(
             models=models,
             weights=weights,
-            feature_columns=feature_columns,
-            defaults=defaults,
+            feature_columns=self.feature_columns,
+            defaults=self.defaults,
             figures_dir=self.figures_dir,
             pycaret_figures_dir=self.pycaret_figures_dir,
+            static_root=self._get_static_root(),
         )
 
-    def _load_training_data(self) -> pd.DataFrame:
+    def _get_static_root(self) -> str:
         """
-        读取训练数据（用于获取特征列表与默认值）。
-        """
-        if not os.path.exists(self.training_data):
-            raise ApiError(f"训练数据文件不存在: {self.training_data}", 500)
-        return pd.read_csv(self.training_data)
+        获取静态资源根目录。
 
-    def _load_metrics(self) -> pd.DataFrame:
+        说明：
+        - 如果配置了 figures_dir，则将其作为静态根目录
+        - 未配置时返回空字符串，表示不挂载静态资源
         """
-        读取模型评估指标（AUC、Recall等），用于筛选模型。
-        """
-        if not os.path.exists(self.metrics_csv):
-            raise ApiError(f"模型指标文件不存在: {self.metrics_csv}", 500)
-        return pd.read_csv(self.metrics_csv)
+        if self.figures_dir:
+            return self.figures_dir
+        return ""
 
     def _resolve_path(self, path_value: str) -> str:
         """
@@ -165,50 +162,50 @@ class ModelRepository:
             return path_value
         return os.path.abspath(os.path.join(self.project_root, path_value))
 
-    def _infer_is_categorical(self, series: pd.Series) -> bool:
+    def _resolve_optional_path(self, path_value: str | None) -> str:
         """
-        根据数据分布推断该列是否为分类型特征。
-        规则：
-        - object 类型直接视为分类
-        - 数值型但唯一值较少（<=10）也视为分类
-        """
-        if series.dtype == object:
-            return True
-        unique_count = series.dropna().nunique()
-        return unique_count <= 10
+        处理可选路径配置。
 
-    def _compute_defaults(self, df: pd.DataFrame, feature_columns: List[str]) -> Dict[str, Any]:
+        当配置缺失或为空字符串时，返回空字符串以表示“未启用”。
         """
-        根据训练数据计算各字段的默认值。
+        if not path_value:
+            return ""
+        return self._resolve_path(path_value)
+
+    def _load_feature_schema(self) -> Tuple[List[str], Dict[str, Any]]:
         """
-        defaults_cfg = self.api_config["defaults"]
+        从配置中读取特征列与默认值。
+
+        Returns:
+            (feature_columns, defaults)
+        """
+        features_cfg = self.api_config.get("features")  # 读取features配置块
+        if not features_cfg:
+            raise ApiError("缺少features配置，请在api_config.yaml中补充。", 500)
+
+        feature_columns = features_cfg.get("columns")  # 获取特征列列表
+        defaults_cfg = features_cfg.get("defaults")  # 获取默认值字典
+
+        if not feature_columns:
+            raise ApiError("features.columns不能为空。", 500)
+        if defaults_cfg is None:
+            raise ApiError("features.defaults不能为空。", 500)
+
+        # 检查默认值是否覆盖所有特征列
+        missing = [col for col in feature_columns if col not in defaults_cfg]
+        if missing:
+            raise ApiError(
+                "默认值配置缺失，请补全features.defaults。",
+                500,
+                {"missing_fields": missing},
+            )
+
+        # 将默认值整理为按特征列顺序的字典
         defaults: Dict[str, Any] = {}
-
         for col in feature_columns:
-            series = df[col]
-            is_categorical = self._infer_is_categorical(series)
+            defaults[col] = self._coerce_value(defaults_cfg[col])
 
-            if is_categorical:
-                defaults[col] = self._coerce_value(self._get_mode(series))
-            else:
-                numeric_strategy = defaults_cfg.get("numeric", "median")
-                if numeric_strategy == "mean":
-                    defaults[col] = float(series.mean())
-                elif numeric_strategy == "mode":
-                    defaults[col] = self._coerce_value(self._get_mode(series))
-                else:
-                    defaults[col] = float(series.median())
-
-        return defaults
-
-    def _get_mode(self, series: pd.Series) -> Any:
-        """
-        获取众数，若为空则返回0作为兜底值。
-        """
-        mode = series.mode()
-        if not mode.empty:
-            return mode.iloc[0]
-        return 0
+        return feature_columns, defaults
 
     def _coerce_value(self, value: Any) -> Any:
         """
@@ -218,48 +215,17 @@ class ModelRepository:
             return value.item()
         return value
 
-    def _select_models(self) -> pd.DataFrame:
-        """
-        按配置筛选模型，返回过滤后的指标DataFrame。
-        """
-        cfg = self.api_config["model_selection"]
-        df = self.metrics_df.copy()
-
-        # 统一列名，避免大小写差异导致问题
-        df.columns = [c.strip() for c in df.columns]
-
-        # 白名单优先
-        allow = cfg.get("allow_models", [])
-        if allow:
-            df = df[df["Model"].isin(allow)]
-        else:
-            df = df[(df["AUC"] >= cfg.get("auc_threshold", 0.0)) & (df["Recall"] >= cfg.get("recall_min", 0.0))]
-
-        # 黑名单过滤
-        deny = cfg.get("deny_models", [])
-        if deny:
-            df = df[~df["Model"].isin(deny)]
-
-        return df
-
-    def _build_model_filename(self, model_name: str) -> str:
-        """
-        根据指标文件中的模型名称生成模型文件名。
-        规则：pycaret_{model_name小写}_model.pkl
-        """
-        safe_name = model_name.lower()
-        return f"pycaret_{safe_name}_model.pkl"
-
     def _load_models(self) -> Tuple[Dict[str, Any], Dict[str, float]]:
         """
         加载模型并计算权重。
         """
-        df = self._select_models()
-        if df.empty:
-            raise ApiError("模型筛选后为空，请调整阈值或检查指标文件。", 500)
+        models_cfg = self.api_config.get("models", [])  # 读取模型配置列表
+        if not models_cfg:
+            raise ApiError("未配置models列表，请在api_config.yaml中补充。", 500)
 
-        models: Dict[str, Any] = {}
-        weights: Dict[str, float] = {}
+        models: Dict[str, Any] = {}  # 已加载模型字典
+        weights: Dict[str, float] = {}  # 模型权重字典
+        missing_files: List[str] = []  # 记录缺失文件，便于排查
 
         # 尝试优先使用PyCaret的load_model（可确保Pipeline与预处理一致）
         try:
@@ -267,14 +233,23 @@ class ModelRepository:
         except Exception:
             pycaret_load_model = None
 
-        weight_by = self.api_config["ensemble"].get("weight_by", "auc")
-        for _, row in df.iterrows():
-            model_name = row["Model"]
-            filename = self._build_model_filename(model_name)
-            model_path = os.path.join(self.models_dir, filename)
+        for item in models_cfg:
+            model_name = item.get("name")  # 模型名称
+            model_path_cfg = item.get("path")  # 模型路径
+            model_weight = float(item.get("weight", 1.0))  # 权重，默认1.0
+
+            if not model_name or not model_path_cfg:
+                raise ApiError(
+                    "模型配置缺少name或path字段。",
+                    500,
+                    {"bad_item": item},
+                )
+
+            # 将路径转换为绝对路径
+            model_path = self._resolve_path(model_path_cfg)
 
             if not os.path.exists(model_path):
-                # 若模型文件缺失，直接跳过并继续处理其他模型
+                missing_files.append(model_path)
                 continue
 
             if pycaret_load_model is not None:
@@ -282,19 +257,24 @@ class ModelRepository:
                 base_path = os.path.splitext(model_path)[0]
                 models[model_name] = pycaret_load_model(base_path)
             else:
+                # 兜底：使用joblib直接加载
                 models[model_name] = joblib.load(model_path)
 
             # 尝试修复feature_selection步骤（若缺少support_会导致预测失败）
             self._repair_feature_selection(models[model_name])
 
-            # 权重策略：目前仅支持按AUC加权
-            if weight_by == "auc":
-                weights[model_name] = float(row["AUC"])
-            else:
-                weights[model_name] = 1.0
+            # 保存权重配置
+            weights[model_name] = model_weight
 
-        # 权重归一化
-        if self.api_config["ensemble"].get("normalize", True) and weights:
+        if not models:
+            raise ApiError(
+                "模型文件缺失或未能加载，请检查models配置。",
+                500,
+                {"missing_files": missing_files},
+            )
+
+        # 权重归一化（保持与旧版一致的行为）
+        if self.api_config.get("ensemble", {}).get("normalize", True) and weights:
             total = sum(weights.values())
             if total > 0:
                 weights = {k: v / total for k, v in weights.items()}
@@ -331,65 +311,35 @@ class ModelRepository:
             if hasattr(transformer, "support_"):
                 return
 
-            # 构造预处理流水线（feature_selection之前的步骤）
-            from sklearn.pipeline import Pipeline
-
-            pre_steps = []
-            for name, step in model.steps:
-                if name == "feature_selection":
-                    break
-                pre_steps.append((name, step))
-
-            if not pre_steps:
+            # ===== 无训练数据时的修复策略 =====
+            # 部署版不再保留训练数据，因此直接走“已训练模型兜底”逻辑
+            trained_model = step_dict.get("trained_model")  # 尝试获取已训练模型
+            if trained_model is None:
                 return
 
-            if "CVD" not in self.training_df.columns:
+            if not (hasattr(trained_model, "coef_") or hasattr(trained_model, "feature_importances_")):
                 return
 
-            X = self.training_df.drop(columns=["CVD"], errors="ignore")
-            y = self.training_df["CVD"]
+            # 强制使用已训练模型作为重要性来源
+            transformer.estimator_ = trained_model
+            transformer.prefit = True
 
-            pre_pipeline = Pipeline(pre_steps)
-            X_trans = pre_pipeline.transform(X)
+            # 使用特征名选择器或固定特征数选择器兜底
+            feature_names = getattr(trained_model, "feature_names_in_", None)
+            input_names = self.feature_columns  # 使用配置中的特征顺序
+            n_features = getattr(trained_model, "n_features_in_", None)
 
-            # 兼容旧版LightGBM：补齐silent属性，避免fit时报错
-            estimator = getattr(transformer, "estimator_", None) or getattr(transformer, "estimator", None)
-            if estimator is not None and not hasattr(estimator, "silent"):
-                setattr(estimator, "silent", False)
-
-            # 重新拟合特征选择器，生成support_
-            try:
-                transformer.fit(X_trans, y)
+            if feature_names is not None:
+                selector = NamedFeatureSelector(feature_names, input_names)
+            elif n_features is not None:
+                selector = FixedFeatureSelector(n_features)
+            else:
                 return
-            except Exception:
-                # 拟合失败时，尝试用已训练模型作为特征选择器
-                trained_model = step_dict.get("trained_model")
-                if trained_model is None:
-                    return
 
-                if not (hasattr(trained_model, "coef_") or hasattr(trained_model, "feature_importances_")):
-                    return
-
-                # 强制使用已训练模型作为重要性来源
-                transformer.estimator_ = trained_model
-                transformer.prefit = True
-
-                # 如果仍可能失败，使用固定特征选择器兜底（按模型期望特征数裁剪）
-                feature_names = getattr(trained_model, "feature_names_in_", None)
-                input_names = getattr(fs_wrapper, "feature_names_in_", None)
-                n_features = getattr(trained_model, "n_features_in_", None)
-
-                if feature_names is not None:
-                    selector = NamedFeatureSelector(feature_names, input_names)
-                elif n_features is not None:
-                    selector = FixedFeatureSelector(n_features)
-                else:
-                    return
-
-                model.steps = [
-                    (name, step) if name != "feature_selection" else ("feature_selection", selector)
-                    for name, step in model.steps
-                ]
+            model.steps = [
+                (name, step) if name != "feature_selection" else ("feature_selection", selector)
+                for name, step in model.steps
+            ]
         except Exception:
             # 若修复失败，保持原状，交由预测阶段处理失败
             return

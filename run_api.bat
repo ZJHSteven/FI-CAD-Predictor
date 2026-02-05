@@ -15,7 +15,7 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 
 echo 正在启动API服务...
-uv run uvicorn src.api.app:app --host 0.0.0.0 --port 8000 --reload
+uv run uvicorn src.api.app:app --host 0.0.0.0 --port 8000
 
 echo.
 echo API服务已退出

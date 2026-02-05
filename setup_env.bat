@@ -3,7 +3,7 @@ setlocal
 REM 解决中文乱码：切换为GBK代码页
 chcp 936 >nul
 
-echo ===== 使用UV准备Python环境 =====
+echo ===== 使用UV准备推理环境 =====
 echo.
 
 REM 检查uv是否可用
@@ -35,8 +35,8 @@ IF %ERRORLEVEL% NEQ 0 (
 echo.
 echo ===== 环境设置完成 =====
 echo 使用说明：
-echo 1. 训练流程：uv run python main.py
-echo 2. 启动API：uv run uvicorn src.api.app:app --host 0.0.0.0 --port 8000 --reload
+echo 1. 启动API：uv run uvicorn src.api.app:app --host 0.0.0.0 --port 8000
+echo 2. 生产部署建议：使用systemd或Docker管理进程，并避免--reload
 echo.
 pause
 endlocal

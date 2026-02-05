@@ -188,13 +188,17 @@ class PredictService:
         """
         figures: List[str] = []
 
-        # 计算output根目录，用于生成相对路径
-        output_root = os.path.abspath(os.path.join(self.bundle.figures_dir, ".."))
+        # 读取静态根目录（用于生成相对路径）
+        static_root = self.bundle.static_root
+        if not static_root:
+            return figures
+        if not os.path.exists(static_root):
+            return figures
 
         # 将本地路径转换为URL路径，保持与StaticFiles挂载一致
         def to_url(file_path: str) -> str:
-            # 统一使用output作为静态根目录
-            rel = os.path.relpath(file_path, start=output_root)
+            # 统一使用static_root作为静态根目录
+            rel = os.path.relpath(file_path, start=static_root)
             # 将Windows路径分隔符转换为URL风格
             rel = rel.replace("\\", "/")
             return f"/static/{rel}"
