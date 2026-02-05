@@ -1,42 +1,42 @@
 @echo off
 setlocal
-REM è§£å†³ä¸­æ–‡ä¹±ç ï¼šåˆ‡æ¢ä¸ºUTF-8ä»£ç é¡µ
-chcp 65001 >nul
+REM ½â¾öÖÐÎÄÂÒÂë£ºÇÐ»»ÎªGBK´úÂëÒ³
+chcp 936 >nul
 
-echo ===== ä½¿ç”¨UVå‡†å¤‡PythonçŽ¯å¢ƒ =====
+echo ===== Ê¹ÓÃUV×¼±¸Python»·¾³ =====
 echo.
 
-REM æ£€æŸ¥uvæ˜¯å¦å¯ç”¨
+REM ¼ì²éuvÊÇ·ñ¿ÉÓÃ
 uv --version
 IF %ERRORLEVEL% NEQ 0 (
-    echo æœªæ£€æµ‹åˆ°uvï¼Œè¯·å…ˆå®‰è£…uvå¹¶ç¡®ä¿åŠ å…¥PATH
+    echo Î´¼ì²âµ½uv£¬ÇëÏÈ°²×°uv²¢È·±£¼ÓÈëPATH
     pause
     exit /b 1
 )
 
-REM å®‰è£…å¹¶å›ºå®šPython 3.10ï¼ˆä¸ŽPyCaretå…¼å®¹ï¼‰
-echo æ­£åœ¨å®‰è£…Python 3.10...
+REM °²×°²¢¹Ì¶¨Python 3.10£¨ÓëPyCaret¼æÈÝ£©
+echo ÕýÔÚ°²×°Python 3.10...
 uv python install 3.10
 IF %ERRORLEVEL% NEQ 0 (
-    echo Pythonå®‰è£…å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œæˆ–æƒé™
+    echo Python°²×°Ê§°Ü£¬Çë¼ì²éÍøÂç»òÈ¨ÏÞ
     pause
     exit /b 1
 )
 
-REM åŒæ­¥ä¾èµ–å¹¶åˆ›å»º.venv
-echo æ­£åœ¨åŒæ­¥ä¾èµ–å¹¶åˆ›å»ºçŽ¯å¢ƒ...
+REM Í¬²½ÒÀÀµ²¢´´½¨.venv
+echo ÕýÔÚÍ¬²½ÒÀÀµ²¢´´½¨»·¾³...
 uv sync
 IF %ERRORLEVEL% NEQ 0 (
-    echo ä¾èµ–å®‰è£…å¤±è´¥ï¼Œè¯·æ£€æŸ¥pyproject.tomlä¸Žuv.lock
+    echo ÒÀÀµ°²×°Ê§°Ü£¬Çë¼ì²épyproject.tomlÓëuv.lock
     pause
     exit /b 1
 )
 
 echo.
-echo ===== çŽ¯å¢ƒè®¾ç½®å®Œæˆ =====
-echo ä½¿ç”¨è¯´æ˜Žï¼š
-echo 1. è®­ç»ƒæµç¨‹ï¼šuv run python main.py
-echo 2. å¯åŠ¨APIï¼šuv run uvicorn src.api.app:app --host 0.0.0.0 --port 8000 --reload
+echo ===== »·¾³ÉèÖÃÍê³É =====
+echo Ê¹ÓÃËµÃ÷£º
+echo 1. ÑµÁ·Á÷³Ì£ºuv run python main.py
+echo 2. Æô¶¯API£ºuv run uvicorn src.api.app:app --host 0.0.0.0 --port 8000 --reload
 echo.
 pause
 endlocal

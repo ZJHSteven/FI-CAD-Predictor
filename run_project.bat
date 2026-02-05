@@ -1,24 +1,24 @@
 @echo off
 setlocal
-REM è§£å†³ä¸­æ–‡ä¹±ç ï¼šåˆ‡æ¢ä¸ºUTF-8ä»£ç é¡µ
-chcp 65001 >nul
+REM ½â¾öÖÐÎÄÂÒÂë£ºÇÐ»»ÎªGBK´úÂëÒ³
+chcp 936 >nul
 
-echo ===== è¿è¡ŒFIé¢„æµ‹CVDé¡¹ç›® (UV) =====
+echo ===== ÔËÐÐFIÔ¤²âCVDÏîÄ¿ (UV) =====
 echo.
 
-REM æ£€æŸ¥uvæ˜¯å¦å¯ç”¨
+REM ¼ì²éuvÊÇ·ñ¿ÉÓÃ
 uv --version
 IF %ERRORLEVEL% NEQ 0 (
-    echo æœªæ£€æµ‹åˆ°uvï¼Œè¯·å…ˆå®‰è£…uvå¹¶ç¡®ä¿åŠ å…¥PATH
+    echo Î´¼ì²âµ½uv£¬ÇëÏÈ°²×°uv²¢È·±£¼ÓÈëPATH
     pause
     exit /b 1
 )
 
-echo æ­£åœ¨è¿è¡Œä¸»æµç¨‹...
+echo ÕýÔÚÔËÐÐÖ÷Á÷³Ì...
 uv run python main.py
 
 echo.
-echo ç¨‹åºæ‰§è¡Œå®Œæ¯•
+echo ³ÌÐòÖ´ÐÐÍê±Ï
 echo.
 pause
 endlocal

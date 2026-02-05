@@ -1,24 +1,24 @@
 @echo off
 setlocal
-REM è§£å†³ä¸­æ–‡ä¹±ç ï¼šåˆ‡æ¢ä¸ºUTF-8ä»£ç é¡µ
-chcp 65001 >nul
+REM ½â¾öÖÐÎÄÂÒÂë£ºÇÐ»»ÎªGBK´úÂëÒ³
+chcp 936 >nul
 
-echo ===== å¯åŠ¨FI/CVDé¢„æµ‹API (UV) =====
+echo ===== Æô¶¯FI/CVDÔ¤²âAPI (UV) =====
 echo.
 
-REM æ£€æŸ¥uvæ˜¯å¦å¯ç”¨
+REM ¼ì²éuvÊÇ·ñ¿ÉÓÃ
 uv --version
 IF %ERRORLEVEL% NEQ 0 (
-    echo æœªæ£€æµ‹åˆ°uvï¼Œè¯·å…ˆå®‰è£…uvå¹¶ç¡®ä¿åŠ å…¥PATH
+    echo Î´¼ì²âµ½uv£¬ÇëÏÈ°²×°uv²¢È·±£¼ÓÈëPATH
     pause
     exit /b 1
 )
 
-echo æ­£åœ¨å¯åŠ¨APIæœåŠ¡...
+echo ÕýÔÚÆô¶¯API·þÎñ...
 uv run uvicorn src.api.app:app --host 0.0.0.0 --port 8000 --reload
 
 echo.
-echo APIæœåŠ¡å·²é€€å‡º
+echo API·þÎñÒÑÍË³ö
 echo.
 pause
 endlocal
