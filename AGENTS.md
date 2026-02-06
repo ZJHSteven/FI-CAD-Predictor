@@ -96,3 +96,5 @@
 - 2026-02-04：更新 `run_api.bat`、`run_project.bat`、`setup_env.bat`，添加UTF-8代码页避免中文乱码。
 
 - 2026-02-04：将 `run_api.bat`、`run_project.bat`、`setup_env.bat` 改为GBK编码并使用chcp 936。
+
+- 2026-02-06：新增 `.gitignore`，忽略Python缓存、虚拟环境与训练中间产物目录。
