@@ -551,6 +551,34 @@ def rebuild_curated(extracted_root: Path = EXTRACTED_ROOT, curated_root: Path = 
     return results
 
 
+def scan_existing_curated(curated_root: Path = CURATED_ROOT) -> list[dict[str, Any]]:
+    """从已经生成的 metadata JSON 中恢复 curated 结果。
+
+    使用场景：
+    - `--skip-curate` 表示不重新导出 CSV/Parquet。
+    - 但 audit 仍然需要知道已有 curated 层的表数、行数、列数和标签数。
+    - 因此这里读取现有 metadata，而不是把 curated 结果误写成 0。
+    """
+
+    results: list[dict[str, Any]] = []
+    for metadata_path in sorted(curated_root.rglob("*.metadata.json"), key=lambda item: item.as_posix().lower()):
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        results.append(
+            {
+                "source": metadata.get("source_file"),
+                "csv": metadata.get("csv_file"),
+                "parquet": metadata.get("parquet_file"),
+                "metadata": metadata_path.as_posix(),
+                "rows": int(metadata.get("row_count", 0)),
+                "columns": int(metadata.get("column_count", 0)),
+                "variable_label_count": len([label for label in metadata.get("column_labels", []) if label]),
+                "value_label_set_count": len(metadata.get("value_labels", {}) or {}),
+                "status": "ok",
+            }
+        )
+    return results
+
+
 def build_raw_file_index(raw_root: Path = RAW_ROOT) -> list[dict[str, Any]]:
     """扫描 RAW 文件，记录路径、大小、SHA1 和压缩包成员。"""
 
@@ -711,7 +739,9 @@ def run_pipeline(*, skip_extract: bool = False, skip_curate: bool = False) -> di
 
     if not skip_extract:
         extraction_results = rebuild_extracted()
-    if not skip_curate:
+    if skip_curate:
+        curated_results = scan_existing_curated()
+    else:
         curated_results = rebuild_curated()
 
     raw_files = build_raw_file_index()
