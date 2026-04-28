@@ -380,6 +380,9 @@ def rebuild_extracted(raw_root: Path = RAW_ROOT, extracted_root: Path = EXTRACTE
                     "member_count": len(members),
                 }
             )
+        for extracted_file in wave_out.rglob("*"):
+            if extracted_file.is_file() and extracted_file.suffix.lower() != ".dta":
+                extracted_file.unlink()
     return records
 
 
