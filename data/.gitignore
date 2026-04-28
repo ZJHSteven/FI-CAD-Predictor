@@ -1,0 +1,12 @@
+# 这个目录只保留说明文件和极少量占位文件，真正的大数据不进仓库。
+/raw/*
+/extracted/*
+/curated/*
+/cache/*
+
+!/README.md
+!/MANIFEST.md
+!/.gitignore
+!/raw/.gitkeep
+!/extracted/.gitkeep
+!/curated/.gitkeep
