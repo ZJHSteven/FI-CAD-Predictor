@@ -1,0 +1,116 @@
+{
+  "source_file": "data/extracted/2020-wave5/Weights.dta",
+  "source_sha1": "8b4b4c94d963537eda519a19b6e2894f2061bbb8",
+  "source_backend": "pyreadstat",
+  "row_count": 17364,
+  "column_count": 8,
+  "columns": [
+    "ID",
+    "householdID",
+    "communityID",
+    "HH_weight",
+    "HH_weight_ad1",
+    "INDV_weight",
+    "INDV_weight_ad2",
+    "versionID"
+  ],
+  "file_label": "Weights of CHARLS 2020",
+  "file_encoding": null,
+  "notes": [],
+  "column_labels": [
+    "Individual ID",
+    "Household ID",
+    "Community ID",
+    "Household Base Weight",
+    "Household Weight with Household Response Adjustment",
+    "Individual Base Weight",
+    "Individual Weight with Household and Individual Response Adjustment",
+    "Version ID"
+  ],
+  "column_names_to_labels": {
+    "ID": "Individual ID",
+    "householdID": "Household ID",
+    "communityID": "Community ID",
+    "HH_weight": "Household Base Weight",
+    "HH_weight_ad1": "Household Weight with Household Response Adjustment",
+    "INDV_weight": "Individual Base Weight",
+    "INDV_weight_ad2": "Individual Weight with Household and Individual Response Adjustment",
+    "versionID": "Version ID"
+  },
+  "value_labels": {},
+  "variable_to_label": {},
+  "variable_value_labels": {},
+  "original_variable_types": {
+    "ID": "%12s",
+    "householdID": "%10s",
+    "communityID": "%9s",
+    "HH_weight": "%10.0g",
+    "HH_weight_ad1": "%10.0g",
+    "INDV_weight": "%10.0g",
+    "INDV_weight_ad2": "%10.0g",
+    "versionID": "%9s"
+  },
+  "readstat_variable_types": {
+    "ID": "string",
+    "householdID": "string",
+    "communityID": "string",
+    "HH_weight": "double",
+    "HH_weight_ad1": "double",
+    "INDV_weight": "double",
+    "INDV_weight_ad2": "double",
+    "versionID": "string"
+  },
+  "missing_ranges": {},
+  "missing_user_values": {},
+  "variable_alignment": {
+    "ID": "right",
+    "householdID": "right",
+    "communityID": "right",
+    "HH_weight": "right",
+    "HH_weight_ad1": "right",
+    "INDV_weight": "right",
+    "INDV_weight_ad2": "right",
+    "versionID": "right"
+  },
+  "variable_storage_width": {
+    "ID": 13,
+    "householdID": 11,
+    "communityID": 8,
+    "HH_weight": 8,
+    "HH_weight_ad1": 8,
+    "INDV_weight": 8,
+    "INDV_weight_ad2": 8,
+    "versionID": 9
+  },
+  "variable_display_width": {
+    "ID": 12,
+    "householdID": 10,
+    "communityID": 9,
+    "HH_weight": 10,
+    "HH_weight_ad1": 10,
+    "INDV_weight": 10,
+    "INDV_weight_ad2": 10,
+    "versionID": 9
+  },
+  "variable_measure": {
+    "ID": "unknown",
+    "householdID": "unknown",
+    "communityID": "unknown",
+    "HH_weight": "unknown",
+    "HH_weight_ad1": "unknown",
+    "INDV_weight": "unknown",
+    "INDV_weight_ad2": "unknown",
+    "versionID": "unknown"
+  },
+  "csv_file": "data/curated/2020-wave5/Weights/Weights.csv",
+  "parquet_file": "data/curated/2020-wave5/Weights/Weights.parquet",
+  "metadata_file": "data/curated/2020-wave5/Weights/Weights.metadata.json",
+  "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
+  "parquet_string_columns": [
+    "ID",
+    "householdID",
+    "communityID",
+    "versionID"
+  ],
+  "parquet_note": "Parquet 要求单列类型稳定；含 Stata 特殊缺失码的 object 列会转成字符串，原始缺失码定义仍记录在 missing_user_values / value_labels 中。"
+}

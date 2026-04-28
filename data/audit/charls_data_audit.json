@@ -1,0 +1,3106 @@
+{
+  "policy": {
+    "checklist_source": "对照清单.md",
+    "raw_root": "data/raw",
+    "extracted_root": "data/extracted",
+    "curated_root": "data/curated",
+    "note": "对照清单是验收真源；总包覆盖的单项数据以 extracted DTA 存在为准。"
+  },
+  "raw_files": [
+    {
+      "path": "data/raw/.gitignore",
+      "name": ".gitignore",
+      "size_bytes": 166,
+      "sha1": "e3f99ed6ceb4dbffad01fefe237b0248b8ccd93e",
+      "kind": "unknown"
+    },
+    {
+      "path": "data/raw/2011-wave1/biomarkers.rar",
+      "name": "biomarkers.rar",
+      "size_bytes": 953515,
+      "sha1": "03ab2d3a1fb67813f00aa57e26147efa6590f395",
+      "kind": "rar",
+      "archive_members": [
+        "biomarkers.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/Blood_20140429.zip",
+      "name": "Blood_20140429.zip",
+      "size_bytes": 504675,
+      "sha1": "86587c9eeb7bbcb84e2ddbf95d17365f59704a12",
+      "kind": "zip",
+      "archive_members": [
+        "Blood_20140429.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/blood_user_guide_en_20140429.pdf",
+      "name": "blood_user_guide_en_20140429.pdf",
+      "size_bytes": 116927,
+      "sha1": "51cb0cb21cf4f14b92130932788aba8b00cc2a5a",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2011-wave1/CHARLS2011________.doc",
+      "name": "CHARLS2011________.doc",
+      "size_bytes": 2224128,
+      "sha1": "18efb28804fdbc975e3d334c845a179493bb6221",
+      "kind": "doc"
+    },
+    {
+      "path": "data/raw/2011-wave1/CHARLS_codebook.rar",
+      "name": "CHARLS_codebook.rar",
+      "size_bytes": 1692696,
+      "sha1": "f9f4b2a7d72675182b33035eedbac6f6dc8dc0b3",
+      "kind": "rar",
+      "archive_members": [
+        "CHARLS_codebook.pdf"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/child.zip",
+      "name": "child.zip",
+      "size_bytes": 425258,
+      "sha1": "9efccd64251500b468357c57e1f364e3f0b2f0a5",
+      "kind": "zip",
+      "archive_members": [
+        "child.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/Chinese_users__guide_20130407_.pdf",
+      "name": "Chinese_users__guide_20130407_.pdf",
+      "size_bytes": 1405577,
+      "sha1": "41dde3c19bed8f3864e4f06068949223601e099f",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2011-wave1/community.rar",
+      "name": "community.rar",
+      "size_bytes": 199098,
+      "sha1": "4d4acf6c10f775e8af0acca7ecdd417214700fb4",
+      "kind": "rar",
+      "archive_members": [
+        "community.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/Community_questionnaire_C_and_E__20130312_.pdf",
+      "name": "Community_questionnaire_C_and_E__20130312_.pdf",
+      "size_bytes": 386604,
+      "sha1": "54ba9005eef06ca6e38a0aac1dfa033e35de51c1",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2011-wave1/demographic_background.rar",
+      "name": "demographic_background.rar",
+      "size_bytes": 443745,
+      "sha1": "9a4afebf04e9060e5211a1fa6c2bc850f5d08a72",
+      "kind": "rar",
+      "archive_members": [
+        "demographic_background.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/exp_income_wealth.zip",
+      "name": "exp_income_wealth.zip",
+      "size_bytes": 600889,
+      "sha1": "e73a9c1827978a597dad8469fa1a2866b4944da6",
+      "kind": "zip",
+      "archive_members": [
+        "exp_income_wealth.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/family_information.rar",
+      "name": "family_information.rar",
+      "size_bytes": 1120995,
+      "sha1": "bd2daa4f918cd73fd20e1415cb71f84274a8ad48",
+      "kind": "rar",
+      "archive_members": [
+        "family_information.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/family_transfer.rar",
+      "name": "family_transfer.rar",
+      "size_bytes": 313738,
+      "sha1": "9227d4b7f584ecc4cd65dd202e8b70541c0b8698",
+      "kind": "rar",
+      "archive_members": [
+        "family_transfer.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/health_care_and_insurance.rar",
+      "name": "health_care_and_insurance.rar",
+      "size_bytes": 454750,
+      "sha1": "f512be857ea0578f710dfab6ba3fd4a20f2a2d73",
+      "kind": "rar",
+      "archive_members": [
+        "health_care_and_insurance.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/health_status_and_functioning.rar",
+      "name": "health_status_and_functioning.rar",
+      "size_bytes": 1147001,
+      "sha1": "03d08b0a90a4da65187d28c0a943cb5693bbab52",
+      "kind": "rar",
+      "archive_members": [
+        "health_status_and_functioning.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/hhmember.zip",
+      "name": "hhmember.zip",
+      "size_bytes": 266914,
+      "sha1": "b281c4e94f8390f49d17ab7565f69a2dcb64ea2c",
+      "kind": "zip",
+      "archive_members": [
+        "hhmember.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/household_and_community_questionnaire_data.rar",
+      "name": "household_and_community_questionnaire_data.rar",
+      "size_bytes": 7100502,
+      "sha1": "5bb36f9f37a7ea7ca9e93ba4d083d1306c280105",
+      "kind": "rar",
+      "archive_members": [
+        "household_income.dta",
+        "household_roster.dta",
+        "housing_characteristics.dta",
+        "individual_income.dta",
+        "interviewer_observation.dta",
+        "psu.dta",
+        "weight.dta",
+        "work_retirement_and_pension.dta",
+        "biomarkers.dta",
+        "community.dta",
+        "demographic_background.dta",
+        "family_information.dta",
+        "family_transfer.dta",
+        "health_care_and_insurance.dta",
+        "health_status_and_functioning.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/household_income.rar",
+      "name": "household_income.rar",
+      "size_bytes": 832912,
+      "sha1": "e568e05be18d4aba6daf8bad00f99b9d39f61a0f",
+      "kind": "rar",
+      "archive_members": [
+        "household_income.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/household_roster.rar",
+      "name": "household_roster.rar",
+      "size_bytes": 312047,
+      "sha1": "cf9df8a22370c801f46ec2ea6e3f93f61b542584",
+      "kind": "rar",
+      "archive_members": [
+        "household_roster.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/housing_characteristics.rar",
+      "name": "housing_characteristics.rar",
+      "size_bytes": 126608,
+      "sha1": "b613e4d51b03421312c9f5cbb1649a32e56492e4",
+      "kind": "rar",
+      "archive_members": [
+        "housing_characteristics.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/individual_income.rar",
+      "name": "individual_income.rar",
+      "size_bytes": 237316,
+      "sha1": "164083aeee16e828be573926aa9d6a11772d9235",
+      "kind": "rar",
+      "archive_members": [
+        "individual_income.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/interviewer_observation.rar",
+      "name": "interviewer_observation.rar",
+      "size_bytes": 111850,
+      "sha1": "abda5266fd2cf0882d859d46c44f85ce01903fae",
+      "kind": "rar",
+      "archive_members": [
+        "interviewer_observation.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/Medical-questionnaire-2011.doc",
+      "name": "Medical-questionnaire-2011.doc",
+      "size_bytes": 765440,
+      "sha1": "652087926efcacb2abf796371b1a2b9dbbfefee5",
+      "kind": "doc"
+    },
+    {
+      "path": "data/raw/2011-wave1/parent.zip",
+      "name": "parent.zip",
+      "size_bytes": 329999,
+      "sha1": "30d232bf98e4e5b6eaa4448af20be0a3c41ba538",
+      "kind": "zip",
+      "archive_members": [
+        "parent.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/PSU.zip",
+      "name": "PSU.zip",
+      "size_bytes": 8810,
+      "sha1": "74c78392b668375937e78ce5da4f06f5ba83f0f9",
+      "kind": "zip",
+      "archive_members": [
+        "PSU.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/weight.rar",
+      "name": "weight.rar",
+      "size_bytes": 242091,
+      "sha1": "e514672f071f4aec6e7012031967ca53f1b13d19",
+      "kind": "rar",
+      "archive_members": [
+        "weight.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2011-wave1/work_retirement_and_pension.rar",
+      "name": "work_retirement_and_pension.rar",
+      "size_bytes": 598601,
+      "sha1": "e00bce7ae8a5e36a497cf96d9cf72cbe7823513c",
+      "kind": "rar",
+      "archive_members": [
+        "work_retirement_and_pension.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2013-wave2/CHARLS2013_Dataset.zip",
+      "name": "CHARLS2013_Dataset.zip",
+      "size_bytes": 12315286,
+      "sha1": "7517d597d2eb5abfa91d58f3cd03aa9845defc85",
+      "kind": "zip",
+      "archive_members": [
+        "Biomarker.dta",
+        "Child.dta",
+        "Demographic_Background.dta",
+        "Exit_Interview.dta",
+        "Family_Information.dta",
+        "Family_Transfer.dta",
+        "Health_Care_and_Insurance.dta",
+        "Health_Status_and_Functioning.dta",
+        "Household_Income.dta",
+        "Housing_Characteristics.dta",
+        "Individual_Income.dta",
+        "Interviewer_Observation.dta",
+        "Other_HHmember.dta",
+        "Parent.dta",
+        "PSU.dta",
+        "Verbal_Autopsy.dta",
+        "Weights.dta",
+        "Work_Retirement_and_Pension.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2013-wave2/CHARLS_Wave2_Biomarker_Questionnaire.pdf",
+      "name": "CHARLS_Wave2_Biomarker_Questionnaire.pdf",
+      "size_bytes": 511801,
+      "sha1": "7599805448e07e75680e6c15d92f4d7d78d886b2",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2013-wave2/CHARLS_Wave2_CodeBook.pdf",
+      "name": "CHARLS_Wave2_CodeBook.pdf",
+      "size_bytes": 1794165,
+      "sha1": "c9c5714dbffee02050343f9b100aba501050b7a3",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2013-wave2/CHARLS_Wave2_Exit_VA_Questionnaire.pdf",
+      "name": "CHARLS_Wave2_Exit_VA_Questionnaire.pdf",
+      "size_bytes": 812194,
+      "sha1": "6ec50048ef1d0f23f6b63b9fb0fc937f484cd621",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2013-wave2/CHARLS_Wave2_Main_Questionnaire.pdf",
+      "name": "CHARLS_Wave2_Main_Questionnaire.pdf",
+      "size_bytes": 1719074,
+      "sha1": "d1132a289bb3a37b955ebc3f9d42d56dc072a1e4",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2013-wave2/CHARLS_Wave2_Release_Note.pdf",
+      "name": "CHARLS_Wave2_Release_Note.pdf",
+      "size_bytes": 36679,
+      "sha1": "8f4a90c3dbadb49711333ab1e689bf2756583932",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2013-wave2/exp_income_wealth.zip",
+      "name": "exp_income_wealth.zip",
+      "size_bytes": 671840,
+      "sha1": "8488faf9c5273afbce1b073ce5929513cd538512",
+      "kind": "zip",
+      "archive_members": [
+        "exp_income_wealth.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2015-wave3/Blood.zip",
+      "name": "Blood.zip",
+      "size_bytes": 1075658,
+      "sha1": "e350b371ffd6f72967f502e269c6a85e37b22407",
+      "kind": "zip",
+      "archive_members": [
+        "Blood.dta",
+        "CHARLS2011________.doc"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2015-wave3/CHARLS2015r.zip",
+      "name": "CHARLS2015r.zip",
+      "size_bytes": 13399645,
+      "sha1": "47aab04178a6895ce687beb2f74286215e8f6b33",
+      "kind": "zip",
+      "archive_members": [
+        "Biomarker.dta",
+        "Child.dta",
+        "Demographic_Background.dta",
+        "Family_Information.dta",
+        "Family_Transfer.dta",
+        "Health_Care_and_Insurance.dta",
+        "Health_Status_and_Functioning.dta",
+        "Household_Income.dta",
+        "Household_Member.dta",
+        "Housing_Characteristics.dta",
+        "Individual_Income.dta",
+        "Parent.dta",
+        "Sample_Infor.dta",
+        "Sibling.dta",
+        "Spousal_Sibling.dta",
+        "Weights.dta",
+        "Work_Retirement_and_Pension.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2015-wave3/CHARLS_2015_Biomarker_Questionnaire.pdf",
+      "name": "CHARLS_2015_Biomarker_Questionnaire.pdf",
+      "size_bytes": 518656,
+      "sha1": "df292d012cf75cce536727e9ec62e67b454f9946",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2015-wave3/CHARLS_2015_Blood_Data_Release_Note.pdf",
+      "name": "CHARLS_2015_Blood_Data_Release_Note.pdf",
+      "size_bytes": 167102,
+      "sha1": "f48c549a7f1253230d4c11cbae1687966a3d39d5",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2015-wave3/CHARLS_2015_Codebook.pdf",
+      "name": "CHARLS_2015_Codebook.pdf",
+      "size_bytes": 1641489,
+      "sha1": "92e413c887c946a9d5c939cab736ff96d05fc020",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2015-wave3/CHARLS_2015_Questionnaire.pdf",
+      "name": "CHARLS_2015_Questionnaire.pdf",
+      "size_bytes": 1607798,
+      "sha1": "dffe2db15d6e13cbe5499d5bf2556b17cdc8c729",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2015-wave3/CHARLS_2015_Release_Note.pdf",
+      "name": "CHARLS_2015_Release_Note.pdf",
+      "size_bytes": 33596,
+      "sha1": "05f2d352f856680830cbac7b044488f07b0f7538",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2018-wave4/CHARLS-HCAP-User-Guidance-cn.pdf",
+      "name": "CHARLS-HCAP-User-Guidance-cn.pdf",
+      "size_bytes": 216352,
+      "sha1": "47079d5f1b4da50dd038f0244ec33dd918fc0f78",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2018-wave4/CHARLS2018r.zip",
+      "name": "CHARLS2018r.zip",
+      "size_bytes": 11942202,
+      "sha1": "42f3e6bf26cea8072d9fa9f6050f413556d20a69",
+      "kind": "zip",
+      "archive_members": [
+        "Cognition.dta",
+        "Demographic_Background.dta",
+        "Family_Information.dta",
+        "Family_Transfer.dta",
+        "Health_Care_and_Insurance.dta",
+        "Health_Status_and_Functioning.dta",
+        "Household_Income.dta",
+        "Housing.dta",
+        "Individual_Income.dta",
+        "Insider.dta",
+        "Pension.dta",
+        "Sample_Infor.dta",
+        "Weights.dta",
+        "Work_Retirement.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2018-wave4/CHARLS_2018_Codebook.pdf",
+      "name": "CHARLS_2018_Codebook.pdf",
+      "size_bytes": 1505502,
+      "sha1": "8f8017cec22518e0251cf15ee3a700c9142a7a14",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2018-wave4/CHARLS_2018_Household_Questionnaire.pdf",
+      "name": "CHARLS_2018_Household_Questionnaire.pdf",
+      "size_bytes": 2045907,
+      "sha1": "6c547dde4240eae5f7fffb22556d26109186b974",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2018-wave4/CHARLS_2018_Users_Guide.pdf",
+      "name": "CHARLS_2018_Users_Guide.pdf",
+      "size_bytes": 327091,
+      "sha1": "18d92656677464d10096377e1864db59bd4daa51",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2018-wave4/w2018-data-alert-cn.pdf",
+      "name": "w2018-data-alert-cn.pdf",
+      "size_bytes": 155366,
+      "sha1": "f0be35e7d65b4bbb6938cf908fb7bb8e64238018",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2020-wave5/CHARLS2020r.zip",
+      "name": "CHARLS2020r.zip",
+      "size_bytes": 8534006,
+      "sha1": "fd73eb699cbacbfaaff1c55bcdba11b23eaa0736",
+      "kind": "zip",
+      "archive_members": [
+        "COVID_Module.dta",
+        "Demographic_Background.dta",
+        "Exit_Module.dta",
+        "Family_Information.dta",
+        "Health_Status_and_Functioning.dta",
+        "Household_Income.dta",
+        "Individual_Income.dta",
+        "Sample_Infor.dta",
+        "Weights.dta",
+        "Work_Retirement.dta"
+      ],
+      "archive_status": "ok"
+    },
+    {
+      "path": "data/raw/2020-wave5/CHARLS_2020_Codebook.pdf",
+      "name": "CHARLS_2020_Codebook.pdf",
+      "size_bytes": 918582,
+      "sha1": "bf669aa916daf7da68e32357d1e08f31a3a0dae7",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2020-wave5/CHARLS_2020_Flowchart_Chinese.pdf",
+      "name": "CHARLS_2020_Flowchart_Chinese.pdf",
+      "size_bytes": 1462940,
+      "sha1": "83da535e9542ad6974ff3474b7fe0fcded0ed0bd",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2020-wave5/CHARLS_2020_Questionnaire_Chinese.pdf",
+      "name": "CHARLS_2020_Questionnaire_Chinese.pdf",
+      "size_bytes": 1065938,
+      "sha1": "307fb0f902e76fd08e07222324a4ce5fa24fec99",
+      "kind": "pdf"
+    },
+    {
+      "path": "data/raw/2020-wave5/CHARLS_2020_User_Guide_Chinese.pdf",
+      "name": "CHARLS_2020_User_Guide_Chinese.pdf",
+      "size_bytes": 416238,
+      "sha1": "9bf1e673136f375beb097e88b6018bf88855f17b",
+      "kind": "pdf"
+    }
+  ],
+  "extraction_results": [
+    {
+      "wave": "2011-wave1",
+      "archive": "biomarkers.rar",
+      "status": "ok",
+      "sha1": "03ab2d3a1fb67813f00aa57e26147efa6590f395",
+      "members": [
+        "biomarkers.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "Blood_20140429.zip",
+      "status": "ok",
+      "sha1": "86587c9eeb7bbcb84e2ddbf95d17365f59704a12",
+      "members": [
+        "Blood_20140429.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "child.zip",
+      "status": "ok",
+      "sha1": "9efccd64251500b468357c57e1f364e3f0b2f0a5",
+      "members": [
+        "child.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "community.rar",
+      "status": "ok",
+      "sha1": "4d4acf6c10f775e8af0acca7ecdd417214700fb4",
+      "members": [
+        "community.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "demographic_background.rar",
+      "status": "ok",
+      "sha1": "9a4afebf04e9060e5211a1fa6c2bc850f5d08a72",
+      "members": [
+        "demographic_background.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "exp_income_wealth.zip",
+      "status": "ok",
+      "sha1": "e73a9c1827978a597dad8469fa1a2866b4944da6",
+      "members": [
+        "exp_income_wealth.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "family_information.rar",
+      "status": "ok",
+      "sha1": "bd2daa4f918cd73fd20e1415cb71f84274a8ad48",
+      "members": [
+        "family_information.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "family_transfer.rar",
+      "status": "ok",
+      "sha1": "9227d4b7f584ecc4cd65dd202e8b70541c0b8698",
+      "members": [
+        "family_transfer.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "health_care_and_insurance.rar",
+      "status": "ok",
+      "sha1": "f512be857ea0578f710dfab6ba3fd4a20f2a2d73",
+      "members": [
+        "health_care_and_insurance.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "health_status_and_functioning.rar",
+      "status": "ok",
+      "sha1": "03d08b0a90a4da65187d28c0a943cb5693bbab52",
+      "members": [
+        "health_status_and_functioning.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "hhmember.zip",
+      "status": "ok",
+      "sha1": "b281c4e94f8390f49d17ab7565f69a2dcb64ea2c",
+      "members": [
+        "hhmember.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "household_income.rar",
+      "status": "ok",
+      "sha1": "e568e05be18d4aba6daf8bad00f99b9d39f61a0f",
+      "members": [
+        "household_income.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "household_roster.rar",
+      "status": "ok",
+      "sha1": "cf9df8a22370c801f46ec2ea6e3f93f61b542584",
+      "members": [
+        "household_roster.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "housing_characteristics.rar",
+      "status": "ok",
+      "sha1": "b613e4d51b03421312c9f5cbb1649a32e56492e4",
+      "members": [
+        "housing_characteristics.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "individual_income.rar",
+      "status": "ok",
+      "sha1": "164083aeee16e828be573926aa9d6a11772d9235",
+      "members": [
+        "individual_income.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "interviewer_observation.rar",
+      "status": "ok",
+      "sha1": "abda5266fd2cf0882d859d46c44f85ce01903fae",
+      "members": [
+        "interviewer_observation.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "parent.zip",
+      "status": "ok",
+      "sha1": "30d232bf98e4e5b6eaa4448af20be0a3c41ba538",
+      "members": [
+        "parent.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "PSU.zip",
+      "status": "ok",
+      "sha1": "74c78392b668375937e78ce5da4f06f5ba83f0f9",
+      "members": [
+        "PSU.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "weight.rar",
+      "status": "ok",
+      "sha1": "e514672f071f4aec6e7012031967ca53f1b13d19",
+      "members": [
+        "weight.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2011-wave1",
+      "archive": "work_retirement_and_pension.rar",
+      "status": "ok",
+      "sha1": "e00bce7ae8a5e36a497cf96d9cf72cbe7823513c",
+      "members": [
+        "work_retirement_and_pension.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2013-wave2",
+      "archive": "CHARLS2013_Dataset.zip",
+      "status": "ok",
+      "sha1": "7517d597d2eb5abfa91d58f3cd03aa9845defc85",
+      "members": [
+        "Biomarker.dta",
+        "Child.dta",
+        "Demographic_Background.dta",
+        "Exit_Interview.dta",
+        "Family_Information.dta",
+        "Family_Transfer.dta",
+        "Health_Care_and_Insurance.dta",
+        "Health_Status_and_Functioning.dta",
+        "Household_Income.dta",
+        "Housing_Characteristics.dta",
+        "Individual_Income.dta",
+        "Interviewer_Observation.dta",
+        "Other_HHmember.dta",
+        "Parent.dta",
+        "PSU.dta",
+        "Verbal_Autopsy.dta",
+        "Weights.dta",
+        "Work_Retirement_and_Pension.dta"
+      ],
+      "member_count": 18
+    },
+    {
+      "wave": "2013-wave2",
+      "archive": "exp_income_wealth.zip",
+      "status": "ok",
+      "sha1": "8488faf9c5273afbce1b073ce5929513cd538512",
+      "members": [
+        "exp_income_wealth.dta"
+      ],
+      "member_count": 1
+    },
+    {
+      "wave": "2015-wave3",
+      "archive": "CHARLS2015r.zip",
+      "status": "ok",
+      "sha1": "47aab04178a6895ce687beb2f74286215e8f6b33",
+      "members": [
+        "Biomarker.dta",
+        "Child.dta",
+        "Demographic_Background.dta",
+        "Family_Information.dta",
+        "Family_Transfer.dta",
+        "Health_Care_and_Insurance.dta",
+        "Health_Status_and_Functioning.dta",
+        "Household_Income.dta",
+        "Household_Member.dta",
+        "Housing_Characteristics.dta",
+        "Individual_Income.dta",
+        "Parent.dta",
+        "Sample_Infor.dta",
+        "Sibling.dta",
+        "Spousal_Sibling.dta",
+        "Weights.dta",
+        "Work_Retirement_and_Pension.dta"
+      ],
+      "member_count": 17
+    },
+    {
+      "wave": "2015-wave3",
+      "archive": "Blood.zip",
+      "status": "ok",
+      "sha1": "e350b371ffd6f72967f502e269c6a85e37b22407",
+      "members": [
+        "Blood.dta",
+        "CHARLS2011________.doc"
+      ],
+      "member_count": 2
+    },
+    {
+      "wave": "2018-wave4",
+      "archive": "CHARLS2018r.zip",
+      "status": "ok",
+      "sha1": "42f3e6bf26cea8072d9fa9f6050f413556d20a69",
+      "members": [
+        "Cognition.dta",
+        "Demographic_Background.dta",
+        "Family_Information.dta",
+        "Family_Transfer.dta",
+        "Health_Care_and_Insurance.dta",
+        "Health_Status_and_Functioning.dta",
+        "Household_Income.dta",
+        "Housing.dta",
+        "Individual_Income.dta",
+        "Insider.dta",
+        "Pension.dta",
+        "Sample_Infor.dta",
+        "Weights.dta",
+        "Work_Retirement.dta"
+      ],
+      "member_count": 14
+    },
+    {
+      "wave": "2020-wave5",
+      "archive": "CHARLS2020r.zip",
+      "status": "ok",
+      "sha1": "fd73eb699cbacbfaaff1c55bcdba11b23eaa0736",
+      "members": [
+        "COVID_Module.dta",
+        "Demographic_Background.dta",
+        "Exit_Module.dta",
+        "Family_Information.dta",
+        "Health_Status_and_Functioning.dta",
+        "Household_Income.dta",
+        "Individual_Income.dta",
+        "Sample_Infor.dta",
+        "Weights.dta",
+        "Work_Retirement.dta"
+      ],
+      "member_count": 10
+    }
+  ],
+  "curated_results": [
+    {
+      "source": "data/extracted/2011-wave1/biomarkers.dta",
+      "csv": "data/curated/2011-wave1/biomarkers/biomarkers.csv",
+      "parquet": "data/curated/2011-wave1/biomarkers/biomarkers.parquet",
+      "metadata": "data/curated/2011-wave1/biomarkers/biomarkers.metadata.json",
+      "rows": 13974,
+      "columns": 238,
+      "variable_label_count": 238,
+      "value_label_set_count": 180,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/Blood_20140429.dta",
+      "csv": "data/curated/2011-wave1/Blood_20140429/Blood_20140429.csv",
+      "parquet": "data/curated/2011-wave1/Blood_20140429/Blood_20140429.parquet",
+      "metadata": "data/curated/2011-wave1/Blood_20140429/Blood_20140429.metadata.json",
+      "rows": 11847,
+      "columns": 19,
+      "variable_label_count": 19,
+      "value_label_set_count": 0,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/child.dta",
+      "csv": "data/curated/2011-wave1/child/child.csv",
+      "parquet": "data/curated/2011-wave1/child/child.parquet",
+      "metadata": "data/curated/2011-wave1/child/child.metadata.json",
+      "rows": 27398,
+      "columns": 69,
+      "variable_label_count": 69,
+      "value_label_set_count": 45,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/community.dta",
+      "csv": "data/curated/2011-wave1/community/community.csv",
+      "parquet": "data/curated/2011-wave1/community/community.parquet",
+      "metadata": "data/curated/2011-wave1/community/community.metadata.json",
+      "rows": 454,
+      "columns": 719,
+      "variable_label_count": 718,
+      "value_label_set_count": 283,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/demographic_background.dta",
+      "csv": "data/curated/2011-wave1/demographic_background/demographic_background.csv",
+      "parquet": "data/curated/2011-wave1/demographic_background/demographic_background.parquet",
+      "metadata": "data/curated/2011-wave1/demographic_background/demographic_background.metadata.json",
+      "rows": 17705,
+      "columns": 118,
+      "variable_label_count": 118,
+      "value_label_set_count": 45,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/exp_income_wealth.dta",
+      "csv": "data/curated/2011-wave1/exp_income_wealth/exp_income_wealth.csv",
+      "parquet": "data/curated/2011-wave1/exp_income_wealth/exp_income_wealth.parquet",
+      "metadata": "data/curated/2011-wave1/exp_income_wealth/exp_income_wealth.metadata.json",
+      "rows": 17708,
+      "columns": 51,
+      "variable_label_count": 51,
+      "value_label_set_count": 0,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/family_information.dta",
+      "csv": "data/curated/2011-wave1/family_information/family_information.csv",
+      "parquet": "data/curated/2011-wave1/family_information/family_information.parquet",
+      "metadata": "data/curated/2011-wave1/family_information/family_information.metadata.json",
+      "rows": 10199,
+      "columns": 1210,
+      "variable_label_count": 1210,
+      "value_label_set_count": 679,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/family_transfer.dta",
+      "csv": "data/curated/2011-wave1/family_transfer/family_transfer.csv",
+      "parquet": "data/curated/2011-wave1/family_transfer/family_transfer.parquet",
+      "metadata": "data/curated/2011-wave1/family_transfer/family_transfer.metadata.json",
+      "rows": 10122,
+      "columns": 1010,
+      "variable_label_count": 1010,
+      "value_label_set_count": 315,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/health_care_and_insurance.dta",
+      "csv": "data/curated/2011-wave1/health_care_and_insurance/health_care_and_insurance.csv",
+      "parquet": "data/curated/2011-wave1/health_care_and_insurance/health_care_and_insurance.parquet",
+      "metadata": "data/curated/2011-wave1/health_care_and_insurance/health_care_and_insurance.metadata.json",
+      "rows": 17545,
+      "columns": 480,
+      "variable_label_count": 480,
+      "value_label_set_count": 353,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/health_status_and_functioning.dta",
+      "csv": "data/curated/2011-wave1/health_status_and_functioning/health_status_and_functioning.csv",
+      "parquet": "data/curated/2011-wave1/health_status_and_functioning/health_status_and_functioning.parquet",
+      "metadata": "data/curated/2011-wave1/health_status_and_functioning/health_status_and_functioning.metadata.json",
+      "rows": 17596,
+      "columns": 591,
+      "variable_label_count": 591,
+      "value_label_set_count": 473,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/hhmember.dta",
+      "csv": "data/curated/2011-wave1/hhmember/hhmember.csv",
+      "parquet": "data/curated/2011-wave1/hhmember/hhmember.parquet",
+      "metadata": "data/curated/2011-wave1/hhmember/hhmember.metadata.json",
+      "rows": 17989,
+      "columns": 32,
+      "variable_label_count": 31,
+      "value_label_set_count": 21,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/household_income.dta",
+      "csv": "data/curated/2011-wave1/household_income/household_income.csv",
+      "parquet": "data/curated/2011-wave1/household_income/household_income.parquet",
+      "metadata": "data/curated/2011-wave1/household_income/household_income.metadata.json",
+      "rows": 10026,
+      "columns": 1060,
+      "variable_label_count": 1060,
+      "value_label_set_count": 626,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/household_roster.dta",
+      "csv": "data/curated/2011-wave1/household_roster/household_roster.csv",
+      "parquet": "data/curated/2011-wave1/household_roster/household_roster.parquet",
+      "metadata": "data/curated/2011-wave1/household_roster/household_roster.metadata.json",
+      "rows": 10229,
+      "columns": 530,
+      "variable_label_count": 530,
+      "value_label_set_count": 280,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/housing_characteristics.dta",
+      "csv": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.csv",
+      "parquet": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.parquet",
+      "metadata": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.metadata.json",
+      "rows": 10081,
+      "columns": 34,
+      "variable_label_count": 34,
+      "value_label_set_count": 22,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/individual_income.dta",
+      "csv": "data/curated/2011-wave1/individual_income/individual_income.csv",
+      "parquet": "data/curated/2011-wave1/individual_income/individual_income.parquet",
+      "metadata": "data/curated/2011-wave1/individual_income/individual_income.metadata.json",
+      "rows": 17424,
+      "columns": 170,
+      "variable_label_count": 170,
+      "value_label_set_count": 93,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/interviewer_observation.dta",
+      "csv": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.csv",
+      "parquet": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.parquet",
+      "metadata": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.metadata.json",
+      "rows": 17326,
+      "columns": 17,
+      "variable_label_count": 17,
+      "value_label_set_count": 14,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/parent.dta",
+      "csv": "data/curated/2011-wave1/parent/parent.csv",
+      "parquet": "data/curated/2011-wave1/parent/parent.parquet",
+      "metadata": "data/curated/2011-wave1/parent/parent.metadata.json",
+      "rows": 36378,
+      "columns": 47,
+      "variable_label_count": 47,
+      "value_label_set_count": 31,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/PSU.dta",
+      "csv": "data/curated/2011-wave1/PSU/PSU.csv",
+      "parquet": "data/curated/2011-wave1/PSU/PSU.parquet",
+      "metadata": "data/curated/2011-wave1/PSU/PSU.metadata.json",
+      "rows": 450,
+      "columns": 8,
+      "variable_label_count": 8,
+      "value_label_set_count": 1,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/weight.dta",
+      "csv": "data/curated/2011-wave1/weight/weight.csv",
+      "parquet": "data/curated/2011-wave1/weight/weight.parquet",
+      "metadata": "data/curated/2011-wave1/weight/weight.metadata.json",
+      "rows": 18245,
+      "columns": 14,
+      "variable_label_count": 14,
+      "value_label_set_count": 1,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2011-wave1/work_retirement_and_pension.dta",
+      "csv": "data/curated/2011-wave1/work_retirement_and_pension/work_retirement_and_pension.csv",
+      "parquet": "data/curated/2011-wave1/work_retirement_and_pension/work_retirement_and_pension.parquet",
+      "metadata": "data/curated/2011-wave1/work_retirement_and_pension/work_retirement_and_pension.metadata.json",
+      "rows": 17524,
+      "columns": 526,
+      "variable_label_count": 526,
+      "value_label_set_count": 218,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Biomarker.dta",
+      "csv": "data/curated/2013-wave2/Biomarker/Biomarker.csv",
+      "parquet": "data/curated/2013-wave2/Biomarker/Biomarker.parquet",
+      "metadata": "data/curated/2013-wave2/Biomarker/Biomarker.metadata.json",
+      "rows": 13169,
+      "columns": 239,
+      "variable_label_count": 239,
+      "value_label_set_count": 71,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Child.dta",
+      "csv": "data/curated/2013-wave2/Child/Child.csv",
+      "parquet": "data/curated/2013-wave2/Child/Child.parquet",
+      "metadata": "data/curated/2013-wave2/Child/Child.metadata.json",
+      "rows": 31348,
+      "columns": 50,
+      "variable_label_count": 50,
+      "value_label_set_count": 28,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Demographic_Background.dta",
+      "csv": "data/curated/2013-wave2/Demographic_Background/Demographic_Background.csv",
+      "parquet": "data/curated/2013-wave2/Demographic_Background/Demographic_Background.parquet",
+      "metadata": "data/curated/2013-wave2/Demographic_Background/Demographic_Background.metadata.json",
+      "rows": 18605,
+      "columns": 145,
+      "variable_label_count": 145,
+      "value_label_set_count": 72,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Exit_Interview.dta",
+      "csv": "data/curated/2013-wave2/Exit_Interview/Exit_Interview.csv",
+      "parquet": "data/curated/2013-wave2/Exit_Interview/Exit_Interview.parquet",
+      "metadata": "data/curated/2013-wave2/Exit_Interview/Exit_Interview.metadata.json",
+      "rows": 431,
+      "columns": 1837,
+      "variable_label_count": 1837,
+      "value_label_set_count": 1464,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/exp_income_wealth.dta",
+      "csv": "data/curated/2013-wave2/exp_income_wealth/exp_income_wealth.csv",
+      "parquet": "data/curated/2013-wave2/exp_income_wealth/exp_income_wealth.parquet",
+      "metadata": "data/curated/2013-wave2/exp_income_wealth/exp_income_wealth.metadata.json",
+      "rows": 18419,
+      "columns": 51,
+      "variable_label_count": 51,
+      "value_label_set_count": 0,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Family_Information.dta",
+      "csv": "data/curated/2013-wave2/Family_Information/Family_Information.csv",
+      "parquet": "data/curated/2013-wave2/Family_Information/Family_Information.parquet",
+      "metadata": "data/curated/2013-wave2/Family_Information/Family_Information.metadata.json",
+      "rows": 10803,
+      "columns": 1185,
+      "variable_label_count": 1185,
+      "value_label_set_count": 789,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Family_Transfer.dta",
+      "csv": "data/curated/2013-wave2/Family_Transfer/Family_Transfer.csv",
+      "parquet": "data/curated/2013-wave2/Family_Transfer/Family_Transfer.parquet",
+      "metadata": "data/curated/2013-wave2/Family_Transfer/Family_Transfer.metadata.json",
+      "rows": 10708,
+      "columns": 596,
+      "variable_label_count": 595,
+      "value_label_set_count": 48,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Health_Care_and_Insurance.dta",
+      "csv": "data/curated/2013-wave2/Health_Care_and_Insurance/Health_Care_and_Insurance.csv",
+      "parquet": "data/curated/2013-wave2/Health_Care_and_Insurance/Health_Care_and_Insurance.parquet",
+      "metadata": "data/curated/2013-wave2/Health_Care_and_Insurance/Health_Care_and_Insurance.metadata.json",
+      "rows": 18433,
+      "columns": 543,
+      "variable_label_count": 543,
+      "value_label_set_count": 394,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Health_Status_and_Functioning.dta",
+      "csv": "data/curated/2013-wave2/Health_Status_and_Functioning/Health_Status_and_Functioning.csv",
+      "parquet": "data/curated/2013-wave2/Health_Status_and_Functioning/Health_Status_and_Functioning.parquet",
+      "metadata": "data/curated/2013-wave2/Health_Status_and_Functioning/Health_Status_and_Functioning.metadata.json",
+      "rows": 18455,
+      "columns": 1220,
+      "variable_label_count": 1220,
+      "value_label_set_count": 1021,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Household_Income.dta",
+      "csv": "data/curated/2013-wave2/Household_Income/Household_Income.csv",
+      "parquet": "data/curated/2013-wave2/Household_Income/Household_Income.parquet",
+      "metadata": "data/curated/2013-wave2/Household_Income/Household_Income.metadata.json",
+      "rows": 10624,
+      "columns": 1568,
+      "variable_label_count": 1568,
+      "value_label_set_count": 868,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Housing_Characteristics.dta",
+      "csv": "data/curated/2013-wave2/Housing_Characteristics/Housing_Characteristics.csv",
+      "parquet": "data/curated/2013-wave2/Housing_Characteristics/Housing_Characteristics.parquet",
+      "metadata": "data/curated/2013-wave2/Housing_Characteristics/Housing_Characteristics.metadata.json",
+      "rows": 10620,
+      "columns": 36,
+      "variable_label_count": 36,
+      "value_label_set_count": 22,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Individual_Income.dta",
+      "csv": "data/curated/2013-wave2/Individual_Income/Individual_Income.csv",
+      "parquet": "data/curated/2013-wave2/Individual_Income/Individual_Income.parquet",
+      "metadata": "data/curated/2013-wave2/Individual_Income/Individual_Income.metadata.json",
+      "rows": 18387,
+      "columns": 135,
+      "variable_label_count": 135,
+      "value_label_set_count": 48,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Interviewer_Observation.dta",
+      "csv": "data/curated/2013-wave2/Interviewer_Observation/Interviewer_Observation.csv",
+      "parquet": "data/curated/2013-wave2/Interviewer_Observation/Interviewer_Observation.parquet",
+      "metadata": "data/curated/2013-wave2/Interviewer_Observation/Interviewer_Observation.metadata.json",
+      "rows": 18333,
+      "columns": 21,
+      "variable_label_count": 21,
+      "value_label_set_count": 16,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Other_HHmember.dta",
+      "csv": "data/curated/2013-wave2/Other_HHmember/Other_HHmember.csv",
+      "parquet": "data/curated/2013-wave2/Other_HHmember/Other_HHmember.parquet",
+      "metadata": "data/curated/2013-wave2/Other_HHmember/Other_HHmember.metadata.json",
+      "rows": 9401,
+      "columns": 17,
+      "variable_label_count": 17,
+      "value_label_set_count": 7,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Parent.dta",
+      "csv": "data/curated/2013-wave2/Parent/Parent.csv",
+      "parquet": "data/curated/2013-wave2/Parent/Parent.parquet",
+      "metadata": "data/curated/2013-wave2/Parent/Parent.metadata.json",
+      "rows": 39242,
+      "columns": 41,
+      "variable_label_count": 41,
+      "value_label_set_count": 28,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/PSU.dta",
+      "csv": "data/curated/2013-wave2/PSU/PSU.csv",
+      "parquet": "data/curated/2013-wave2/PSU/PSU.parquet",
+      "metadata": "data/curated/2013-wave2/PSU/PSU.metadata.json",
+      "rows": 450,
+      "columns": 6,
+      "variable_label_count": 6,
+      "value_label_set_count": 1,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Verbal_Autopsy.dta",
+      "csv": "data/curated/2013-wave2/Verbal_Autopsy/Verbal_Autopsy.csv",
+      "parquet": "data/curated/2013-wave2/Verbal_Autopsy/Verbal_Autopsy.parquet",
+      "metadata": "data/curated/2013-wave2/Verbal_Autopsy/Verbal_Autopsy.metadata.json",
+      "rows": 434,
+      "columns": 204,
+      "variable_label_count": 204,
+      "value_label_set_count": 158,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Weights.dta",
+      "csv": "data/curated/2013-wave2/Weights/Weights.csv",
+      "parquet": "data/curated/2013-wave2/Weights/Weights.parquet",
+      "metadata": "data/curated/2013-wave2/Weights/Weights.metadata.json",
+      "rows": 19679,
+      "columns": 19,
+      "variable_label_count": 19,
+      "value_label_set_count": 4,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2013-wave2/Work_Retirement_and_Pension.dta",
+      "csv": "data/curated/2013-wave2/Work_Retirement_and_Pension/Work_Retirement_and_Pension.csv",
+      "parquet": "data/curated/2013-wave2/Work_Retirement_and_Pension/Work_Retirement_and_Pension.parquet",
+      "metadata": "data/curated/2013-wave2/Work_Retirement_and_Pension/Work_Retirement_and_Pension.metadata.json",
+      "rows": 18385,
+      "columns": 717,
+      "variable_label_count": 717,
+      "value_label_set_count": 335,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Biomarker.dta",
+      "csv": "data/curated/2015-wave3/Biomarker/Biomarker.csv",
+      "parquet": "data/curated/2015-wave3/Biomarker/Biomarker.parquet",
+      "metadata": "data/curated/2015-wave3/Biomarker/Biomarker.metadata.json",
+      "rows": 16406,
+      "columns": 222,
+      "variable_label_count": 222,
+      "value_label_set_count": 182,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Blood.dta",
+      "csv": "data/curated/2015-wave3/Blood/Blood.csv",
+      "parquet": "data/curated/2015-wave3/Blood/Blood.parquet",
+      "metadata": "data/curated/2015-wave3/Blood/Blood.metadata.json",
+      "rows": 13420,
+      "columns": 23,
+      "variable_label_count": 23,
+      "value_label_set_count": 2,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Child.dta",
+      "csv": "data/curated/2015-wave3/Child/Child.csv",
+      "parquet": "data/curated/2015-wave3/Child/Child.parquet",
+      "metadata": "data/curated/2015-wave3/Child/Child.metadata.json",
+      "rows": 34844,
+      "columns": 42,
+      "variable_label_count": 42,
+      "value_label_set_count": 24,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Demographic_Background.dta",
+      "csv": "data/curated/2015-wave3/Demographic_Background/Demographic_Background.csv",
+      "parquet": "data/curated/2015-wave3/Demographic_Background/Demographic_Background.parquet",
+      "metadata": "data/curated/2015-wave3/Demographic_Background/Demographic_Background.metadata.json",
+      "rows": 21095,
+      "columns": 81,
+      "variable_label_count": 81,
+      "value_label_set_count": 45,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Family_Information.dta",
+      "csv": "data/curated/2015-wave3/Family_Information/Family_Information.csv",
+      "parquet": "data/curated/2015-wave3/Family_Information/Family_Information.parquet",
+      "metadata": "data/curated/2015-wave3/Family_Information/Family_Information.metadata.json",
+      "rows": 12221,
+      "columns": 2347,
+      "variable_label_count": 2347,
+      "value_label_set_count": 1927,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Family_Transfer.dta",
+      "csv": "data/curated/2015-wave3/Family_Transfer/Family_Transfer.csv",
+      "parquet": "data/curated/2015-wave3/Family_Transfer/Family_Transfer.parquet",
+      "metadata": "data/curated/2015-wave3/Family_Transfer/Family_Transfer.metadata.json",
+      "rows": 12136,
+      "columns": 874,
+      "variable_label_count": 874,
+      "value_label_set_count": 90,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Health_Care_and_Insurance.dta",
+      "csv": "data/curated/2015-wave3/Health_Care_and_Insurance/Health_Care_and_Insurance.csv",
+      "parquet": "data/curated/2015-wave3/Health_Care_and_Insurance/Health_Care_and_Insurance.parquet",
+      "metadata": "data/curated/2015-wave3/Health_Care_and_Insurance/Health_Care_and_Insurance.metadata.json",
+      "rows": 20936,
+      "columns": 525,
+      "variable_label_count": 525,
+      "value_label_set_count": 74,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Health_Status_and_Functioning.dta",
+      "csv": "data/curated/2015-wave3/Health_Status_and_Functioning/Health_Status_and_Functioning.csv",
+      "parquet": "data/curated/2015-wave3/Health_Status_and_Functioning/Health_Status_and_Functioning.parquet",
+      "metadata": "data/curated/2015-wave3/Health_Status_and_Functioning/Health_Status_and_Functioning.metadata.json",
+      "rows": 20967,
+      "columns": 1059,
+      "variable_label_count": 1059,
+      "value_label_set_count": 804,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Household_Income.dta",
+      "csv": "data/curated/2015-wave3/Household_Income/Household_Income.csv",
+      "parquet": "data/curated/2015-wave3/Household_Income/Household_Income.parquet",
+      "metadata": "data/curated/2015-wave3/Household_Income/Household_Income.metadata.json",
+      "rows": 12061,
+      "columns": 1452,
+      "variable_label_count": 1451,
+      "value_label_set_count": 724,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Household_Member.dta",
+      "csv": "data/curated/2015-wave3/Household_Member/Household_Member.csv",
+      "parquet": "data/curated/2015-wave3/Household_Member/Household_Member.parquet",
+      "metadata": "data/curated/2015-wave3/Household_Member/Household_Member.metadata.json",
+      "rows": 30048,
+      "columns": 12,
+      "variable_label_count": 12,
+      "value_label_set_count": 4,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Housing_Characteristics.dta",
+      "csv": "data/curated/2015-wave3/Housing_Characteristics/Housing_Characteristics.csv",
+      "parquet": "data/curated/2015-wave3/Housing_Characteristics/Housing_Characteristics.parquet",
+      "metadata": "data/curated/2015-wave3/Housing_Characteristics/Housing_Characteristics.metadata.json",
+      "rows": 12073,
+      "columns": 35,
+      "variable_label_count": 35,
+      "value_label_set_count": 22,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Individual_Income.dta",
+      "csv": "data/curated/2015-wave3/Individual_Income/Individual_Income.csv",
+      "parquet": "data/curated/2015-wave3/Individual_Income/Individual_Income.parquet",
+      "metadata": "data/curated/2015-wave3/Individual_Income/Individual_Income.metadata.json",
+      "rows": 20899,
+      "columns": 149,
+      "variable_label_count": 149,
+      "value_label_set_count": 41,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Parent.dta",
+      "csv": "data/curated/2015-wave3/Parent/Parent.csv",
+      "parquet": "data/curated/2015-wave3/Parent/Parent.parquet",
+      "metadata": "data/curated/2015-wave3/Parent/Parent.metadata.json",
+      "rows": 46462,
+      "columns": 32,
+      "variable_label_count": 32,
+      "value_label_set_count": 20,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Sample_Infor.dta",
+      "csv": "data/curated/2015-wave3/Sample_Infor/Sample_Infor.csv",
+      "parquet": "data/curated/2015-wave3/Sample_Infor/Sample_Infor.parquet",
+      "metadata": "data/curated/2015-wave3/Sample_Infor/Sample_Infor.metadata.json",
+      "rows": 21789,
+      "columns": 8,
+      "variable_label_count": 8,
+      "value_label_set_count": 2,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Sibling.dta",
+      "csv": "data/curated/2015-wave3/Sibling/Sibling.csv",
+      "parquet": "data/curated/2015-wave3/Sibling/Sibling.parquet",
+      "metadata": "data/curated/2015-wave3/Sibling/Sibling.metadata.json",
+      "rows": 46242,
+      "columns": 28,
+      "variable_label_count": 28,
+      "value_label_set_count": 17,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Spousal_Sibling.dta",
+      "csv": "data/curated/2015-wave3/Spousal_Sibling/Spousal_Sibling.csv",
+      "parquet": "data/curated/2015-wave3/Spousal_Sibling/Spousal_Sibling.parquet",
+      "metadata": "data/curated/2015-wave3/Spousal_Sibling/Spousal_Sibling.metadata.json",
+      "rows": 36291,
+      "columns": 28,
+      "variable_label_count": 28,
+      "value_label_set_count": 17,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Weights.dta",
+      "csv": "data/curated/2015-wave3/Weights/Weights.csv",
+      "parquet": "data/curated/2015-wave3/Weights/Weights.parquet",
+      "metadata": "data/curated/2015-wave3/Weights/Weights.metadata.json",
+      "rows": 20284,
+      "columns": 10,
+      "variable_label_count": 10,
+      "value_label_set_count": 0,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2015-wave3/Work_Retirement_and_Pension.dta",
+      "csv": "data/curated/2015-wave3/Work_Retirement_and_Pension/Work_Retirement_and_Pension.csv",
+      "parquet": "data/curated/2015-wave3/Work_Retirement_and_Pension/Work_Retirement_and_Pension.parquet",
+      "metadata": "data/curated/2015-wave3/Work_Retirement_and_Pension/Work_Retirement_and_Pension.metadata.json",
+      "rows": 20890,
+      "columns": 831,
+      "variable_label_count": 831,
+      "value_label_set_count": 480,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Cognition.dta",
+      "csv": "data/curated/2018-wave4/Cognition/Cognition.csv",
+      "parquet": "data/curated/2018-wave4/Cognition/Cognition.parquet",
+      "metadata": "data/curated/2018-wave4/Cognition/Cognition.metadata.json",
+      "rows": 19744,
+      "columns": 219,
+      "variable_label_count": 219,
+      "value_label_set_count": 184,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Demographic_Background.dta",
+      "csv": "data/curated/2018-wave4/Demographic_Background/Demographic_Background.csv",
+      "parquet": "data/curated/2018-wave4/Demographic_Background/Demographic_Background.parquet",
+      "metadata": "data/curated/2018-wave4/Demographic_Background/Demographic_Background.metadata.json",
+      "rows": 19816,
+      "columns": 110,
+      "variable_label_count": 110,
+      "value_label_set_count": 50,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Family_Information.dta",
+      "csv": "data/curated/2018-wave4/Family_Information/Family_Information.csv",
+      "parquet": "data/curated/2018-wave4/Family_Information/Family_Information.parquet",
+      "metadata": "data/curated/2018-wave4/Family_Information/Family_Information.metadata.json",
+      "rows": 11628,
+      "columns": 1539,
+      "variable_label_count": 1539,
+      "value_label_set_count": 1119,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Family_Transfer.dta",
+      "csv": "data/curated/2018-wave4/Family_Transfer/Family_Transfer.csv",
+      "parquet": "data/curated/2018-wave4/Family_Transfer/Family_Transfer.parquet",
+      "metadata": "data/curated/2018-wave4/Family_Transfer/Family_Transfer.metadata.json",
+      "rows": 11568,
+      "columns": 1120,
+      "variable_label_count": 1120,
+      "value_label_set_count": 163,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Health_Care_and_Insurance.dta",
+      "csv": "data/curated/2018-wave4/Health_Care_and_Insurance/Health_Care_and_Insurance.csv",
+      "parquet": "data/curated/2018-wave4/Health_Care_and_Insurance/Health_Care_and_Insurance.parquet",
+      "metadata": "data/curated/2018-wave4/Health_Care_and_Insurance/Health_Care_and_Insurance.metadata.json",
+      "rows": 19776,
+      "columns": 277,
+      "variable_label_count": 277,
+      "value_label_set_count": 183,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Health_Status_and_Functioning.dta",
+      "csv": "data/curated/2018-wave4/Health_Status_and_Functioning/Health_Status_and_Functioning.csv",
+      "parquet": "data/curated/2018-wave4/Health_Status_and_Functioning/Health_Status_and_Functioning.parquet",
+      "metadata": "data/curated/2018-wave4/Health_Status_and_Functioning/Health_Status_and_Functioning.metadata.json",
+      "rows": 19752,
+      "columns": 896,
+      "variable_label_count": 896,
+      "value_label_set_count": 722,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Household_Income.dta",
+      "csv": "data/curated/2018-wave4/Household_Income/Household_Income.csv",
+      "parquet": "data/curated/2018-wave4/Household_Income/Household_Income.parquet",
+      "metadata": "data/curated/2018-wave4/Household_Income/Household_Income.metadata.json",
+      "rows": 11544,
+      "columns": 576,
+      "variable_label_count": 576,
+      "value_label_set_count": 300,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Housing.dta",
+      "csv": "data/curated/2018-wave4/Housing/Housing.csv",
+      "parquet": "data/curated/2018-wave4/Housing/Housing.parquet",
+      "metadata": "data/curated/2018-wave4/Housing/Housing.metadata.json",
+      "rows": 11535,
+      "columns": 1387,
+      "variable_label_count": 1387,
+      "value_label_set_count": 936,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Individual_Income.dta",
+      "csv": "data/curated/2018-wave4/Individual_Income/Individual_Income.csv",
+      "parquet": "data/curated/2018-wave4/Individual_Income/Individual_Income.parquet",
+      "metadata": "data/curated/2018-wave4/Individual_Income/Individual_Income.metadata.json",
+      "rows": 19755,
+      "columns": 124,
+      "variable_label_count": 124,
+      "value_label_set_count": 41,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Insider.dta",
+      "csv": "data/curated/2018-wave4/Insider/Insider.csv",
+      "parquet": "data/curated/2018-wave4/Insider/Insider.parquet",
+      "metadata": "data/curated/2018-wave4/Insider/Insider.metadata.json",
+      "rows": 11011,
+      "columns": 70,
+      "variable_label_count": 70,
+      "value_label_set_count": 63,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Pension.dta",
+      "csv": "data/curated/2018-wave4/Pension/Pension.csv",
+      "parquet": "data/curated/2018-wave4/Pension/Pension.parquet",
+      "metadata": "data/curated/2018-wave4/Pension/Pension.metadata.json",
+      "rows": 19718,
+      "columns": 395,
+      "variable_label_count": 395,
+      "value_label_set_count": 147,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Sample_Infor.dta",
+      "csv": "data/curated/2018-wave4/Sample_Infor/Sample_Infor.csv",
+      "parquet": "data/curated/2018-wave4/Sample_Infor/Sample_Infor.parquet",
+      "metadata": "data/curated/2018-wave4/Sample_Infor/Sample_Infor.metadata.json",
+      "rows": 20813,
+      "columns": 8,
+      "variable_label_count": 8,
+      "value_label_set_count": 2,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Weights.dta",
+      "csv": "data/curated/2018-wave4/Weights/Weights.csv",
+      "parquet": "data/curated/2018-wave4/Weights/Weights.parquet",
+      "metadata": "data/curated/2018-wave4/Weights/Weights.metadata.json",
+      "rows": 17970,
+      "columns": 8,
+      "variable_label_count": 8,
+      "value_label_set_count": 0,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2018-wave4/Work_Retirement.dta",
+      "csv": "data/curated/2018-wave4/Work_Retirement/Work_Retirement.csv",
+      "parquet": "data/curated/2018-wave4/Work_Retirement/Work_Retirement.parquet",
+      "metadata": "data/curated/2018-wave4/Work_Retirement/Work_Retirement.metadata.json",
+      "rows": 19725,
+      "columns": 321,
+      "variable_label_count": 321,
+      "value_label_set_count": 161,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2020-wave5/COVID_Module.dta",
+      "csv": "data/curated/2020-wave5/COVID_Module/COVID_Module.csv",
+      "parquet": "data/curated/2020-wave5/COVID_Module/COVID_Module.parquet",
+      "metadata": "data/curated/2020-wave5/COVID_Module/COVID_Module.metadata.json",
+      "rows": 19383,
+      "columns": 100,
+      "variable_label_count": 100,
+      "value_label_set_count": 70,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2020-wave5/Demographic_Background.dta",
+      "csv": "data/curated/2020-wave5/Demographic_Background/Demographic_Background.csv",
+      "parquet": "data/curated/2020-wave5/Demographic_Background/Demographic_Background.parquet",
+      "metadata": "data/curated/2020-wave5/Demographic_Background/Demographic_Background.metadata.json",
+      "rows": 19395,
+      "columns": 42,
+      "variable_label_count": 42,
+      "value_label_set_count": 15,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2020-wave5/Exit_Module.dta",
+      "csv": "data/curated/2020-wave5/Exit_Module/Exit_Module.csv",
+      "parquet": "data/curated/2020-wave5/Exit_Module/Exit_Module.parquet",
+      "metadata": "data/curated/2020-wave5/Exit_Module/Exit_Module.metadata.json",
+      "rows": 770,
+      "columns": 1129,
+      "variable_label_count": 1129,
+      "value_label_set_count": 618,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2020-wave5/Family_Information.dta",
+      "csv": "data/curated/2020-wave5/Family_Information/Family_Information.csv",
+      "parquet": "data/curated/2020-wave5/Family_Information/Family_Information.parquet",
+      "metadata": "data/curated/2020-wave5/Family_Information/Family_Information.metadata.json",
+      "rows": 11406,
+      "columns": 789,
+      "variable_label_count": 789,
+      "value_label_set_count": 303,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2020-wave5/Health_Status_and_Functioning.dta",
+      "csv": "data/curated/2020-wave5/Health_Status_and_Functioning/Health_Status_and_Functioning.csv",
+      "parquet": "data/curated/2020-wave5/Health_Status_and_Functioning/Health_Status_and_Functioning.parquet",
+      "metadata": "data/curated/2020-wave5/Health_Status_and_Functioning/Health_Status_and_Functioning.metadata.json",
+      "rows": 19367,
+      "columns": 936,
+      "variable_label_count": 936,
+      "value_label_set_count": 738,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2020-wave5/Household_Income.dta",
+      "csv": "data/curated/2020-wave5/Household_Income/Household_Income.csv",
+      "parquet": "data/curated/2020-wave5/Household_Income/Household_Income.parquet",
+      "metadata": "data/curated/2020-wave5/Household_Income/Household_Income.metadata.json",
+      "rows": 11377,
+      "columns": 855,
+      "variable_label_count": 855,
+      "value_label_set_count": 511,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2020-wave5/Individual_Income.dta",
+      "csv": "data/curated/2020-wave5/Individual_Income/Individual_Income.csv",
+      "parquet": "data/curated/2020-wave5/Individual_Income/Individual_Income.parquet",
+      "metadata": "data/curated/2020-wave5/Individual_Income/Individual_Income.metadata.json",
+      "rows": 19349,
+      "columns": 210,
+      "variable_label_count": 210,
+      "value_label_set_count": 100,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2020-wave5/Sample_Infor.dta",
+      "csv": "data/curated/2020-wave5/Sample_Infor/Sample_Infor.csv",
+      "parquet": "data/curated/2020-wave5/Sample_Infor/Sample_Infor.parquet",
+      "metadata": "data/curated/2020-wave5/Sample_Infor/Sample_Infor.metadata.json",
+      "rows": 20180,
+      "columns": 8,
+      "variable_label_count": 8,
+      "value_label_set_count": 2,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2020-wave5/Weights.dta",
+      "csv": "data/curated/2020-wave5/Weights/Weights.csv",
+      "parquet": "data/curated/2020-wave5/Weights/Weights.parquet",
+      "metadata": "data/curated/2020-wave5/Weights/Weights.metadata.json",
+      "rows": 17364,
+      "columns": 8,
+      "variable_label_count": 8,
+      "value_label_set_count": 0,
+      "status": "ok"
+    },
+    {
+      "source": "data/extracted/2020-wave5/Work_Retirement.dta",
+      "csv": "data/curated/2020-wave5/Work_Retirement/Work_Retirement.csv",
+      "parquet": "data/curated/2020-wave5/Work_Retirement/Work_Retirement.parquet",
+      "metadata": "data/curated/2020-wave5/Work_Retirement/Work_Retirement.metadata.json",
+      "rows": 19361,
+      "columns": 160,
+      "variable_label_count": 160,
+      "value_label_set_count": 35,
+      "status": "ok"
+    }
+  ],
+  "coverage": [
+    {
+      "year": "2011",
+      "section": "与数据使用相关的文档",
+      "item": "家户问卷",
+      "expected_sha1": null,
+      "status": "manual_review_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2011",
+      "section": "与数据使用相关的文档",
+      "item": "基线体检问卷",
+      "expected_sha1": null,
+      "status": "manual_review_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2011",
+      "section": "与数据使用相关的文档",
+      "item": "数据使用手册",
+      "expected_sha1": null,
+      "status": "manual_review_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2011",
+      "section": "与数据使用相关的文档",
+      "item": "数据编码参考书",
+      "expected_sha1": null,
+      "status": "manual_review_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2011",
+      "section": "与数据使用相关的文档",
+      "item": "社区问卷",
+      "expected_sha1": null,
+      "status": "manual_review_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2011",
+      "section": "与数据使用相关的文档",
+      "item": "血检数据使用手册",
+      "expected_sha1": null,
+      "status": "manual_review_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "所有家户和社区数据",
+      "expected_sha1": null,
+      "status": "manual_review_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "基本信息",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "demographic_background.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "家户登记表",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "household_roster.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "家庭结构",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "family_information.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "家庭交往及经济帮助",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "family_transfer.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "健康状况与功能",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "health_status_and_functioning.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "医疗保健与保险",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "health_care_and_insurance.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "工作、退休、养老金",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "work_retirement_and_pension.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "家庭收入、支出与资产",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "household_income.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "个人收入、支出与资产",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "individual_income.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "访员观察",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "interviewer_observation.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "住房信息",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "housing_characteristics.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "体检信息",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "biomarkers.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "PSU 编码",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "PSU.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "权重",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "weight.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "社区问卷数据",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "community.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "血检数据",
+      "expected_sha1": null,
+      "status": "dta_present_no_sha",
+      "matched_raw_files": [],
+      "expected_dta": "Blood_20140429.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "构建的子女数据库",
+      "expected_sha1": "9efccd64251500b468357c57e1f364e3f0b2f0a5",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2011-wave1/child.zip"
+      ],
+      "expected_dta": "child.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "构建的父母数据库",
+      "expected_sha1": "30d232bf98e4e5b6eaa4448af20be0a3c41ba538",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2011-wave1/parent.zip"
+      ],
+      "expected_dta": "parent.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "构建的家户成员数据库",
+      "expected_sha1": "b281c4e94f8390f49d17ab7565f69a2dcb64ea2c",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2011-wave1/hhmember.zip"
+      ],
+      "expected_dta": "hhmember.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2011",
+      "section": "数据下载",
+      "item": "构建的支出、收入和财富数据库",
+      "expected_sha1": "e73a9c1827978a597dad8469fa1a2866b4944da6",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2011-wave1/exp_income_wealth.zip"
+      ],
+      "expected_dta": "exp_income_wealth.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "与数据使用相关的文档",
+      "item": "发布说明",
+      "expected_sha1": "8f4a90c3dbadb49711333ab1e689bf2756583932",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2013-wave2/CHARLS_Wave2_Release_Note.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2013",
+      "section": "与数据使用相关的文档",
+      "item": "家户问卷",
+      "expected_sha1": "d1132a289bb3a37b955ebc3f9d42d56dc072a1e4",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2013-wave2/CHARLS_Wave2_Main_Questionnaire.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2013",
+      "section": "与数据使用相关的文档",
+      "item": "体检问卷",
+      "expected_sha1": "7599805448e07e75680e6c15d92f4d7d78d886b2",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2013-wave2/CHARLS_Wave2_Biomarker_Questionnaire.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2013",
+      "section": "与数据使用相关的文档",
+      "item": "退出及死因问卷",
+      "expected_sha1": "6ec50048ef1d0f23f6b63b9fb0fc937f484cd621",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2013-wave2/CHARLS_Wave2_Exit_VA_Questionnaire.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2013",
+      "section": "与数据使用相关的文档",
+      "item": "数据编码参考书",
+      "expected_sha1": "c9c5714dbffee02050343f9b100aba501050b7a3",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2013-wave2/CHARLS_Wave2_CodeBook.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "以下所有数据的压缩包",
+      "expected_sha1": "7517d597d2eb5abfa91d58f3cd03aa9845defc85",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2013-wave2/CHARLS2013_Dataset.zip"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "基本信息",
+      "expected_sha1": "18312f98a60e69861f38000819d79eba4b73b304",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Demographic_Background.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "家庭信息",
+      "expected_sha1": "1e3f408088f9511692d3b7f82507119d58d04643",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Family_Information.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "父母信息",
+      "expected_sha1": "abbe28db9667e201fde86500d75868be973a202e",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Parent.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "子女信息",
+      "expected_sha1": "6ecacc6d8aa3dc7b7067e0419d142ff8a55c1e56",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Child.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "其他家户成员信息",
+      "expected_sha1": "6630212f0414b94f0229f7a0ebaed20fa1377d0d",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Other_HHmember.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "家庭经济交往",
+      "expected_sha1": "bf8b3d034bedbe02de9fdb4b568c331240dd6eb1",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Family_Transfer.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "健康状况与功能",
+      "expected_sha1": "b8afe6b3f091f27444f341cef811d85e0019aed8",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Health_Status_and_Functioning.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "医疗保健与保险",
+      "expected_sha1": "96a93f03cbfef3c6f97bcce550de5a28aa9d48dd",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Health_Care_and_Insurance.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "工作退休及养老金",
+      "expected_sha1": "1f94fa51ad43f68d8658e19626d195d168e10027",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Work_Retirement_and_Pension.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "家户收入、支出及资产",
+      "expected_sha1": "417edce50dd9ff03ea9a6146363d43ada681c978",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Household_Income.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "个人收入及资产",
+      "expected_sha1": "2db021693927b86067235cce4612bb44c64ec3da",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Individual_Income.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "访问员观察",
+      "expected_sha1": "4173826bcbb1c86c155a1aea7e4500cbedcd25a6",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Interviewer_Observation.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "住房信息",
+      "expected_sha1": "30ff8df1816758ab8bb5f02d7018c941e82aed6d",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Housing_Characteristics.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "体检信息",
+      "expected_sha1": "7a97a7a28275e1fe6177b016fae517b95d586dd0",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Biomarker.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "退出调查",
+      "expected_sha1": "63993a8761c2d3e6a8efc805d6afc093485b61eb",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Exit_Interview.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "死因信息",
+      "expected_sha1": "50634eae34a61184d7930c8bab98ca51c7284334",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Verbal_Autopsy.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "PSU 编码",
+      "expected_sha1": "74c78392b668375937e78ce5da4f06f5ba83f0f9",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2011-wave1/PSU.zip"
+      ],
+      "expected_dta": "PSU.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "权重",
+      "expected_sha1": "22c4fc89df2e55fa8faf051e88830eebe0e035c0",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Weights.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2013",
+      "section": "数据下载",
+      "item": "构建的支出、收入和财富数据库",
+      "expected_sha1": "8488faf9c5273afbce1b073ce5929513cd538512",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2013-wave2/exp_income_wealth.zip"
+      ],
+      "expected_dta": "exp_income_wealth.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "与数据使用相关的文档",
+      "item": "发布说明",
+      "expected_sha1": "05f2d352f856680830cbac7b044488f07b0f7538",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2015-wave3/CHARLS_2015_Release_Note.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2015",
+      "section": "与数据使用相关的文档",
+      "item": "家户问卷",
+      "expected_sha1": "dffe2db15d6e13cbe5499d5bf2556b17cdc8c729",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2015-wave3/CHARLS_2015_Questionnaire.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2015",
+      "section": "与数据使用相关的文档",
+      "item": "体检问卷",
+      "expected_sha1": "df292d012cf75cce536727e9ec62e67b454f9946",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2015-wave3/CHARLS_2015_Biomarker_Questionnaire.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2015",
+      "section": "与数据使用相关的文档",
+      "item": "血检数据发布说明",
+      "expected_sha1": "f48c549a7f1253230d4c11cbae1687966a3d39d5",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2015-wave3/CHARLS_2015_Blood_Data_Release_Note.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2015",
+      "section": "与数据使用相关的文档",
+      "item": "数据编码参考书",
+      "expected_sha1": "92e413c887c946a9d5c939cab736ff96d05fc020",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2015-wave3/CHARLS_2015_Codebook.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "以下所有数据的压缩包",
+      "expected_sha1": "47aab04178a6895ce687beb2f74286215e8f6b33",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2015-wave3/CHARLS2015r.zip"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "基本信息",
+      "expected_sha1": "e8f499ad74be99101ccc7cb4c9c050ca05179f83",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Demographic_Background.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "家庭信息",
+      "expected_sha1": "b191619b12692b79bcebfca64544a476d8d4ad61",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Family_Information.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "家庭经济交往",
+      "expected_sha1": "32f4edadd68aec3742f6d2b6ed96ba5421a6f339",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Family_Transfer.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "健康状况与功能",
+      "expected_sha1": "a06f3202419787cf3fba5693589e9051bfae1538",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Health_Status_and_Functioning.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "医疗保险与保健",
+      "expected_sha1": "2f963fb9d96caa7485f00a4ead1bc832bbfc02da",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Health_Care_and_Insurance.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "工作退休及养老金",
+      "expected_sha1": "61291e0084297292f551bc8d968413e32d739f54",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Work_Retirement_and_Pension.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "家户收入、支出及资产",
+      "expected_sha1": "1eb715c2c08187bff5bd3726d44c52fd0f39a64d",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Household_Income.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "个人收入及资产",
+      "expected_sha1": "4523ef9825bc940aa4488f8923d97479eaae4108",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Individual_Income.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "住房信息",
+      "expected_sha1": "6772cac53e98cc720c7ed42bd34cbcf66e0e4241",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Housing_Characteristics.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "体检信息",
+      "expected_sha1": "ccd00d934d4267f62590b91051a4caf680ebec3f",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Biomarker.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "血检数据",
+      "expected_sha1": "de5b1d80e9b72d61b690dff19b191f50f21ee8c5",
+      "status": "candidate_dta_but_sha_mismatch",
+      "matched_raw_files": [],
+      "expected_dta": "Blood.dta",
+      "expected_source": "direct",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "样本权重",
+      "expected_sha1": "e9a8738cb7fb3eb51d909b541f7af7075e890d3c",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Weights.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "样本信息",
+      "expected_sha1": "a0b33070ccb6731f13311915d552c3abe37ea2e0",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Sample_Infor.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "构建的家户成员数据集",
+      "expected_sha1": "827e75132d51926ec1d931f0ec3b2b0ad21d0c8a",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Household_Member.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "构建的父母数据集",
+      "expected_sha1": "73da4ecd0a0af348afd3cc693c51a57b4ec766f0",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Parent.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "构建的子女数据集",
+      "expected_sha1": "e7314c62ef6a04394204b99f7393846d011b7309",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Child.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "构建的兄弟姐妹数据集",
+      "expected_sha1": "9587d8f8c12441f905a46145b9631b66dbf21db4",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Sibling.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2015",
+      "section": "数据下载",
+      "item": "构建的配偶的兄弟姐妹数据集",
+      "expected_sha1": "0a87f9ec66b5519a6f940f4dde8981b5f17ae87a",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Spousal_Sibling.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "与数据使用相关的文档",
+      "item": "用户手册",
+      "expected_sha1": "18d92656677464d10096377e1864db59bd4daa51",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2018-wave4/CHARLS_2018_Users_Guide.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2018",
+      "section": "与数据使用相关的文档",
+      "item": "家户问卷",
+      "expected_sha1": "6c547dde4240eae5f7fffb22556d26109186b974",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2018-wave4/CHARLS_2018_Household_Questionnaire.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2018",
+      "section": "与数据使用相关的文档",
+      "item": "数据编码参考书",
+      "expected_sha1": "8f8017cec22518e0251cf15ee3a700c9142a7a14",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2018-wave4/CHARLS_2018_Codebook.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2018",
+      "section": "与数据使用相关的文档",
+      "item": "数据提示",
+      "expected_sha1": "f0be35e7d65b4bbb6938cf908fb7bb8e64238018",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2018-wave4/w2018-data-alert-cn.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2018",
+      "section": "与数据使用相关的文档",
+      "item": "CHARLS-HCAP 用户须知",
+      "expected_sha1": "47079d5f1b4da50dd038f0244ec33dd918fc0f78",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2018-wave4/CHARLS-HCAP-User-Guidance-cn.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "以下所有数据的压缩包",
+      "expected_sha1": "42f3e6bf26cea8072d9fa9f6050f413556d20a69",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2018-wave4/CHARLS2018r.zip"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "基本信息",
+      "expected_sha1": "f4202f33775a16bfd6564c3988ee6a5d06f2c032",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Demographic_Background.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "家庭信息",
+      "expected_sha1": "7e0df554ff0c001b6cd99d0fcd916011516d28d4",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Family_Information.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "家庭经济交往",
+      "expected_sha1": "44dd3265f089604c4148a5066fda7162b4834d2f",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Family_Transfer.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "健康状况与功能",
+      "expected_sha1": "fe15abcf0f20a01289f2044cce5cb9c24cf746b9",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Health_Status_and_Functioning.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "认知和抑郁",
+      "expected_sha1": "5c62abf9c6b8e90a22a4ff4721bf2c1b083a8b31",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Cognition.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "知情人信息收集",
+      "expected_sha1": "dc6a0a07593c54caad6e20e127cc5c8a9ff139db",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Insider.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "医疗保健与保险",
+      "expected_sha1": "6132baccd93a859b183d6c009f2b9dfc8d13996f",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Health_Care_and_Insurance.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "工作和退休",
+      "expected_sha1": "edc860b219247f3ffe67b0df5db7bee3325a9b6d",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Work_Retirement.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "养老金",
+      "expected_sha1": "678ab3c410421843fbfe6f8168df39d9bcc0f17d",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Pension.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "家户收入、支出及资产",
+      "expected_sha1": "dc66d6c6e38cbe74ae22a12cb4f1638eb6fe8a6d",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Household_Income.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "个人收入及资产",
+      "expected_sha1": "a6f2884a89bbade849575067076ca7bf42560725",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Individual_Income.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "房产和住房情况",
+      "expected_sha1": "e11267e5de9b14c4a9dc07bf4a3efb035dc2159e",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Housing.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "样本权重",
+      "expected_sha1": "e22463c7cf4dcbf877267ad0a2b51a4abe791ba0",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Weights.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2018",
+      "section": "数据下载",
+      "item": "样本信息",
+      "expected_sha1": "d4a67c86ef6c331b365d14e316999481cb95be65",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Sample_Infor.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2020",
+      "section": "与数据使用相关的文档",
+      "item": "用户手册",
+      "expected_sha1": "9bf1e673136f375beb097e88b6018bf88855f17b",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2020-wave5/CHARLS_2020_User_Guide_Chinese.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2020",
+      "section": "与数据使用相关的文档",
+      "item": "问卷",
+      "expected_sha1": "307fb0f902e76fd08e07222324a4ce5fa24fec99",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2020-wave5/CHARLS_2020_Questionnaire_Chinese.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2020",
+      "section": "与数据使用相关的文档",
+      "item": "问卷流程图",
+      "expected_sha1": "83da535e9542ad6974ff3474b7fe0fcded0ed0bd",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2020-wave5/CHARLS_2020_Flowchart_Chinese.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2020",
+      "section": "与数据使用相关的文档",
+      "item": "数据编码参考书",
+      "expected_sha1": "bf669aa916daf7da68e32357d1e08f31a3a0dae7",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2020-wave5/CHARLS_2020_Codebook.pdf"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "以下所有数据的压缩包",
+      "expected_sha1": "fd73eb699cbacbfaaff1c55bcdba11b23eaa0736",
+      "status": "sha1_match",
+      "matched_raw_files": [
+        "data/raw/2020-wave5/CHARLS2020r.zip"
+      ],
+      "expected_dta": null,
+      "expected_source": null,
+      "dta_present": false
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "基本信息",
+      "expected_sha1": "8644e8d3716ef1b31669211bef54311453ccfb70",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Demographic_Background.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "家庭信息",
+      "expected_sha1": "0e62aab028b3505e25902dc9c9ba07ed05cf3445",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Family_Information.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "健康状况与功能",
+      "expected_sha1": "facb8e8a96179e64b1dfafa1f983e6896def3fb0",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Health_Status_and_Functioning.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "工作和退休",
+      "expected_sha1": "88bbe615f25527eab4077815fbb340711a663480",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Work_Retirement.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "家户收入与支出",
+      "expected_sha1": "4bdd100a72b7ed885a8a3c61016aa0c7e4822748",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Household_Income.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "个人收入",
+      "expected_sha1": "1c31b027b2c05d59298242dcb2468a7f0dbbdb76",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Individual_Income.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "疫情模块",
+      "expected_sha1": "5433348d5d1420889acd0a749e27e55f501038db",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "COVID_Module.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "退出问卷",
+      "expected_sha1": "d5df2c138ff3299bb91627aced078ffe4fc58c10",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Exit_Module.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "样本信息",
+      "expected_sha1": "139362051c9c122aa4f3f19558e1bf32f3be9825",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Sample_Infor.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    },
+    {
+      "year": "2020",
+      "section": "数据下载",
+      "item": "样本权重",
+      "expected_sha1": "ba2e96315e7284be69820da4ba458ccd0e50c8b1",
+      "status": "covered_by_extracted_dta",
+      "matched_raw_files": [],
+      "expected_dta": "Weights.dta",
+      "expected_source": "bundle",
+      "dta_present": true
+    }
+  ],
+  "curated_summary_by_wave": {
+    "2011-wave1": {
+      "tables": 20,
+      "rows": 300220,
+      "columns": 6943,
+      "errors": 0,
+      "variable_labels": 6941,
+      "value_label_sets": 3680
+    },
+    "2013-wave2": {
+      "tables": 19,
+      "rows": 285926,
+      "columns": 8630,
+      "errors": 0,
+      "variable_labels": 8629,
+      "value_label_sets": 5374
+    },
+    "2015-wave3": {
+      "tables": 18,
+      "rows": 419064,
+      "columns": 7758,
+      "errors": 0,
+      "variable_labels": 7757,
+      "value_label_sets": 4475
+    },
+    "2018-wave4": {
+      "tables": 14,
+      "rows": 234355,
+      "columns": 7050,
+      "errors": 0,
+      "variable_labels": 7050,
+      "value_label_sets": 4071
+    },
+    "2020-wave5": {
+      "tables": 10,
+      "rows": 157952,
+      "columns": 4237,
+      "errors": 0,
+      "variable_labels": 4237,
+      "value_label_sets": 2392
+    }
+  },
+  "coverage_summary": {
+    "total": 111,
+    "sha1_match": 29,
+    "covered_by_extracted_dta": 58,
+    "candidate_dta_but_sha_mismatch": 1,
+    "missing_sha1": 0,
+    "manual_review_no_sha": 7
+  }
+}

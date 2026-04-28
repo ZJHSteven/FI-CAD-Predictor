@@ -1,0 +1,139 @@
+{
+  "source_file": "data/extracted/2015-wave3/Sample_Infor.dta",
+  "source_sha1": "ab4b4a46ef8ab5ddc5991ca8288a7a17744d957b",
+  "source_backend": "pyreadstat",
+  "row_count": 21789,
+  "column_count": 8,
+  "columns": [
+    "ID",
+    "householdID",
+    "communityID",
+    "crosssection",
+    "died",
+    "iyear",
+    "imonth",
+    "versionID"
+  ],
+  "file_label": "Sample Information",
+  "file_encoding": null,
+  "notes": [],
+  "column_labels": [
+    "Individual ID",
+    "Household ID",
+    "Community ID",
+    "Whether Cross-Section Sample",
+    "Whether Individual Died",
+    "Interview Year",
+    "Interview Month",
+    "Version ID"
+  ],
+  "column_names_to_labels": {
+    "ID": "Individual ID",
+    "householdID": "Household ID",
+    "communityID": "Community ID",
+    "crosssection": "Whether Cross-Section Sample",
+    "died": "Whether Individual Died",
+    "iyear": "Interview Year",
+    "imonth": "Interview Month",
+    "versionID": "Version ID"
+  },
+  "value_labels": {
+    "crosssection": {
+      "0": "0 No",
+      "1": "1 Yes"
+    },
+    "died": {
+      "0": "0 Alive",
+      "1": "1 Died"
+    }
+  },
+  "variable_to_label": {
+    "crosssection": "crosssection",
+    "died": "died"
+  },
+  "variable_value_labels": {
+    "crosssection": {
+      "0": "0 No",
+      "1": "1 Yes"
+    },
+    "died": {
+      "0": "0 Alive",
+      "1": "1 Died"
+    }
+  },
+  "original_variable_types": {
+    "ID": "%12s",
+    "householdID": "%10s",
+    "communityID": "%9s",
+    "crosssection": "%8.0g",
+    "died": "%8.0g",
+    "iyear": "%9s",
+    "imonth": "%9s",
+    "versionID": "%9s"
+  },
+  "readstat_variable_types": {
+    "ID": "string",
+    "householdID": "string",
+    "communityID": "string",
+    "crosssection": "int8",
+    "died": "int8",
+    "iyear": "string",
+    "imonth": "string",
+    "versionID": "string"
+  },
+  "missing_ranges": {},
+  "missing_user_values": {},
+  "variable_alignment": {
+    "ID": "right",
+    "householdID": "right",
+    "communityID": "right",
+    "crosssection": "right",
+    "died": "right",
+    "iyear": "right",
+    "imonth": "right",
+    "versionID": "right"
+  },
+  "variable_storage_width": {
+    "ID": 13,
+    "householdID": 11,
+    "communityID": 8,
+    "crosssection": 1,
+    "died": 1,
+    "iyear": 5,
+    "imonth": 3,
+    "versionID": 9
+  },
+  "variable_display_width": {
+    "ID": 12,
+    "householdID": 10,
+    "communityID": 9,
+    "crosssection": 8,
+    "died": 8,
+    "iyear": 9,
+    "imonth": 9,
+    "versionID": 9
+  },
+  "variable_measure": {
+    "ID": "unknown",
+    "householdID": "unknown",
+    "communityID": "unknown",
+    "crosssection": "unknown",
+    "died": "unknown",
+    "iyear": "unknown",
+    "imonth": "unknown",
+    "versionID": "unknown"
+  },
+  "csv_file": "data/curated/2015-wave3/Sample_Infor/Sample_Infor.csv",
+  "parquet_file": "data/curated/2015-wave3/Sample_Infor/Sample_Infor.parquet",
+  "metadata_file": "data/curated/2015-wave3/Sample_Infor/Sample_Infor.metadata.json",
+  "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
+  "parquet_string_columns": [
+    "ID",
+    "householdID",
+    "communityID",
+    "iyear",
+    "imonth",
+    "versionID"
+  ],
+  "parquet_note": "Parquet 要求单列类型稳定；含 Stata 特殊缺失码的 object 列会转成字符串，原始缺失码定义仍记录在 missing_user_values / value_labels 中。"
+}

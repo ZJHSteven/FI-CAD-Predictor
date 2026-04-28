@@ -1,0 +1,111 @@
+{
+  "source_file": "data/extracted/2013-wave2/PSU.dta",
+  "source_sha1": "cb60c36af705a90884d45a47a78e089d3aa763de",
+  "source_backend": "pyreadstat",
+  "row_count": 450,
+  "column_count": 6,
+  "columns": [
+    "communityID",
+    "province",
+    "city",
+    "urban_nbs",
+    "areatype",
+    "versionID"
+  ],
+  "file_label": null,
+  "file_encoding": null,
+  "notes": [],
+  "column_labels": [
+    "Community ID",
+    "Province Name",
+    "City Name",
+    "Urban or Rural according to NBS",
+    "Area Type according to NBS",
+    "Release Version"
+  ],
+  "column_names_to_labels": {
+    "communityID": "Community ID",
+    "province": "Province Name",
+    "city": "City Name",
+    "urban_nbs": "Urban or Rural according to NBS",
+    "areatype": "Area Type according to NBS",
+    "versionID": "Release Version"
+  },
+  "value_labels": {
+    "ur": {
+      "0": "Rural",
+      "1": "Urban"
+    }
+  },
+  "variable_to_label": {
+    "urban_nbs": "ur"
+  },
+  "variable_value_labels": {
+    "urban_nbs": {
+      "0": "Rural",
+      "1": "Urban"
+    }
+  },
+  "original_variable_types": {
+    "communityID": "%9s",
+    "province": "%16s",
+    "city": "%20s",
+    "urban_nbs": "%9.0g",
+    "areatype": "%3s",
+    "versionID": "%9s"
+  },
+  "readstat_variable_types": {
+    "communityID": "string",
+    "province": "string",
+    "city": "string",
+    "urban_nbs": "int8",
+    "areatype": "string",
+    "versionID": "string"
+  },
+  "missing_ranges": {},
+  "missing_user_values": {},
+  "variable_alignment": {
+    "communityID": "right",
+    "province": "right",
+    "city": "right",
+    "urban_nbs": "right",
+    "areatype": "right",
+    "versionID": "right"
+  },
+  "variable_storage_width": {
+    "communityID": 8,
+    "province": 17,
+    "city": 21,
+    "urban_nbs": 1,
+    "areatype": 4,
+    "versionID": 9
+  },
+  "variable_display_width": {
+    "communityID": 9,
+    "province": 16,
+    "city": 20,
+    "urban_nbs": 9,
+    "areatype": 3,
+    "versionID": 9
+  },
+  "variable_measure": {
+    "communityID": "unknown",
+    "province": "unknown",
+    "city": "unknown",
+    "urban_nbs": "unknown",
+    "areatype": "unknown",
+    "versionID": "unknown"
+  },
+  "csv_file": "data/curated/2013-wave2/PSU/PSU.csv",
+  "parquet_file": "data/curated/2013-wave2/PSU/PSU.parquet",
+  "metadata_file": "data/curated/2013-wave2/PSU/PSU.metadata.json",
+  "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
+  "parquet_string_columns": [
+    "communityID",
+    "province",
+    "city",
+    "areatype",
+    "versionID"
+  ],
+  "parquet_note": "Parquet 要求单列类型稳定；含 Stata 特殊缺失码的 object 列会转成字符串，原始缺失码定义仍记录在 missing_user_values / value_labels 中。"
+}

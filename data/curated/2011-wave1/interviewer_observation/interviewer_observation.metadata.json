@@ -1,0 +1,458 @@
+{
+  "source_file": "data/extracted/2011-wave1/interviewer_observation.dta",
+  "source_sha1": "98ac2d9e90836589dbb476c1582fcb7b0368cc88",
+  "source_backend": "pyreadstat",
+  "row_count": 17326,
+  "column_count": 17,
+  "columns": [
+    "ID",
+    "householdID",
+    "communityID",
+    "j001s1",
+    "j001s2",
+    "j001s3",
+    "j001s4",
+    "j001s5",
+    "j001s6",
+    "j002",
+    "j003",
+    "j004s1",
+    "j004s2",
+    "j004s3",
+    "j005",
+    "j006",
+    "j007"
+  ],
+  "file_label": null,
+  "file_encoding": null,
+  "notes": [],
+  "column_labels": [
+    "Individual ID",
+    "Household ID",
+    "Community ID",
+    "Any Third Persons Present During The Inerview",
+    "Any Third Persons Present During The Inerview",
+    "Any Third Persons Present During The Inerview",
+    "Any Third Persons Present During The Inerview",
+    "Any Third Persons Present During The Inerview",
+    "Any Third Persons Present During The Inerview",
+    "Intervene During The Interview",
+    "Describe the Willingness of Respondent",
+    "Reason that Respondents' Willingness to Answer Get Worse During the Interview",
+    "Reason that Respondents' Willingness to Answer Get Worse During the Interview",
+    "Reason that Respondents' Willingness to Answer Get Worse During the Interview",
+    "Respondents Ask for Clarification on Questions",
+    "Understood or Not",
+    "Respondents Need Help Reading the Showcards during the Interview"
+  ],
+  "column_names_to_labels": {
+    "ID": "Individual ID",
+    "householdID": "Household ID",
+    "communityID": "Community ID",
+    "j001s1": "Any Third Persons Present During The Inerview",
+    "j001s2": "Any Third Persons Present During The Inerview",
+    "j001s3": "Any Third Persons Present During The Inerview",
+    "j001s4": "Any Third Persons Present During The Inerview",
+    "j001s5": "Any Third Persons Present During The Inerview",
+    "j001s6": "Any Third Persons Present During The Inerview",
+    "j002": "Intervene During The Interview",
+    "j003": "Describe the Willingness of Respondent",
+    "j004s1": "Reason that Respondents' Willingness to Answer Get Worse During the Interview",
+    "j004s2": "Reason that Respondents' Willingness to Answer Get Worse During the Interview",
+    "j004s3": "Reason that Respondents' Willingness to Answer Get Worse During the Interview",
+    "j005": "Respondents Ask for Clarification on Questions",
+    "j006": "Understood or Not",
+    "j007": "Respondents Need Help Reading the Showcards during the Interview"
+  },
+  "value_labels": {
+    "i173": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "i174": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "i175": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "i176": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "i177": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "i178": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "i179": {
+      "1": "1 Yes, often",
+      "2": "2 Yes, occasionally",
+      "3": "3 No"
+    },
+    "i180": {
+      "1": "1 Very good",
+      "2": "2 Good",
+      "3": "3 Fair",
+      "4": "4 Bad",
+      "5": "5 Good in the beginning, got worse during the interview",
+      "6": "6 Bad in the beginning, got better during the interview"
+    },
+    "i182": {
+      "1": "1 The respondent was losing interest",
+      "2": "2 The respondent was losing concentration or was getting tired",
+      "3": "3 Other, please specify"
+    },
+    "i183": {
+      "1": "1 The respondent was losing interest",
+      "2": "2 The respondent was losing concentration or was getting tired",
+      "3": "3 Other, please specify"
+    },
+    "i184": {
+      "1": "1 The respondent was losing interest",
+      "2": "2 The respondent was losing concentration or was getting tired",
+      "3": "3 Other, please specify"
+    },
+    "i185": {
+      "1": "1 Never",
+      "2": "2 Almost never",
+      "3": "3 Now and then",
+      "4": "4 Often",
+      "5": "5 Very often",
+      "6": "6 Always"
+    },
+    "i186": {
+      "1": "1 Never",
+      "2": "2 Almost never",
+      "3": "3 Now and then",
+      "4": "4 Often",
+      "5": "5 Very often",
+      "6": "6 Always"
+    },
+    "i187": {
+      "1": "1 Yes, due to sight problems",
+      "2": "2 Yes, due to literacy problems",
+      "3": "3 No"
+    }
+  },
+  "variable_to_label": {
+    "j001s1": "i173",
+    "j001s2": "i174",
+    "j001s3": "i175",
+    "j001s4": "i176",
+    "j001s5": "i177",
+    "j001s6": "i178",
+    "j002": "i179",
+    "j003": "i180",
+    "j004s1": "i182",
+    "j004s2": "i183",
+    "j004s3": "i184",
+    "j005": "i185",
+    "j006": "i186",
+    "j007": "i187"
+  },
+  "variable_value_labels": {
+    "j001s1": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "j001s2": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "j001s3": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "j001s4": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "j001s5": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "j001s6": {
+      "1": "1 Nobody",
+      "2": "2 Spouse or partner",
+      "3": "3 Parent or parents",
+      "4": "4 Child or children",
+      "5": "5 Other relatives",
+      "6": "6 Other persons present"
+    },
+    "j002": {
+      "1": "1 Yes, often",
+      "2": "2 Yes, occasionally",
+      "3": "3 No"
+    },
+    "j003": {
+      "1": "1 Very good",
+      "2": "2 Good",
+      "3": "3 Fair",
+      "4": "4 Bad",
+      "5": "5 Good in the beginning, got worse during the interview",
+      "6": "6 Bad in the beginning, got better during the interview"
+    },
+    "j004s1": {
+      "1": "1 The respondent was losing interest",
+      "2": "2 The respondent was losing concentration or was getting tired",
+      "3": "3 Other, please specify"
+    },
+    "j004s2": {
+      "1": "1 The respondent was losing interest",
+      "2": "2 The respondent was losing concentration or was getting tired",
+      "3": "3 Other, please specify"
+    },
+    "j004s3": {
+      "1": "1 The respondent was losing interest",
+      "2": "2 The respondent was losing concentration or was getting tired",
+      "3": "3 Other, please specify"
+    },
+    "j005": {
+      "1": "1 Never",
+      "2": "2 Almost never",
+      "3": "3 Now and then",
+      "4": "4 Often",
+      "5": "5 Very often",
+      "6": "6 Always"
+    },
+    "j006": {
+      "1": "1 Never",
+      "2": "2 Almost never",
+      "3": "3 Now and then",
+      "4": "4 Often",
+      "5": "5 Very often",
+      "6": "6 Always"
+    },
+    "j007": {
+      "1": "1 Yes, due to sight problems",
+      "2": "2 Yes, due to literacy problems",
+      "3": "3 No"
+    }
+  },
+  "original_variable_types": {
+    "ID": "%11s",
+    "householdID": "%9s",
+    "communityID": "%9s",
+    "j001s1": "%1.0f",
+    "j001s2": "%1.0f",
+    "j001s3": "%1.0f",
+    "j001s4": "%1.0f",
+    "j001s5": "%1.0f",
+    "j001s6": "%1.0f",
+    "j002": "%1.0f",
+    "j003": "%1.0f",
+    "j004s1": "%1.0f",
+    "j004s2": "%1.0f",
+    "j004s3": "%1.0f",
+    "j005": "%1.0f",
+    "j006": "%1.0f",
+    "j007": "%1.0f"
+  },
+  "readstat_variable_types": {
+    "ID": "string",
+    "householdID": "string",
+    "communityID": "string",
+    "j001s1": "int8",
+    "j001s2": "int8",
+    "j001s3": "int8",
+    "j001s4": "int8",
+    "j001s5": "int8",
+    "j001s6": "int8",
+    "j002": "int8",
+    "j003": "int8",
+    "j004s1": "int8",
+    "j004s2": "int8",
+    "j004s3": "int8",
+    "j005": "int8",
+    "j006": "int8",
+    "j007": "int8"
+  },
+  "missing_ranges": {},
+  "missing_user_values": {
+    "j001s1": [
+      "e"
+    ],
+    "j001s3": [
+      "e"
+    ],
+    "j001s4": [
+      "e"
+    ],
+    "j001s6": [
+      "e"
+    ],
+    "j004s1": [
+      "e"
+    ],
+    "j004s2": [
+      "e"
+    ],
+    "j001s2": [
+      "e"
+    ],
+    "j001s5": [
+      "e"
+    ],
+    "j004s3": [
+      "e"
+    ],
+    "j003": [
+      "e"
+    ],
+    "j007": [
+      "e"
+    ],
+    "j005": [
+      "e"
+    ]
+  },
+  "variable_alignment": {
+    "ID": "right",
+    "householdID": "right",
+    "communityID": "right",
+    "j001s1": "right",
+    "j001s2": "right",
+    "j001s3": "right",
+    "j001s4": "right",
+    "j001s5": "right",
+    "j001s6": "right",
+    "j002": "right",
+    "j003": "right",
+    "j004s1": "right",
+    "j004s2": "right",
+    "j004s3": "right",
+    "j005": "right",
+    "j006": "right",
+    "j007": "right"
+  },
+  "variable_storage_width": {
+    "ID": 12,
+    "householdID": 10,
+    "communityID": 8,
+    "j001s1": 1,
+    "j001s2": 1,
+    "j001s3": 1,
+    "j001s4": 1,
+    "j001s5": 1,
+    "j001s6": 1,
+    "j002": 1,
+    "j003": 1,
+    "j004s1": 1,
+    "j004s2": 1,
+    "j004s3": 1,
+    "j005": 1,
+    "j006": 1,
+    "j007": 1
+  },
+  "variable_display_width": {
+    "ID": 11,
+    "householdID": 9,
+    "communityID": 9,
+    "j001s1": 1,
+    "j001s2": 1,
+    "j001s3": 1,
+    "j001s4": 1,
+    "j001s5": 1,
+    "j001s6": 1,
+    "j002": 1,
+    "j003": 1,
+    "j004s1": 1,
+    "j004s2": 1,
+    "j004s3": 1,
+    "j005": 1,
+    "j006": 1,
+    "j007": 1
+  },
+  "variable_measure": {
+    "ID": "unknown",
+    "householdID": "unknown",
+    "communityID": "unknown",
+    "j001s1": "unknown",
+    "j001s2": "unknown",
+    "j001s3": "unknown",
+    "j001s4": "unknown",
+    "j001s5": "unknown",
+    "j001s6": "unknown",
+    "j002": "unknown",
+    "j003": "unknown",
+    "j004s1": "unknown",
+    "j004s2": "unknown",
+    "j004s3": "unknown",
+    "j005": "unknown",
+    "j006": "unknown",
+    "j007": "unknown"
+  },
+  "csv_file": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.csv",
+  "parquet_file": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.parquet",
+  "metadata_file": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.metadata.json",
+  "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
+  "parquet_string_columns": [
+    "ID",
+    "householdID",
+    "communityID",
+    "j001s1",
+    "j001s2",
+    "j001s3",
+    "j001s4",
+    "j001s5",
+    "j001s6",
+    "j002",
+    "j003",
+    "j004s1",
+    "j004s2",
+    "j004s3",
+    "j005",
+    "j006",
+    "j007"
+  ],
+  "parquet_note": "Parquet 要求单列类型稳定；含 Stata 特殊缺失码的 object 列会转成字符串，原始缺失码定义仍记录在 missing_user_values / value_labels 中。"
+}

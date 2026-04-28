@@ -1,0 +1,227 @@
+{
+  "source_file": "data/extracted/2015-wave3/Household_Member.dta",
+  "source_sha1": "c36b6145bf150dc2184c8ab9498c6586f684dfdf",
+  "source_backend": "pyreadstat",
+  "row_count": 30048,
+  "column_count": 12,
+  "columns": [
+    "ID",
+    "householdID",
+    "communityID",
+    "HHmemberID",
+    "member_type",
+    "type_id",
+    "a005_w3",
+    "a006_w3",
+    "a006_w3_1",
+    "a006_w3_2",
+    "a006",
+    "versionID"
+  ],
+  "file_label": "Household Member",
+  "file_encoding": null,
+  "notes": [],
+  "column_labels": [
+    "Individual ID",
+    "Household ID",
+    "Community ID",
+    "Household Member Id",
+    "Household Member Type",
+    "Household Member Type Id",
+    "Gender",
+    "Lunar Or Solar",
+    "Birth Year",
+    "Birth Month",
+    "Relationship",
+    "Version ID"
+  ],
+  "column_names_to_labels": {
+    "ID": "Individual ID",
+    "householdID": "Household ID",
+    "communityID": "Community ID",
+    "HHmemberID": "Household Member Id",
+    "member_type": "Household Member Type",
+    "type_id": "Household Member Type Id",
+    "a005_w3": "Gender",
+    "a006_w3": "Lunar Or Solar",
+    "a006_w3_1": "Birth Year",
+    "a006_w3_2": "Birth Month",
+    "a006": "Relationship",
+    "versionID": "Version ID"
+  },
+  "value_labels": {
+    "a006": {
+      "1": "1 Mother",
+      "2": "2 Father",
+      "3": "3 Mother-in-Law",
+      "4": "4 Father-in-Law",
+      "5": "5 Sibling",
+      "6": "6 Brother-in-Law, Sister-in-Law",
+      "7": "7 Child",
+      "8": "8 Spouse of Child",
+      "9": "9 Grandchild",
+      "10": "10 Nanny",
+      "11": "11 Driver",
+      "12": "12 Other Relative"
+    },
+    "a006_w3": {
+      "1": "1 Lunar",
+      "2": "2 Solar"
+    },
+    "a005_w3": {
+      "1": "1 Male",
+      "2": "2 Female"
+    },
+    "member_type": {
+      "1": "1 Self",
+      "2": "2 Spouse",
+      "3": "3 Parent",
+      "4": "4 Child",
+      "5": "5 Sibling",
+      "6": "6 Spousal Sibling",
+      "7": "7 Other"
+    }
+  },
+  "variable_to_label": {
+    "member_type": "member_type",
+    "a005_w3": "a005_w3",
+    "a006_w3": "a006_w3",
+    "a006": "a006"
+  },
+  "variable_value_labels": {
+    "member_type": {
+      "1": "1 Self",
+      "2": "2 Spouse",
+      "3": "3 Parent",
+      "4": "4 Child",
+      "5": "5 Sibling",
+      "6": "6 Spousal Sibling",
+      "7": "7 Other"
+    },
+    "a005_w3": {
+      "1": "1 Male",
+      "2": "2 Female"
+    },
+    "a006_w3": {
+      "1": "1 Lunar",
+      "2": "2 Solar"
+    },
+    "a006": {
+      "1": "1 Mother",
+      "2": "2 Father",
+      "3": "3 Mother-in-Law",
+      "4": "4 Father-in-Law",
+      "5": "5 Sibling",
+      "6": "6 Brother-in-Law, Sister-in-Law",
+      "7": "7 Child",
+      "8": "8 Spouse of Child",
+      "9": "9 Grandchild",
+      "10": "10 Nanny",
+      "11": "11 Driver",
+      "12": "12 Other Relative"
+    }
+  },
+  "original_variable_types": {
+    "ID": "%12s",
+    "householdID": "%10s",
+    "communityID": "%9s",
+    "HHmemberID": "%8.0g",
+    "member_type": "%8.0g",
+    "type_id": "%8.0g",
+    "a005_w3": "%8.0g",
+    "a006_w3": "%8.0g",
+    "a006_w3_1": "%8.0g",
+    "a006_w3_2": "%8.0g",
+    "a006": "%8.0g",
+    "versionID": "%9s"
+  },
+  "readstat_variable_types": {
+    "ID": "string",
+    "householdID": "string",
+    "communityID": "string",
+    "HHmemberID": "int8",
+    "member_type": "int8",
+    "type_id": "int8",
+    "a005_w3": "int8",
+    "a006_w3": "int8",
+    "a006_w3_1": "int16",
+    "a006_w3_2": "int8",
+    "a006": "int8",
+    "versionID": "string"
+  },
+  "missing_ranges": {},
+  "missing_user_values": {},
+  "variable_alignment": {
+    "ID": "right",
+    "householdID": "right",
+    "communityID": "right",
+    "HHmemberID": "right",
+    "member_type": "right",
+    "type_id": "right",
+    "a005_w3": "right",
+    "a006_w3": "right",
+    "a006_w3_1": "right",
+    "a006_w3_2": "right",
+    "a006": "right",
+    "versionID": "right"
+  },
+  "variable_storage_width": {
+    "ID": 13,
+    "householdID": 11,
+    "communityID": 8,
+    "HHmemberID": 1,
+    "member_type": 1,
+    "type_id": 1,
+    "a005_w3": 1,
+    "a006_w3": 1,
+    "a006_w3_1": 2,
+    "a006_w3_2": 1,
+    "a006": 1,
+    "versionID": 9
+  },
+  "variable_display_width": {
+    "ID": 12,
+    "householdID": 10,
+    "communityID": 9,
+    "HHmemberID": 8,
+    "member_type": 8,
+    "type_id": 8,
+    "a005_w3": 8,
+    "a006_w3": 8,
+    "a006_w3_1": 8,
+    "a006_w3_2": 8,
+    "a006": 8,
+    "versionID": 9
+  },
+  "variable_measure": {
+    "ID": "unknown",
+    "householdID": "unknown",
+    "communityID": "unknown",
+    "HHmemberID": "unknown",
+    "member_type": "unknown",
+    "type_id": "unknown",
+    "a005_w3": "unknown",
+    "a006_w3": "unknown",
+    "a006_w3_1": "unknown",
+    "a006_w3_2": "unknown",
+    "a006": "unknown",
+    "versionID": "unknown"
+  },
+  "csv_file": "data/curated/2015-wave3/Household_Member/Household_Member.csv",
+  "parquet_file": "data/curated/2015-wave3/Household_Member/Household_Member.parquet",
+  "metadata_file": "data/curated/2015-wave3/Household_Member/Household_Member.metadata.json",
+  "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
+  "parquet_string_columns": [
+    "ID",
+    "householdID",
+    "communityID",
+    "type_id",
+    "a005_w3",
+    "a006_w3",
+    "a006_w3_1",
+    "a006_w3_2",
+    "a006",
+    "versionID"
+  ],
+  "parquet_note": "Parquet 要求单列类型稳定；含 Stata 特殊缺失码的 object 列会转成字符串，原始缺失码定义仍记录在 missing_user_values / value_labels 中。"
+}

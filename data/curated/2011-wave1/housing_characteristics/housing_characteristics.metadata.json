@@ -1,0 +1,763 @@
+{
+  "source_file": "data/extracted/2011-wave1/housing_characteristics.dta",
+  "source_sha1": "b03aa21360529da6b96f541506d833f18902fb2b",
+  "source_backend": "pyreadstat",
+  "row_count": 10081,
+  "column_count": 34,
+  "columns": [
+    "householdID",
+    "communityID",
+    "i001",
+    "i002",
+    "i003",
+    "i004",
+    "i005",
+    "i005_1",
+    "i006",
+    "i007",
+    "i008",
+    "i009",
+    "i010",
+    "i011",
+    "i012_1",
+    "i012_2",
+    "i012_3",
+    "i012_4",
+    "i012_5",
+    "i013",
+    "i014s1",
+    "i014s2",
+    "i015",
+    "i016",
+    "i017",
+    "i018",
+    "i019",
+    "i020",
+    "i021",
+    "i022",
+    "i023",
+    "i024",
+    "i025",
+    "i026"
+  ],
+  "file_label": null,
+  "file_encoding": null,
+  "notes": [],
+  "column_labels": [
+    "Household ID",
+    "Community ID",
+    "Construction Area of Your Residence",
+    "Total Housing Land Area",
+    "Residence is Used for Business As Well",
+    "Structure Type of This Building",
+    "Year",
+    "Category",
+    "One Story or Multi-Level",
+    "Is the Story Independent or Compound",
+    "Which Story is this Building on",
+    "Does It Has Elevator",
+    "Are There Any Handicapped Facilities",
+    "How Many Steps",
+    "Num. of Bedrooms",
+    "Num. of Living Rooms",
+    "Num. of Toilets",
+    "Num. of Kitchens",
+    "Num. of Balcony",
+    "How Far is the Nearest Toilet to Your House",
+    "Type of Toilet",
+    "Type of Toilet",
+    "Is the Toilet Flushable",
+    "Residence Has Electricity",
+    "Residence Has Running Water",
+    "In-House Shower or Bath Facility",
+    "Residence Has Coal Gas or Natural Gas Supply",
+    "Residence Has Heating",
+    "Heating Energy Source",
+    "Main Source of Cooking Fuel",
+    "Residence Has a Telephone Connection",
+    "Residence Has Broad-Band Internet Connection",
+    "How Clear and Tity is in this Household",
+    "How is the Temperature in this Household"
+  ],
+  "column_names_to_labels": {
+    "householdID": "Household ID",
+    "communityID": "Community ID",
+    "i001": "Construction Area of Your Residence",
+    "i002": "Total Housing Land Area",
+    "i003": "Residence is Used for Business As Well",
+    "i004": "Structure Type of This Building",
+    "i005": "Year",
+    "i005_1": "Category",
+    "i006": "One Story or Multi-Level",
+    "i007": "Is the Story Independent or Compound",
+    "i008": "Which Story is this Building on",
+    "i009": "Does It Has Elevator",
+    "i010": "Are There Any Handicapped Facilities",
+    "i011": "How Many Steps",
+    "i012_1": "Num. of Bedrooms",
+    "i012_2": "Num. of Living Rooms",
+    "i012_3": "Num. of Toilets",
+    "i012_4": "Num. of Kitchens",
+    "i012_5": "Num. of Balcony",
+    "i013": "How Far is the Nearest Toilet to Your House",
+    "i014s1": "Type of Toilet",
+    "i014s2": "Type of Toilet",
+    "i015": "Is the Toilet Flushable",
+    "i016": "Residence Has Electricity",
+    "i017": "Residence Has Running Water",
+    "i018": "In-House Shower or Bath Facility",
+    "i019": "Residence Has Coal Gas or Natural Gas Supply",
+    "i020": "Residence Has Heating",
+    "i021": "Heating Energy Source",
+    "i022": "Main Source of Cooking Fuel",
+    "i023": "Residence Has a Telephone Connection",
+    "i024": "Residence Has Broad-Band Internet Connection",
+    "i025": "How Clear and Tity is in this Household",
+    "i026": "How is the Temperature in this Household"
+  },
+  "value_labels": {
+    "i210": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i209": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i208": {
+      "1": "1 Excellent",
+      "2": "2 Very clear",
+      "3": "3 Clear",
+      "4": "4 Fair",
+      "5": "5 Poor"
+    },
+    "i207": {
+      "1": "1 Very hot",
+      "2": "2 Hot",
+      "3": "3 Bearable",
+      "4": "4 Cold",
+      "5": "5 Very cold"
+    },
+    "i206": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i205": {
+      "1": "1 Solar",
+      "2": "2 Coal",
+      "3": "3 Natural gas",
+      "4": "4 Liquefied Petroleum Gas",
+      "5": "5 Electric",
+      "6": "6 Crop residue/Wood buring",
+      "7": "7 Other"
+    },
+    "i204": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i203": {
+      "1": "1 Hot water provided",
+      "2": "2 Water heater installed by the household",
+      "3": "3 No"
+    },
+    "i202": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i197": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i196": {
+      "1": "1 Toilet without a seat",
+      "2": "2 Toilet with a seat"
+    },
+    "i195": {
+      "1": "1 Toilet without a seat",
+      "2": "2 Toilet with a seat"
+    },
+    "i187": {
+      "1": "1 1- 5",
+      "2": "2 6 to 15",
+      "3": "3 16 to 25",
+      "4": "4 More than 25"
+    },
+    "i186": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i185": {
+      "1": "1 Independent story",
+      "2": "2  Compound"
+    },
+    "i183": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i182": {
+      "1": "1 One-story building",
+      "2": "2 Multi-story building"
+    },
+    "i180": {
+      "1": "1 0-5years",
+      "2": "2 5-10years",
+      "3": "3 10-20years",
+      "4": "4 20-30years",
+      "5": "5 30-40years",
+      "6": "6 above 40 years"
+    },
+    "i179": {
+      "1": "1 Concrete and steel",
+      "2": "2 Bricks and wood",
+      "3": "3 Mixed structure",
+      "4": "4 Wood, bamboo, grass",
+      "5": "5 Woolen felt",
+      "6": "6 Sheet iron",
+      "7": "7 Cave dwelling",
+      "8": "8 Tent",
+      "9": "9 adobe",
+      "10": "10 Other"
+    },
+    "i176": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i174": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i173": {
+      "1": "1 Coal",
+      "2": "2 Natural gas",
+      "3": "3 Marsh gas",
+      "4": "4 Liquefied Petroleum Gas",
+      "5": "5 Electric",
+      "6": "6 crop residue/Wood burning",
+      "7": "7 other"
+    }
+  },
+  "variable_to_label": {
+    "i003": "i176",
+    "i004": "i179",
+    "i005_1": "i180",
+    "i006": "i182",
+    "i007": "i185",
+    "i009": "i183",
+    "i010": "i186",
+    "i011": "i187",
+    "i014s1": "i195",
+    "i014s2": "i196",
+    "i015": "i197",
+    "i016": "i174",
+    "i017": "i202",
+    "i018": "i203",
+    "i019": "i204",
+    "i020": "i206",
+    "i021": "i205",
+    "i022": "i173",
+    "i023": "i210",
+    "i024": "i209",
+    "i025": "i208",
+    "i026": "i207"
+  },
+  "variable_value_labels": {
+    "i003": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i004": {
+      "1": "1 Concrete and steel",
+      "2": "2 Bricks and wood",
+      "3": "3 Mixed structure",
+      "4": "4 Wood, bamboo, grass",
+      "5": "5 Woolen felt",
+      "6": "6 Sheet iron",
+      "7": "7 Cave dwelling",
+      "8": "8 Tent",
+      "9": "9 adobe",
+      "10": "10 Other"
+    },
+    "i005_1": {
+      "1": "1 0-5years",
+      "2": "2 5-10years",
+      "3": "3 10-20years",
+      "4": "4 20-30years",
+      "5": "5 30-40years",
+      "6": "6 above 40 years"
+    },
+    "i006": {
+      "1": "1 One-story building",
+      "2": "2 Multi-story building"
+    },
+    "i007": {
+      "1": "1 Independent story",
+      "2": "2  Compound"
+    },
+    "i009": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i010": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i011": {
+      "1": "1 1- 5",
+      "2": "2 6 to 15",
+      "3": "3 16 to 25",
+      "4": "4 More than 25"
+    },
+    "i014s1": {
+      "1": "1 Toilet without a seat",
+      "2": "2 Toilet with a seat"
+    },
+    "i014s2": {
+      "1": "1 Toilet without a seat",
+      "2": "2 Toilet with a seat"
+    },
+    "i015": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i016": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i017": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i018": {
+      "1": "1 Hot water provided",
+      "2": "2 Water heater installed by the household",
+      "3": "3 No"
+    },
+    "i019": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i020": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i021": {
+      "1": "1 Solar",
+      "2": "2 Coal",
+      "3": "3 Natural gas",
+      "4": "4 Liquefied Petroleum Gas",
+      "5": "5 Electric",
+      "6": "6 Crop residue/Wood buring",
+      "7": "7 Other"
+    },
+    "i022": {
+      "1": "1 Coal",
+      "2": "2 Natural gas",
+      "3": "3 Marsh gas",
+      "4": "4 Liquefied Petroleum Gas",
+      "5": "5 Electric",
+      "6": "6 crop residue/Wood burning",
+      "7": "7 other"
+    },
+    "i023": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i024": {
+      "1": "1 Yes",
+      "2": "2 No"
+    },
+    "i025": {
+      "1": "1 Excellent",
+      "2": "2 Very clear",
+      "3": "3 Clear",
+      "4": "4 Fair",
+      "5": "5 Poor"
+    },
+    "i026": {
+      "1": "1 Very hot",
+      "2": "2 Hot",
+      "3": "3 Bearable",
+      "4": "4 Cold",
+      "5": "5 Very cold"
+    }
+  },
+  "original_variable_types": {
+    "householdID": "%9s",
+    "communityID": "%9s",
+    "i001": "%4.0f",
+    "i002": "%5.0f",
+    "i003": "%2.0f",
+    "i004": "%2.0f",
+    "i005": "%4.0f",
+    "i005_1": "%2.0f",
+    "i006": "%2.0f",
+    "i007": "%2.0f",
+    "i008": "%3.0f",
+    "i009": "%1.0f",
+    "i010": "%2.0f",
+    "i011": "%2.0f",
+    "i012_1": "%2.0f",
+    "i012_2": "%2.0f",
+    "i012_3": "%2.0f",
+    "i012_4": "%2.0f",
+    "i012_5": "%2.0f",
+    "i013": "%4.0f",
+    "i014s1": "%1.0f",
+    "i014s2": "%1.0f",
+    "i015": "%2.0f",
+    "i016": "%2.0f",
+    "i017": "%2.0f",
+    "i018": "%2.0f",
+    "i019": "%2.0f",
+    "i020": "%2.0f",
+    "i021": "%2.0f",
+    "i022": "%2.0f",
+    "i023": "%2.0f",
+    "i024": "%2.0f",
+    "i025": "%2.0f",
+    "i026": "%2.0f"
+  },
+  "readstat_variable_types": {
+    "householdID": "string",
+    "communityID": "string",
+    "i001": "int16",
+    "i002": "int16",
+    "i003": "int8",
+    "i004": "int8",
+    "i005": "int16",
+    "i005_1": "int8",
+    "i006": "int8",
+    "i007": "int8",
+    "i008": "int16",
+    "i009": "int8",
+    "i010": "int8",
+    "i011": "int8",
+    "i012_1": "int8",
+    "i012_2": "int8",
+    "i012_3": "int8",
+    "i012_4": "int8",
+    "i012_5": "int8",
+    "i013": "int16",
+    "i014s1": "int8",
+    "i014s2": "int8",
+    "i015": "int8",
+    "i016": "int8",
+    "i017": "int8",
+    "i018": "int8",
+    "i019": "int8",
+    "i020": "int8",
+    "i021": "int8",
+    "i022": "int8",
+    "i023": "int8",
+    "i024": "int8",
+    "i025": "int8",
+    "i026": "int8"
+  },
+  "missing_ranges": {},
+  "missing_user_values": {
+    "i005": [
+      "d",
+      "e",
+      "r"
+    ],
+    "i014s2": [
+      "d",
+      "e",
+      "r"
+    ],
+    "i014s1": [
+      "d",
+      "e",
+      "r"
+    ],
+    "i005_1": [
+      "d",
+      "e"
+    ],
+    "i012_1": [
+      "d",
+      "r"
+    ],
+    "i012_2": [
+      "d",
+      "r"
+    ],
+    "i012_3": [
+      "d",
+      "r"
+    ],
+    "i012_4": [
+      "d",
+      "r"
+    ],
+    "i012_5": [
+      "d",
+      "r"
+    ],
+    "i025": [
+      "d"
+    ],
+    "i026": [
+      "d"
+    ],
+    "i001": [
+      "d",
+      "r"
+    ],
+    "i002": [
+      "d",
+      "r"
+    ],
+    "i013": [
+      "d",
+      "r"
+    ],
+    "i019": [
+      "d",
+      "r"
+    ],
+    "i010": [
+      "d"
+    ],
+    "i011": [
+      "d",
+      "r"
+    ],
+    "i021": [
+      "d",
+      "r"
+    ],
+    "i024": [
+      "d",
+      "r"
+    ],
+    "i015": [
+      "d",
+      "r"
+    ],
+    "i016": [
+      "d"
+    ],
+    "i017": [
+      "d"
+    ],
+    "i004": [
+      "d",
+      "r"
+    ],
+    "i008": [
+      "d",
+      "r"
+    ],
+    "i023": [
+      "d",
+      "r"
+    ],
+    "i018": [
+      "d",
+      "r"
+    ],
+    "i007": [
+      "d"
+    ],
+    "i022": [
+      "d",
+      "r"
+    ],
+    "i006": [
+      "d"
+    ],
+    "i003": [
+      "d"
+    ],
+    "i020": [
+      "d",
+      "r"
+    ]
+  },
+  "variable_alignment": {
+    "householdID": "right",
+    "communityID": "right",
+    "i001": "right",
+    "i002": "right",
+    "i003": "right",
+    "i004": "right",
+    "i005": "right",
+    "i005_1": "right",
+    "i006": "right",
+    "i007": "right",
+    "i008": "right",
+    "i009": "right",
+    "i010": "right",
+    "i011": "right",
+    "i012_1": "right",
+    "i012_2": "right",
+    "i012_3": "right",
+    "i012_4": "right",
+    "i012_5": "right",
+    "i013": "right",
+    "i014s1": "right",
+    "i014s2": "right",
+    "i015": "right",
+    "i016": "right",
+    "i017": "right",
+    "i018": "right",
+    "i019": "right",
+    "i020": "right",
+    "i021": "right",
+    "i022": "right",
+    "i023": "right",
+    "i024": "right",
+    "i025": "right",
+    "i026": "right"
+  },
+  "variable_storage_width": {
+    "householdID": 10,
+    "communityID": 8,
+    "i001": 2,
+    "i002": 2,
+    "i003": 1,
+    "i004": 1,
+    "i005": 2,
+    "i005_1": 1,
+    "i006": 1,
+    "i007": 1,
+    "i008": 2,
+    "i009": 1,
+    "i010": 1,
+    "i011": 1,
+    "i012_1": 1,
+    "i012_2": 1,
+    "i012_3": 1,
+    "i012_4": 1,
+    "i012_5": 1,
+    "i013": 2,
+    "i014s1": 1,
+    "i014s2": 1,
+    "i015": 1,
+    "i016": 1,
+    "i017": 1,
+    "i018": 1,
+    "i019": 1,
+    "i020": 1,
+    "i021": 1,
+    "i022": 1,
+    "i023": 1,
+    "i024": 1,
+    "i025": 1,
+    "i026": 1
+  },
+  "variable_display_width": {
+    "householdID": 9,
+    "communityID": 9,
+    "i001": 4,
+    "i002": 5,
+    "i003": 2,
+    "i004": 2,
+    "i005": 4,
+    "i005_1": 2,
+    "i006": 2,
+    "i007": 2,
+    "i008": 3,
+    "i009": 1,
+    "i010": 2,
+    "i011": 2,
+    "i012_1": 2,
+    "i012_2": 2,
+    "i012_3": 2,
+    "i012_4": 2,
+    "i012_5": 2,
+    "i013": 4,
+    "i014s1": 1,
+    "i014s2": 1,
+    "i015": 2,
+    "i016": 2,
+    "i017": 2,
+    "i018": 2,
+    "i019": 2,
+    "i020": 2,
+    "i021": 2,
+    "i022": 2,
+    "i023": 2,
+    "i024": 2,
+    "i025": 2,
+    "i026": 2
+  },
+  "variable_measure": {
+    "householdID": "unknown",
+    "communityID": "unknown",
+    "i001": "unknown",
+    "i002": "unknown",
+    "i003": "unknown",
+    "i004": "unknown",
+    "i005": "unknown",
+    "i005_1": "unknown",
+    "i006": "unknown",
+    "i007": "unknown",
+    "i008": "unknown",
+    "i009": "unknown",
+    "i010": "unknown",
+    "i011": "unknown",
+    "i012_1": "unknown",
+    "i012_2": "unknown",
+    "i012_3": "unknown",
+    "i012_4": "unknown",
+    "i012_5": "unknown",
+    "i013": "unknown",
+    "i014s1": "unknown",
+    "i014s2": "unknown",
+    "i015": "unknown",
+    "i016": "unknown",
+    "i017": "unknown",
+    "i018": "unknown",
+    "i019": "unknown",
+    "i020": "unknown",
+    "i021": "unknown",
+    "i022": "unknown",
+    "i023": "unknown",
+    "i024": "unknown",
+    "i025": "unknown",
+    "i026": "unknown"
+  },
+  "csv_file": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.csv",
+  "parquet_file": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.parquet",
+  "metadata_file": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.metadata.json",
+  "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
+  "parquet_string_columns": [
+    "householdID",
+    "communityID",
+    "i001",
+    "i002",
+    "i003",
+    "i004",
+    "i005",
+    "i005_1",
+    "i006",
+    "i007",
+    "i008",
+    "i009",
+    "i010",
+    "i011",
+    "i012_1",
+    "i012_2",
+    "i012_3",
+    "i012_4",
+    "i012_5",
+    "i013",
+    "i014s1",
+    "i014s2",
+    "i015",
+    "i016",
+    "i017",
+    "i018",
+    "i019",
+    "i020",
+    "i021",
+    "i022",
+    "i023",
+    "i024",
+    "i025",
+    "i026"
+  ],
+  "parquet_note": "Parquet 要求单列类型稳定；含 Stata 特殊缺失码的 object 列会转成字符串，原始缺失码定义仍记录在 missing_user_values / value_labels 中。"
+}
