@@ -386,6 +386,47 @@ def rebuild_extracted(raw_root: Path = RAW_ROOT, extracted_root: Path = EXTRACTE
     return records
 
 
+def scan_existing_extracted(raw_root: Path = RAW_ROOT, extracted_root: Path = EXTRACTED_ROOT) -> list[dict[str, Any]]:
+    """从现有 RAW 和 extracted 层恢复解压审计结果。
+
+    使用场景：
+    - `--skip-extract` 表示不重新解压。
+    - audit 仍应记录每个计划压缩包的 SHA1、成员列表和 extracted 是否已有对应 DTA。
+    """
+
+    records: list[dict[str, Any]] = []
+    for wave in WAVES:
+        wave_raw = raw_root / wave.slug
+        wave_out = extracted_root / wave.slug
+        existing_dta_names = {path.name for path in wave_out.rglob("*.dta")}
+        for archive_name in EXTRACTION_PLAN[wave.slug]:
+            archive_path = wave_raw / archive_name
+            if not archive_path.exists():
+                records.append(
+                    {
+                        "wave": wave.slug,
+                        "archive": archive_name,
+                        "status": "missing",
+                        "message": "EXTRACTION_PLAN 中列出，但 RAW 目录不存在。",
+                    }
+                )
+                continue
+            members = list_archive_members(archive_path)
+            dta_members = [Path(member).name for member in members if Path(member).suffix.lower() == ".dta"]
+            records.append(
+                {
+                    "wave": wave.slug,
+                    "archive": archive_name,
+                    "status": "ok" if all(member in existing_dta_names for member in dta_members) else "extracted_dta_missing",
+                    "sha1": compute_sha1(archive_path),
+                    "members": members,
+                    "member_count": len(members),
+                    "dta_members": dta_members,
+                }
+            )
+    return records
+
+
 def make_json_safe(value: Any) -> Any:
     """把 pyreadstat/pandas/numpy 对象转换成 JSON 可写结构。"""
 
@@ -737,7 +778,9 @@ def run_pipeline(*, skip_extract: bool = False, skip_curate: bool = False) -> di
     extraction_results: list[dict[str, Any]] = []
     curated_results: list[dict[str, Any]] = []
 
-    if not skip_extract:
+    if skip_extract:
+        extraction_results = scan_existing_extracted()
+    else:
         extraction_results = rebuild_extracted()
     if skip_curate:
         curated_results = scan_existing_curated()
