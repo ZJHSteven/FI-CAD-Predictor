@@ -29,3 +29,5 @@ data/raw/*
 !data/raw/.gitignore
 !data/raw/.gitkeep
 
+# 根目录里偶尔会落下手动下载的大包，避免它反复污染工作区
+/CHARLS2013_Dataset.zip

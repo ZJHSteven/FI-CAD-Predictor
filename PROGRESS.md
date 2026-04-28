@@ -3,8 +3,8 @@
 ## 当前结论（必须最新）
 - 现状：仓库已经完成 CHARLS 原始数据的第一轮整理，`data/raw`、`data/extracted`、`data/curated` 三层都落地了，`data/MANIFEST.md` 也已经生成。
 - 已完成：原始目录统一成 `2011-wave1` 到 `2020-wave5`，写出了整理脚本、清单生成、CSV 导出和测试。
-- 正在做：只剩少量异常文件的后续处理和未来建模前的数据口径确认。
-- 下一步：补齐或重下 `2013-wave2` 的空压缩包；如果要继续追求更完整的可读化导出，再找更强的 Stata 读取后端处理 `2015-wave3/Biomarker.dta` 和 `2018-wave4/Cognition.dta`。
+- 正在做：把你新给的 `对照清单.md` 按“网站原始清单 vs 手动下载 raw”整理成正式比对报告，并把真实缺口单独列出来。
+- 下一步：重点修 `2013-wave2` 的缺失包；如果要继续追求更完整的可读化导出，再找更强的 Stata 读取后端处理 `2015-wave3/Biomarker.dta` 和 `2018-wave4/Cognition.dta`。
 
 ## 关键决策与理由（防止“吃书”）
 - 决策A：目录统一使用 `2011-wave1` 这种命名，保留年份和波次信息。原因：既符合用户习惯，也方便后续按年份或波次检索。
@@ -16,3 +16,4 @@
 - 坑2：2015 年的 `CHARLS2015r.zip` 会报头部错误，但内部仍能列出 `Biomarker.dta`，需要单独标注警告而不是直接放弃。
 - 坑3：2011 年有一个 `TxaXB7q8.zip.part`，这不是完整压缩包，只能当未完成下载处理。
 - 坑4：`Biomarker.dta` 和 `Cognition.dta` 当前读库会报 `buffer is smaller than requested size`，脚本会留下 `.error.txt`，后续需要人工复核或者换更强的读取链路。
+- 坑5：根目录里的 `CHARLS2013_Dataset.zip` 不是网站公布的那一个，SHA1 和内容都对不上，不能拿来替代 `data/raw/2013-wave2/CHARLS2013_Dataset.zip`。
