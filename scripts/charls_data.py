@@ -444,6 +444,30 @@ def metadata_to_dict(dta_path: Path, frame: pd.DataFrame, meta: Any) -> dict[str
     )
 
 
+def make_parquet_safe_frame(frame: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
+    """生成适合写入 Parquet 的 DataFrame。
+
+    背景：
+    - Stata 支持 `.a` 到 `.z` 这类用户自定义缺失值。
+    - `pyreadstat.read_dta(..., user_missing=True)` 会尽量保留这些缺失码。
+    - 某些列因此会同时出现数字和字符串缺失码，例如 `1, 2, "d", "r"`。
+    - CSV 可以直接写这种混合值，但 Parquet 要求单列类型稳定。
+
+    输出：
+    - 第一个返回值是可写 Parquet 的副本。
+    - 第二个返回值记录哪些 object 列被转成字符串，便于后续建模时知道这里发生过规范化。
+    """
+
+    safe_frame = frame.copy()
+    converted_columns: list[str] = []
+    for column in safe_frame.columns:
+        if safe_frame[column].dtype != "object":
+            continue
+        safe_frame[column] = safe_frame[column].astype("string")
+        converted_columns.append(str(column))
+    return safe_frame, converted_columns
+
+
 def convert_dta_file(dta_path: Path, extracted_root: Path = EXTRACTED_ROOT, curated_root: Path = CURATED_ROOT) -> dict[str, Any]:
     """把一个 `.dta` 文件导出成 CSV、Parquet 和 metadata JSON。
 
@@ -465,6 +489,7 @@ def convert_dta_file(dta_path: Path, extracted_root: Path = EXTRACTED_ROOT, cura
         apply_value_formats=False,
         user_missing=True,
     )
+    parquet_frame, parquet_string_columns = make_parquet_safe_frame(frame)
     metadata = metadata_to_dict(dta_path, frame, meta)
     metadata.update(
         {
@@ -472,11 +497,16 @@ def convert_dta_file(dta_path: Path, extracted_root: Path = EXTRACTED_ROOT, cura
             "parquet_file": parquet_path.as_posix(),
             "metadata_file": metadata_path.as_posix(),
             "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
+            "parquet_string_columns": parquet_string_columns,
+            "parquet_note": (
+                "Parquet 要求单列类型稳定；含 Stata 特殊缺失码的 object 列会转成字符串，"
+                "原始缺失码定义仍记录在 missing_user_values / value_labels 中。"
+            ),
         }
     )
 
     frame.to_csv(csv_path, index=False, encoding="utf-8-sig")
-    frame.to_parquet(parquet_path, index=False)
+    parquet_frame.to_parquet(parquet_path, index=False)
     metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")
 
     return {
