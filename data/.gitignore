@@ -1,12 +1,6 @@
-# 这个目录只保留说明文件和极少量占位文件，真正的大数据不进仓库。
-/raw/*
-/extracted/*
-/curated/*
+# data 目录下的 RAW、extracted、curated 都需要进入 Git。
+# 只继续忽略临时缓存，避免把一次性下载/转换中间状态提交进去。
 /cache/*
 
 !/README.md
-!/MANIFEST.md
 !/.gitignore
-!/raw/.gitkeep
-!/extracted/.gitkeep
-!/curated/.gitkeep

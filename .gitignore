@@ -24,10 +24,6 @@ catboost_info/
 frontend/dist/
 frontend/node_modules/
 
-# 原始数据目录默认忽略正文数据，避免误提交大文件
-data/raw/*
-!data/raw/.gitignore
-!data/raw/.gitkeep
-
-# 根目录里偶尔会落下手动下载的大包，避免它反复污染工作区
-/CHARLS2013_Dataset.zip
+# data 目录现在作为可追溯数据资产进入 Git。
+# 说明：CHARLS 原始包、解压后的 Stata 文件和后续结构化产物
+# 都是后续建模的输入真源，不能再靠本地临时文件维持状态。
