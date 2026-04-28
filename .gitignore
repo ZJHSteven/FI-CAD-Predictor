@@ -1,0 +1,31 @@
+# Python 基础缓存与环境目录
+.venv/
+__pycache__/
+*.py[cod]
+*.pyd
+
+# uv / Python 打包产物
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# 运行日志与临时文件
+*.log
+logs/
+
+# 旧项目和大体积中间产物
+output/
+catboost_info/
+frontend/dist/
+frontend/node_modules/
+
+# 原始数据目录默认忽略正文数据，避免误提交大文件
+data/raw/*
+!data/raw/.gitignore
+!data/raw/.gitkeep
+
