@@ -1,9 +1,11 @@
 # FI-CAD-Predictor 执行计划
 
 ## 当前未完成
-1. 跑通第一版纵向建模全链路：`python -m src.fi_cad.build_dataset` -> `python -m src.fi_cad.train --config configs/modeling.yaml` -> `python -m src.fi_cad.evaluate --run latest` -> `python -m src.fi_cad.make_report --run latest`。
-2. 复核真实训练结果：如果某模型出现几乎全判负、召回率过低、FPR/FNR 异常或校准明显偏离，必须先写诊断，不要把“训练完成”当成“模型可用”。
-3. 复核 2015 年“血检数据”RAW SHA1：当前 `data/raw/2015-wave3/Blood.zip` 可解出 `Blood.dta`，但 SHA1 是 `e350b371ffd6f72967f502e269c6a85e37b22407`，没有命中对照清单中的 `de5b1d80e9b72d61b690dff19b191f50f21ee8c5`。
+1. 基于 `output/runs/20260429-204720` 做第二轮建模改进：当前五模型均为 warning，主要问题是 ROC-AUC < 0.70，XGBoost 虽召回最高但 FPR 0.424 偏高。
+2. 复核终点构造：逐项检查 2013/2015/2018/2020 健康表和退出问卷中心脏病相关变量的编码、缺失含义和“新发”判定，避免把未知误当阴性。
+3. 扩展或重构 FI/基线特征：对照 codebook 增加更完整的 FI 缺陷项、生活方式、医疗利用、体测变量；输出每个新增变量的来源和泄露风险说明。
+4. 增加血检增强敏感性分析：在明确标注 2015 血检 RAW SHA1 风险的前提下，单独训练含 2011 血检的增强模型，与主模型分开报告。
+5. 复核 2015 年“血检数据”RAW SHA1：当前 `data/raw/2015-wave3/Blood.zip` 可解出 `Blood.dta`，但 SHA1 是 `e350b371ffd6f72967f502e269c6a85e37b22407`，没有命中对照清单中的 `de5b1d80e9b72d61b690dff19b191f50f21ee8c5`。
 
 ## 验收标准
 - `对照清单.md` 中列出的 2011、2013、2015、2018、2020 文档和数据条目，在 RAW 层都能找到对应文件或总包覆盖证据。

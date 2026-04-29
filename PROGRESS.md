@@ -3,8 +3,8 @@
 ## 当前结论（必须最新）
 - 现状：CHARLS 五个波次已经按 RAW、extracted、curated、audit 四层整理完毕，第一版纵向建模代码已开始落地，目标是 2011 基线预测 2013/2015/2018/2020 新发心脏病相关事件。
 - 已完成：补入 2011 家户问卷文档、2013 构建支出收入财富数据、2015 血检候选包；删除 2011 重复包和 `.part` 残留；重建 81 张 `.dta`、81 份 CSV、81 份 Parquet、81 份 metadata JSON；curated 层中文目录、metadata 内部路径和官网文档副本已同步；新增 `src.fi_cad` 建模入口和配置骨架。
-- 正在做：第一版真实数据集已构建成功，样本数 14785，阳性率 0.1340；五模型均已可训练，当前最佳测试 ROC-AUC 约 0.660，召回最高约 0.649，但 FPR 偏高、AUC 未到 0.70，因此只能视为可运行 baseline，不应当作最终论文模型。
-- 下一步：根据真实训练指标决定是否调整 FI 缺陷项、阈值策略、类别权重或特征集；不要为了“看起来分数高”而修改终点口径。
+- 正在做：第一版真实数据集和五模型 baseline 已跑通，最新 run 为 `output/runs/20260429-204720`；五个模型均为 warning，当前最佳测试 ROC-AUC 为 XGBoost 0.660，召回 0.649，FPR 0.424。
+- 下一步：这版只能作为可复现 baseline；后续优先复核终点构造、扩展基线特征/FI 缺陷项、做血检增强敏感性分析和更系统调参，不要为了“看起来分数高”而修改终点口径。
 
 ## 关键决策与理由（防止“吃书”）
 - 决策A：目录统一使用 `2011-wave1` 这种命名，保留年份和波次信息。原因：既符合用户习惯，也方便后续按年份或波次检索。
@@ -24,3 +24,11 @@
 - 坑7：AUC 高不等于模型可用；如果阈值下几乎全判负、召回率接近 0 或 FNR 很高，必须把 run 标成诊断问题。
 - 坑8：2011 Wave1 的 ID 常见为 11 位，2013 之后常见为 12 位；建模前必须统一为 12 位，否则随访观察会被误判为 0。
 - 坑9：当前第一版模型已经避免全判负，但 Precision 约 0.19~0.21、FPR 可到 0.42，说明误报多；后续不能只汇报“训练成功”，必须继续做特征工程和终点复核。
+
+## 最近验证
+- `python -m unittest discover -s tests -p "test*.py" -v`：14 项通过。
+- `python -m compileall src tests`：通过。
+- `python -m src.fi_cad.build_dataset --config configs/modeling.yaml`：生成 14785 人建模表，阳性率 0.1340，特征数 52。
+- `python -m src.fi_cad.train --config configs/modeling.yaml`：最新 run `output/runs/20260429-204720`，Logistic、RandomForest、XGBoost、LightGBM、CatBoost 均完成训练。
+- `python -m src.fi_cad.evaluate --config configs/modeling.yaml --run latest`：指标表已生成，五模型均 warning。
+- `python -m src.fi_cad.make_report --config configs/modeling.yaml --run latest`：报告已生成。
