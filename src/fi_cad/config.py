@@ -37,53 +37,59 @@ DEFAULT_CONFIG: dict[str, Any] = {
     },
     "dataset": {
         "endpoint_name": "heart_related_event_by_2020",
-            "baseline_year": 2011,
-            "horizon_year": 2020,
-            "include_blood_enhanced_features": True,
-            "min_fi_observed_fraction": 0.20,
-        },
-        "training": {
-            "optuna_trials": 10,
-            "optuna_timeout_seconds": 240,
-            "models": ["logistic_regression", "random_forest", "xgboost", "lightgbm", "catboost"],
-            "feature_sets": {
-                "primary": {
-                    "description": "主分析特征集，保留全部 2011 基线候选变量。",
-                    "exclude": [],
-                },
-                "no_body_size_demographic": {
-                    "description": "敏感性分析特征集，去掉年龄、性别和体型变量。",
-                    "exclude": [
-                        "age_2011",
-                        "sex_code_2011",
-                        "height_cm_2011",
-                        "weight_kg_2011",
-                        "bmi_2011",
-                        "waist_cm_2011",
-                    ],
-                },
-                "literature_fi_minimal": {
-                    "description": "最小 11 项 FI 模型，只保留文献候选 FI、年龄和性别。",
-                    "include": ["fi_2011", "age_2011", "sex_code_2011"],
-                },
-                "broad_fi_minimal": {
-                    "description": "最小宽口径 FI 模型，只保留探索性宽口径 FI、年龄和性别。",
-                    "include": ["fi_broad_exploratory_2011", "age_2011", "sex_code_2011"],
-                },
+        "endpoint_names": [
+            "heart_related_event_by_2013",
+            "heart_related_event_by_2015",
+            "heart_related_event_by_2018",
+            "heart_related_event_by_2020",
+        ],
+        "baseline_year": 2011,
+        "horizon_year": 2020,
+        "include_blood_enhanced_features": True,
+        "min_fi_observed_fraction": 0.20,
+    },
+    "training": {
+        "optuna_trials": 10,
+        "optuna_timeout_seconds": 240,
+        "models": ["logistic_regression", "random_forest", "xgboost", "lightgbm", "catboost"],
+        "feature_sets": {
+            "primary": {
+                "description": "主分析特征集，保留全部 2011 基线候选变量。",
+                "exclude": [],
+            },
+            "no_body_size_demographic": {
+                "description": "敏感性分析特征集，去掉年龄、性别和体型变量。",
+                "exclude": [
+                    "age_2011",
+                    "sex_code_2011",
+                    "height_cm_2011",
+                    "weight_kg_2011",
+                    "bmi_2011",
+                    "waist_cm_2011",
+                ],
+            },
+            "literature_fi_minimal": {
+                "description": "最小 11 项 FI 模型，只保留文献候选 FI、年龄和性别。",
+                "include": ["fi_2011", "age_2011", "sex_code_2011"],
+            },
+            "broad_fi_minimal": {
+                "description": "最小宽口径 FI 模型，只保留探索性宽口径 FI、年龄和性别。",
+                "include": ["fi_broad_exploratory_2011", "age_2011", "sex_code_2011"],
             },
         },
-        "interpretability": {
-            "require_shap": True,
-            "shap_background_size": 300,
-            "shap_explain_size": 500,
-            "top_n_features": 20,
-        },
-        "archive": {
-            "enabled": True,
-            "directory": "output/share",
-            "keep_latest_only": True,
-        },
-    }
+    },
+    "interpretability": {
+        "require_shap": True,
+        "shap_background_size": 300,
+        "shap_explain_size": 500,
+        "top_n_features": 20,
+    },
+    "archive": {
+        "enabled": True,
+        "directory": "output/share",
+        "keep_latest_only": True,
+    },
+}
 
 
 def deep_update(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:

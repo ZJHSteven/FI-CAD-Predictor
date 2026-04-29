@@ -55,12 +55,27 @@ def main() -> int:
     status_rank = {"ok": 0, "warning": 1, "failed": 2}
     ranked = metrics.assign(_status_rank=metrics["status"].map(status_rank).fillna(9))
     best = ranked.sort_values(["_status_rank", "roc_auc"], ascending=[True, False], na_position="last").head(1)
-    best_model = best.iloc[0]["model"] if not best.empty else "无"
+    if not best.empty:
+        best_row = best.iloc[0]
+        best_model = f"{best_row.get('target_column', manifest.get('target_column', '未知终点'))} / {best_row['feature_set']} / {best_row['model']}"
+    else:
+        best_model = "无"
+    target_columns = manifest.get("target_columns", [manifest.get("target_column", "未知终点")])
+    sample_counts = manifest.get("sample_counts", {})
+    positive_rates = manifest.get("positive_rates", {})
+    horizon_lines = [
+        f"- `{target}`：样本数 {sample_counts.get(target, manifest.get('sample_count', '未知'))}，阳性率 {float(positive_rates.get(target, manifest.get('positive_rate', 0.0))):.4f}"
+        for target in target_columns
+    ]
+    figures = manifest.get("figures", {})
+    first_target = target_columns[0] if target_columns else manifest.get("target_column", "")
+    first_target_figures = figures.get(first_target, figures if isinstance(figures, dict) else {})
     lines = [
         "# FI-CAD-Predictor 第一版建模报告",
         "",
         "## 研究口径",
-        "- 预测任务：2011 基线 FI 与协变量预测 2013/2015/2018/2020 新发心脏病相关事件。",
+        "- 预测任务：2011 基线 FI 与协变量预测后续新发心脏病相关事件。",
+        "- 当前 run 同时比较多个累计时间窗：`" + "`、`".join(target_columns) + "`。",
         "- 终点名称：心脏病相关事件，不把 CHARLS broader heart problems 强写成纯 CAD。",
         "- 数据泄露控制：先按 ID 划分 train/valid/test，再在模型 Pipeline 内 fit 缺失填补、标准化和分类器。",
         "",
@@ -70,12 +85,15 @@ def main() -> int:
         f"- 特征数：{manifest['feature_count']}",
         f"- Git commit：{manifest['git_commit']}",
         "",
+        "## 时间窗样本与阳性率",
+        *horizon_lines,
+        "",
         "## 模型结果",
         dataframe_to_markdown(metrics),
         "",
         "## 数据诊断图",
-        f"- FI 风险关系图：`{manifest.get('figures', {}).get('fi_risk_curve', '未生成')}`",
-        f"- 相关性热图：`{manifest.get('figures', {}).get('correlation_heatmap', '未生成')}`",
+        f"- 首个时间窗 FI 风险关系图：`{first_target_figures.get('fi_risk_curve', '未生成')}`",
+        f"- 首个时间窗相关性热图：`{first_target_figures.get('correlation_heatmap', '未生成')}`",
         "",
         "## 当前最佳模型",
         f"- 按当前指标表排序的候选最佳模型：`{best_model}`。",

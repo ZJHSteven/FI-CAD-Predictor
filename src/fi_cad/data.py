@@ -262,7 +262,6 @@ def build_outcome_table_from_frames(
     }
 
     observed_any = pd.Series(False, index=outcome.index)
-    event_any = pd.Series(False, index=outcome.index)
     first_event_year = pd.Series(np.nan, index=outcome.index, dtype="float64")
 
     for year in [2013, 2015, 2018, 2020]:
@@ -285,15 +284,24 @@ def build_outcome_table_from_frames(
         observed_wave = outcome.index.isin(observed_ids)
         observed_any = observed_any | observed_wave
         event_wave = combined.eq(1.0) & outcome["eligible_baseline_no_heart_disease"]
-        event_any = event_any | event_wave
         first_event_year = first_event_year.mask(first_event_year.isna() & event_wave, float(year))
         outcome[f"heart_event_{year}"] = combined.astype(float)
         outcome[f"observed_{year}"] = observed_wave
 
     outcome["observed_followup_any"] = observed_any
-    outcome["heart_related_event_by_2020"] = event_any.astype(int)
     outcome["first_heart_event_year"] = first_event_year
     outcome["include_in_modeling"] = outcome["eligible_baseline_no_heart_disease"] & outcome["observed_followup_any"]
+    for horizon in [2013, 2015, 2018, 2020]:
+        observed_columns = [f"observed_{year}" for year in [2013, 2015, 2018, 2020] if year <= horizon]
+        event_columns = [f"heart_event_{year}" for year in [2013, 2015, 2018, 2020] if year <= horizon]
+        observed_by_horizon = outcome[observed_columns].any(axis=1)
+        event_by_horizon = outcome[event_columns].eq(1.0).any(axis=1) & outcome["eligible_baseline_no_heart_disease"]
+        target = event_by_horizon.astype(float).where(
+            outcome["eligible_baseline_no_heart_disease"] & observed_by_horizon,
+            np.nan,
+        )
+        outcome[f"observed_followup_by_{horizon}"] = observed_by_horizon
+        outcome[f"heart_related_event_by_{horizon}"] = target
     return outcome.reset_index()
 
 
@@ -455,7 +463,7 @@ def build_missingness_table(dataset: pd.DataFrame, target_column: str) -> pd.Dat
     excluded = {"ID", target_column, "first_heart_event_year"}
     rows = []
     for column in dataset.columns:
-        if column in excluded or column.startswith("heart_event_") or column.startswith("observed_"):
+        if column in excluded or column.startswith("heart_event_") or column.startswith("heart_related_event_by_") or column.startswith("observed_"):
             continue
         rows.append({"feature": column, "missing_rate": float(dataset[column].isna().mean())})
     return pd.DataFrame(rows).sort_values("missing_rate", ascending=False)
@@ -470,7 +478,16 @@ def build_high_correlation_table(dataset: pd.DataFrame, target_column: str, thre
     """
 
     excluded = {"ID", target_column, "first_heart_event_year"}
-    feature_frame = dataset[[column for column in dataset.columns if column not in excluded and not column.startswith("heart_event_") and not column.startswith("observed_")]]
+    feature_frame = dataset[
+        [
+            column
+            for column in dataset.columns
+            if column not in excluded
+            and not column.startswith("heart_event_")
+            and not column.startswith("heart_related_event_by_")
+            and not column.startswith("observed_")
+        ]
+    ]
     numeric = feature_frame.apply(pd.to_numeric, errors="coerce")
     corr = numeric.corr(numeric_only=True).abs()
     rows = []
@@ -515,21 +532,21 @@ def build_modeling_dataset(config: dict[str, Any]) -> DatasetBuildResult:
         include_blood=include_blood,
         min_fi_observed_fraction=min_fi_fraction,
     )
+    outcome_columns = [
+        column
+        for column in outcome_table.columns
+        if column in {"ID", "baseline_heart_disease", "eligible_baseline_no_heart_disease", "observed_followup_any", "first_heart_event_year"}
+        or column.startswith("observed_followup_by_")
+        or column.startswith("heart_related_event_by_")
+    ]
+    if target_column not in outcome_columns:
+        raise ValueError(f"配置中的终点列不存在：{target_column}")
     dataset = baseline_features.merge(
-        outcome_table[
-            [
-                "ID",
-                "baseline_heart_disease",
-                "eligible_baseline_no_heart_disease",
-                "observed_followup_any",
-                target_column,
-                "first_heart_event_year",
-            ]
-        ],
+        outcome_table[outcome_columns],
         on="ID",
         how="inner",
     )
-    dataset = dataset[dataset["eligible_baseline_no_heart_disease"] & dataset["observed_followup_any"]].copy()
+    dataset = dataset[dataset["eligible_baseline_no_heart_disease"] & dataset[target_column].notna()].copy()
     if dataset.empty:
         raise ValueError("建模数据集为空：请检查 CHARLS ID 规范化、基线排除条件和随访结局表。")
     dataset[target_column] = dataset[target_column].astype(int)

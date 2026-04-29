@@ -27,6 +27,11 @@ run:
 
 dataset:
   endpoint_name: heart_related_event_by_2020
+  endpoint_names:
+    - heart_related_event_by_2013
+    - heart_related_event_by_2015
+    - heart_related_event_by_2018
+    - heart_related_event_by_2020
   baseline_year: 2011
   horizon_year: 2020
   include_blood_enhanced_features: true

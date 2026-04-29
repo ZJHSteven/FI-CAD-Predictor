@@ -142,6 +142,7 @@ def feature_columns(dataset: pd.DataFrame, target_column: str) -> list[str]:
         for column in dataset.columns
         if column not in blocked
         and not column.startswith("heart_event_")
+        and not column.startswith("heart_related_event_by_")
         and not column.startswith("observed_")
         # `fi_observed_fraction_2011` 这类列是“这个 FI 有多少项非缺失”的质量控制信息，
         # 不是生物医学特征。上一轮解释性输出显示它会被模型学到，因此训练阶段统一排除。
@@ -591,7 +592,14 @@ def model_diagnostic_status(metrics: dict[str, float], config: dict[str, Any]) -
     return "ok", "通过基础诊断。"
 
 
-def plot_dataset_diagnostics(dataset: pd.DataFrame, target_column: str, figure_dir: Path, table_dir: Path) -> tuple[dict[str, str], dict[str, str]]:
+def plot_dataset_diagnostics(
+    dataset: pd.DataFrame,
+    target_column: str,
+    figure_dir: Path,
+    table_dir: Path,
+    *,
+    output_prefix: str = "",
+) -> tuple[dict[str, str], dict[str, str]]:
     """输出数据集级别诊断图。
 
     图表说明：
@@ -623,19 +631,19 @@ def plot_dataset_diagnostics(dataset: pd.DataFrame, target_column: str, figure_d
             plt.xlabel("FI 2011 mean in bin")
             plt.ylabel("Observed event rate")
             plt.title("FI 2011 and incident heart-related event")
-            path = figure_dir / "dataset_fi_risk_curve.png"
+            path = figure_dir / f"{output_prefix}dataset_fi_risk_curve.png"
             plt.tight_layout()
             plt.savefig(path, dpi=180)
             plt.close()
             paths["fi_risk_curve"] = str(path)
-            data_path = figure_data_dir / "dataset_fi_risk_curve_data.csv"
+            data_path = figure_data_dir / f"{output_prefix}dataset_fi_risk_curve_data.csv"
             grouped.reset_index(drop=True).to_csv(data_path, index=False, encoding="utf-8-sig")
             data_paths["fi_risk_curve_data"] = str(data_path)
 
     features = feature_columns(dataset, target_column)
     numeric = dataset[[*features, target_column]].apply(pd.to_numeric, errors="coerce")
     corr_to_target = numeric.corr(numeric_only=True)[target_column].drop(labels=[target_column], errors="ignore").abs()
-    target_corr_path = figure_data_dir / "dataset_target_correlations.csv"
+    target_corr_path = figure_data_dir / f"{output_prefix}dataset_target_correlations.csv"
     corr_to_target.sort_values(ascending=False).rename_axis("feature").reset_index(name="abs_correlation_to_target").to_csv(
         target_corr_path,
         index=False,
@@ -651,12 +659,12 @@ def plot_dataset_diagnostics(dataset: pd.DataFrame, target_column: str, figure_d
         plt.xticks(range(len(top_features)), top_features, rotation=90, fontsize=7)
         plt.yticks(range(len(top_features)), top_features, fontsize=7)
         plt.title("Top feature correlation heatmap")
-        path = figure_dir / "dataset_correlation_heatmap.png"
+        path = figure_dir / f"{output_prefix}dataset_correlation_heatmap.png"
         plt.tight_layout()
         plt.savefig(path, dpi=180)
         plt.close()
         paths["correlation_heatmap"] = str(path)
-        corr_path = figure_data_dir / "dataset_correlation_heatmap_data.csv"
+        corr_path = figure_data_dir / f"{output_prefix}dataset_correlation_heatmap_data.csv"
         corr.to_csv(corr_path, encoding="utf-8-sig")
         data_paths["correlation_heatmap_data"] = str(corr_path)
     return paths, data_paths
@@ -808,12 +816,12 @@ def train_all_models(config: dict[str, Any]) -> dict[str, Any]:
     """训练配置中列出的所有模型并写出完整 run 产物。"""
 
     require_runtime_dependencies(config)
-    target_column = str(config["dataset"]["endpoint_name"])
+    configured_targets = config["dataset"].get("endpoint_names") or [config["dataset"]["endpoint_name"]]
+    target_columns = [str(target) for target in configured_targets]
     dataset_path = Path(config["data"]["dataset_path"])
     if not dataset_path.exists():
         raise FileNotFoundError(f"建模数据集不存在，请先运行 python -m src.fi_cad.build_dataset：{dataset_path}")
     dataset = pd.read_parquet(dataset_path)
-    split = split_dataset(dataset, target_column, config)
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     run_dir = Path(config["run"]["output_root"]) / timestamp
     table_dir = run_dir / "tables"
@@ -822,93 +830,116 @@ def train_all_models(config: dict[str, Any]) -> dict[str, Any]:
     report_dir = run_dir / "reports"
     for directory in [table_dir, model_dir, figure_dir, report_dir]:
         directory.mkdir(parents=True, exist_ok=True)
-    split.split_table.to_csv(table_dir / "splits.csv", index=False, encoding="utf-8-sig")
-    dataset_figures, dataset_figure_data = plot_dataset_diagnostics(dataset, target_column, figure_dir, table_dir)
 
     metrics_rows: list[dict[str, Any]] = []
     threshold_rows: list[dict[str, Any]] = []
     model_outputs: dict[str, Any] = {}
-    feature_sets = configured_feature_sets(config, list(split.x_train.columns))
-    feature_set_rows = [
-        {
-            "feature_set": feature_set.name,
-            "description": feature_set.description,
-            "feature_count": len(feature_set.features),
-            "features": ";".join(feature_set.features),
-        }
-        for feature_set in feature_sets
-    ]
-    feature_sets_path = table_dir / "feature_sets.csv"
-    pd.DataFrame(feature_set_rows).to_csv(feature_sets_path, index=False, encoding="utf-8-sig")
+    feature_set_rows: list[dict[str, Any]] = []
+    split_paths: dict[str, str] = {}
+    dataset_figures_by_target: dict[str, dict[str, str]] = {}
+    dataset_figure_data_by_target: dict[str, dict[str, str]] = {}
 
-    for feature_set in feature_sets:
-        active_split = subset_split(split, feature_set.features)
-        feature_names = list(active_split.x_train.columns)
-        for model_name in config["training"]["models"]:
-            model_id = f"{feature_set.name}__{model_name}"
-            try:
-                pipeline, tuning_info = tune_and_fit_model(model_name, active_split, config)
-                valid_score = predict_probability(pipeline, active_split.x_valid)
-                threshold, threshold_info = choose_threshold(
-                    active_split.y_valid,
-                    valid_score,
-                    str(config["run"]["threshold_strategy"]),
-                )
-                test_score = predict_probability(pipeline, active_split.x_test)
-                metrics = compute_binary_metrics(active_split.y_test, test_score, threshold)
-                status, message = model_diagnostic_status(metrics, config)
-                model_path = model_dir / f"{model_id}.joblib"
-                joblib.dump(pipeline, model_path)
-                figure_paths, figure_data_paths = plot_curves(model_id, active_split.y_test, test_score, threshold, figure_dir, table_dir)
-                model_feature_names = transformed_feature_names(pipeline, feature_names)
-                importance_path, importance_table_path, importance_table = plot_feature_importance(
-                    model_id,
-                    pipeline,
-                    model_feature_names,
-                    figure_dir,
-                    table_dir,
-                )
-                if importance_path:
-                    figure_paths["feature_importance"] = importance_path
-                metrics_rows.append(
-                    {
+    for target_column in target_columns:
+        if target_column not in dataset.columns:
+            raise ValueError(f"建模数据集缺少终点列：{target_column}")
+        split = split_dataset(dataset, target_column, config)
+        split_path = table_dir / f"{target_column}__splits.csv"
+        split.split_table.to_csv(split_path, index=False, encoding="utf-8-sig")
+        split_paths[target_column] = str(split_path)
+        dataset_figures, dataset_figure_data = plot_dataset_diagnostics(
+            dataset.dropna(subset=[target_column]),
+            target_column,
+            figure_dir,
+            table_dir,
+            output_prefix=f"{target_column}__",
+        )
+        dataset_figures_by_target[target_column] = dataset_figures
+        dataset_figure_data_by_target[target_column] = dataset_figure_data
+        feature_sets = configured_feature_sets(config, list(split.x_train.columns))
+        for feature_set in feature_sets:
+            feature_set_rows.append(
+                {
+                    "target_column": target_column,
+                    "feature_set": feature_set.name,
+                    "description": feature_set.description,
+                    "feature_count": len(feature_set.features),
+                    "features": ";".join(feature_set.features),
+                }
+            )
+            active_split = subset_split(split, feature_set.features)
+            feature_names = list(active_split.x_train.columns)
+            for model_name in config["training"]["models"]:
+                model_id = f"{target_column}__{feature_set.name}__{model_name}"
+                try:
+                    pipeline, tuning_info = tune_and_fit_model(model_name, active_split, config)
+                    valid_score = predict_probability(pipeline, active_split.x_valid)
+                    threshold, threshold_info = choose_threshold(
+                        active_split.y_valid,
+                        valid_score,
+                        str(config["run"]["threshold_strategy"]),
+                    )
+                    test_score = predict_probability(pipeline, active_split.x_test)
+                    metrics = compute_binary_metrics(active_split.y_test, test_score, threshold)
+                    status, message = model_diagnostic_status(metrics, config)
+                    model_path = model_dir / f"{model_id}.joblib"
+                    joblib.dump(pipeline, model_path)
+                    figure_paths, figure_data_paths = plot_curves(model_id, active_split.y_test, test_score, threshold, figure_dir, table_dir)
+                    model_feature_names = transformed_feature_names(pipeline, feature_names)
+                    importance_path, importance_table_path, importance_table = plot_feature_importance(
+                        model_id,
+                        pipeline,
+                        model_feature_names,
+                        figure_dir,
+                        table_dir,
+                    )
+                    if importance_path:
+                        figure_paths["feature_importance"] = importance_path
+                    metrics_rows.append(
+                        {
+                            "target_column": target_column,
+                            "feature_set": feature_set.name,
+                            "model": model_name,
+                            "status": status,
+                            "message": message,
+                            "threshold": threshold,
+                            **metrics,
+                        }
+                    )
+                    threshold_rows.append({"target_column": target_column, "feature_set": feature_set.name, "model": model_name, **threshold_info, **tuning_info})
+                    model_outputs[model_id] = {
+                        "target_column": target_column,
                         "feature_set": feature_set.name,
                         "model": model_name,
+                        "model_path": str(model_path),
+                        "figures": figure_paths,
+                        "figure_data": figure_data_paths,
+                        "feature_importance_table": importance_table_path,
+                        "transformed_feature_count": len(model_feature_names),
+                        "top_features": importance_table.head(10).to_dict(orient="records") if not importance_table.empty else [],
                         "status": status,
                         "message": message,
-                        "threshold": threshold,
-                        **metrics,
+                        "best_params": tuning_info["best_params"],
                     }
-                )
-                threshold_rows.append({"feature_set": feature_set.name, "model": model_name, **threshold_info, **tuning_info})
-                model_outputs[model_id] = {
-                    "feature_set": feature_set.name,
-                    "model": model_name,
-                    "model_path": str(model_path),
-                    "figures": figure_paths,
-                    "figure_data": figure_data_paths,
-                    "feature_importance_table": importance_table_path,
-                    "transformed_feature_count": len(model_feature_names),
-                    "top_features": importance_table.head(10).to_dict(orient="records") if not importance_table.empty else [],
-                    "status": status,
-                    "message": message,
-                    "best_params": tuning_info["best_params"],
-                }
-            except Exception as exc:  # noqa: BLE001
-                metrics_rows.append(
-                    {
+                except Exception as exc:  # noqa: BLE001
+                    metrics_rows.append(
+                        {
+                            "target_column": target_column,
+                            "feature_set": feature_set.name,
+                            "model": model_name,
+                            "status": "failed",
+                            "message": f"{type(exc).__name__}: {exc}",
+                        }
+                    )
+                    model_outputs[model_id] = {
+                        "target_column": target_column,
                         "feature_set": feature_set.name,
                         "model": model_name,
                         "status": "failed",
                         "message": f"{type(exc).__name__}: {exc}",
                     }
-                )
-                model_outputs[model_id] = {
-                    "feature_set": feature_set.name,
-                    "model": model_name,
-                    "status": "failed",
-                    "message": f"{type(exc).__name__}: {exc}",
-                }
+
+    feature_sets_path = table_dir / "feature_sets.csv"
+    pd.DataFrame(feature_set_rows).to_csv(feature_sets_path, index=False, encoding="utf-8-sig")
 
     metrics = pd.DataFrame(metrics_rows)
     thresholds = pd.DataFrame(threshold_rows)
@@ -922,18 +953,21 @@ def train_all_models(config: dict[str, Any]) -> dict[str, Any]:
         "created_at": timestamp,
         "git_commit": git_commit(),
         "dataset_path": str(dataset_path),
-        "target_column": target_column,
+        "target_column": target_columns[0],
+        "target_columns": target_columns,
         "sample_count": int(len(dataset)),
-        "positive_rate": float(dataset[target_column].mean()),
-        "feature_count": len(feature_columns(dataset, target_column)),
+        "positive_rate": float(dataset[target_columns[0]].mean()),
+        "positive_rates": {target_column: float(dataset[target_column].dropna().mean()) for target_column in target_columns},
+        "sample_counts": {target_column: int(dataset[target_column].notna().sum()) for target_column in target_columns},
+        "feature_count": len(feature_columns(dataset, target_columns[0])),
         "tables": {
             "metrics": str(metrics_path),
             "thresholds": str(thresholds_path),
-            "splits": str(table_dir / "splits.csv"),
+            "splits": split_paths,
             "feature_sets": str(feature_sets_path),
         },
-        "figures": dataset_figures,
-        "figure_data": dataset_figure_data,
+        "figures": dataset_figures_by_target,
+        "figure_data": dataset_figure_data_by_target,
         "models": model_outputs,
         "package_versions": package_versions(),
         "config": config,

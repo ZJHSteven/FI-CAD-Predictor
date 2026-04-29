@@ -16,7 +16,7 @@ import pandas as pd
 
 from src.fi_cad.config import load_config
 from src.fi_cad.data import build_baseline_features, build_outcome_table_from_frames, normalize_charls_id
-from src.fi_cad.modeling import choose_threshold, compute_binary_metrics, make_pipeline, split_dataset, transformed_feature_names
+from src.fi_cad.modeling import choose_threshold, compute_binary_metrics, feature_columns, make_pipeline, split_dataset, transformed_feature_names
 
 
 class FiCadPipelineTests(unittest.TestCase):
@@ -38,6 +38,28 @@ class FiCadPipelineTests(unittest.TestCase):
         self.assertFalse(bool(by_id.loc["p1", "include_in_modeling"]))
         self.assertTrue(bool(by_id.loc["p2", "include_in_modeling"]))
         self.assertEqual(int(by_id.loc["p2", "heart_related_event_by_2020"]), 1)
+
+    def test_horizon_endpoint_is_missing_without_observation_by_that_year(self) -> None:
+        """分时间窗终点不能把未观察到的人硬当作阴性。
+
+        例子：
+        - p2 在 2013 没有随访，但 2015 观察到没有事件。
+        - 因此 `by_2013` 对 p2 应该是缺失，而不是 0。
+        - 到 `by_2015` 才能明确写成 0。
+        """
+
+        baseline = pd.DataFrame({"ID": ["p1", "p2"], "da007_7_": ["2", "2"]})
+        followup = {
+            2013: pd.DataFrame({"ID": ["p1"], "zda007_7_": ["2"]}),
+            2015: pd.DataFrame({"ID": ["p2"], "zda007_7_": ["2"]}),
+            2018: pd.DataFrame(),
+            2020: pd.DataFrame(),
+        }
+        outcome = build_outcome_table_from_frames(baseline, followup, {})
+        by_id = outcome.set_index("ID")
+
+        self.assertTrue(pd.isna(by_id.loc["p2", "heart_related_event_by_2013"]))
+        self.assertEqual(float(by_id.loc["p2", "heart_related_event_by_2015"]), 0.0)
 
     def test_charls_wave1_id_is_normalized_to_followup_shape(self) -> None:
         """2011 的 11 位 ID 要能对齐后续 12 位 ID。"""
@@ -141,6 +163,25 @@ class FiCadPipelineTests(unittest.TestCase):
         self.assertTrue(groups["train"].isdisjoint(groups["valid"]))
         self.assertTrue(groups["train"].isdisjoint(groups["test"]))
         self.assertTrue(groups["valid"].isdisjoint(groups["test"]))
+
+    def test_other_horizon_endpoints_are_never_used_as_features(self) -> None:
+        """训练某个 endpoint 时，其他 endpoint 不能混进特征列。
+
+        这是新增多时间窗敏感性分析后的泄露防线：
+        如果训练 2020 终点时把 `heart_related_event_by_2013` 当作特征，模型会直接看见未来结局。
+        """
+
+        dataset = pd.DataFrame(
+            {
+                "ID": ["p1", "p2"],
+                "age_2011": [60, 70],
+                "heart_related_event_by_2013": [0, 1],
+                "heart_related_event_by_2020": [0, 1],
+            }
+        )
+        features = feature_columns(dataset, "heart_related_event_by_2020")
+
+        self.assertEqual(features, ["age_2011"])
 
     def test_metrics_include_false_positive_and_false_negative_rates(self) -> None:
         """指标表必须包含 FPR/FNR 等论文诊断字段。"""

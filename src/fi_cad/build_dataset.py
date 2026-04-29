@@ -27,7 +27,14 @@ def main() -> int:
     positive_rate = float(result.dataset[target].mean()) if len(result.dataset) else 0.0
     print(f"建模数据集：{paths['dataset']}")
     print(f"样本数：{len(result.dataset)}；阳性率：{positive_rate:.4f}")
-    print(f"特征数：{len([c for c in result.dataset.columns if c not in {'ID', target}])}")
+    feature_like_columns = [
+        column
+        for column in result.dataset.columns
+        if column not in {"ID", "baseline_heart_disease", "eligible_baseline_no_heart_disease", "observed_followup_any", "first_heart_event_year"}
+        and not column.startswith("observed_")
+        and not column.startswith("heart_related_event_by_")
+    ]
+    print(f"特征数：{len(feature_like_columns)}")
     print(f"变量字典：{paths['variable_dictionary']}")
     return 0
 
