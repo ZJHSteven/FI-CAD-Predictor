@@ -1,0 +1,1456 @@
+{
+  "run_dir": "output\\runs\\20260429-212828",
+  "created_at": "20260429-212828",
+  "git_commit": "721c76f",
+  "dataset_path": "output\\datasets\\modeling_dataset.parquet",
+  "target_column": "heart_related_event_by_2020",
+  "sample_count": 14785,
+  "positive_rate": 0.1339871491376395,
+  "feature_count": 58,
+  "tables": {
+    "metrics": "output\\runs\\20260429-212828\\tables\\model_metrics.csv",
+    "thresholds": "output\\runs\\20260429-212828\\tables\\thresholds.csv",
+    "splits": "output\\runs\\20260429-212828\\tables\\splits.csv",
+    "feature_sets": "output\\runs\\20260429-212828\\tables\\feature_sets.csv"
+  },
+  "figures": {
+    "fi_risk_curve": "output\\runs\\20260429-212828\\figures\\dataset_fi_risk_curve.png",
+    "correlation_heatmap": "output\\runs\\20260429-212828\\figures\\dataset_correlation_heatmap.png"
+  },
+  "figure_data": {
+    "fi_risk_curve_data": "output\\runs\\20260429-212828\\tables\\figure_data\\dataset_fi_risk_curve_data.csv",
+    "target_correlations": "output\\runs\\20260429-212828\\tables\\figure_data\\dataset_target_correlations.csv",
+    "correlation_heatmap_data": "output\\runs\\20260429-212828\\tables\\figure_data\\dataset_correlation_heatmap_data.csv"
+  },
+  "models": {
+    "primary__logistic_regression": {
+      "feature_set": "primary",
+      "model": "logistic_regression",
+      "model_path": "output\\runs\\20260429-212828\\models\\primary__logistic_regression.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\primary__logistic_regression_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\primary__logistic_regression_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\primary__logistic_regression_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\primary__logistic_regression_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\primary__logistic_regression_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__logistic_regression_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__logistic_regression_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__logistic_regression_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__logistic_regression_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__logistic_regression_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\primary__logistic_regression_feature_importance.csv",
+      "transformed_feature_count": 91,
+      "top_features": [
+        {
+          "feature": "marital_code_2011_3.0",
+          "importance": 0.8698564906649835,
+          "rank": 1
+        },
+        {
+          "feature": "sad_or_depressed_2011_5.0",
+          "importance": 0.7285554712398578,
+          "rank": 2
+        },
+        {
+          "feature": "health_compared_peer_2011_1.0",
+          "importance": 0.5629527510044814,
+          "rank": 3
+        },
+        {
+          "feature": "marital_code_2011_4.0",
+          "importance": 0.38123048861124204,
+          "rank": 4
+        },
+        {
+          "feature": "sad_or_depressed_2011_3.0",
+          "importance": 0.3524171770620616,
+          "rank": 5
+        },
+        {
+          "feature": "self_rated_health_2011_1.0",
+          "importance": 0.33244499101327746,
+          "rank": 6
+        },
+        {
+          "feature": "alcohol_frequency_code_2011_0.0",
+          "importance": 0.32856223657581474,
+          "rank": 7
+        },
+        {
+          "feature": "health_compared_peer_2011_5.0",
+          "importance": 0.3218523673416629,
+          "rank": 8
+        },
+        {
+          "feature": "education_code_2011_7.0",
+          "importance": 0.31217925624622944,
+          "rank": 9
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 0.3078888053887953,
+          "rank": 10
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱。",
+      "best_params": {
+        "C": 0.7517511526068185
+      }
+    },
+    "primary__random_forest": {
+      "feature_set": "primary",
+      "model": "random_forest",
+      "model_path": "output\\runs\\20260429-212828\\models\\primary__random_forest.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\primary__random_forest_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\primary__random_forest_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\primary__random_forest_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\primary__random_forest_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\primary__random_forest_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__random_forest_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__random_forest_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__random_forest_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__random_forest_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__random_forest_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\primary__random_forest_feature_importance.csv",
+      "transformed_feature_count": 91,
+      "top_features": [
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 0.08092771755267512,
+          "rank": 1
+        },
+        {
+          "feature": "age_2011",
+          "importance": 0.06636233943346119,
+          "rank": 2
+        },
+        {
+          "feature": "chronic_disease_1_2011",
+          "importance": 0.0626485093123587,
+          "rank": 3
+        },
+        {
+          "feature": "fi_2011",
+          "importance": 0.05891946471232858,
+          "rank": 4
+        },
+        {
+          "feature": "bmi_2011",
+          "importance": 0.05563913282490855,
+          "rank": 5
+        },
+        {
+          "feature": "waist_cm_2011",
+          "importance": 0.04746350235997991,
+          "rank": 6
+        },
+        {
+          "feature": "weight_kg_2011",
+          "importance": 0.043836815857773416,
+          "rank": 7
+        },
+        {
+          "feature": "systolic_bp_mean_2011",
+          "importance": 0.042274544511625066,
+          "rank": 8
+        },
+        {
+          "feature": "newhdl_2011",
+          "importance": 0.037731526414357834,
+          "rank": 9
+        },
+        {
+          "feature": "newcrp_2011",
+          "importance": 0.03762802928268533,
+          "rank": 10
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "n_estimators": 162,
+        "max_depth": 8,
+        "min_samples_leaf": 17
+      }
+    },
+    "primary__xgboost": {
+      "feature_set": "primary",
+      "model": "xgboost",
+      "model_path": "output\\runs\\20260429-212828\\models\\primary__xgboost.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\primary__xgboost_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\primary__xgboost_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\primary__xgboost_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\primary__xgboost_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\primary__xgboost_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__xgboost_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__xgboost_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__xgboost_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__xgboost_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__xgboost_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\primary__xgboost_feature_importance.csv",
+      "transformed_feature_count": 91,
+      "top_features": [
+        {
+          "feature": "chronic_disease_1_2011",
+          "importance": 0.07003926485776901,
+          "rank": 1
+        },
+        {
+          "feature": "fi_2011",
+          "importance": 0.06433689594268799,
+          "rank": 2
+        },
+        {
+          "feature": "functional_difficulty_1_2011",
+          "importance": 0.05532503128051758,
+          "rank": 3
+        },
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 0.05340011045336723,
+          "rank": 4
+        },
+        {
+          "feature": "chronic_disease_5_2011",
+          "importance": 0.03203602135181427,
+          "rank": 5
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 0.032001446932554245,
+          "rank": 6
+        },
+        {
+          "feature": "age_2011",
+          "importance": 0.03074404038488865,
+          "rank": 7
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 0.03016369417309761,
+          "rank": 8
+        },
+        {
+          "feature": "depressed_frequency_2011_3.0",
+          "importance": 0.029834343120455742,
+          "rank": 9
+        },
+        {
+          "feature": "self_rated_health_2011_3.0",
+          "importance": 0.029802825301885605,
+          "rank": 10
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "n_estimators": 148,
+        "max_depth": 2,
+        "learning_rate": 0.02797911365070284,
+        "subsample": 0.672099077547787,
+        "colsample_bytree": 0.6677133328811644,
+        "reg_lambda": 3.124376301798936,
+        "scale_pos_weight": 9.414326518596924
+      }
+    },
+    "primary__lightgbm": {
+      "feature_set": "primary",
+      "model": "lightgbm",
+      "model_path": "output\\runs\\20260429-212828\\models\\primary__lightgbm.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\primary__lightgbm_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\primary__lightgbm_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\primary__lightgbm_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\primary__lightgbm_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\primary__lightgbm_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__lightgbm_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__lightgbm_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__lightgbm_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__lightgbm_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__lightgbm_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\primary__lightgbm_feature_importance.csv",
+      "transformed_feature_count": 91,
+      "top_features": [
+        {
+          "feature": "age_2011",
+          "importance": 53,
+          "rank": 1
+        },
+        {
+          "feature": "chronic_disease_1_2011",
+          "importance": 32,
+          "rank": 2
+        },
+        {
+          "feature": "functional_difficulty_1_2011",
+          "importance": 27,
+          "rank": 3
+        },
+        {
+          "feature": "chronic_disease_5_2011",
+          "importance": 25,
+          "rank": 4
+        },
+        {
+          "feature": "bmi_2011",
+          "importance": 24,
+          "rank": 5
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 22,
+          "rank": 6
+        },
+        {
+          "feature": "waist_cm_2011",
+          "importance": 21,
+          "rank": 7
+        },
+        {
+          "feature": "newcho_2011",
+          "importance": 20,
+          "rank": 8
+        },
+        {
+          "feature": "newglu_2011",
+          "importance": 20,
+          "rank": 9
+        },
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 20,
+          "rank": 10
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "n_estimators": 131,
+        "num_leaves": 14,
+        "max_depth": 2,
+        "learning_rate": 0.022147077652063186,
+        "min_child_samples": 60,
+        "subsample": 0.9849937491166506,
+        "colsample_bytree": 0.7977656243528263,
+        "scale_pos_weight": 3.886543362011005
+      }
+    },
+    "primary__catboost": {
+      "feature_set": "primary",
+      "model": "catboost",
+      "model_path": "output\\runs\\20260429-212828\\models\\primary__catboost.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\primary__catboost_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\primary__catboost_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\primary__catboost_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\primary__catboost_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\primary__catboost_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__catboost_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__catboost_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__catboost_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__catboost_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\primary__catboost_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\primary__catboost_feature_importance.csv",
+      "transformed_feature_count": 91,
+      "top_features": [
+        {
+          "feature": "age_2011",
+          "importance": 7.959986547281244,
+          "rank": 1
+        },
+        {
+          "feature": "chronic_disease_1_2011",
+          "importance": 7.048115047747708,
+          "rank": 2
+        },
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 6.331790967615732,
+          "rank": 3
+        },
+        {
+          "feature": "fi_2011",
+          "importance": 5.390415391914409,
+          "rank": 4
+        },
+        {
+          "feature": "functional_difficulty_1_2011",
+          "importance": 5.247868123388429,
+          "rank": 5
+        },
+        {
+          "feature": "newcho_2011",
+          "importance": 4.6779999286729375,
+          "rank": 6
+        },
+        {
+          "feature": "bmi_2011",
+          "importance": 4.386654068158176,
+          "rank": 7
+        },
+        {
+          "feature": "newglu_2011",
+          "importance": 3.6402385142799916,
+          "rank": 8
+        },
+        {
+          "feature": "waist_cm_2011",
+          "importance": 3.4580818005146914,
+          "rank": 9
+        },
+        {
+          "feature": "chronic_disease_5_2011",
+          "importance": 3.3048267865643752,
+          "rank": 10
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "iterations": 352,
+        "depth": 4,
+        "learning_rate": 0.024585043930610614,
+        "l2_leaf_reg": 4.6061245224589795
+      }
+    },
+    "no_body_size_demographic__logistic_regression": {
+      "feature_set": "no_body_size_demographic",
+      "model": "logistic_regression",
+      "model_path": "output\\runs\\20260429-212828\\models\\no_body_size_demographic__logistic_regression.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__logistic_regression_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__logistic_regression_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__logistic_regression_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__logistic_regression_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__logistic_regression_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__logistic_regression_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__logistic_regression_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__logistic_regression_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__logistic_regression_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__logistic_regression_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\no_body_size_demographic__logistic_regression_feature_importance.csv",
+      "transformed_feature_count": 84,
+      "top_features": [
+        {
+          "feature": "health_compared_peer_2011_1.0",
+          "importance": 0.42446847699504725,
+          "rank": 1
+        },
+        {
+          "feature": "marital_code_2011_3.0",
+          "importance": 0.3612619936300649,
+          "rank": 2
+        },
+        {
+          "feature": "sad_or_depressed_2011_5.0",
+          "importance": 0.31697949654706464,
+          "rank": 3
+        },
+        {
+          "feature": "chronic_disease_1_2011",
+          "importance": 0.2570672742333019,
+          "rank": 4
+        },
+        {
+          "feature": "education_code_2011_7.0",
+          "importance": 0.22636261339111063,
+          "rank": 5
+        },
+        {
+          "feature": "health_compared_peer_2011_4.0",
+          "importance": 0.22572128573695524,
+          "rank": 6
+        },
+        {
+          "feature": "self_rated_health_2011_5.0",
+          "importance": 0.21779630979101194,
+          "rank": 7
+        },
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 0.2066785902470711,
+          "rank": 8
+        },
+        {
+          "feature": "health_compared_peer_2011_5.0",
+          "importance": 0.18921982093649703,
+          "rank": 9
+        },
+        {
+          "feature": "self_rated_health_2011_3.0",
+          "importance": 0.18186211430728336,
+          "rank": 10
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱。",
+      "best_params": {
+        "C": 0.07897450495526927
+      }
+    },
+    "no_body_size_demographic__random_forest": {
+      "feature_set": "no_body_size_demographic",
+      "model": "random_forest",
+      "model_path": "output\\runs\\20260429-212828\\models\\no_body_size_demographic__random_forest.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__random_forest_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__random_forest_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__random_forest_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__random_forest_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__random_forest_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__random_forest_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__random_forest_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__random_forest_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__random_forest_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__random_forest_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\no_body_size_demographic__random_forest_feature_importance.csv",
+      "transformed_feature_count": 84,
+      "top_features": [
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 0.09723824359271906,
+          "rank": 1
+        },
+        {
+          "feature": "chronic_disease_1_2011",
+          "importance": 0.07404873494073573,
+          "rank": 2
+        },
+        {
+          "feature": "systolic_bp_mean_2011",
+          "importance": 0.06958932703204762,
+          "rank": 3
+        },
+        {
+          "feature": "fi_2011",
+          "importance": 0.06353955446054087,
+          "rank": 4
+        },
+        {
+          "feature": "newcrp_2011",
+          "importance": 0.05650576002545694,
+          "rank": 5
+        },
+        {
+          "feature": "newcho_2011",
+          "importance": 0.05168298827696541,
+          "rank": 6
+        },
+        {
+          "feature": "newglu_2011",
+          "importance": 0.04855494098870251,
+          "rank": 7
+        },
+        {
+          "feature": "functional_difficulty_1_2011",
+          "importance": 0.048152070841190144,
+          "rank": 8
+        },
+        {
+          "feature": "newhdl_2011",
+          "importance": 0.048102543671765155,
+          "rank": 9
+        },
+        {
+          "feature": "newldl_2011",
+          "importance": 0.04774252661801007,
+          "rank": 10
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "n_estimators": 223,
+        "max_depth": 8,
+        "min_samples_leaf": 10
+      }
+    },
+    "no_body_size_demographic__xgboost": {
+      "feature_set": "no_body_size_demographic",
+      "model": "xgboost",
+      "model_path": "output\\runs\\20260429-212828\\models\\no_body_size_demographic__xgboost.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__xgboost_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__xgboost_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__xgboost_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__xgboost_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__xgboost_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__xgboost_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__xgboost_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__xgboost_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__xgboost_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__xgboost_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\no_body_size_demographic__xgboost_feature_importance.csv",
+      "transformed_feature_count": 84,
+      "top_features": [
+        {
+          "feature": "chronic_disease_1_2011",
+          "importance": 0.07117462903261185,
+          "rank": 1
+        },
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 0.053201258182525635,
+          "rank": 2
+        },
+        {
+          "feature": "fi_2011",
+          "importance": 0.05041462555527687,
+          "rank": 3
+        },
+        {
+          "feature": "functional_difficulty_1_2011",
+          "importance": 0.043273039162158966,
+          "rank": 4
+        },
+        {
+          "feature": "chronic_disease_5_2011",
+          "importance": 0.035460229963064194,
+          "rank": 5
+        },
+        {
+          "feature": "marital_code_2011_1.0",
+          "importance": 0.03170071169734001,
+          "rank": 6
+        },
+        {
+          "feature": "bmi_to_fi_2011",
+          "importance": 0.028053289279341698,
+          "rank": 7
+        },
+        {
+          "feature": "chronic_disease_2_2011",
+          "importance": 0.026973115280270576,
+          "rank": 8
+        },
+        {
+          "feature": "self_rated_health_2011_3.0",
+          "importance": 0.025622161105275154,
+          "rank": 9
+        },
+        {
+          "feature": "health_compared_peer_2011_4.0",
+          "importance": 0.025464069098234177,
+          "rank": 10
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱。",
+      "best_params": {
+        "n_estimators": 148,
+        "max_depth": 2,
+        "learning_rate": 0.02797911365070284,
+        "subsample": 0.672099077547787,
+        "colsample_bytree": 0.6677133328811644,
+        "reg_lambda": 3.124376301798936,
+        "scale_pos_weight": 9.414326518596924
+      }
+    },
+    "no_body_size_demographic__lightgbm": {
+      "feature_set": "no_body_size_demographic",
+      "model": "lightgbm",
+      "model_path": "output\\runs\\20260429-212828\\models\\no_body_size_demographic__lightgbm.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__lightgbm_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__lightgbm_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__lightgbm_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__lightgbm_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__lightgbm_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__lightgbm_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__lightgbm_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__lightgbm_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__lightgbm_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__lightgbm_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\no_body_size_demographic__lightgbm_feature_importance.csv",
+      "transformed_feature_count": 84,
+      "top_features": [
+        {
+          "feature": "functional_difficulty_1_2011",
+          "importance": 43,
+          "rank": 1
+        },
+        {
+          "feature": "chronic_disease_1_2011",
+          "importance": 39,
+          "rank": 2
+        },
+        {
+          "feature": "newcho_2011",
+          "importance": 35,
+          "rank": 3
+        },
+        {
+          "feature": "fi_2011",
+          "importance": 29,
+          "rank": 4
+        },
+        {
+          "feature": "chronic_disease_5_2011",
+          "importance": 25,
+          "rank": 5
+        },
+        {
+          "feature": "newhdl_2011",
+          "importance": 24,
+          "rank": 6
+        },
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 23,
+          "rank": 7
+        },
+        {
+          "feature": "newglu_2011",
+          "importance": 22,
+          "rank": 8
+        },
+        {
+          "feature": "newcrp_2011",
+          "importance": 21,
+          "rank": 9
+        },
+        {
+          "feature": "chronic_disease_2_2011",
+          "importance": 21,
+          "rank": 10
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "n_estimators": 131,
+        "num_leaves": 14,
+        "max_depth": 2,
+        "learning_rate": 0.022147077652063186,
+        "min_child_samples": 60,
+        "subsample": 0.9849937491166506,
+        "colsample_bytree": 0.7977656243528263,
+        "scale_pos_weight": 3.886543362011005
+      }
+    },
+    "no_body_size_demographic__catboost": {
+      "feature_set": "no_body_size_demographic",
+      "model": "catboost",
+      "model_path": "output\\runs\\20260429-212828\\models\\no_body_size_demographic__catboost.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__catboost_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__catboost_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__catboost_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__catboost_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\no_body_size_demographic__catboost_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__catboost_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__catboost_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__catboost_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__catboost_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\no_body_size_demographic__catboost_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\no_body_size_demographic__catboost_feature_importance.csv",
+      "transformed_feature_count": 84,
+      "top_features": [
+        {
+          "feature": "chronic_disease_1_2011",
+          "importance": 20.747003279892564,
+          "rank": 1
+        },
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 15.126931507755286,
+          "rank": 2
+        },
+        {
+          "feature": "functional_difficulty_1_2011",
+          "importance": 13.596719092448089,
+          "rank": 3
+        },
+        {
+          "feature": "fi_2011",
+          "importance": 11.007172851483922,
+          "rank": 4
+        },
+        {
+          "feature": "chronic_disease_5_2011",
+          "importance": 3.9619625715433804,
+          "rank": 5
+        },
+        {
+          "feature": "newhdl_2011",
+          "importance": 3.662083114328791,
+          "rank": 6
+        },
+        {
+          "feature": "systolic_bp_mean_2011",
+          "importance": 3.2553214526059873,
+          "rank": 7
+        },
+        {
+          "feature": "chronic_disease_2_2011",
+          "importance": 3.105785844617716,
+          "rank": 8
+        },
+        {
+          "feature": "bmi_to_fi_2011",
+          "importance": 2.748646062791654,
+          "rank": 9
+        },
+        {
+          "feature": "health_compared_peer_2011_1.0",
+          "importance": 2.6601919537556173,
+          "rank": 10
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "iterations": 131,
+        "depth": 3,
+        "learning_rate": 0.022713369064581,
+        "l2_leaf_reg": 1.1235942874800418
+      }
+    },
+    "literature_fi_minimal__logistic_regression": {
+      "feature_set": "literature_fi_minimal",
+      "model": "logistic_regression",
+      "model_path": "output\\runs\\20260429-212828\\models\\literature_fi_minimal__logistic_regression.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__logistic_regression_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__logistic_regression_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__logistic_regression_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__logistic_regression_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__logistic_regression_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__logistic_regression_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__logistic_regression_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__logistic_regression_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__logistic_regression_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__logistic_regression_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\literature_fi_minimal__logistic_regression_feature_importance.csv",
+      "transformed_feature_count": 4,
+      "top_features": [
+        {
+          "feature": "fi_2011",
+          "importance": 0.3151609980609467,
+          "rank": 1
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 0.2000114720889569,
+          "rank": 2
+        },
+        {
+          "feature": "age_2011",
+          "importance": 0.16858363384634062,
+          "rank": 3
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 0.15570012171284422,
+          "rank": 4
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "C": 2.320763804809883
+      }
+    },
+    "literature_fi_minimal__random_forest": {
+      "feature_set": "literature_fi_minimal",
+      "model": "random_forest",
+      "model_path": "output\\runs\\20260429-212828\\models\\literature_fi_minimal__random_forest.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__random_forest_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__random_forest_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__random_forest_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__random_forest_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__random_forest_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__random_forest_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__random_forest_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__random_forest_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__random_forest_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__random_forest_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\literature_fi_minimal__random_forest_feature_importance.csv",
+      "transformed_feature_count": 4,
+      "top_features": [
+        {
+          "feature": "fi_2011",
+          "importance": 0.53358777575924,
+          "rank": 1
+        },
+        {
+          "feature": "age_2011",
+          "importance": 0.3214570289214157,
+          "rank": 2
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 0.07975809650306219,
+          "rank": 3
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 0.0651970988162821,
+          "rank": 4
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "n_estimators": 160,
+        "max_depth": 3,
+        "min_samples_leaf": 2
+      }
+    },
+    "literature_fi_minimal__xgboost": {
+      "feature_set": "literature_fi_minimal",
+      "model": "xgboost",
+      "model_path": "output\\runs\\20260429-212828\\models\\literature_fi_minimal__xgboost.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__xgboost_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__xgboost_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__xgboost_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__xgboost_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__xgboost_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__xgboost_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__xgboost_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__xgboost_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__xgboost_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__xgboost_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\literature_fi_minimal__xgboost_feature_importance.csv",
+      "transformed_feature_count": 4,
+      "top_features": [
+        {
+          "feature": "fi_2011",
+          "importance": 0.4149514138698578,
+          "rank": 1
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 0.23102736473083496,
+          "rank": 2
+        },
+        {
+          "feature": "age_2011",
+          "importance": 0.1880987286567688,
+          "rank": 3
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 0.16592247784137726,
+          "rank": 4
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱。",
+      "best_params": {
+        "n_estimators": 142,
+        "max_depth": 3,
+        "learning_rate": 0.025683147749458696,
+        "subsample": 0.917893642460109,
+        "colsample_bytree": 0.8967275702272512,
+        "reg_lambda": 4.708567619590285,
+        "scale_pos_weight": 5.071466654508563
+      }
+    },
+    "literature_fi_minimal__lightgbm": {
+      "feature_set": "literature_fi_minimal",
+      "model": "lightgbm",
+      "model_path": "output\\runs\\20260429-212828\\models\\literature_fi_minimal__lightgbm.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__lightgbm_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__lightgbm_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__lightgbm_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__lightgbm_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__lightgbm_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__lightgbm_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__lightgbm_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__lightgbm_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__lightgbm_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__lightgbm_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\literature_fi_minimal__lightgbm_feature_importance.csv",
+      "transformed_feature_count": 4,
+      "top_features": [
+        {
+          "feature": "age_2011",
+          "importance": 190,
+          "rank": 1
+        },
+        {
+          "feature": "fi_2011",
+          "importance": 135,
+          "rank": 2
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 65,
+          "rank": 3
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 3,
+          "rank": 4
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱。",
+      "best_params": {
+        "n_estimators": 131,
+        "num_leaves": 14,
+        "max_depth": 2,
+        "learning_rate": 0.022147077652063186,
+        "min_child_samples": 60,
+        "subsample": 0.9849937491166506,
+        "colsample_bytree": 0.7977656243528263,
+        "scale_pos_weight": 3.886543362011005
+      }
+    },
+    "literature_fi_minimal__catboost": {
+      "feature_set": "literature_fi_minimal",
+      "model": "catboost",
+      "model_path": "output\\runs\\20260429-212828\\models\\literature_fi_minimal__catboost.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__catboost_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__catboost_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__catboost_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__catboost_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\literature_fi_minimal__catboost_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__catboost_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__catboost_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__catboost_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__catboost_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\literature_fi_minimal__catboost_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\literature_fi_minimal__catboost_feature_importance.csv",
+      "transformed_feature_count": 4,
+      "top_features": [
+        {
+          "feature": "fi_2011",
+          "importance": 51.11713078678189,
+          "rank": 1
+        },
+        {
+          "feature": "age_2011",
+          "importance": 31.717490607224697,
+          "rank": 2
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 10.005232260305261,
+          "rank": 3
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 7.160146345688152,
+          "rank": 4
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "iterations": 131,
+        "depth": 3,
+        "learning_rate": 0.022713369064581,
+        "l2_leaf_reg": 1.1235942874800418
+      }
+    },
+    "broad_fi_minimal__logistic_regression": {
+      "feature_set": "broad_fi_minimal",
+      "model": "logistic_regression",
+      "model_path": "output\\runs\\20260429-212828\\models\\broad_fi_minimal__logistic_regression.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__logistic_regression_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__logistic_regression_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__logistic_regression_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__logistic_regression_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__logistic_regression_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__logistic_regression_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__logistic_regression_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__logistic_regression_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__logistic_regression_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__logistic_regression_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\broad_fi_minimal__logistic_regression_feature_importance.csv",
+      "transformed_feature_count": 4,
+      "top_features": [
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 0.2318657905982564,
+          "rank": 1
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 0.15924893592463937,
+          "rank": 2
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 0.15921355095481599,
+          "rank": 3
+        },
+        {
+          "feature": "age_2011",
+          "importance": 0.13677689836699364,
+          "rank": 4
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱。",
+      "best_params": {
+        "C": 0.03967694542223149
+      }
+    },
+    "broad_fi_minimal__random_forest": {
+      "feature_set": "broad_fi_minimal",
+      "model": "random_forest",
+      "model_path": "output\\runs\\20260429-212828\\models\\broad_fi_minimal__random_forest.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__random_forest_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__random_forest_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__random_forest_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__random_forest_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__random_forest_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__random_forest_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__random_forest_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__random_forest_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__random_forest_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__random_forest_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\broad_fi_minimal__random_forest_feature_importance.csv",
+      "transformed_feature_count": 4,
+      "top_features": [
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 0.5366874556890968,
+          "rank": 1
+        },
+        {
+          "feature": "age_2011",
+          "importance": 0.33422187804418796,
+          "rank": 2
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 0.06893655188378651,
+          "rank": 3
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 0.06015411438292862,
+          "rank": 4
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱。",
+      "best_params": {
+        "n_estimators": 160,
+        "max_depth": 3,
+        "min_samples_leaf": 2
+      }
+    },
+    "broad_fi_minimal__xgboost": {
+      "feature_set": "broad_fi_minimal",
+      "model": "xgboost",
+      "model_path": "output\\runs\\20260429-212828\\models\\broad_fi_minimal__xgboost.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__xgboost_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__xgboost_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__xgboost_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__xgboost_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__xgboost_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__xgboost_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__xgboost_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__xgboost_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__xgboost_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__xgboost_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\broad_fi_minimal__xgboost_feature_importance.csv",
+      "transformed_feature_count": 4,
+      "top_features": [
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 0.3461796045303345,
+          "rank": 1
+        },
+        {
+          "feature": "age_2011",
+          "importance": 0.24761095643043518,
+          "rank": 2
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 0.22511212527751923,
+          "rank": 3
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 0.1810973584651947,
+          "rank": 4
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱。",
+      "best_params": {
+        "n_estimators": 148,
+        "max_depth": 2,
+        "learning_rate": 0.02797911365070284,
+        "subsample": 0.672099077547787,
+        "colsample_bytree": 0.6677133328811644,
+        "reg_lambda": 3.124376301798936,
+        "scale_pos_weight": 9.414326518596924
+      }
+    },
+    "broad_fi_minimal__lightgbm": {
+      "feature_set": "broad_fi_minimal",
+      "model": "lightgbm",
+      "model_path": "output\\runs\\20260429-212828\\models\\broad_fi_minimal__lightgbm.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__lightgbm_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__lightgbm_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__lightgbm_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__lightgbm_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__lightgbm_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__lightgbm_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__lightgbm_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__lightgbm_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__lightgbm_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__lightgbm_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\broad_fi_minimal__lightgbm_feature_importance.csv",
+      "transformed_feature_count": 4,
+      "top_features": [
+        {
+          "feature": "age_2011",
+          "importance": 187,
+          "rank": 1
+        },
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 147,
+          "rank": 2
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 57,
+          "rank": 3
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 2,
+          "rank": 4
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱；FPR 高于 0.40，误报偏多。",
+      "best_params": {
+        "n_estimators": 131,
+        "num_leaves": 14,
+        "max_depth": 2,
+        "learning_rate": 0.022147077652063186,
+        "min_child_samples": 60,
+        "subsample": 0.9849937491166506,
+        "colsample_bytree": 0.7977656243528263,
+        "scale_pos_weight": 3.886543362011005
+      }
+    },
+    "broad_fi_minimal__catboost": {
+      "feature_set": "broad_fi_minimal",
+      "model": "catboost",
+      "model_path": "output\\runs\\20260429-212828\\models\\broad_fi_minimal__catboost.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__catboost_roc.png",
+        "pr": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__catboost_pr.png",
+        "calibration": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__catboost_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__catboost_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-212828\\figures\\broad_fi_minimal__catboost_feature_importance.png"
+      },
+      "figure_data": {
+        "roc_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__catboost_roc_data.csv",
+        "pr_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__catboost_pr_data.csv",
+        "calibration_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__catboost_calibration_data.csv",
+        "confusion_matrix_data": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__catboost_confusion_matrix_data.csv",
+        "test_scores": "output\\runs\\20260429-212828\\tables\\figure_data\\broad_fi_minimal__catboost_test_scores.csv"
+      },
+      "feature_importance_table": "output\\runs\\20260429-212828\\tables\\explainability\\broad_fi_minimal__catboost_feature_importance.csv",
+      "transformed_feature_count": 4,
+      "top_features": [
+        {
+          "feature": "fi_broad_exploratory_2011",
+          "importance": 50.597881810028824,
+          "rank": 1
+        },
+        {
+          "feature": "age_2011",
+          "importance": 34.26697785801709,
+          "rank": 2
+        },
+        {
+          "feature": "sex_code_2011_2.0",
+          "importance": 8.71027813620108,
+          "rank": 3
+        },
+        {
+          "feature": "sex_code_2011_1.0",
+          "importance": 6.424862195752996,
+          "rank": 4
+        }
+      ],
+      "status": "warning",
+      "message": "ROC-AUC 低于 0.70，区分度偏弱。",
+      "best_params": {
+        "iterations": 131,
+        "depth": 3,
+        "learning_rate": 0.022713369064581,
+        "l2_leaf_reg": 1.1235942874800418
+      }
+    }
+  },
+  "package_versions": {
+    "pandas": "1.5.3",
+    "numpy": "1.24.3",
+    "scikit-learn": "1.3.2",
+    "xgboost": null,
+    "lightgbm": "3.3.5",
+    "catboost": "1.2",
+    "optuna": "3.2.0",
+    "matplotlib": "3.7.1",
+    "shap": "0.44.1",
+    "tabulate": "0.9.0"
+  },
+  "config": {
+    "data": {
+      "curated_root": "data/curated",
+      "dataset_path": "output/datasets/modeling_dataset.parquet",
+      "outcome_table_path": "output/tables/outcome_table.csv",
+      "baseline_feature_path": "output/tables/baseline_features.csv",
+      "variable_dictionary_path": "output/tables/variable_dictionary.csv",
+      "missingness_path": "output/tables/feature_missingness.csv",
+      "correlation_path": "output/tables/high_correlation_pairs.csv"
+    },
+    "run": {
+      "output_root": "output/runs",
+      "random_seed": 20260429,
+      "test_size": 0.2,
+      "valid_size": 0.2,
+      "primary_metric": "roc_auc",
+      "threshold_strategy": "balanced_youden_f1",
+      "min_auc_warning": 0.7,
+      "max_fpr_warning": 0.4,
+      "min_recall_warning": 0.05,
+      "all_negative_rate_warning": 0.98
+    },
+    "dataset": {
+      "endpoint_name": "heart_related_event_by_2020",
+      "baseline_year": 2011,
+      "horizon_year": 2020,
+      "include_blood_enhanced_features": true,
+      "min_fi_observed_fraction": 0.2
+    },
+    "training": {
+      "optuna_trials": 10,
+      "optuna_timeout_seconds": 240,
+      "models": [
+        "logistic_regression",
+        "random_forest",
+        "xgboost",
+        "lightgbm",
+        "catboost"
+      ],
+      "feature_sets": {
+        "primary": {
+          "description": "主分析特征集，保留 2011 基线 FI、人口学、生活方式、慢病、功能和体测变量。",
+          "exclude": []
+        },
+        "no_body_size_demographic": {
+          "description": "敏感性分析特征集，去掉年龄、性别、身高、体重、BMI、腰围等粗变量，检查模型是否仍能从 FI/健康缺陷中获得信号。",
+          "exclude": [
+            "age_2011",
+            "sex_code_2011",
+            "height_cm_2011",
+            "weight_kg_2011",
+            "bmi_2011",
+            "waist_cm_2011"
+          ]
+        },
+        "literature_fi_minimal": {
+          "description": "最小 11 项 FI 模型，只保留文献候选 FI、年龄和性别，用来评估该 FI 本身的预测力。",
+          "include": [
+            "fi_2011",
+            "age_2011",
+            "sex_code_2011"
+          ]
+        },
+        "broad_fi_minimal": {
+          "description": "最小宽口径 FI 模型，只保留探索性宽口径 FI、年龄和性别，用来和 11 项 FI 比较。",
+          "include": [
+            "fi_broad_exploratory_2011",
+            "age_2011",
+            "sex_code_2011"
+          ]
+        }
+      }
+    },
+    "interpretability": {
+      "require_shap": true,
+      "shap_background_size": 300,
+      "shap_explain_size": 500,
+      "top_n_features": 20
+    },
+    "archive": {
+      "enabled": true,
+      "directory": "output/share",
+      "keep_latest_only": true
+    }
+  }
+}
