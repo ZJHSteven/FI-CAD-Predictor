@@ -140,6 +140,64 @@ def feature_columns(dataset: pd.DataFrame, target_column: str) -> list[str]:
     return [column for column in dataset.columns if column not in blocked and not column.startswith("heart_event_") and not column.startswith("observed_")]
 
 
+def configured_feature_sets(config: dict[str, Any], available_features: list[str]) -> list[FeatureSet]:
+    """根据配置生成特征集。
+
+    输入：
+    - config: `configs/modeling.yaml` 中读出的配置。
+    - available_features: 数据集中真实存在的候选特征。
+
+    输出：
+    - FeatureSet 列表。默认至少包含 `primary`。
+
+    设计意图：
+    - 主分析保留全部候选变量，回答“目前所有 2011 基线信息能预测到什么程度”。
+    - 敏感性分析可以排除身高、体重、BMI、年龄、性别等粗变量，检查模型是否只是学到常识性体型/人口学信号。
+    """
+
+    feature_set_config = config.get("training", {}).get("feature_sets", {})
+    if not feature_set_config:
+        feature_set_config = {"primary": {"description": "主分析特征集。", "exclude": []}}
+    feature_sets: list[FeatureSet] = []
+    available = list(available_features)
+    available_set = set(available)
+    for name, item in feature_set_config.items():
+        excluded = set(item.get("exclude", []))
+        missing_excluded = sorted(excluded - available_set)
+        if missing_excluded:
+            raise ValueError(f"特征集 {name} 排除的列不存在：{missing_excluded}")
+        features = [feature for feature in available if feature not in excluded]
+        if not features:
+            raise ValueError(f"特征集 {name} 没有任何可训练特征。")
+        feature_sets.append(
+            FeatureSet(
+                name=str(name),
+                description=str(item.get("description", "")),
+                features=features,
+            )
+        )
+    return feature_sets
+
+
+def subset_split(split: SplitData, features: list[str]) -> SplitData:
+    """在保持同一批 ID 切分不变的前提下，只替换特征列。
+
+    这比为每个特征集重新随机切分更稳妥：
+    - 不同特征集共享完全相同的 train/valid/test 人群。
+    - 指标差异更能反映特征变化，而不是随机切分变化。
+    """
+
+    return SplitData(
+        x_train=split.x_train[features],
+        y_train=split.y_train,
+        x_valid=split.x_valid[features],
+        y_valid=split.y_valid,
+        x_test=split.x_test[features],
+        y_test=split.y_test,
+        split_table=split.split_table,
+    )
+
+
 def safe_stratify(y: pd.Series) -> pd.Series | None:
     """只有正负样本都足够时才启用 stratify。"""
 
