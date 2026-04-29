@@ -103,6 +103,25 @@ def to_numeric(series: pd.Series) -> pd.Series:
     return pd.to_numeric(cleaned, errors="coerce")
 
 
+def plausible_numeric_range(series: pd.Series, *, minimum: float, maximum: float) -> pd.Series:
+    """把数值列转成数值，并把明显不合理的测量值置为缺失。
+
+    输入：
+    - series: CHARLS 原始列。
+    - minimum/maximum: 允许保留的闭区间范围。
+
+    输出：
+    - 超出范围的值会变成 NaN。
+
+    为什么需要这个函数：
+    - 体测列里常见 `993/999` 这类特殊编码，不能当成真实身高、体重或血压。
+    - 如果不先清理，树模型很容易把这些异常码当成强信号，最后得到很荒谬的特征重要性。
+    """
+
+    numeric = to_numeric(series)
+    return numeric.where(numeric.between(minimum, maximum, inclusive="both"))
+
+
 def yes_no_to_binary(series: pd.Series) -> pd.Series:
     """把 `1=Yes, 2=No` 的 CHARLS 列转成 1/0。
 
@@ -330,14 +349,25 @@ def build_baseline_features(
     add_feature("depressed_frequency_2011", to_numeric(health.get("dc011", pd.Series(index=health.index))), "过去一周感到抑郁频率", "mental")
     add_feature("sad_or_depressed_2011", to_numeric(health.get("de006", pd.Series(index=health.index))), "悲伤、低落或抑郁程度", "mental")
 
-    height = to_numeric(bio.get("qh006", pd.Series(index=bio.index))).combine_first(to_numeric(bio.get("qi002", pd.Series(index=bio.index))))
-    weight = to_numeric(bio.get("ql002", pd.Series(index=bio.index)))
+    # 重要修正：
+    # - 上一版错误地把 qh006 优先当作身高；真实数据中 qh006 中位数约 43，明显不是成人身高。
+    # - qi002 的中位数约 158，更符合厘米制身高，所以这里改成只用 qi002 作为身高。
+    # - 所有体测变量都先做合理范围过滤，避免 993/999 等特殊编码污染模型。
+    height = plausible_numeric_range(bio.get("qi002", pd.Series(index=bio.index)), minimum=120, maximum=220)
+    weight = plausible_numeric_range(bio.get("ql002", pd.Series(index=bio.index)), minimum=25, maximum=180)
     height_m = height / 100.0
     bmi = weight / (height_m**2)
-    bmi = bmi.where((height_m > 1.0) & (height_m < 2.5) & (weight > 20) & (weight < 250))
+    bmi = bmi.where(bmi.between(10, 60, inclusive="both"))
     add_feature("height_cm_2011", height, "2011 体检测量身高 cm", "biomarker")
     add_feature("weight_kg_2011", weight, "2011 体检测量体重 kg", "biomarker")
     add_feature("bmi_2011", bmi, "2011 BMI，由身高体重计算", "biomarker")
+
+    systolic_1 = plausible_numeric_range(bio.get("qa003", pd.Series(index=bio.index)), minimum=70, maximum=260)
+    systolic_2 = plausible_numeric_range(bio.get("qa007", pd.Series(index=bio.index)), minimum=70, maximum=260)
+    systolic_mean = pd.concat([systolic_1, systolic_2], axis=1).mean(axis=1, skipna=True)
+    waist = plausible_numeric_range(bio.get("qm002", pd.Series(index=bio.index)), minimum=45, maximum=180)
+    add_feature("systolic_bp_mean_2011", systolic_mean, "2011 两次收缩压均值，异常码已过滤", "biomarker")
+    add_feature("waist_cm_2011", waist, "2011 腰围/围度类体测 cm，异常码已过滤", "biomarker")
 
     fi_items = chronic_deficits + function_deficits + extra_deficits
     fi_matrix = pd.concat(fi_items, axis=1)

@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 
 from src.fi_cad.config import load_config
-from src.fi_cad.data import build_outcome_table_from_frames, normalize_charls_id
+from src.fi_cad.data import build_baseline_features, build_outcome_table_from_frames, normalize_charls_id
 from src.fi_cad.modeling import choose_threshold, compute_binary_metrics, split_dataset
 
 
@@ -47,6 +47,52 @@ class FiCadPipelineTests(unittest.TestCase):
 
         self.assertEqual(normalized[0], "094004113002")
         self.assertEqual(normalized[0], normalized[1])
+
+    def test_baseline_height_uses_qi002_not_qh006_arm_like_measure(self) -> None:
+        """防止把 40 多厘米的体测列误命名为成人身高。
+
+        这个测试对应一次真实建模异常：
+        CatBoost 特征重要性里 `height_cm_2011` 排在第一，但追查发现上一版优先用了
+        中位数约 43 的 `qh006`。这会把非身高体测变量伪装成身高，导致解释性报告严重误导。
+        """
+
+        demographic = pd.DataFrame(
+            {
+                "ID": ["09400411302"],
+                "ba002_1": [1950],
+                "rgender": [1],
+                "bd001": [3],
+                "be001": [1],
+            }
+        )
+        health = pd.DataFrame(
+            {
+                "ID": ["09400411302"],
+                "da001": [3],
+                "da002": [3],
+                "da059": [2],
+                "da067": [1],
+                "dc011": [1],
+                "de006": [1],
+                "da041": [2],
+            }
+        )
+        biomarkers = pd.DataFrame(
+            {
+                "ID": ["09400411302"],
+                "qh006": [43.0],
+                "qi002": [168.0],
+                "ql002": [70.0],
+                "qa003": [130.0],
+                "qa007": [128.0],
+                "qm002": [88.0],
+            }
+        )
+
+        features, _ = build_baseline_features(demographic, health, biomarkers, min_fi_observed_fraction=0.0)
+
+        self.assertEqual(features.loc[0, "height_cm_2011"], 168.0)
+        self.assertAlmostEqual(features.loc[0, "bmi_2011"], 70.0 / (1.68**2), places=6)
 
     def test_split_dataset_has_no_id_overlap(self) -> None:
         """同一个 ID 不能同时出现在训练、验证和测试中。"""
