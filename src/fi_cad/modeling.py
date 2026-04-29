@@ -523,16 +523,22 @@ def model_diagnostic_status(metrics: dict[str, float], config: dict[str, Any]) -
     return "ok", "通过基础诊断。"
 
 
-def plot_dataset_diagnostics(dataset: pd.DataFrame, target_column: str, figure_dir: Path) -> dict[str, str]:
+def plot_dataset_diagnostics(dataset: pd.DataFrame, target_column: str, figure_dir: Path, table_dir: Path) -> tuple[dict[str, str], dict[str, str]]:
     """输出数据集级别诊断图。
 
     图表说明：
     - FI 风险关系图：检查 FI 越高，事件率是否整体上升。
     - 相关性热图：只展示与结局绝对相关最高的一组变量，避免 50 多个特征挤在一起无法阅读。
+
+    额外输出：
+    - 每张图对应一份 CSV，放在 `tables/figure_data/`，便于不看图也能复核数值。
     """
 
     figure_dir.mkdir(parents=True, exist_ok=True)
+    figure_data_dir = table_dir / "figure_data"
+    figure_data_dir.mkdir(parents=True, exist_ok=True)
     paths: dict[str, str] = {}
+    data_paths: dict[str, str] = {}
     if "fi_2011" in dataset.columns:
         working = dataset[["fi_2011", target_column]].dropna().copy()
         if not working.empty and working["fi_2011"].nunique() >= 3:
@@ -554,10 +560,20 @@ def plot_dataset_diagnostics(dataset: pd.DataFrame, target_column: str, figure_d
             plt.savefig(path, dpi=180)
             plt.close()
             paths["fi_risk_curve"] = str(path)
+            data_path = figure_data_dir / "dataset_fi_risk_curve_data.csv"
+            grouped.reset_index(drop=True).to_csv(data_path, index=False, encoding="utf-8-sig")
+            data_paths["fi_risk_curve_data"] = str(data_path)
 
     features = feature_columns(dataset, target_column)
     numeric = dataset[[*features, target_column]].apply(pd.to_numeric, errors="coerce")
     corr_to_target = numeric.corr(numeric_only=True)[target_column].drop(labels=[target_column], errors="ignore").abs()
+    target_corr_path = figure_data_dir / "dataset_target_correlations.csv"
+    corr_to_target.sort_values(ascending=False).rename("abs_correlation_to_target").reset_index(names="feature").to_csv(
+        target_corr_path,
+        index=False,
+        encoding="utf-8-sig",
+    )
+    data_paths["target_correlations"] = str(target_corr_path)
     top_features = corr_to_target.sort_values(ascending=False).head(20).index.tolist()
     if len(top_features) >= 2:
         corr = numeric[top_features].corr(numeric_only=True)
@@ -572,39 +588,63 @@ def plot_dataset_diagnostics(dataset: pd.DataFrame, target_column: str, figure_d
         plt.savefig(path, dpi=180)
         plt.close()
         paths["correlation_heatmap"] = str(path)
-    return paths
+        corr_path = figure_data_dir / "dataset_correlation_heatmap_data.csv"
+        corr.to_csv(corr_path, encoding="utf-8-sig")
+        data_paths["correlation_heatmap_data"] = str(corr_path)
+    return paths, data_paths
 
 
-def plot_curves(model_name: str, y_true: pd.Series, y_score: np.ndarray, threshold: float, figure_dir: Path) -> dict[str, str]:
-    """输出 ROC、PR、校准和混淆矩阵图。"""
+def plot_curves(
+    model_id: str,
+    y_true: pd.Series,
+    y_score: np.ndarray,
+    threshold: float,
+    figure_dir: Path,
+    table_dir: Path,
+) -> tuple[dict[str, str], dict[str, str]]:
+    """输出 ROC、PR、校准和混淆矩阵图，并保存底层数据。"""
 
     figure_dir.mkdir(parents=True, exist_ok=True)
+    figure_data_dir = table_dir / "figure_data"
+    figure_data_dir.mkdir(parents=True, exist_ok=True)
     paths: dict[str, str] = {}
+    data_paths: dict[str, str] = {}
     if y_true.nunique() == 2:
-        fpr, tpr, _ = roc_curve(y_true, y_score)
+        fpr, tpr, roc_thresholds = roc_curve(y_true, y_score)
         plt.figure(figsize=(6, 5))
         plt.plot(fpr, tpr, label=f"ROC-AUC={roc_auc_score(y_true, y_score):.3f}")
         plt.plot([0, 1], [0, 1], linestyle="--", color="gray")
         plt.xlabel("False Positive Rate")
         plt.ylabel("True Positive Rate")
         plt.legend()
-        path = figure_dir / f"{model_name}_roc.png"
+        path = figure_dir / f"{model_id}_roc.png"
         plt.tight_layout()
         plt.savefig(path, dpi=180)
         plt.close()
         paths["roc"] = str(path)
+        roc_data_path = figure_data_dir / f"{model_id}_roc_data.csv"
+        pd.DataFrame({"fpr": fpr, "tpr": tpr, "threshold": roc_thresholds}).to_csv(roc_data_path, index=False, encoding="utf-8-sig")
+        data_paths["roc_data"] = str(roc_data_path)
 
-        precision, recall, _ = precision_recall_curve(y_true, y_score)
+        precision, recall, pr_thresholds = precision_recall_curve(y_true, y_score)
         plt.figure(figsize=(6, 5))
         plt.plot(recall, precision, label=f"PR-AUC={average_precision_score(y_true, y_score):.3f}")
         plt.xlabel("Recall")
         plt.ylabel("Precision")
         plt.legend()
-        path = figure_dir / f"{model_name}_pr.png"
+        path = figure_dir / f"{model_id}_pr.png"
         plt.tight_layout()
         plt.savefig(path, dpi=180)
         plt.close()
         paths["pr"] = str(path)
+        pr_data_path = figure_data_dir / f"{model_id}_pr_data.csv"
+        pr_threshold_column = np.append(pr_thresholds, np.nan)
+        pd.DataFrame({"precision": precision, "recall": recall, "threshold": pr_threshold_column}).to_csv(
+            pr_data_path,
+            index=False,
+            encoding="utf-8-sig",
+        )
+        data_paths["pr_data"] = str(pr_data_path)
 
         prob_true, prob_pred = calibration_curve(y_true, y_score, n_bins=8, strategy="quantile")
         plt.figure(figsize=(6, 5))
@@ -612,11 +652,18 @@ def plot_curves(model_name: str, y_true: pd.Series, y_score: np.ndarray, thresho
         plt.plot([0, 1], [0, 1], linestyle="--", color="gray")
         plt.xlabel("Predicted probability")
         plt.ylabel("Observed event rate")
-        path = figure_dir / f"{model_name}_calibration.png"
+        path = figure_dir / f"{model_id}_calibration.png"
         plt.tight_layout()
         plt.savefig(path, dpi=180)
         plt.close()
         paths["calibration"] = str(path)
+        calibration_data_path = figure_data_dir / f"{model_id}_calibration_data.csv"
+        pd.DataFrame({"predicted_probability_mean": prob_pred, "observed_event_rate": prob_true}).to_csv(
+            calibration_data_path,
+            index=False,
+            encoding="utf-8-sig",
+        )
+        data_paths["calibration_data"] = str(calibration_data_path)
 
     y_pred = (y_score >= threshold).astype(int)
     matrix = confusion_matrix(y_true, y_pred, labels=[0, 1])
@@ -626,16 +673,39 @@ def plot_curves(model_name: str, y_true: pd.Series, y_score: np.ndarray, thresho
         plt.text(column, row, str(value), ha="center", va="center")
     plt.xticks([0, 1], ["Pred 0", "Pred 1"])
     plt.yticks([0, 1], ["True 0", "True 1"])
-    path = figure_dir / f"{model_name}_confusion_matrix.png"
+    path = figure_dir / f"{model_id}_confusion_matrix.png"
     plt.tight_layout()
     plt.savefig(path, dpi=180)
     plt.close()
     paths["confusion_matrix"] = str(path)
-    return paths
+    confusion_data_path = figure_data_dir / f"{model_id}_confusion_matrix_data.csv"
+    pd.DataFrame(
+        [
+            {"true_label": 0, "predicted_label": 0, "count": int(matrix[0, 0])},
+            {"true_label": 0, "predicted_label": 1, "count": int(matrix[0, 1])},
+            {"true_label": 1, "predicted_label": 0, "count": int(matrix[1, 0])},
+            {"true_label": 1, "predicted_label": 1, "count": int(matrix[1, 1])},
+        ]
+    ).to_csv(confusion_data_path, index=False, encoding="utf-8-sig")
+    data_paths["confusion_matrix_data"] = str(confusion_data_path)
+    score_data_path = figure_data_dir / f"{model_id}_test_scores.csv"
+    pd.DataFrame({"y_true": y_true.to_numpy(), "y_score": y_score, "y_pred": y_pred}).to_csv(
+        score_data_path,
+        index=False,
+        encoding="utf-8-sig",
+    )
+    data_paths["test_scores"] = str(score_data_path)
+    return paths, data_paths
 
 
-def plot_feature_importance(model_name: str, pipeline: Pipeline, feature_names: list[str], figure_dir: Path) -> str | None:
-    """输出模型特征重要性图。
+def plot_feature_importance(
+    model_id: str,
+    pipeline: Pipeline,
+    feature_names: list[str],
+    figure_dir: Path,
+    table_dir: Path,
+) -> tuple[str | None, str | None, pd.DataFrame]:
+    """输出模型特征重要性图和 CSV。
 
     Logistic 使用系数绝对值；树模型使用 feature_importances_。
     """
@@ -647,21 +717,29 @@ def plot_feature_importance(model_name: str, pipeline: Pipeline, feature_names: 
     elif hasattr(model, "feature_importances_"):
         values = np.asarray(model.feature_importances_)
     if values is None or len(values) != len(feature_names):
-        return None
+        return None, None, pd.DataFrame()
+    summary = pd.DataFrame({"feature": feature_names, "importance": values})
+    summary = summary.sort_values("importance", ascending=False).reset_index(drop=True)
+    summary["rank"] = np.arange(1, len(summary) + 1)
+    explainability_dir = table_dir / "explainability"
+    explainability_dir.mkdir(parents=True, exist_ok=True)
+    table_path = explainability_dir / f"{model_id}_feature_importance.csv"
+    summary.to_csv(table_path, index=False, encoding="utf-8-sig")
     order = np.argsort(values)[-20:]
     plt.figure(figsize=(8, 7))
     plt.barh(np.asarray(feature_names)[order], values[order])
     plt.xlabel("Importance")
-    path = figure_dir / f"{model_name}_feature_importance.png"
+    path = figure_dir / f"{model_id}_feature_importance.png"
     plt.tight_layout()
     plt.savefig(path, dpi=180)
     plt.close()
-    return str(path)
+    return str(path), str(table_path), summary
 
 
 def train_all_models(config: dict[str, Any]) -> dict[str, Any]:
     """训练配置中列出的所有模型并写出完整 run 产物。"""
 
+    require_runtime_dependencies(config)
     target_column = str(config["dataset"]["endpoint_name"])
     dataset_path = Path(config["data"]["dataset_path"])
     if not dataset_path.exists():
@@ -677,38 +755,90 @@ def train_all_models(config: dict[str, Any]) -> dict[str, Any]:
     for directory in [table_dir, model_dir, figure_dir, report_dir]:
         directory.mkdir(parents=True, exist_ok=True)
     split.split_table.to_csv(table_dir / "splits.csv", index=False, encoding="utf-8-sig")
-    dataset_figures = plot_dataset_diagnostics(dataset, target_column, figure_dir)
+    dataset_figures, dataset_figure_data = plot_dataset_diagnostics(dataset, target_column, figure_dir, table_dir)
 
     metrics_rows: list[dict[str, Any]] = []
     threshold_rows: list[dict[str, Any]] = []
     model_outputs: dict[str, Any] = {}
-    feature_names = list(split.x_train.columns)
-    for model_name in config["training"]["models"]:
-        try:
-            pipeline, tuning_info = tune_and_fit_model(model_name, split, config)
-            valid_score = predict_probability(pipeline, split.x_valid)
-            threshold, threshold_info = choose_threshold(split.y_valid, valid_score, str(config["run"]["threshold_strategy"]))
-            test_score = predict_probability(pipeline, split.x_test)
-            metrics = compute_binary_metrics(split.y_test, test_score, threshold)
-            status, message = model_diagnostic_status(metrics, config)
-            model_path = model_dir / f"{model_name}.joblib"
-            joblib.dump(pipeline, model_path)
-            figure_paths = plot_curves(model_name, split.y_test, test_score, threshold, figure_dir)
-            importance_path = plot_feature_importance(model_name, pipeline, feature_names, figure_dir)
-            if importance_path:
-                figure_paths["feature_importance"] = importance_path
-            metrics_rows.append({"model": model_name, "status": status, "message": message, "threshold": threshold, **metrics})
-            threshold_rows.append({"model": model_name, **threshold_info, **tuning_info})
-            model_outputs[model_name] = {
-                "model_path": str(model_path),
-                "figures": figure_paths,
-                "status": status,
-                "message": message,
-                "best_params": tuning_info["best_params"],
-            }
-        except Exception as exc:  # noqa: BLE001
-            metrics_rows.append({"model": model_name, "status": "failed", "message": f"{type(exc).__name__}: {exc}"})
-            model_outputs[model_name] = {"status": "failed", "message": f"{type(exc).__name__}: {exc}"}
+    feature_sets = configured_feature_sets(config, list(split.x_train.columns))
+    feature_set_rows = [
+        {
+            "feature_set": feature_set.name,
+            "description": feature_set.description,
+            "feature_count": len(feature_set.features),
+            "features": ";".join(feature_set.features),
+        }
+        for feature_set in feature_sets
+    ]
+    feature_sets_path = table_dir / "feature_sets.csv"
+    pd.DataFrame(feature_set_rows).to_csv(feature_sets_path, index=False, encoding="utf-8-sig")
+
+    for feature_set in feature_sets:
+        active_split = subset_split(split, feature_set.features)
+        feature_names = list(active_split.x_train.columns)
+        for model_name in config["training"]["models"]:
+            model_id = f"{feature_set.name}__{model_name}"
+            try:
+                pipeline, tuning_info = tune_and_fit_model(model_name, active_split, config)
+                valid_score = predict_probability(pipeline, active_split.x_valid)
+                threshold, threshold_info = choose_threshold(
+                    active_split.y_valid,
+                    valid_score,
+                    str(config["run"]["threshold_strategy"]),
+                )
+                test_score = predict_probability(pipeline, active_split.x_test)
+                metrics = compute_binary_metrics(active_split.y_test, test_score, threshold)
+                status, message = model_diagnostic_status(metrics, config)
+                model_path = model_dir / f"{model_id}.joblib"
+                joblib.dump(pipeline, model_path)
+                figure_paths, figure_data_paths = plot_curves(model_id, active_split.y_test, test_score, threshold, figure_dir, table_dir)
+                importance_path, importance_table_path, importance_table = plot_feature_importance(
+                    model_id,
+                    pipeline,
+                    feature_names,
+                    figure_dir,
+                    table_dir,
+                )
+                if importance_path:
+                    figure_paths["feature_importance"] = importance_path
+                metrics_rows.append(
+                    {
+                        "feature_set": feature_set.name,
+                        "model": model_name,
+                        "status": status,
+                        "message": message,
+                        "threshold": threshold,
+                        **metrics,
+                    }
+                )
+                threshold_rows.append({"feature_set": feature_set.name, "model": model_name, **threshold_info, **tuning_info})
+                model_outputs[model_id] = {
+                    "feature_set": feature_set.name,
+                    "model": model_name,
+                    "model_path": str(model_path),
+                    "figures": figure_paths,
+                    "figure_data": figure_data_paths,
+                    "feature_importance_table": importance_table_path,
+                    "top_features": importance_table.head(10).to_dict(orient="records") if not importance_table.empty else [],
+                    "status": status,
+                    "message": message,
+                    "best_params": tuning_info["best_params"],
+                }
+            except Exception as exc:  # noqa: BLE001
+                metrics_rows.append(
+                    {
+                        "feature_set": feature_set.name,
+                        "model": model_name,
+                        "status": "failed",
+                        "message": f"{type(exc).__name__}: {exc}",
+                    }
+                )
+                model_outputs[model_id] = {
+                    "feature_set": feature_set.name,
+                    "model": model_name,
+                    "status": "failed",
+                    "message": f"{type(exc).__name__}: {exc}",
+                }
 
     metrics = pd.DataFrame(metrics_rows)
     thresholds = pd.DataFrame(threshold_rows)
@@ -730,8 +860,10 @@ def train_all_models(config: dict[str, Any]) -> dict[str, Any]:
             "metrics": str(metrics_path),
             "thresholds": str(thresholds_path),
             "splits": str(table_dir / "splits.csv"),
+            "feature_sets": str(feature_sets_path),
         },
         "figures": dataset_figures,
+        "figure_data": dataset_figure_data,
         "models": model_outputs,
         "package_versions": package_versions(),
         "config": config,
