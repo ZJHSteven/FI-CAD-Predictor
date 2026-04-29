@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 
 from src.fi_cad.config import load_config
-from src.fi_cad.data import build_outcome_table_from_frames
+from src.fi_cad.data import build_outcome_table_from_frames, normalize_charls_id
 from src.fi_cad.modeling import choose_threshold, compute_binary_metrics, split_dataset
 
 
@@ -38,6 +38,15 @@ class FiCadPipelineTests(unittest.TestCase):
         self.assertFalse(bool(by_id.loc["p1", "include_in_modeling"]))
         self.assertTrue(bool(by_id.loc["p2", "include_in_modeling"]))
         self.assertEqual(int(by_id.loc["p2", "heart_related_event_by_2020"]), 1)
+
+    def test_charls_wave1_id_is_normalized_to_followup_shape(self) -> None:
+        """2011 的 11 位 ID 要能对齐后续 12 位 ID。"""
+
+        ids = pd.Series(["09400411302", "094004113002"])
+        normalized = normalize_charls_id(ids).tolist()
+
+        self.assertEqual(normalized[0], "094004113002")
+        self.assertEqual(normalized[0], normalized[1])
 
     def test_split_dataset_has_no_id_overlap(self) -> None:
         """同一个 ID 不能同时出现在训练、验证和测试中。"""

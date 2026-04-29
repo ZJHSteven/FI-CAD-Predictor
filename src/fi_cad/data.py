@@ -57,7 +57,29 @@ def read_parquet_table(curated_root: Path, relative_path: str) -> pd.DataFrame:
     path = curated_root / relative_path
     if not path.exists():
         raise FileNotFoundError(f"建模所需数据表不存在：{path}")
-    return pd.read_parquet(path)
+    frame = pd.read_parquet(path)
+    if "ID" in frame.columns:
+        frame["ID"] = normalize_charls_id(frame["ID"])
+    return frame
+
+
+def normalize_charls_id(series: pd.Series) -> pd.Series:
+    """统一 CHARLS 跨波次个人 ID。
+
+    背景：
+    - 2011 Wave1 的个人 ID 在当前数据里常见为 11 位，例如 `09400411302`。
+    - 2013 之后同一个人常见为 12 位，例如 `094004113002`。
+    - 这不是不同人，而是中间补了 1 位成员序号占位。
+
+    核心逻辑：
+    - 先把 ID 当字符串保留前导 0。
+    - 11 位 ID 规范化为“前 9 位 + 0 + 后 2 位”。
+    - 12 位 ID 原样保留。
+    - 其他长度不强行猜测，只去除空格后返回，便于后续暴露问题。
+    """
+
+    text = series.astype("string").str.strip()
+    return text.mask(text.str.len() == 11, text.str.slice(0, 9) + "0" + text.str.slice(9))
 
 
 def load_metadata(curated_root: Path, relative_path: str) -> dict[str, Any]:
@@ -147,7 +169,7 @@ def wave_event_from_frame(frame: pd.DataFrame, event_columns: list[str], *, one_
         else:
             signal[column] = pd.Series(np.select([numeric == 1, numeric == 2], [1.0, 0.0], default=np.nan), index=frame.index)
     event = signal.max(axis=1, skipna=True).fillna(0.0)
-    event_by_id = event.groupby(frame["ID"].astype("string")).max()
+    event_by_id = event.groupby(normalize_charls_id(frame["ID"])).max()
     event_by_id.index.name = "ID"
     return event_by_id
 
@@ -172,7 +194,7 @@ def build_outcome_table_from_frames(
         raise ValueError("2011 健康表必须包含 ID 和 da007_7_，才能定义基线心脏病状态。")
 
     baseline = baseline_health[["ID", "da007_7_"]].copy()
-    baseline["ID"] = baseline["ID"].astype("string")
+    baseline["ID"] = normalize_charls_id(baseline["ID"])
     baseline["baseline_heart_disease"] = yes_no_to_binary(baseline["da007_7_"])
     outcome = baseline[["ID", "baseline_heart_disease"]].drop_duplicates("ID").set_index("ID")
     outcome["eligible_baseline_no_heart_disease"] = outcome["baseline_heart_disease"].eq(0.0)
@@ -206,9 +228,9 @@ def build_outcome_table_from_frames(
 
         observed_ids = set()
         if not health_frame.empty and "ID" in health_frame.columns:
-            observed_ids.update(health_frame["ID"].astype("string").dropna().tolist())
+            observed_ids.update(normalize_charls_id(health_frame["ID"]).dropna().tolist())
         if not exit_frame.empty and "ID" in exit_frame.columns:
-            observed_ids.update(exit_frame["ID"].astype("string").dropna().tolist())
+            observed_ids.update(normalize_charls_id(exit_frame["ID"]).dropna().tolist())
         observed_wave = outcome.index.isin(observed_ids)
         observed_any = observed_any | observed_wave
         event_wave = combined.eq(1.0) & outcome["eligible_baseline_no_heart_disease"]
@@ -249,7 +271,7 @@ def build_baseline_features(
     """
 
     base = baseline_health[["ID"]].drop_duplicates().copy()
-    base["ID"] = base["ID"].astype("string")
+    base["ID"] = normalize_charls_id(base["ID"])
     dictionary_rows: list[dict[str, str]] = []
 
     def add_feature(name: str, values: pd.Series, label: str, group: str) -> None:
@@ -257,13 +279,13 @@ def build_baseline_features(
         dictionary_rows.append({"feature": name, "group": group, "label": label})
 
     demo = demographic.drop_duplicates("ID").copy()
-    demo["ID"] = demo["ID"].astype("string")
+    demo["ID"] = normalize_charls_id(demo["ID"])
     demo = demo.set_index("ID").reindex(base["ID"]).reset_index()
     health = baseline_health.drop_duplicates("ID").copy()
-    health["ID"] = health["ID"].astype("string")
+    health["ID"] = normalize_charls_id(health["ID"])
     health = health.set_index("ID").reindex(base["ID"]).reset_index()
     bio = biomarkers.drop_duplicates("ID").copy()
-    bio["ID"] = bio["ID"].astype("string")
+    bio["ID"] = normalize_charls_id(bio["ID"])
     bio = bio.set_index("ID").reindex(base["ID"]).reset_index()
 
     add_feature("age_2011", 2011 - to_numeric(demo.get("ba002_1", pd.Series(index=demo.index))), "2011 年年龄", "demographic")
@@ -326,7 +348,7 @@ def build_baseline_features(
 
     if include_blood and blood is not None and not blood.empty:
         blood_frame = blood.drop_duplicates("ID").copy()
-        blood_frame["ID"] = blood_frame["ID"].astype("string")
+        blood_frame["ID"] = normalize_charls_id(blood_frame["ID"])
         blood_frame = blood_frame.set_index("ID").reindex(base["ID"]).reset_index()
         for column, label in {
             "newglu": "血糖 mg/dl",
@@ -425,6 +447,8 @@ def build_modeling_dataset(config: dict[str, Any]) -> DatasetBuildResult:
         how="inner",
     )
     dataset = dataset[dataset["eligible_baseline_no_heart_disease"] & dataset["observed_followup_any"]].copy()
+    if dataset.empty:
+        raise ValueError("建模数据集为空：请检查 CHARLS ID 规范化、基线排除条件和随访结局表。")
     dataset[target_column] = dataset[target_column].astype(int)
     missingness = build_missingness_table(dataset, target_column)
     high_corr = build_high_correlation_table(dataset, target_column)
