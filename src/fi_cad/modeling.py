@@ -43,7 +43,7 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 @dataclass(frozen=True)
@@ -216,6 +216,29 @@ def subset_split(split: SplitData, features: list[str]) -> SplitData:
     )
 
 
+def categorical_feature_columns(feature_names: list[str]) -> list[str]:
+    """列出需要按分类变量处理的基线编码列。
+
+    这些列的数值大小本身没有连续测量含义：
+    - 性别、婚姻、教育是类别编码。
+    - 自评健康、同龄健康比较、饮酒频率虽然有顺序含义，但不同档位之间的距离不应默认相等。
+
+    因此这里用 One-Hot，让模型学习每个档位的独立风险，而不是把 `1/2/3/4` 当作等距连续数。
+    """
+
+    configured = {
+        "sex_code_2011",
+        "education_code_2011",
+        "marital_code_2011",
+        "self_rated_health_2011",
+        "health_compared_peer_2011",
+        "alcohol_frequency_code_2011",
+        "depressed_frequency_2011",
+        "sad_or_depressed_2011",
+    }
+    return [feature for feature in feature_names if feature in configured]
+
+
 def safe_stratify(y: pd.Series) -> pd.Series | None:
     """只有正负样本都足够时才启用 stratify。"""
 
@@ -276,17 +299,44 @@ def split_dataset(dataset: pd.DataFrame, target_column: str, config: dict[str, A
 def make_preprocessor(feature_names: list[str], *, scale: bool) -> ColumnTransformer:
     """构建只在训练集 fit 的预处理器。
 
-    当前第一版特征均保存为数值编码：
-    - 连续变量用中位数填补。
-    - Logistic 回归额外标准化。
-    - 树模型不标准化，避免无意义变换。
+    处理规则：
+    - 连续变量：中位数填补；Logistic 回归额外标准化。
+    - 分类编码变量：众数填补 + One-Hot，避免把类别编号误当作连续距离。
+    - 所有 fit 都发生在训练集内部，避免数据泄露。
     """
 
+    categorical_features = categorical_feature_columns(feature_names)
+    numeric_features = [feature for feature in feature_names if feature not in categorical_features]
     steps: list[tuple[str, Any]] = [("imputer", SimpleImputer(strategy="median"))]
     if scale:
         steps.append(("scaler", StandardScaler()))
     numeric_pipeline = Pipeline(steps)
-    return ColumnTransformer([("numeric", numeric_pipeline, feature_names)], remainder="drop")
+    categorical_pipeline = Pipeline(
+        [
+            ("imputer", SimpleImputer(strategy="most_frequent")),
+            ("onehot", OneHotEncoder(handle_unknown="ignore", sparse_output=False)),
+        ]
+    )
+    transformers: list[tuple[str, Any, list[str]]] = []
+    if numeric_features:
+        transformers.append(("numeric", numeric_pipeline, numeric_features))
+    if categorical_features:
+        transformers.append(("categorical", categorical_pipeline, categorical_features))
+    return ColumnTransformer(transformers, remainder="drop", verbose_feature_names_out=False)
+
+
+def transformed_feature_names(pipeline: Pipeline, fallback_features: list[str]) -> list[str]:
+    """读取预处理后真正进入模型的特征名。
+
+    One-Hot 后，一个原始列会展开成多个哑变量。
+    特征重要性、SHAP 和报告必须使用展开后的列名，否则会出现“重要性数组长度”和“原始特征名长度”对不上。
+    """
+
+    preprocessor = pipeline.named_steps["preprocess"]
+    try:
+        return [str(name) for name in preprocessor.get_feature_names_out()]
+    except Exception:  # noqa: BLE001
+        return list(fallback_features)
 
 
 def class_ratio(y: pd.Series) -> float:
@@ -810,10 +860,11 @@ def train_all_models(config: dict[str, Any]) -> dict[str, Any]:
                 model_path = model_dir / f"{model_id}.joblib"
                 joblib.dump(pipeline, model_path)
                 figure_paths, figure_data_paths = plot_curves(model_id, active_split.y_test, test_score, threshold, figure_dir, table_dir)
+                model_feature_names = transformed_feature_names(pipeline, feature_names)
                 importance_path, importance_table_path, importance_table = plot_feature_importance(
                     model_id,
                     pipeline,
-                    feature_names,
+                    model_feature_names,
                     figure_dir,
                     table_dir,
                 )
@@ -837,6 +888,7 @@ def train_all_models(config: dict[str, Any]) -> dict[str, Any]:
                     "figures": figure_paths,
                     "figure_data": figure_data_paths,
                     "feature_importance_table": importance_table_path,
+                    "transformed_feature_count": len(model_feature_names),
                     "top_features": importance_table.head(10).to_dict(orient="records") if not importance_table.empty else [],
                     "status": status,
                     "message": message,

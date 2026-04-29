@@ -16,7 +16,7 @@ import pandas as pd
 
 from src.fi_cad.config import load_config
 from src.fi_cad.data import build_baseline_features, build_outcome_table_from_frames, normalize_charls_id
-from src.fi_cad.modeling import choose_threshold, compute_binary_metrics, split_dataset
+from src.fi_cad.modeling import choose_threshold, compute_binary_metrics, make_pipeline, split_dataset, transformed_feature_names
 
 
 class FiCadPipelineTests(unittest.TestCase):
@@ -154,6 +154,31 @@ class FiCadPipelineTests(unittest.TestCase):
         self.assertIn("fnr", metrics)
         self.assertIn("recall", metrics)
         self.assertIn("selected_threshold", info)
+
+    def test_categorical_codes_are_one_hot_inside_pipeline(self) -> None:
+        """分类编码列必须在训练 pipeline 内展开为哑变量。
+
+        这样可以避免把性别、教育、婚姻、自评健康等编码当成连续数值。
+        测试重点不是模型效果，而是确认预处理器 fit 后的特征名里出现 One-Hot 展开列。
+        """
+
+        x_train = pd.DataFrame(
+            {
+                "age_2011": [60, 62, 64, 66],
+                "sex_code_2011": [1, 2, 1, 2],
+                "education_code_2011": [1, 2, 3, 2],
+                "fi_2011": [0.1, 0.2, 0.3, 0.4],
+            }
+        )
+        y_train = pd.Series([0, 1, 0, 1])
+        pipeline = make_pipeline("logistic_regression", y_train, {}, list(x_train.columns), 42)
+        pipeline.fit(x_train, y_train)
+        names = transformed_feature_names(pipeline, list(x_train.columns))
+
+        self.assertIn("age_2011", names)
+        self.assertIn("fi_2011", names)
+        self.assertTrue(any(name.startswith("sex_code_2011_") for name in names))
+        self.assertTrue(any(name.startswith("education_code_2011_") for name in names))
 
 
 if __name__ == "__main__":
