@@ -19,7 +19,6 @@ build/
 logs/
 
 # 旧项目和大体积中间产物
-output/
 catboost_info/
 frontend/dist/
 frontend/node_modules/
