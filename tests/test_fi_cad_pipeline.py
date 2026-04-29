@@ -94,6 +94,35 @@ class FiCadPipelineTests(unittest.TestCase):
         self.assertEqual(features.loc[0, "height_cm_2011"], 168.0)
         self.assertAlmostEqual(features.loc[0, "bmi_2011"], 70.0 / (1.68**2), places=6)
 
+    def test_fi_uses_legacy_literature_eleven_item_definition(self) -> None:
+        """FI 主列必须按旧论文/旧分支的 11 项等权口径计算。
+
+        旧分支 `2011年FI+CVD及变量新.csv` 可还原出公式：
+        10 个非 CVD 慢病缺陷 + BMI_to_FI，再除以 11。
+        这里构造一个人：高血压=1、髋部骨折=1、BMI 肥胖=1，其余 8 项为 0，
+        因此 FI 应为 3/11。
+        """
+
+        demographic = pd.DataFrame({"ID": ["09400411302"], "ba002_1": [1950], "rgender": [1]})
+        health_values = {
+            "ID": ["09400411302"],
+            "da001": [3],
+            "da002": [3],
+            "dc011": [1],
+            "de006": [1],
+            "da041": [2],
+            "da025": [1],
+        }
+        for number in [1, 3, 4, 5, 9, 10, 11, 13, 14]:
+            health_values[f"da007_{number}_"] = [1 if number == 1 else 2]
+        health = pd.DataFrame(health_values)
+        biomarkers = pd.DataFrame({"ID": ["09400411302"], "qi002": [160.0], "ql002": [80.0]})
+
+        features, _ = build_baseline_features(demographic, health, biomarkers, min_fi_observed_fraction=0.0)
+
+        self.assertAlmostEqual(features.loc[0, "bmi_to_fi_2011"], 1.0)
+        self.assertAlmostEqual(features.loc[0, "fi_2011"], 3.0 / 11.0, places=6)
+
     def test_split_dataset_has_no_id_overlap(self) -> None:
         """同一个 ID 不能同时出现在训练、验证和测试中。"""
 

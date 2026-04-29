@@ -151,6 +151,38 @@ def difficulty_to_deficit(series: pd.Series) -> pd.Series:
     return pd.Series(np.select([numeric == 1, numeric >= 2], [0.0, 1.0], default=np.nan), index=series.index)
 
 
+def bmi_to_literature_fi_deficit(bmi: pd.Series) -> pd.Series:
+    """把 BMI 转成旧论文/旧分支使用的 FI 缺陷项。
+
+    输入：
+    - bmi: 已经清洗过的 BMI 数值。
+
+    输出：
+    - 正常 BMI: 0.0
+    - 超重: 0.5
+    - 肥胖或偏瘦: 1.0
+
+    口径来源：
+    - `origin/main:data/raw/2011年FI+CVD及变量新.csv` 里有 `BMI_to_FI` 列。
+    - 对照旧数据可还原其大致分档：BMI 24~28 记 0.5，BMI >=28 记 1，BMI <18.5 也按营养不足风险记 1。
+    - 这个变量是旧 FI 公式的第 11 个缺陷项。
+    """
+
+    return pd.Series(
+        np.select(
+            [
+                bmi < 18.5,
+                (bmi >= 18.5) & (bmi < 24),
+                (bmi >= 24) & (bmi < 28),
+                bmi >= 28,
+            ],
+            [1.0, 0.0, 0.5, 1.0],
+            default=np.nan,
+        ),
+        index=bmi.index,
+    )
+
+
 def bad_health_to_deficit(series: pd.Series, *, threshold: float) -> pd.Series:
     """把自评健康、抑郁程度、疼痛程度等有序题转成缺陷项。
 
@@ -318,6 +350,7 @@ def build_baseline_features(
     add_feature("alcohol_frequency_code_2011", to_numeric(health.get("da067", pd.Series(index=health.index))), "过去一年饮酒频率原始编码", "lifestyle")
 
     chronic_deficits: list[pd.Series] = []
+    chronic_by_number: dict[int, pd.Series] = {}
     for number in range(1, 15):
         if number == 7:
             continue
@@ -328,6 +361,7 @@ def build_baseline_features(
         values = yes_no_to_binary(health[column])
         add_feature(feature, values, f"2011 慢病诊断条目 {number}，心脏病条目 7 已排除", "chronic")
         chronic_deficits.append(values)
+        chronic_by_number[number] = values
 
     function_deficits: list[pd.Series] = []
     for number in range(1, 21):
@@ -358,9 +392,11 @@ def build_baseline_features(
     height_m = height / 100.0
     bmi = weight / (height_m**2)
     bmi = bmi.where(bmi.between(10, 60, inclusive="both"))
+    bmi_fi_deficit = bmi_to_literature_fi_deficit(bmi)
     add_feature("height_cm_2011", height, "2011 体检测量身高 cm", "biomarker")
     add_feature("weight_kg_2011", weight, "2011 体检测量体重 kg", "biomarker")
     add_feature("bmi_2011", bmi, "2011 BMI，由身高体重计算", "biomarker")
+    add_feature("bmi_to_fi_2011", bmi_fi_deficit, "旧论文 FI 的 BMI 缺陷项：正常=0、超重=0.5、肥胖或偏瘦=1", "fi_literature_component")
 
     systolic_1 = plausible_numeric_range(bio.get("qa003", pd.Series(index=bio.index)), minimum=70, maximum=260)
     systolic_2 = plausible_numeric_range(bio.get("qa007", pd.Series(index=bio.index)), minimum=70, maximum=260)
@@ -369,12 +405,29 @@ def build_baseline_features(
     add_feature("systolic_bp_mean_2011", systolic_mean, "2011 两次收缩压均值，异常码已过滤", "biomarker")
     add_feature("waist_cm_2011", waist, "2011 腰围/围度类体测 cm，异常码已过滤", "biomarker")
 
-    fi_items = chronic_deficits + function_deficits + extra_deficits
-    fi_matrix = pd.concat(fi_items, axis=1)
-    observed_fraction = fi_matrix.notna().mean(axis=1)
-    fi_score = fi_matrix.mean(axis=1, skipna=True).where(observed_fraction >= min_fi_observed_fraction)
-    add_feature("fi_2011", fi_score, "2011 虚弱指数：缺陷项均值", "fi")
-    add_feature("fi_observed_fraction_2011", observed_fraction, "FI 缺陷项非缺失比例", "fi_quality")
+    literature_fi_items = {
+        "hypertension": chronic_by_number.get(1, pd.Series(np.nan, index=health.index)),
+        "chronic_lung_disease": chronic_by_number.get(5, pd.Series(np.nan, index=health.index)),
+        "asthma": chronic_by_number.get(14, pd.Series(np.nan, index=health.index)),
+        "stomach_or_digestive_disease": chronic_by_number.get(10, pd.Series(np.nan, index=health.index)),
+        "arthritis_or_rheumatism": chronic_by_number.get(13, pd.Series(np.nan, index=health.index)),
+        "fracture_hip": yes_no_to_binary(health.get("da025", pd.Series(index=health.index))),
+        "psychiatric_disease": chronic_by_number.get(11, pd.Series(np.nan, index=health.index)),
+        "diabetes": chronic_by_number.get(3, pd.Series(np.nan, index=health.index)),
+        "cancer": chronic_by_number.get(4, pd.Series(np.nan, index=health.index)),
+        "kidney_disease": chronic_by_number.get(9, pd.Series(np.nan, index=health.index)),
+        "bmi_to_fi": bmi_fi_deficit,
+    }
+    literature_fi_matrix = pd.DataFrame(literature_fi_items, index=health.index)
+    literature_observed_fraction = literature_fi_matrix.notna().mean(axis=1)
+    literature_fi_score = literature_fi_matrix.mean(axis=1, skipna=True).where(literature_observed_fraction >= min_fi_observed_fraction)
+    broad_fi_matrix = pd.concat(chronic_deficits + function_deficits + extra_deficits, axis=1)
+    broad_observed_fraction = broad_fi_matrix.notna().mean(axis=1)
+    broad_fi_score = broad_fi_matrix.mean(axis=1, skipna=True).where(broad_observed_fraction >= min_fi_observed_fraction)
+    add_feature("fi_2011", literature_fi_score, "2011 虚弱指数：旧论文/旧分支 11 项等权 FI，心脏病和卒中不进入 FI", "fi")
+    add_feature("fi_observed_fraction_2011", literature_observed_fraction, "旧论文 FI 11 个缺陷项的非缺失比例", "fi_quality")
+    add_feature("fi_broad_exploratory_2011", broad_fi_score, "探索性宽口径 FI：慢病、功能困难和少量心理/自评健康项均值，仅作敏感性参考", "fi_exploratory")
+    add_feature("fi_broad_observed_fraction_2011", broad_observed_fraction, "探索性宽口径 FI 缺陷项非缺失比例", "fi_quality")
 
     if include_blood and blood is not None and not blood.empty:
         blood_frame = blood.drop_duplicates("ID").copy()
