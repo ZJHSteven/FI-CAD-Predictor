@@ -1,0 +1,41 @@
+# FI-CAD-Predictor 第一版建模配置。
+#
+# 这个配置文件的目标是把“研究设计”和“训练脚本”分开：
+# - 研究设计放在这里，便于论文复现和人工审查。
+# - 训练代码只负责按配置执行，避免把关键口径藏在 Python 代码深处。
+
+data:
+  curated_root: data/curated
+  dataset_path: output/datasets/modeling_dataset.parquet
+  outcome_table_path: output/tables/outcome_table.csv
+  baseline_feature_path: output/tables/baseline_features.csv
+  variable_dictionary_path: output/tables/variable_dictionary.csv
+  missingness_path: output/tables/feature_missingness.csv
+  correlation_path: output/tables/high_correlation_pairs.csv
+
+run:
+  output_root: output/runs
+  random_seed: 20260429
+  test_size: 0.20
+  valid_size: 0.20
+  primary_metric: roc_auc
+  threshold_strategy: balanced_youden_f1
+  min_recall_warning: 0.05
+  all_negative_rate_warning: 0.98
+
+dataset:
+  endpoint_name: heart_related_event_by_2020
+  baseline_year: 2011
+  horizon_year: 2020
+  include_blood_enhanced_features: false
+  min_fi_observed_fraction: 0.20
+
+training:
+  optuna_trials: 6
+  optuna_timeout_seconds: 180
+  models:
+    - logistic_regression
+    - random_forest
+    - xgboost
+    - lightgbm
+    - catboost
