@@ -25,6 +25,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import optuna
 import pandas as pd
+import shap
 from sklearn.calibration import calibration_curve
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
@@ -58,6 +59,21 @@ class SplitData:
     split_table: pd.DataFrame
 
 
+@dataclass(frozen=True)
+class FeatureSet:
+    """一次训练使用的特征集合。
+
+    字段说明：
+    - name: 特征集名称，会写入指标表和模型文件名。
+    - description: 人类可读说明，用于报告解释。
+    - features: 真正进入模型的列名列表。
+    """
+
+    name: str
+    description: str
+    features: list[str]
+
+
 def git_commit() -> str:
     """返回当前 Git commit，用于写入 run_manifest。"""
 
@@ -69,12 +85,45 @@ def package_versions() -> dict[str, str]:
     """记录关键依赖版本，保证论文结果可追溯。"""
 
     versions: dict[str, str] = {}
-    for name in ["pandas", "numpy", "scikit-learn", "xgboost", "lightgbm", "catboost", "optuna", "matplotlib"]:
+    for name in [
+        "pandas",
+        "numpy",
+        "scikit-learn",
+        "xgboost",
+        "lightgbm",
+        "catboost",
+        "optuna",
+        "matplotlib",
+        "shap",
+        "tabulate",
+    ]:
         try:
             versions[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:
             versions[name] = "not-installed"
     return versions
+
+
+def require_runtime_dependencies(config: dict[str, Any]) -> None:
+    """检查训练必须依赖是否真的安装。
+
+    这里故意不做“缺包就跳过”的降级处理：
+    - SHAP 是解释性分析的核心产物，缺它就不应把训练 run 当作完整成功。
+    - tabulate 虽然当前报告有手写表格兜底，但用户已经要求虚拟环境里补齐依赖，因此也纳入检查。
+    """
+
+    required = ["pandas", "numpy", "scikit-learn", "joblib", "matplotlib", "optuna", "tabulate"]
+    if bool(config.get("interpretability", {}).get("require_shap", True)):
+        required.append("shap")
+    missing = []
+    for package_name in required:
+        try:
+            importlib.metadata.version(package_name)
+        except importlib.metadata.PackageNotFoundError:
+            missing.append(package_name)
+    if missing:
+        install_command = f".venv\\Scripts\\python.exe -m pip install {' '.join(missing)}"
+        raise RuntimeError(f"训练缺少关键依赖：{', '.join(missing)}。请先运行：{install_command}")
 
 
 def feature_columns(dataset: pd.DataFrame, target_column: str) -> list[str]:
