@@ -568,7 +568,7 @@ def plot_dataset_diagnostics(dataset: pd.DataFrame, target_column: str, figure_d
     numeric = dataset[[*features, target_column]].apply(pd.to_numeric, errors="coerce")
     corr_to_target = numeric.corr(numeric_only=True)[target_column].drop(labels=[target_column], errors="ignore").abs()
     target_corr_path = figure_data_dir / "dataset_target_correlations.csv"
-    corr_to_target.sort_values(ascending=False).rename("abs_correlation_to_target").reset_index(names="feature").to_csv(
+    corr_to_target.sort_values(ascending=False).rename_axis("feature").reset_index(name="abs_correlation_to_target").to_csv(
         target_corr_path,
         index=False,
         encoding="utf-8-sig",
