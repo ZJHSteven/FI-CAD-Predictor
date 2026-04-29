@@ -12,6 +12,27 @@ from .config import load_config
 from .evaluate import resolve_run_dir
 
 
+def dataframe_to_markdown(frame: pd.DataFrame) -> str:
+    """把 DataFrame 转成不依赖 tabulate 的 Markdown 表格。
+
+    pandas 的 `to_markdown()` 需要额外安装 `tabulate`。
+    为了让报告入口在最小环境里也稳定可用，这里手写一个简单表格渲染器。
+    """
+
+    if frame.empty:
+        return "（无结果）"
+    text_frame = frame.fillna("").astype(str)
+    headers = list(text_frame.columns)
+    lines = [
+        "| " + " | ".join(headers) + " |",
+        "| " + " | ".join(["---"] * len(headers)) + " |",
+    ]
+    for _, row in text_frame.iterrows():
+        values = [row[column].replace("|", "\\|") for column in headers]
+        lines.append("| " + " | ".join(values) + " |")
+    return "\n".join(lines)
+
+
 def build_argument_parser() -> argparse.ArgumentParser:
     """构建命令行参数。"""
 
@@ -31,7 +52,9 @@ def main() -> int:
     metrics = pd.read_csv(manifest["tables"]["metrics"])
     report_path = run_dir / "reports" / "modeling_report.md"
     report_path.parent.mkdir(parents=True, exist_ok=True)
-    best = metrics.sort_values(["status", "roc_auc"], ascending=[True, False], na_position="last").head(1)
+    status_rank = {"ok": 0, "warning": 1, "failed": 2}
+    ranked = metrics.assign(_status_rank=metrics["status"].map(status_rank).fillna(9))
+    best = ranked.sort_values(["_status_rank", "roc_auc"], ascending=[True, False], na_position="last").head(1)
     best_model = best.iloc[0]["model"] if not best.empty else "无"
     lines = [
         "# FI-CAD-Predictor 第一版建模报告",
@@ -48,7 +71,7 @@ def main() -> int:
         f"- Git commit：{manifest['git_commit']}",
         "",
         "## 模型结果",
-        metrics.to_markdown(index=False),
+        dataframe_to_markdown(metrics),
         "",
         "## 当前最佳模型",
         f"- 按当前指标表排序的候选最佳模型：`{best_model}`。",
