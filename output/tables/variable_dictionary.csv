@@ -45,13 +45,25 @@ sad_or_depressed_2011,mental,悲伤、低落或抑郁程度
 height_cm_2011,biomarker,2011 体检测量身高 cm
 weight_kg_2011,biomarker,2011 体检测量体重 kg
 bmi_2011,biomarker,2011 BMI，由身高体重计算
+waist_height_ratio_2011,biomarker_derived,2011 腰高比，腰围 cm / 身高 cm
+bmi_underweight_2011,biomarker_derived,2011 BMI 偏瘦标记，BMI < 18.5
+bmi_overweight_2011,biomarker_derived,2011 BMI 超重标记，24 <= BMI < 28
+bmi_obesity_2011,biomarker_derived,2011 BMI 肥胖标记，BMI >= 28
+central_obesity_2011,biomarker_derived,2011 腹型肥胖标记：男性腰围 >=90 cm，女性腰围 >=85 cm
 bmi_to_fi_2011,fi_literature_component,旧论文 FI 的 BMI 缺陷项：正常=0、超重=0.5、肥胖或偏瘦=1
 systolic_bp_mean_2011,biomarker,2011 两次收缩压均值，异常码已过滤
+diastolic_bp_mean_2011,biomarker,2011 两次舒张压均值，异常码已过滤
+pulse_pressure_2011,biomarker_derived,2011 脉压：收缩压均值 - 舒张压均值
+high_bp_measured_2011,biomarker_derived,2011 体测高血压标记：收缩压 >=140 或舒张压 >=90
 waist_cm_2011,biomarker,2011 腰围/围度类体测 cm，异常码已过滤
 fi_2011,fi,2011 虚弱指数：旧论文/旧分支 11 项等权 FI，心脏病和卒中不进入 FI
 fi_observed_fraction_2011,fi_quality,旧论文 FI 11 个缺陷项的非缺失比例
 fi_broad_exploratory_2011,fi_exploratory,探索性宽口径 FI：慢病、功能困难和少量心理/自评健康项均值，仅作敏感性参考
 fi_broad_observed_fraction_2011,fi_quality,探索性宽口径 FI 缺陷项非缺失比例
+fi_high_2011,fi_derived,旧论文 FI 高风险标记：FI >= 0.25
+fi_broad_high_2011,fi_derived,探索性宽口径 FI 高风险标记：FI >= 0.25
+fi_age_interaction_2011,fi_derived,旧论文 FI 与年龄交互项，用于捕捉同等 FI 在高龄人群中的风险放大
+fi_broad_age_interaction_2011,fi_derived,探索性宽口径 FI 与年龄交互项
 newglu_2011,blood,2011 血检增强特征：血糖 mg/dl
 newcho_2011,blood,2011 血检增强特征：总胆固醇 mg/dl
 newhdl_2011,blood,2011 血检增强特征：HDL 胆固醇 mg/dl
