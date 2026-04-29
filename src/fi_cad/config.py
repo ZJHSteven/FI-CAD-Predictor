@@ -42,12 +42,40 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "include_blood_enhanced_features": False,
         "min_fi_observed_fraction": 0.20,
     },
-    "training": {
-        "optuna_trials": 6,
-        "optuna_timeout_seconds": 180,
-        "models": ["logistic_regression", "random_forest", "xgboost", "lightgbm", "catboost"],
-    },
-}
+        "training": {
+            "optuna_trials": 10,
+            "optuna_timeout_seconds": 240,
+            "models": ["logistic_regression", "random_forest", "xgboost", "lightgbm", "catboost"],
+            "feature_sets": {
+                "primary": {
+                    "description": "主分析特征集，保留全部 2011 基线候选变量。",
+                    "exclude": [],
+                },
+                "no_body_size_demographic": {
+                    "description": "敏感性分析特征集，去掉年龄、性别和体型变量。",
+                    "exclude": [
+                        "age_2011",
+                        "sex_code_2011",
+                        "height_cm_2011",
+                        "weight_kg_2011",
+                        "bmi_2011",
+                        "waist_cm_2011",
+                    ],
+                },
+            },
+        },
+        "interpretability": {
+            "require_shap": True,
+            "shap_background_size": 300,
+            "shap_explain_size": 500,
+            "top_n_features": 20,
+        },
+        "archive": {
+            "enabled": True,
+            "directory": "output/share",
+            "keep_latest_only": True,
+        },
+    }
 
 
 def deep_update(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:

@@ -33,11 +33,35 @@ dataset:
   min_fi_observed_fraction: 0.20
 
 training:
-  optuna_trials: 6
-  optuna_timeout_seconds: 180
+  optuna_trials: 10
+  optuna_timeout_seconds: 240
   models:
     - logistic_regression
     - random_forest
     - xgboost
     - lightgbm
     - catboost
+  feature_sets:
+    primary:
+      description: 主分析特征集，保留 2011 基线 FI、人口学、生活方式、慢病、功能和体测变量。
+      exclude: []
+    no_body_size_demographic:
+      description: 敏感性分析特征集，去掉年龄、性别、身高、体重、BMI、腰围等粗变量，检查模型是否仍能从 FI/健康缺陷中获得信号。
+      exclude:
+        - age_2011
+        - sex_code_2011
+        - height_cm_2011
+        - weight_kg_2011
+        - bmi_2011
+        - waist_cm_2011
+
+interpretability:
+  require_shap: true
+  shap_background_size: 300
+  shap_explain_size: 500
+  top_n_features: 20
+
+archive:
+  enabled: true
+  directory: output/share
+  keep_latest_only: true
