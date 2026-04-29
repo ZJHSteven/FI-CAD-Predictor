@@ -1,0 +1,159 @@
+{
+  "run_dir": "output\\runs\\20260429-204239",
+  "created_at": "20260429-204239",
+  "git_commit": "41bdcfe",
+  "dataset_path": "output\\datasets\\modeling_dataset.parquet",
+  "target_column": "heart_related_event_by_2020",
+  "sample_count": 14785,
+  "positive_rate": 0.1339871491376395,
+  "feature_count": 48,
+  "tables": {
+    "metrics": "output\\runs\\20260429-204239\\tables\\model_metrics.csv",
+    "thresholds": "output\\runs\\20260429-204239\\tables\\thresholds.csv",
+    "splits": "output\\runs\\20260429-204239\\tables\\splits.csv"
+  },
+  "models": {
+    "logistic_regression": {
+      "model_path": "output\\runs\\20260429-204239\\models\\logistic_regression.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-204239\\figures\\logistic_regression_roc.png",
+        "pr": "output\\runs\\20260429-204239\\figures\\logistic_regression_pr.png",
+        "calibration": "output\\runs\\20260429-204239\\figures\\logistic_regression_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-204239\\figures\\logistic_regression_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-204239\\figures\\logistic_regression_feature_importance.png"
+      },
+      "status": "ok",
+      "message": "通过基础诊断。",
+      "best_params": {
+        "C": 0.055536554303046284
+      }
+    },
+    "random_forest": {
+      "model_path": "output\\runs\\20260429-204239\\models\\random_forest.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-204239\\figures\\random_forest_roc.png",
+        "pr": "output\\runs\\20260429-204239\\figures\\random_forest_pr.png",
+        "calibration": "output\\runs\\20260429-204239\\figures\\random_forest_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-204239\\figures\\random_forest_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-204239\\figures\\random_forest_feature_importance.png"
+      },
+      "status": "ok",
+      "message": "通过基础诊断。",
+      "best_params": {
+        "n_estimators": 291,
+        "max_depth": 12,
+        "min_samples_leaf": 10
+      }
+    },
+    "xgboost": {
+      "model_path": "output\\runs\\20260429-204239\\models\\xgboost.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-204239\\figures\\xgboost_roc.png",
+        "pr": "output\\runs\\20260429-204239\\figures\\xgboost_pr.png",
+        "calibration": "output\\runs\\20260429-204239\\figures\\xgboost_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-204239\\figures\\xgboost_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-204239\\figures\\xgboost_feature_importance.png"
+      },
+      "status": "ok",
+      "message": "通过基础诊断。",
+      "best_params": {
+        "n_estimators": 221,
+        "max_depth": 2,
+        "learning_rate": 0.09076208542956068,
+        "subsample": 0.8114866872383018,
+        "colsample_bytree": 0.8007749879382596,
+        "reg_lambda": 1.8417822275621858,
+        "scale_pos_weight": 6.214608586868497
+      }
+    },
+    "lightgbm": {
+      "model_path": "output\\runs\\20260429-204239\\models\\lightgbm.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-204239\\figures\\lightgbm_roc.png",
+        "pr": "output\\runs\\20260429-204239\\figures\\lightgbm_pr.png",
+        "calibration": "output\\runs\\20260429-204239\\figures\\lightgbm_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-204239\\figures\\lightgbm_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-204239\\figures\\lightgbm_feature_importance.png"
+      },
+      "status": "ok",
+      "message": "通过基础诊断。",
+      "best_params": {
+        "n_estimators": 352,
+        "num_leaves": 19,
+        "max_depth": 2,
+        "learning_rate": 0.07611834710337814,
+        "min_child_samples": 51,
+        "subsample": 0.7293169468106907,
+        "colsample_bytree": 0.8824041846464106,
+        "scale_pos_weight": 4.393218660930212
+      }
+    },
+    "catboost": {
+      "model_path": "output\\runs\\20260429-204239\\models\\catboost.joblib",
+      "figures": {
+        "roc": "output\\runs\\20260429-204239\\figures\\catboost_roc.png",
+        "pr": "output\\runs\\20260429-204239\\figures\\catboost_pr.png",
+        "calibration": "output\\runs\\20260429-204239\\figures\\catboost_calibration.png",
+        "confusion_matrix": "output\\runs\\20260429-204239\\figures\\catboost_confusion_matrix.png",
+        "feature_importance": "output\\runs\\20260429-204239\\figures\\catboost_feature_importance.png"
+      },
+      "status": "ok",
+      "message": "通过基础诊断。",
+      "best_params": {
+        "iterations": 321,
+        "depth": 3,
+        "learning_rate": 0.06113039728453088,
+        "l2_leaf_reg": 1.3085841629107544
+      }
+    }
+  },
+  "package_versions": {
+    "pandas": "1.5.3",
+    "numpy": "1.24.3",
+    "scikit-learn": "1.3.2",
+    "xgboost": null,
+    "lightgbm": "3.3.5",
+    "catboost": "1.2",
+    "optuna": "3.2.0",
+    "matplotlib": "3.7.1"
+  },
+  "config": {
+    "data": {
+      "curated_root": "data/curated",
+      "dataset_path": "output/datasets/modeling_dataset.parquet",
+      "outcome_table_path": "output/tables/outcome_table.csv",
+      "baseline_feature_path": "output/tables/baseline_features.csv",
+      "variable_dictionary_path": "output/tables/variable_dictionary.csv",
+      "missingness_path": "output/tables/feature_missingness.csv",
+      "correlation_path": "output/tables/high_correlation_pairs.csv"
+    },
+    "run": {
+      "output_root": "output/runs",
+      "random_seed": 20260429,
+      "test_size": 0.2,
+      "valid_size": 0.2,
+      "primary_metric": "roc_auc",
+      "threshold_strategy": "balanced_youden_f1",
+      "min_recall_warning": 0.05,
+      "all_negative_rate_warning": 0.98
+    },
+    "dataset": {
+      "endpoint_name": "heart_related_event_by_2020",
+      "baseline_year": 2011,
+      "horizon_year": 2020,
+      "include_blood_enhanced_features": false,
+      "min_fi_observed_fraction": 0.2
+    },
+    "training": {
+      "optuna_trials": 6,
+      "optuna_timeout_seconds": 180,
+      "models": [
+        "logistic_regression",
+        "random_forest",
+        "xgboost",
+        "lightgbm",
+        "catboost"
+      ]
+    }
+  }
+}
