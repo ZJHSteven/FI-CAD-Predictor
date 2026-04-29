@@ -137,7 +137,16 @@ def feature_columns(dataset: pd.DataFrame, target_column: str) -> list[str]:
         "observed_followup_any",
         "first_heart_event_year",
     }
-    return [column for column in dataset.columns if column not in blocked and not column.startswith("heart_event_") and not column.startswith("observed_")]
+    return [
+        column
+        for column in dataset.columns
+        if column not in blocked
+        and not column.startswith("heart_event_")
+        and not column.startswith("observed_")
+        # `fi_observed_fraction_2011` 这类列是“这个 FI 有多少项非缺失”的质量控制信息，
+        # 不是生物医学特征。上一轮解释性输出显示它会被模型学到，因此训练阶段统一排除。
+        and not column.endswith("observed_fraction_2011")
+    ]
 
 
 def configured_feature_sets(config: dict[str, Any], available_features: list[str]) -> list[FeatureSet]:
@@ -162,11 +171,20 @@ def configured_feature_sets(config: dict[str, Any], available_features: list[str
     available = list(available_features)
     available_set = set(available)
     for name, item in feature_set_config.items():
+        included = item.get("include")
         excluded = set(item.get("exclude", []))
+        if included:
+            included_set = set(included)
+            missing_included = sorted(included_set - available_set)
+            if missing_included:
+                raise ValueError(f"特征集 {name} 指定纳入的列不存在：{missing_included}")
+            base_features = [feature for feature in available if feature in included_set]
+        else:
+            base_features = available
         missing_excluded = sorted(excluded - available_set)
         if missing_excluded:
             raise ValueError(f"特征集 {name} 排除的列不存在：{missing_excluded}")
-        features = [feature for feature in available if feature not in excluded]
+        features = [feature for feature in base_features if feature not in excluded]
         if not features:
             raise ValueError(f"特征集 {name} 没有任何可训练特征。")
         feature_sets.append(

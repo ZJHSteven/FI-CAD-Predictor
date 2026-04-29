@@ -37,11 +37,11 @@ DEFAULT_CONFIG: dict[str, Any] = {
     },
     "dataset": {
         "endpoint_name": "heart_related_event_by_2020",
-        "baseline_year": 2011,
-        "horizon_year": 2020,
-        "include_blood_enhanced_features": False,
-        "min_fi_observed_fraction": 0.20,
-    },
+            "baseline_year": 2011,
+            "horizon_year": 2020,
+            "include_blood_enhanced_features": True,
+            "min_fi_observed_fraction": 0.20,
+        },
         "training": {
             "optuna_trials": 10,
             "optuna_timeout_seconds": 240,
@@ -61,6 +61,14 @@ DEFAULT_CONFIG: dict[str, Any] = {
                         "bmi_2011",
                         "waist_cm_2011",
                     ],
+                },
+                "literature_fi_minimal": {
+                    "description": "最小 11 项 FI 模型，只保留文献候选 FI、年龄和性别。",
+                    "include": ["fi_2011", "age_2011", "sex_code_2011"],
+                },
+                "broad_fi_minimal": {
+                    "description": "最小宽口径 FI 模型，只保留探索性宽口径 FI、年龄和性别。",
+                    "include": ["fi_broad_exploratory_2011", "age_2011", "sex_code_2011"],
                 },
             },
         },

@@ -29,7 +29,7 @@ dataset:
   endpoint_name: heart_related_event_by_2020
   baseline_year: 2011
   horizon_year: 2020
-  include_blood_enhanced_features: false
+  include_blood_enhanced_features: true
   min_fi_observed_fraction: 0.20
 
 training:
@@ -54,6 +54,18 @@ training:
         - weight_kg_2011
         - bmi_2011
         - waist_cm_2011
+    literature_fi_minimal:
+      description: 最小 11 项 FI 模型，只保留文献候选 FI、年龄和性别，用来评估该 FI 本身的预测力。
+      include:
+        - fi_2011
+        - age_2011
+        - sex_code_2011
+    broad_fi_minimal:
+      description: 最小宽口径 FI 模型，只保留探索性宽口径 FI、年龄和性别，用来和 11 项 FI 比较。
+      include:
+        - fi_broad_exploratory_2011
+        - age_2011
+        - sex_code_2011
 
 interpretability:
   require_shap: true
