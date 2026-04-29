@@ -1,0 +1,54 @@
+﻿feature,group,label
+age_2011,demographic,2011 年年龄
+sex_code_2011,demographic,性别原始编码
+education_code_2011,demographic,最高受教育程度原始编码
+marital_code_2011,demographic,婚姻状态原始编码
+self_rated_health_2011,health,自评健康原始编码
+health_compared_peer_2011,health,与同龄人相比健康原始编码
+current_smoking_2011,lifestyle,当前是否吸烟
+alcohol_frequency_code_2011,lifestyle,过去一年饮酒频率原始编码
+chronic_disease_1_2011,chronic,2011 慢病诊断条目 1，心脏病条目 7 已排除
+chronic_disease_2_2011,chronic,2011 慢病诊断条目 2，心脏病条目 7 已排除
+chronic_disease_3_2011,chronic,2011 慢病诊断条目 3，心脏病条目 7 已排除
+chronic_disease_4_2011,chronic,2011 慢病诊断条目 4，心脏病条目 7 已排除
+chronic_disease_5_2011,chronic,2011 慢病诊断条目 5，心脏病条目 7 已排除
+chronic_disease_6_2011,chronic,2011 慢病诊断条目 6，心脏病条目 7 已排除
+chronic_disease_8_2011,chronic,2011 慢病诊断条目 8，心脏病条目 7 已排除
+chronic_disease_9_2011,chronic,2011 慢病诊断条目 9，心脏病条目 7 已排除
+chronic_disease_10_2011,chronic,2011 慢病诊断条目 10，心脏病条目 7 已排除
+chronic_disease_11_2011,chronic,2011 慢病诊断条目 11，心脏病条目 7 已排除
+chronic_disease_12_2011,chronic,2011 慢病诊断条目 12，心脏病条目 7 已排除
+chronic_disease_13_2011,chronic,2011 慢病诊断条目 13，心脏病条目 7 已排除
+chronic_disease_14_2011,chronic,2011 慢病诊断条目 14，心脏病条目 7 已排除
+functional_difficulty_1_2011,function,2011 功能困难缺陷项 db001
+functional_difficulty_2_2011,function,2011 功能困难缺陷项 db002
+functional_difficulty_3_2011,function,2011 功能困难缺陷项 db003
+functional_difficulty_4_2011,function,2011 功能困难缺陷项 db004
+functional_difficulty_5_2011,function,2011 功能困难缺陷项 db005
+functional_difficulty_6_2011,function,2011 功能困难缺陷项 db006
+functional_difficulty_7_2011,function,2011 功能困难缺陷项 db007
+functional_difficulty_8_2011,function,2011 功能困难缺陷项 db008
+functional_difficulty_9_2011,function,2011 功能困难缺陷项 db009
+functional_difficulty_10_2011,function,2011 功能困难缺陷项 db010
+functional_difficulty_11_2011,function,2011 功能困难缺陷项 db011
+functional_difficulty_12_2011,function,2011 功能困难缺陷项 db012
+functional_difficulty_13_2011,function,2011 功能困难缺陷项 db013
+functional_difficulty_14_2011,function,2011 功能困难缺陷项 db014
+functional_difficulty_15_2011,function,2011 功能困难缺陷项 db015
+functional_difficulty_16_2011,function,2011 功能困难缺陷项 db016
+functional_difficulty_17_2011,function,2011 功能困难缺陷项 db017
+functional_difficulty_18_2011,function,2011 功能困难缺陷项 db018
+functional_difficulty_19_2011,function,2011 功能困难缺陷项 db019
+functional_difficulty_20_2011,function,2011 功能困难缺陷项 db020
+depressed_frequency_2011,mental,过去一周感到抑郁频率
+sad_or_depressed_2011,mental,悲伤、低落或抑郁程度
+height_cm_2011,biomarker,2011 体检测量身高 cm
+weight_kg_2011,biomarker,2011 体检测量体重 kg
+bmi_2011,biomarker,2011 BMI，由身高体重计算
+bmi_to_fi_2011,fi_literature_component,旧论文 FI 的 BMI 缺陷项：正常=0、超重=0.5、肥胖或偏瘦=1
+systolic_bp_mean_2011,biomarker,2011 两次收缩压均值，异常码已过滤
+waist_cm_2011,biomarker,2011 腰围/围度类体测 cm，异常码已过滤
+fi_2011,fi,2011 虚弱指数：旧论文/旧分支 11 项等权 FI，心脏病和卒中不进入 FI
+fi_observed_fraction_2011,fi_quality,旧论文 FI 11 个缺陷项的非缺失比例
+fi_broad_exploratory_2011,fi_exploratory,探索性宽口径 FI：慢病、功能困难和少量心理/自评健康项均值，仅作敏感性参考
+fi_broad_observed_fraction_2011,fi_quality,探索性宽口径 FI 缺陷项非缺失比例
