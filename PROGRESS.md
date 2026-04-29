@@ -3,8 +3,8 @@
 ## 当前结论（必须最新）
 - 现状：CHARLS 五个波次已经按 RAW、extracted、curated、audit 四层整理完毕，`data/MANIFEST.md` 已删除，后续以 `data/audit/charls_data_audit.json` 为机器可读验收结果。
 - 已完成：补入 2011 家户问卷文档、2013 构建支出收入财富数据、2015 血检候选包；删除 2011 重复包和 `.part` 残留；重建 81 张 `.dta`、81 份 CSV、81 份 Parquet、81 份 metadata JSON。
-- 正在做：只剩 2015 年“血检数据”RAW SHA1 复核；本地 `Blood.zip` 可解出 `Blood.dta`，但 SHA1 没有命中对照清单。
-- 下一步：如果能重新下载到 SHA1 为 `de5b1d80e9b72d61b690dff19b191f50f21ee8c5` 的官方 2015 血检包，就替换 `data/raw/2015-wave3/Blood.zip` 并重跑 `scripts/update_charls_data.py`。
+- 正在做：把 `data/curated/<wave>` 下的模块目录改成中文命名，只改子目录名，不改波次顶层目录和文档引用。
+- 下一步：目录重命名完成后，先检查 `data/curated` 的新目录结构和 `git status`，再按用户批准决定是否同步更新文档路径。
 
 ## 关键决策与理由（防止“吃书”）
 - 决策A：目录统一使用 `2011-wave1` 这种命名，保留年份和波次信息。原因：既符合用户习惯，也方便后续按年份或波次检索。
