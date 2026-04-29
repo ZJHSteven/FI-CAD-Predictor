@@ -347,8 +347,10 @@ def build_baseline_features(
     bio["ID"] = normalize_charls_id(bio["ID"])
     bio = bio.set_index("ID").reindex(base["ID"]).reset_index()
 
-    add_feature("age_2011", 2011 - to_numeric(demo.get("ba002_1", pd.Series(index=demo.index))), "2011 年年龄", "demographic")
-    add_feature("sex_code_2011", to_numeric(demo.get("rgender", pd.Series(index=demo.index))), "性别原始编码", "demographic")
+    age = 2011 - to_numeric(demo.get("ba002_1", pd.Series(index=demo.index)))
+    sex = to_numeric(demo.get("rgender", pd.Series(index=demo.index)))
+    add_feature("age_2011", age, "2011 年年龄", "demographic")
+    add_feature("sex_code_2011", sex, "性别原始编码", "demographic")
     add_feature("education_code_2011", to_numeric(demo.get("bd001", pd.Series(index=demo.index))), "最高受教育程度原始编码", "demographic")
     add_feature("marital_code_2011", to_numeric(demo.get("be001", pd.Series(index=demo.index))), "婚姻状态原始编码", "demographic")
 
@@ -401,16 +403,55 @@ def build_baseline_features(
     bmi = weight / (height_m**2)
     bmi = bmi.where(bmi.between(10, 60, inclusive="both"))
     bmi_fi_deficit = bmi_to_literature_fi_deficit(bmi)
+    waist = plausible_numeric_range(bio.get("qm002", pd.Series(index=bio.index)), minimum=45, maximum=180)
+    waist_height_ratio = waist / height
+    bmi_underweight = pd.Series(np.select([bmi < 18.5, bmi >= 18.5], [1.0, 0.0], default=np.nan), index=bmi.index)
+    bmi_overweight = pd.Series(np.select([(bmi >= 24) & (bmi < 28), (bmi < 24) | (bmi >= 28)], [1.0, 0.0], default=np.nan), index=bmi.index)
+    bmi_obesity = pd.Series(np.select([bmi >= 28, bmi < 28], [1.0, 0.0], default=np.nan), index=bmi.index)
+    central_obesity = pd.Series(
+        np.select(
+            [
+                (sex == 1) & (waist >= 90),
+                (sex == 2) & (waist >= 85),
+                (sex.isin([1, 2])) & waist.notna(),
+            ],
+            [1.0, 1.0, 0.0],
+            default=np.nan,
+        ),
+        index=waist.index,
+    )
     add_feature("height_cm_2011", height, "2011 体检测量身高 cm", "biomarker")
     add_feature("weight_kg_2011", weight, "2011 体检测量体重 kg", "biomarker")
     add_feature("bmi_2011", bmi, "2011 BMI，由身高体重计算", "biomarker")
+    add_feature("waist_height_ratio_2011", waist_height_ratio, "2011 腰高比，腰围 cm / 身高 cm", "biomarker_derived")
+    add_feature("bmi_underweight_2011", bmi_underweight, "2011 BMI 偏瘦标记，BMI < 18.5", "biomarker_derived")
+    add_feature("bmi_overweight_2011", bmi_overweight, "2011 BMI 超重标记，24 <= BMI < 28", "biomarker_derived")
+    add_feature("bmi_obesity_2011", bmi_obesity, "2011 BMI 肥胖标记，BMI >= 28", "biomarker_derived")
+    add_feature("central_obesity_2011", central_obesity, "2011 腹型肥胖标记：男性腰围 >=90 cm，女性腰围 >=85 cm", "biomarker_derived")
     add_feature("bmi_to_fi_2011", bmi_fi_deficit, "旧论文 FI 的 BMI 缺陷项：正常=0、超重=0.5、肥胖或偏瘦=1", "fi_literature_component")
 
     systolic_1 = plausible_numeric_range(bio.get("qa003", pd.Series(index=bio.index)), minimum=70, maximum=260)
     systolic_2 = plausible_numeric_range(bio.get("qa007", pd.Series(index=bio.index)), minimum=70, maximum=260)
     systolic_mean = pd.concat([systolic_1, systolic_2], axis=1).mean(axis=1, skipna=True)
-    waist = plausible_numeric_range(bio.get("qm002", pd.Series(index=bio.index)), minimum=45, maximum=180)
+    diastolic_1 = plausible_numeric_range(bio.get("qa004", pd.Series(index=bio.index)), minimum=40, maximum=160)
+    diastolic_2 = plausible_numeric_range(bio.get("qa008", pd.Series(index=bio.index)), minimum=40, maximum=160)
+    diastolic_mean = pd.concat([diastolic_1, diastolic_2], axis=1).mean(axis=1, skipna=True)
+    pulse_pressure = systolic_mean - diastolic_mean
+    high_bp_measured = pd.Series(
+        np.select(
+            [
+                (systolic_mean >= 140) | (diastolic_mean >= 90),
+                systolic_mean.notna() | diastolic_mean.notna(),
+            ],
+            [1.0, 0.0],
+            default=np.nan,
+        ),
+        index=systolic_mean.index,
+    )
     add_feature("systolic_bp_mean_2011", systolic_mean, "2011 两次收缩压均值，异常码已过滤", "biomarker")
+    add_feature("diastolic_bp_mean_2011", diastolic_mean, "2011 两次舒张压均值，异常码已过滤", "biomarker")
+    add_feature("pulse_pressure_2011", pulse_pressure, "2011 脉压：收缩压均值 - 舒张压均值", "biomarker_derived")
+    add_feature("high_bp_measured_2011", high_bp_measured, "2011 体测高血压标记：收缩压 >=140 或舒张压 >=90", "biomarker_derived")
     add_feature("waist_cm_2011", waist, "2011 腰围/围度类体测 cm，异常码已过滤", "biomarker")
 
     literature_fi_items = {
@@ -436,6 +477,10 @@ def build_baseline_features(
     add_feature("fi_observed_fraction_2011", literature_observed_fraction, "旧论文 FI 11 个缺陷项的非缺失比例", "fi_quality")
     add_feature("fi_broad_exploratory_2011", broad_fi_score, "探索性宽口径 FI：慢病、功能困难和少量心理/自评健康项均值，仅作敏感性参考", "fi_exploratory")
     add_feature("fi_broad_observed_fraction_2011", broad_observed_fraction, "探索性宽口径 FI 缺陷项非缺失比例", "fi_quality")
+    add_feature("fi_high_2011", pd.Series(np.select([literature_fi_score >= 0.25, literature_fi_score < 0.25], [1.0, 0.0], default=np.nan), index=literature_fi_score.index), "旧论文 FI 高风险标记：FI >= 0.25", "fi_derived")
+    add_feature("fi_broad_high_2011", pd.Series(np.select([broad_fi_score >= 0.25, broad_fi_score < 0.25], [1.0, 0.0], default=np.nan), index=broad_fi_score.index), "探索性宽口径 FI 高风险标记：FI >= 0.25", "fi_derived")
+    add_feature("fi_age_interaction_2011", literature_fi_score * age, "旧论文 FI 与年龄交互项，用于捕捉同等 FI 在高龄人群中的风险放大", "fi_derived")
+    add_feature("fi_broad_age_interaction_2011", broad_fi_score * age, "探索性宽口径 FI 与年龄交互项", "fi_derived")
 
     if include_blood and blood is not None and not blood.empty:
         blood_frame = blood.drop_duplicates("ID").copy()

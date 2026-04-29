@@ -66,6 +66,13 @@ DEFAULT_CONFIG: dict[str, Any] = {
                     "weight_kg_2011",
                     "bmi_2011",
                     "waist_cm_2011",
+                    "waist_height_ratio_2011",
+                    "bmi_underweight_2011",
+                    "bmi_overweight_2011",
+                    "bmi_obesity_2011",
+                    "central_obesity_2011",
+                    "fi_age_interaction_2011",
+                    "fi_broad_age_interaction_2011",
                 ],
             },
             "literature_fi_minimal": {

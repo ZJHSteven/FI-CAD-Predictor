@@ -59,6 +59,13 @@ training:
         - weight_kg_2011
         - bmi_2011
         - waist_cm_2011
+        - waist_height_ratio_2011
+        - bmi_underweight_2011
+        - bmi_overweight_2011
+        - bmi_obesity_2011
+        - central_obesity_2011
+        - fi_age_interaction_2011
+        - fi_broad_age_interaction_2011
     literature_fi_minimal:
       description: 最小 11 项 FI 模型，只保留文献候选 FI、年龄和性别，用来评估该 FI 本身的预测力。
       include:
