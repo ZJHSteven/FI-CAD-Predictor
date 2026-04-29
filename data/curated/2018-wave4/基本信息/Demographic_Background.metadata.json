@@ -1817,9 +1817,11 @@
     "zfredu": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2018-wave4/Demographic_Background/Demographic_Background.csv",
-  "parquet_file": "data/curated/2018-wave4/Demographic_Background/Demographic_Background.parquet",
-  "metadata_file": "data/curated/2018-wave4/Demographic_Background/Demographic_Background.metadata.json",
+  "csv_file": "data/curated/2018-wave4/基本信息/Demographic_Background.csv",
+  "parquet_file": "data/curated/2018-wave4/基本信息/Demographic_Background.parquet",
+  "metadata_file": "data/curated/2018-wave4/基本信息/Demographic_Background.metadata.json",
+  "curated_table_dir": "data/curated/2018-wave4/基本信息",
+  "curated_table_name": "基本信息",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

@@ -12922,9 +12922,11 @@
     "ef008": "unknown",
     "proxy": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/health_care_and_insurance/health_care_and_insurance.csv",
-  "parquet_file": "data/curated/2011-wave1/health_care_and_insurance/health_care_and_insurance.parquet",
-  "metadata_file": "data/curated/2011-wave1/health_care_and_insurance/health_care_and_insurance.metadata.json",
+  "csv_file": "data/curated/2011-wave1/医疗保健与保险/health_care_and_insurance.csv",
+  "parquet_file": "data/curated/2011-wave1/医疗保健与保险/health_care_and_insurance.parquet",
+  "metadata_file": "data/curated/2011-wave1/医疗保健与保险/health_care_and_insurance.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/医疗保健与保险",
+  "curated_table_name": "医疗保健与保险",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

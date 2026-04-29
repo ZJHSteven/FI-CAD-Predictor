@@ -123,9 +123,11 @@
     "imonth": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2020-wave5/Sample_Infor/Sample_Infor.csv",
-  "parquet_file": "data/curated/2020-wave5/Sample_Infor/Sample_Infor.parquet",
-  "metadata_file": "data/curated/2020-wave5/Sample_Infor/Sample_Infor.metadata.json",
+  "csv_file": "data/curated/2020-wave5/样本信息/Sample_Infor.csv",
+  "parquet_file": "data/curated/2020-wave5/样本信息/Sample_Infor.parquet",
+  "metadata_file": "data/curated/2020-wave5/样本信息/Sample_Infor.metadata.json",
+  "curated_table_dir": "data/curated/2020-wave5/样本信息",
+  "curated_table_name": "样本信息",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

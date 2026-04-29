@@ -431,9 +431,11 @@
     "j006": "unknown",
     "j007": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.csv",
-  "parquet_file": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.parquet",
-  "metadata_file": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.metadata.json",
+  "csv_file": "data/curated/2011-wave1/访员观察/interviewer_observation.csv",
+  "parquet_file": "data/curated/2011-wave1/访员观察/interviewer_observation.parquet",
+  "metadata_file": "data/curated/2011-wave1/访员观察/interviewer_observation.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/访员观察",
+  "curated_table_name": "访员观察",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

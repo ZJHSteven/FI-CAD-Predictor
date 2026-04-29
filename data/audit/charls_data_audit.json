@@ -10,8 +10,8 @@
     {
       "path": "data/raw/.gitignore",
       "name": ".gitignore",
-      "size_bytes": 166,
-      "sha1": "e3f99ed6ceb4dbffad01fefe237b0248b8ccd93e",
+      "size_bytes": 168,
+      "sha1": "d2f61bc89209628e065e16194aa3916caadc8f19",
       "kind": "unknown"
     },
     {
@@ -1015,9 +1015,9 @@
   "curated_results": [
     {
       "source": "data/extracted/2011-wave1/biomarkers.dta",
-      "csv": "data/curated/2011-wave1/biomarkers/biomarkers.csv",
-      "parquet": "data/curated/2011-wave1/biomarkers/biomarkers.parquet",
-      "metadata": "data/curated/2011-wave1/biomarkers/biomarkers.metadata.json",
+      "csv": "data/curated/2011-wave1/体检信息/biomarkers.csv",
+      "parquet": "data/curated/2011-wave1/体检信息/biomarkers.parquet",
+      "metadata": "data/curated/2011-wave1/体检信息/biomarkers.metadata.json",
       "rows": 13974,
       "columns": 238,
       "variable_label_count": 238,
@@ -1026,9 +1026,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/Blood_20140429.dta",
-      "csv": "data/curated/2011-wave1/Blood_20140429/Blood_20140429.csv",
-      "parquet": "data/curated/2011-wave1/Blood_20140429/Blood_20140429.parquet",
-      "metadata": "data/curated/2011-wave1/Blood_20140429/Blood_20140429.metadata.json",
+      "csv": "data/curated/2011-wave1/血检数据/Blood_20140429.csv",
+      "parquet": "data/curated/2011-wave1/血检数据/Blood_20140429.parquet",
+      "metadata": "data/curated/2011-wave1/血检数据/Blood_20140429.metadata.json",
       "rows": 11847,
       "columns": 19,
       "variable_label_count": 19,
@@ -1037,9 +1037,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/child.dta",
-      "csv": "data/curated/2011-wave1/child/child.csv",
-      "parquet": "data/curated/2011-wave1/child/child.parquet",
-      "metadata": "data/curated/2011-wave1/child/child.metadata.json",
+      "csv": "data/curated/2011-wave1/构建的子女数据库/child.csv",
+      "parquet": "data/curated/2011-wave1/构建的子女数据库/child.parquet",
+      "metadata": "data/curated/2011-wave1/构建的子女数据库/child.metadata.json",
       "rows": 27398,
       "columns": 69,
       "variable_label_count": 69,
@@ -1048,9 +1048,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/community.dta",
-      "csv": "data/curated/2011-wave1/community/community.csv",
-      "parquet": "data/curated/2011-wave1/community/community.parquet",
-      "metadata": "data/curated/2011-wave1/community/community.metadata.json",
+      "csv": "data/curated/2011-wave1/社区问卷数据/community.csv",
+      "parquet": "data/curated/2011-wave1/社区问卷数据/community.parquet",
+      "metadata": "data/curated/2011-wave1/社区问卷数据/community.metadata.json",
       "rows": 454,
       "columns": 719,
       "variable_label_count": 718,
@@ -1059,9 +1059,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/demographic_background.dta",
-      "csv": "data/curated/2011-wave1/demographic_background/demographic_background.csv",
-      "parquet": "data/curated/2011-wave1/demographic_background/demographic_background.parquet",
-      "metadata": "data/curated/2011-wave1/demographic_background/demographic_background.metadata.json",
+      "csv": "data/curated/2011-wave1/基本信息/demographic_background.csv",
+      "parquet": "data/curated/2011-wave1/基本信息/demographic_background.parquet",
+      "metadata": "data/curated/2011-wave1/基本信息/demographic_background.metadata.json",
       "rows": 17705,
       "columns": 118,
       "variable_label_count": 118,
@@ -1070,9 +1070,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/exp_income_wealth.dta",
-      "csv": "data/curated/2011-wave1/exp_income_wealth/exp_income_wealth.csv",
-      "parquet": "data/curated/2011-wave1/exp_income_wealth/exp_income_wealth.parquet",
-      "metadata": "data/curated/2011-wave1/exp_income_wealth/exp_income_wealth.metadata.json",
+      "csv": "data/curated/2011-wave1/构建的支出、收入和财富数据库/exp_income_wealth.csv",
+      "parquet": "data/curated/2011-wave1/构建的支出、收入和财富数据库/exp_income_wealth.parquet",
+      "metadata": "data/curated/2011-wave1/构建的支出、收入和财富数据库/exp_income_wealth.metadata.json",
       "rows": 17708,
       "columns": 51,
       "variable_label_count": 51,
@@ -1081,9 +1081,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/family_information.dta",
-      "csv": "data/curated/2011-wave1/family_information/family_information.csv",
-      "parquet": "data/curated/2011-wave1/family_information/family_information.parquet",
-      "metadata": "data/curated/2011-wave1/family_information/family_information.metadata.json",
+      "csv": "data/curated/2011-wave1/家庭结构/family_information.csv",
+      "parquet": "data/curated/2011-wave1/家庭结构/family_information.parquet",
+      "metadata": "data/curated/2011-wave1/家庭结构/family_information.metadata.json",
       "rows": 10199,
       "columns": 1210,
       "variable_label_count": 1210,
@@ -1092,9 +1092,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/family_transfer.dta",
-      "csv": "data/curated/2011-wave1/family_transfer/family_transfer.csv",
-      "parquet": "data/curated/2011-wave1/family_transfer/family_transfer.parquet",
-      "metadata": "data/curated/2011-wave1/family_transfer/family_transfer.metadata.json",
+      "csv": "data/curated/2011-wave1/家庭交往及经济帮助/family_transfer.csv",
+      "parquet": "data/curated/2011-wave1/家庭交往及经济帮助/family_transfer.parquet",
+      "metadata": "data/curated/2011-wave1/家庭交往及经济帮助/family_transfer.metadata.json",
       "rows": 10122,
       "columns": 1010,
       "variable_label_count": 1010,
@@ -1103,9 +1103,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/health_care_and_insurance.dta",
-      "csv": "data/curated/2011-wave1/health_care_and_insurance/health_care_and_insurance.csv",
-      "parquet": "data/curated/2011-wave1/health_care_and_insurance/health_care_and_insurance.parquet",
-      "metadata": "data/curated/2011-wave1/health_care_and_insurance/health_care_and_insurance.metadata.json",
+      "csv": "data/curated/2011-wave1/医疗保健与保险/health_care_and_insurance.csv",
+      "parquet": "data/curated/2011-wave1/医疗保健与保险/health_care_and_insurance.parquet",
+      "metadata": "data/curated/2011-wave1/医疗保健与保险/health_care_and_insurance.metadata.json",
       "rows": 17545,
       "columns": 480,
       "variable_label_count": 480,
@@ -1114,9 +1114,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/health_status_and_functioning.dta",
-      "csv": "data/curated/2011-wave1/health_status_and_functioning/health_status_and_functioning.csv",
-      "parquet": "data/curated/2011-wave1/health_status_and_functioning/health_status_and_functioning.parquet",
-      "metadata": "data/curated/2011-wave1/health_status_and_functioning/health_status_and_functioning.metadata.json",
+      "csv": "data/curated/2011-wave1/健康状况与功能/health_status_and_functioning.csv",
+      "parquet": "data/curated/2011-wave1/健康状况与功能/health_status_and_functioning.parquet",
+      "metadata": "data/curated/2011-wave1/健康状况与功能/health_status_and_functioning.metadata.json",
       "rows": 17596,
       "columns": 591,
       "variable_label_count": 591,
@@ -1125,9 +1125,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/hhmember.dta",
-      "csv": "data/curated/2011-wave1/hhmember/hhmember.csv",
-      "parquet": "data/curated/2011-wave1/hhmember/hhmember.parquet",
-      "metadata": "data/curated/2011-wave1/hhmember/hhmember.metadata.json",
+      "csv": "data/curated/2011-wave1/构建的家户成员数据库/hhmember.csv",
+      "parquet": "data/curated/2011-wave1/构建的家户成员数据库/hhmember.parquet",
+      "metadata": "data/curated/2011-wave1/构建的家户成员数据库/hhmember.metadata.json",
       "rows": 17989,
       "columns": 32,
       "variable_label_count": 31,
@@ -1136,9 +1136,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/household_income.dta",
-      "csv": "data/curated/2011-wave1/household_income/household_income.csv",
-      "parquet": "data/curated/2011-wave1/household_income/household_income.parquet",
-      "metadata": "data/curated/2011-wave1/household_income/household_income.metadata.json",
+      "csv": "data/curated/2011-wave1/家庭收入、支出与资产/household_income.csv",
+      "parquet": "data/curated/2011-wave1/家庭收入、支出与资产/household_income.parquet",
+      "metadata": "data/curated/2011-wave1/家庭收入、支出与资产/household_income.metadata.json",
       "rows": 10026,
       "columns": 1060,
       "variable_label_count": 1060,
@@ -1147,9 +1147,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/household_roster.dta",
-      "csv": "data/curated/2011-wave1/household_roster/household_roster.csv",
-      "parquet": "data/curated/2011-wave1/household_roster/household_roster.parquet",
-      "metadata": "data/curated/2011-wave1/household_roster/household_roster.metadata.json",
+      "csv": "data/curated/2011-wave1/家户登记表/household_roster.csv",
+      "parquet": "data/curated/2011-wave1/家户登记表/household_roster.parquet",
+      "metadata": "data/curated/2011-wave1/家户登记表/household_roster.metadata.json",
       "rows": 10229,
       "columns": 530,
       "variable_label_count": 530,
@@ -1158,9 +1158,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/housing_characteristics.dta",
-      "csv": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.csv",
-      "parquet": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.parquet",
-      "metadata": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.metadata.json",
+      "csv": "data/curated/2011-wave1/住房信息/housing_characteristics.csv",
+      "parquet": "data/curated/2011-wave1/住房信息/housing_characteristics.parquet",
+      "metadata": "data/curated/2011-wave1/住房信息/housing_characteristics.metadata.json",
       "rows": 10081,
       "columns": 34,
       "variable_label_count": 34,
@@ -1169,9 +1169,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/individual_income.dta",
-      "csv": "data/curated/2011-wave1/individual_income/individual_income.csv",
-      "parquet": "data/curated/2011-wave1/individual_income/individual_income.parquet",
-      "metadata": "data/curated/2011-wave1/individual_income/individual_income.metadata.json",
+      "csv": "data/curated/2011-wave1/个人收入、支出与资产/individual_income.csv",
+      "parquet": "data/curated/2011-wave1/个人收入、支出与资产/individual_income.parquet",
+      "metadata": "data/curated/2011-wave1/个人收入、支出与资产/individual_income.metadata.json",
       "rows": 17424,
       "columns": 170,
       "variable_label_count": 170,
@@ -1180,9 +1180,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/interviewer_observation.dta",
-      "csv": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.csv",
-      "parquet": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.parquet",
-      "metadata": "data/curated/2011-wave1/interviewer_observation/interviewer_observation.metadata.json",
+      "csv": "data/curated/2011-wave1/访员观察/interviewer_observation.csv",
+      "parquet": "data/curated/2011-wave1/访员观察/interviewer_observation.parquet",
+      "metadata": "data/curated/2011-wave1/访员观察/interviewer_observation.metadata.json",
       "rows": 17326,
       "columns": 17,
       "variable_label_count": 17,
@@ -1191,9 +1191,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/parent.dta",
-      "csv": "data/curated/2011-wave1/parent/parent.csv",
-      "parquet": "data/curated/2011-wave1/parent/parent.parquet",
-      "metadata": "data/curated/2011-wave1/parent/parent.metadata.json",
+      "csv": "data/curated/2011-wave1/构建的父母数据库/parent.csv",
+      "parquet": "data/curated/2011-wave1/构建的父母数据库/parent.parquet",
+      "metadata": "data/curated/2011-wave1/构建的父母数据库/parent.metadata.json",
       "rows": 36378,
       "columns": 47,
       "variable_label_count": 47,
@@ -1202,9 +1202,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/PSU.dta",
-      "csv": "data/curated/2011-wave1/PSU/PSU.csv",
-      "parquet": "data/curated/2011-wave1/PSU/PSU.parquet",
-      "metadata": "data/curated/2011-wave1/PSU/PSU.metadata.json",
+      "csv": "data/curated/2011-wave1/PSU编码/PSU.csv",
+      "parquet": "data/curated/2011-wave1/PSU编码/PSU.parquet",
+      "metadata": "data/curated/2011-wave1/PSU编码/PSU.metadata.json",
       "rows": 450,
       "columns": 8,
       "variable_label_count": 8,
@@ -1213,9 +1213,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/weight.dta",
-      "csv": "data/curated/2011-wave1/weight/weight.csv",
-      "parquet": "data/curated/2011-wave1/weight/weight.parquet",
-      "metadata": "data/curated/2011-wave1/weight/weight.metadata.json",
+      "csv": "data/curated/2011-wave1/权重/weight.csv",
+      "parquet": "data/curated/2011-wave1/权重/weight.parquet",
+      "metadata": "data/curated/2011-wave1/权重/weight.metadata.json",
       "rows": 18245,
       "columns": 14,
       "variable_label_count": 14,
@@ -1224,9 +1224,9 @@
     },
     {
       "source": "data/extracted/2011-wave1/work_retirement_and_pension.dta",
-      "csv": "data/curated/2011-wave1/work_retirement_and_pension/work_retirement_and_pension.csv",
-      "parquet": "data/curated/2011-wave1/work_retirement_and_pension/work_retirement_and_pension.parquet",
-      "metadata": "data/curated/2011-wave1/work_retirement_and_pension/work_retirement_and_pension.metadata.json",
+      "csv": "data/curated/2011-wave1/工作、退休、养老金/work_retirement_and_pension.csv",
+      "parquet": "data/curated/2011-wave1/工作、退休、养老金/work_retirement_and_pension.parquet",
+      "metadata": "data/curated/2011-wave1/工作、退休、养老金/work_retirement_and_pension.metadata.json",
       "rows": 17524,
       "columns": 526,
       "variable_label_count": 526,
@@ -1235,9 +1235,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Biomarker.dta",
-      "csv": "data/curated/2013-wave2/Biomarker/Biomarker.csv",
-      "parquet": "data/curated/2013-wave2/Biomarker/Biomarker.parquet",
-      "metadata": "data/curated/2013-wave2/Biomarker/Biomarker.metadata.json",
+      "csv": "data/curated/2013-wave2/体检信息/Biomarker.csv",
+      "parquet": "data/curated/2013-wave2/体检信息/Biomarker.parquet",
+      "metadata": "data/curated/2013-wave2/体检信息/Biomarker.metadata.json",
       "rows": 13169,
       "columns": 239,
       "variable_label_count": 239,
@@ -1246,9 +1246,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Child.dta",
-      "csv": "data/curated/2013-wave2/Child/Child.csv",
-      "parquet": "data/curated/2013-wave2/Child/Child.parquet",
-      "metadata": "data/curated/2013-wave2/Child/Child.metadata.json",
+      "csv": "data/curated/2013-wave2/子女信息/Child.csv",
+      "parquet": "data/curated/2013-wave2/子女信息/Child.parquet",
+      "metadata": "data/curated/2013-wave2/子女信息/Child.metadata.json",
       "rows": 31348,
       "columns": 50,
       "variable_label_count": 50,
@@ -1257,9 +1257,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Demographic_Background.dta",
-      "csv": "data/curated/2013-wave2/Demographic_Background/Demographic_Background.csv",
-      "parquet": "data/curated/2013-wave2/Demographic_Background/Demographic_Background.parquet",
-      "metadata": "data/curated/2013-wave2/Demographic_Background/Demographic_Background.metadata.json",
+      "csv": "data/curated/2013-wave2/基本信息/Demographic_Background.csv",
+      "parquet": "data/curated/2013-wave2/基本信息/Demographic_Background.parquet",
+      "metadata": "data/curated/2013-wave2/基本信息/Demographic_Background.metadata.json",
       "rows": 18605,
       "columns": 145,
       "variable_label_count": 145,
@@ -1268,9 +1268,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Exit_Interview.dta",
-      "csv": "data/curated/2013-wave2/Exit_Interview/Exit_Interview.csv",
-      "parquet": "data/curated/2013-wave2/Exit_Interview/Exit_Interview.parquet",
-      "metadata": "data/curated/2013-wave2/Exit_Interview/Exit_Interview.metadata.json",
+      "csv": "data/curated/2013-wave2/退出调查/Exit_Interview.csv",
+      "parquet": "data/curated/2013-wave2/退出调查/Exit_Interview.parquet",
+      "metadata": "data/curated/2013-wave2/退出调查/Exit_Interview.metadata.json",
       "rows": 431,
       "columns": 1837,
       "variable_label_count": 1837,
@@ -1279,9 +1279,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/exp_income_wealth.dta",
-      "csv": "data/curated/2013-wave2/exp_income_wealth/exp_income_wealth.csv",
-      "parquet": "data/curated/2013-wave2/exp_income_wealth/exp_income_wealth.parquet",
-      "metadata": "data/curated/2013-wave2/exp_income_wealth/exp_income_wealth.metadata.json",
+      "csv": "data/curated/2013-wave2/构建的支出、收入和财富数据库/exp_income_wealth.csv",
+      "parquet": "data/curated/2013-wave2/构建的支出、收入和财富数据库/exp_income_wealth.parquet",
+      "metadata": "data/curated/2013-wave2/构建的支出、收入和财富数据库/exp_income_wealth.metadata.json",
       "rows": 18419,
       "columns": 51,
       "variable_label_count": 51,
@@ -1290,9 +1290,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Family_Information.dta",
-      "csv": "data/curated/2013-wave2/Family_Information/Family_Information.csv",
-      "parquet": "data/curated/2013-wave2/Family_Information/Family_Information.parquet",
-      "metadata": "data/curated/2013-wave2/Family_Information/Family_Information.metadata.json",
+      "csv": "data/curated/2013-wave2/家庭信息/Family_Information.csv",
+      "parquet": "data/curated/2013-wave2/家庭信息/Family_Information.parquet",
+      "metadata": "data/curated/2013-wave2/家庭信息/Family_Information.metadata.json",
       "rows": 10803,
       "columns": 1185,
       "variable_label_count": 1185,
@@ -1301,9 +1301,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Family_Transfer.dta",
-      "csv": "data/curated/2013-wave2/Family_Transfer/Family_Transfer.csv",
-      "parquet": "data/curated/2013-wave2/Family_Transfer/Family_Transfer.parquet",
-      "metadata": "data/curated/2013-wave2/Family_Transfer/Family_Transfer.metadata.json",
+      "csv": "data/curated/2013-wave2/家庭经济交往/Family_Transfer.csv",
+      "parquet": "data/curated/2013-wave2/家庭经济交往/Family_Transfer.parquet",
+      "metadata": "data/curated/2013-wave2/家庭经济交往/Family_Transfer.metadata.json",
       "rows": 10708,
       "columns": 596,
       "variable_label_count": 595,
@@ -1312,9 +1312,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Health_Care_and_Insurance.dta",
-      "csv": "data/curated/2013-wave2/Health_Care_and_Insurance/Health_Care_and_Insurance.csv",
-      "parquet": "data/curated/2013-wave2/Health_Care_and_Insurance/Health_Care_and_Insurance.parquet",
-      "metadata": "data/curated/2013-wave2/Health_Care_and_Insurance/Health_Care_and_Insurance.metadata.json",
+      "csv": "data/curated/2013-wave2/医疗保健与保险/Health_Care_and_Insurance.csv",
+      "parquet": "data/curated/2013-wave2/医疗保健与保险/Health_Care_and_Insurance.parquet",
+      "metadata": "data/curated/2013-wave2/医疗保健与保险/Health_Care_and_Insurance.metadata.json",
       "rows": 18433,
       "columns": 543,
       "variable_label_count": 543,
@@ -1323,9 +1323,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Health_Status_and_Functioning.dta",
-      "csv": "data/curated/2013-wave2/Health_Status_and_Functioning/Health_Status_and_Functioning.csv",
-      "parquet": "data/curated/2013-wave2/Health_Status_and_Functioning/Health_Status_and_Functioning.parquet",
-      "metadata": "data/curated/2013-wave2/Health_Status_and_Functioning/Health_Status_and_Functioning.metadata.json",
+      "csv": "data/curated/2013-wave2/健康状况与功能/Health_Status_and_Functioning.csv",
+      "parquet": "data/curated/2013-wave2/健康状况与功能/Health_Status_and_Functioning.parquet",
+      "metadata": "data/curated/2013-wave2/健康状况与功能/Health_Status_and_Functioning.metadata.json",
       "rows": 18455,
       "columns": 1220,
       "variable_label_count": 1220,
@@ -1334,9 +1334,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Household_Income.dta",
-      "csv": "data/curated/2013-wave2/Household_Income/Household_Income.csv",
-      "parquet": "data/curated/2013-wave2/Household_Income/Household_Income.parquet",
-      "metadata": "data/curated/2013-wave2/Household_Income/Household_Income.metadata.json",
+      "csv": "data/curated/2013-wave2/家户收入、支出及资产/Household_Income.csv",
+      "parquet": "data/curated/2013-wave2/家户收入、支出及资产/Household_Income.parquet",
+      "metadata": "data/curated/2013-wave2/家户收入、支出及资产/Household_Income.metadata.json",
       "rows": 10624,
       "columns": 1568,
       "variable_label_count": 1568,
@@ -1345,9 +1345,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Housing_Characteristics.dta",
-      "csv": "data/curated/2013-wave2/Housing_Characteristics/Housing_Characteristics.csv",
-      "parquet": "data/curated/2013-wave2/Housing_Characteristics/Housing_Characteristics.parquet",
-      "metadata": "data/curated/2013-wave2/Housing_Characteristics/Housing_Characteristics.metadata.json",
+      "csv": "data/curated/2013-wave2/住房信息/Housing_Characteristics.csv",
+      "parquet": "data/curated/2013-wave2/住房信息/Housing_Characteristics.parquet",
+      "metadata": "data/curated/2013-wave2/住房信息/Housing_Characteristics.metadata.json",
       "rows": 10620,
       "columns": 36,
       "variable_label_count": 36,
@@ -1356,9 +1356,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Individual_Income.dta",
-      "csv": "data/curated/2013-wave2/Individual_Income/Individual_Income.csv",
-      "parquet": "data/curated/2013-wave2/Individual_Income/Individual_Income.parquet",
-      "metadata": "data/curated/2013-wave2/Individual_Income/Individual_Income.metadata.json",
+      "csv": "data/curated/2013-wave2/个人收入及资产/Individual_Income.csv",
+      "parquet": "data/curated/2013-wave2/个人收入及资产/Individual_Income.parquet",
+      "metadata": "data/curated/2013-wave2/个人收入及资产/Individual_Income.metadata.json",
       "rows": 18387,
       "columns": 135,
       "variable_label_count": 135,
@@ -1367,9 +1367,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Interviewer_Observation.dta",
-      "csv": "data/curated/2013-wave2/Interviewer_Observation/Interviewer_Observation.csv",
-      "parquet": "data/curated/2013-wave2/Interviewer_Observation/Interviewer_Observation.parquet",
-      "metadata": "data/curated/2013-wave2/Interviewer_Observation/Interviewer_Observation.metadata.json",
+      "csv": "data/curated/2013-wave2/访问员观察/Interviewer_Observation.csv",
+      "parquet": "data/curated/2013-wave2/访问员观察/Interviewer_Observation.parquet",
+      "metadata": "data/curated/2013-wave2/访问员观察/Interviewer_Observation.metadata.json",
       "rows": 18333,
       "columns": 21,
       "variable_label_count": 21,
@@ -1378,9 +1378,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Other_HHmember.dta",
-      "csv": "data/curated/2013-wave2/Other_HHmember/Other_HHmember.csv",
-      "parquet": "data/curated/2013-wave2/Other_HHmember/Other_HHmember.parquet",
-      "metadata": "data/curated/2013-wave2/Other_HHmember/Other_HHmember.metadata.json",
+      "csv": "data/curated/2013-wave2/其他家户成员信息/Other_HHmember.csv",
+      "parquet": "data/curated/2013-wave2/其他家户成员信息/Other_HHmember.parquet",
+      "metadata": "data/curated/2013-wave2/其他家户成员信息/Other_HHmember.metadata.json",
       "rows": 9401,
       "columns": 17,
       "variable_label_count": 17,
@@ -1389,9 +1389,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Parent.dta",
-      "csv": "data/curated/2013-wave2/Parent/Parent.csv",
-      "parquet": "data/curated/2013-wave2/Parent/Parent.parquet",
-      "metadata": "data/curated/2013-wave2/Parent/Parent.metadata.json",
+      "csv": "data/curated/2013-wave2/父母信息/Parent.csv",
+      "parquet": "data/curated/2013-wave2/父母信息/Parent.parquet",
+      "metadata": "data/curated/2013-wave2/父母信息/Parent.metadata.json",
       "rows": 39242,
       "columns": 41,
       "variable_label_count": 41,
@@ -1400,9 +1400,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/PSU.dta",
-      "csv": "data/curated/2013-wave2/PSU/PSU.csv",
-      "parquet": "data/curated/2013-wave2/PSU/PSU.parquet",
-      "metadata": "data/curated/2013-wave2/PSU/PSU.metadata.json",
+      "csv": "data/curated/2013-wave2/PSU编码/PSU.csv",
+      "parquet": "data/curated/2013-wave2/PSU编码/PSU.parquet",
+      "metadata": "data/curated/2013-wave2/PSU编码/PSU.metadata.json",
       "rows": 450,
       "columns": 6,
       "variable_label_count": 6,
@@ -1411,9 +1411,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Verbal_Autopsy.dta",
-      "csv": "data/curated/2013-wave2/Verbal_Autopsy/Verbal_Autopsy.csv",
-      "parquet": "data/curated/2013-wave2/Verbal_Autopsy/Verbal_Autopsy.parquet",
-      "metadata": "data/curated/2013-wave2/Verbal_Autopsy/Verbal_Autopsy.metadata.json",
+      "csv": "data/curated/2013-wave2/死因信息/Verbal_Autopsy.csv",
+      "parquet": "data/curated/2013-wave2/死因信息/Verbal_Autopsy.parquet",
+      "metadata": "data/curated/2013-wave2/死因信息/Verbal_Autopsy.metadata.json",
       "rows": 434,
       "columns": 204,
       "variable_label_count": 204,
@@ -1422,9 +1422,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Weights.dta",
-      "csv": "data/curated/2013-wave2/Weights/Weights.csv",
-      "parquet": "data/curated/2013-wave2/Weights/Weights.parquet",
-      "metadata": "data/curated/2013-wave2/Weights/Weights.metadata.json",
+      "csv": "data/curated/2013-wave2/权重/Weights.csv",
+      "parquet": "data/curated/2013-wave2/权重/Weights.parquet",
+      "metadata": "data/curated/2013-wave2/权重/Weights.metadata.json",
       "rows": 19679,
       "columns": 19,
       "variable_label_count": 19,
@@ -1433,9 +1433,9 @@
     },
     {
       "source": "data/extracted/2013-wave2/Work_Retirement_and_Pension.dta",
-      "csv": "data/curated/2013-wave2/Work_Retirement_and_Pension/Work_Retirement_and_Pension.csv",
-      "parquet": "data/curated/2013-wave2/Work_Retirement_and_Pension/Work_Retirement_and_Pension.parquet",
-      "metadata": "data/curated/2013-wave2/Work_Retirement_and_Pension/Work_Retirement_and_Pension.metadata.json",
+      "csv": "data/curated/2013-wave2/工作退休及养老金/Work_Retirement_and_Pension.csv",
+      "parquet": "data/curated/2013-wave2/工作退休及养老金/Work_Retirement_and_Pension.parquet",
+      "metadata": "data/curated/2013-wave2/工作退休及养老金/Work_Retirement_and_Pension.metadata.json",
       "rows": 18385,
       "columns": 717,
       "variable_label_count": 717,
@@ -1444,9 +1444,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Biomarker.dta",
-      "csv": "data/curated/2015-wave3/Biomarker/Biomarker.csv",
-      "parquet": "data/curated/2015-wave3/Biomarker/Biomarker.parquet",
-      "metadata": "data/curated/2015-wave3/Biomarker/Biomarker.metadata.json",
+      "csv": "data/curated/2015-wave3/体检信息/Biomarker.csv",
+      "parquet": "data/curated/2015-wave3/体检信息/Biomarker.parquet",
+      "metadata": "data/curated/2015-wave3/体检信息/Biomarker.metadata.json",
       "rows": 16406,
       "columns": 222,
       "variable_label_count": 222,
@@ -1455,9 +1455,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Blood.dta",
-      "csv": "data/curated/2015-wave3/Blood/Blood.csv",
-      "parquet": "data/curated/2015-wave3/Blood/Blood.parquet",
-      "metadata": "data/curated/2015-wave3/Blood/Blood.metadata.json",
+      "csv": "data/curated/2015-wave3/血检数据/Blood.csv",
+      "parquet": "data/curated/2015-wave3/血检数据/Blood.parquet",
+      "metadata": "data/curated/2015-wave3/血检数据/Blood.metadata.json",
       "rows": 13420,
       "columns": 23,
       "variable_label_count": 23,
@@ -1466,9 +1466,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Child.dta",
-      "csv": "data/curated/2015-wave3/Child/Child.csv",
-      "parquet": "data/curated/2015-wave3/Child/Child.parquet",
-      "metadata": "data/curated/2015-wave3/Child/Child.metadata.json",
+      "csv": "data/curated/2015-wave3/构建的子女数据集/Child.csv",
+      "parquet": "data/curated/2015-wave3/构建的子女数据集/Child.parquet",
+      "metadata": "data/curated/2015-wave3/构建的子女数据集/Child.metadata.json",
       "rows": 34844,
       "columns": 42,
       "variable_label_count": 42,
@@ -1477,9 +1477,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Demographic_Background.dta",
-      "csv": "data/curated/2015-wave3/Demographic_Background/Demographic_Background.csv",
-      "parquet": "data/curated/2015-wave3/Demographic_Background/Demographic_Background.parquet",
-      "metadata": "data/curated/2015-wave3/Demographic_Background/Demographic_Background.metadata.json",
+      "csv": "data/curated/2015-wave3/基本信息/Demographic_Background.csv",
+      "parquet": "data/curated/2015-wave3/基本信息/Demographic_Background.parquet",
+      "metadata": "data/curated/2015-wave3/基本信息/Demographic_Background.metadata.json",
       "rows": 21095,
       "columns": 81,
       "variable_label_count": 81,
@@ -1488,9 +1488,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Family_Information.dta",
-      "csv": "data/curated/2015-wave3/Family_Information/Family_Information.csv",
-      "parquet": "data/curated/2015-wave3/Family_Information/Family_Information.parquet",
-      "metadata": "data/curated/2015-wave3/Family_Information/Family_Information.metadata.json",
+      "csv": "data/curated/2015-wave3/家庭信息/Family_Information.csv",
+      "parquet": "data/curated/2015-wave3/家庭信息/Family_Information.parquet",
+      "metadata": "data/curated/2015-wave3/家庭信息/Family_Information.metadata.json",
       "rows": 12221,
       "columns": 2347,
       "variable_label_count": 2347,
@@ -1499,9 +1499,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Family_Transfer.dta",
-      "csv": "data/curated/2015-wave3/Family_Transfer/Family_Transfer.csv",
-      "parquet": "data/curated/2015-wave3/Family_Transfer/Family_Transfer.parquet",
-      "metadata": "data/curated/2015-wave3/Family_Transfer/Family_Transfer.metadata.json",
+      "csv": "data/curated/2015-wave3/家庭经济交往/Family_Transfer.csv",
+      "parquet": "data/curated/2015-wave3/家庭经济交往/Family_Transfer.parquet",
+      "metadata": "data/curated/2015-wave3/家庭经济交往/Family_Transfer.metadata.json",
       "rows": 12136,
       "columns": 874,
       "variable_label_count": 874,
@@ -1510,9 +1510,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Health_Care_and_Insurance.dta",
-      "csv": "data/curated/2015-wave3/Health_Care_and_Insurance/Health_Care_and_Insurance.csv",
-      "parquet": "data/curated/2015-wave3/Health_Care_and_Insurance/Health_Care_and_Insurance.parquet",
-      "metadata": "data/curated/2015-wave3/Health_Care_and_Insurance/Health_Care_and_Insurance.metadata.json",
+      "csv": "data/curated/2015-wave3/医疗保险与保健/Health_Care_and_Insurance.csv",
+      "parquet": "data/curated/2015-wave3/医疗保险与保健/Health_Care_and_Insurance.parquet",
+      "metadata": "data/curated/2015-wave3/医疗保险与保健/Health_Care_and_Insurance.metadata.json",
       "rows": 20936,
       "columns": 525,
       "variable_label_count": 525,
@@ -1521,9 +1521,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Health_Status_and_Functioning.dta",
-      "csv": "data/curated/2015-wave3/Health_Status_and_Functioning/Health_Status_and_Functioning.csv",
-      "parquet": "data/curated/2015-wave3/Health_Status_and_Functioning/Health_Status_and_Functioning.parquet",
-      "metadata": "data/curated/2015-wave3/Health_Status_and_Functioning/Health_Status_and_Functioning.metadata.json",
+      "csv": "data/curated/2015-wave3/健康状况与功能/Health_Status_and_Functioning.csv",
+      "parquet": "data/curated/2015-wave3/健康状况与功能/Health_Status_and_Functioning.parquet",
+      "metadata": "data/curated/2015-wave3/健康状况与功能/Health_Status_and_Functioning.metadata.json",
       "rows": 20967,
       "columns": 1059,
       "variable_label_count": 1059,
@@ -1532,9 +1532,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Household_Income.dta",
-      "csv": "data/curated/2015-wave3/Household_Income/Household_Income.csv",
-      "parquet": "data/curated/2015-wave3/Household_Income/Household_Income.parquet",
-      "metadata": "data/curated/2015-wave3/Household_Income/Household_Income.metadata.json",
+      "csv": "data/curated/2015-wave3/家户收入、支出及资产/Household_Income.csv",
+      "parquet": "data/curated/2015-wave3/家户收入、支出及资产/Household_Income.parquet",
+      "metadata": "data/curated/2015-wave3/家户收入、支出及资产/Household_Income.metadata.json",
       "rows": 12061,
       "columns": 1452,
       "variable_label_count": 1451,
@@ -1543,9 +1543,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Household_Member.dta",
-      "csv": "data/curated/2015-wave3/Household_Member/Household_Member.csv",
-      "parquet": "data/curated/2015-wave3/Household_Member/Household_Member.parquet",
-      "metadata": "data/curated/2015-wave3/Household_Member/Household_Member.metadata.json",
+      "csv": "data/curated/2015-wave3/构建的家户成员数据集/Household_Member.csv",
+      "parquet": "data/curated/2015-wave3/构建的家户成员数据集/Household_Member.parquet",
+      "metadata": "data/curated/2015-wave3/构建的家户成员数据集/Household_Member.metadata.json",
       "rows": 30048,
       "columns": 12,
       "variable_label_count": 12,
@@ -1554,9 +1554,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Housing_Characteristics.dta",
-      "csv": "data/curated/2015-wave3/Housing_Characteristics/Housing_Characteristics.csv",
-      "parquet": "data/curated/2015-wave3/Housing_Characteristics/Housing_Characteristics.parquet",
-      "metadata": "data/curated/2015-wave3/Housing_Characteristics/Housing_Characteristics.metadata.json",
+      "csv": "data/curated/2015-wave3/住房信息/Housing_Characteristics.csv",
+      "parquet": "data/curated/2015-wave3/住房信息/Housing_Characteristics.parquet",
+      "metadata": "data/curated/2015-wave3/住房信息/Housing_Characteristics.metadata.json",
       "rows": 12073,
       "columns": 35,
       "variable_label_count": 35,
@@ -1565,9 +1565,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Individual_Income.dta",
-      "csv": "data/curated/2015-wave3/Individual_Income/Individual_Income.csv",
-      "parquet": "data/curated/2015-wave3/Individual_Income/Individual_Income.parquet",
-      "metadata": "data/curated/2015-wave3/Individual_Income/Individual_Income.metadata.json",
+      "csv": "data/curated/2015-wave3/个人收入及资产/Individual_Income.csv",
+      "parquet": "data/curated/2015-wave3/个人收入及资产/Individual_Income.parquet",
+      "metadata": "data/curated/2015-wave3/个人收入及资产/Individual_Income.metadata.json",
       "rows": 20899,
       "columns": 149,
       "variable_label_count": 149,
@@ -1576,9 +1576,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Parent.dta",
-      "csv": "data/curated/2015-wave3/Parent/Parent.csv",
-      "parquet": "data/curated/2015-wave3/Parent/Parent.parquet",
-      "metadata": "data/curated/2015-wave3/Parent/Parent.metadata.json",
+      "csv": "data/curated/2015-wave3/构建的父母数据集/Parent.csv",
+      "parquet": "data/curated/2015-wave3/构建的父母数据集/Parent.parquet",
+      "metadata": "data/curated/2015-wave3/构建的父母数据集/Parent.metadata.json",
       "rows": 46462,
       "columns": 32,
       "variable_label_count": 32,
@@ -1587,9 +1587,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Sample_Infor.dta",
-      "csv": "data/curated/2015-wave3/Sample_Infor/Sample_Infor.csv",
-      "parquet": "data/curated/2015-wave3/Sample_Infor/Sample_Infor.parquet",
-      "metadata": "data/curated/2015-wave3/Sample_Infor/Sample_Infor.metadata.json",
+      "csv": "data/curated/2015-wave3/样本信息/Sample_Infor.csv",
+      "parquet": "data/curated/2015-wave3/样本信息/Sample_Infor.parquet",
+      "metadata": "data/curated/2015-wave3/样本信息/Sample_Infor.metadata.json",
       "rows": 21789,
       "columns": 8,
       "variable_label_count": 8,
@@ -1598,9 +1598,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Sibling.dta",
-      "csv": "data/curated/2015-wave3/Sibling/Sibling.csv",
-      "parquet": "data/curated/2015-wave3/Sibling/Sibling.parquet",
-      "metadata": "data/curated/2015-wave3/Sibling/Sibling.metadata.json",
+      "csv": "data/curated/2015-wave3/构建的兄弟姐妹数据集/Sibling.csv",
+      "parquet": "data/curated/2015-wave3/构建的兄弟姐妹数据集/Sibling.parquet",
+      "metadata": "data/curated/2015-wave3/构建的兄弟姐妹数据集/Sibling.metadata.json",
       "rows": 46242,
       "columns": 28,
       "variable_label_count": 28,
@@ -1609,9 +1609,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Spousal_Sibling.dta",
-      "csv": "data/curated/2015-wave3/Spousal_Sibling/Spousal_Sibling.csv",
-      "parquet": "data/curated/2015-wave3/Spousal_Sibling/Spousal_Sibling.parquet",
-      "metadata": "data/curated/2015-wave3/Spousal_Sibling/Spousal_Sibling.metadata.json",
+      "csv": "data/curated/2015-wave3/构建的配偶的兄弟姐妹数据集/Spousal_Sibling.csv",
+      "parquet": "data/curated/2015-wave3/构建的配偶的兄弟姐妹数据集/Spousal_Sibling.parquet",
+      "metadata": "data/curated/2015-wave3/构建的配偶的兄弟姐妹数据集/Spousal_Sibling.metadata.json",
       "rows": 36291,
       "columns": 28,
       "variable_label_count": 28,
@@ -1620,9 +1620,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Weights.dta",
-      "csv": "data/curated/2015-wave3/Weights/Weights.csv",
-      "parquet": "data/curated/2015-wave3/Weights/Weights.parquet",
-      "metadata": "data/curated/2015-wave3/Weights/Weights.metadata.json",
+      "csv": "data/curated/2015-wave3/样本权重/Weights.csv",
+      "parquet": "data/curated/2015-wave3/样本权重/Weights.parquet",
+      "metadata": "data/curated/2015-wave3/样本权重/Weights.metadata.json",
       "rows": 20284,
       "columns": 10,
       "variable_label_count": 10,
@@ -1631,9 +1631,9 @@
     },
     {
       "source": "data/extracted/2015-wave3/Work_Retirement_and_Pension.dta",
-      "csv": "data/curated/2015-wave3/Work_Retirement_and_Pension/Work_Retirement_and_Pension.csv",
-      "parquet": "data/curated/2015-wave3/Work_Retirement_and_Pension/Work_Retirement_and_Pension.parquet",
-      "metadata": "data/curated/2015-wave3/Work_Retirement_and_Pension/Work_Retirement_and_Pension.metadata.json",
+      "csv": "data/curated/2015-wave3/工作退休及养老金/Work_Retirement_and_Pension.csv",
+      "parquet": "data/curated/2015-wave3/工作退休及养老金/Work_Retirement_and_Pension.parquet",
+      "metadata": "data/curated/2015-wave3/工作退休及养老金/Work_Retirement_and_Pension.metadata.json",
       "rows": 20890,
       "columns": 831,
       "variable_label_count": 831,
@@ -1642,9 +1642,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Cognition.dta",
-      "csv": "data/curated/2018-wave4/Cognition/Cognition.csv",
-      "parquet": "data/curated/2018-wave4/Cognition/Cognition.parquet",
-      "metadata": "data/curated/2018-wave4/Cognition/Cognition.metadata.json",
+      "csv": "data/curated/2018-wave4/认知和抑郁/Cognition.csv",
+      "parquet": "data/curated/2018-wave4/认知和抑郁/Cognition.parquet",
+      "metadata": "data/curated/2018-wave4/认知和抑郁/Cognition.metadata.json",
       "rows": 19744,
       "columns": 219,
       "variable_label_count": 219,
@@ -1653,9 +1653,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Demographic_Background.dta",
-      "csv": "data/curated/2018-wave4/Demographic_Background/Demographic_Background.csv",
-      "parquet": "data/curated/2018-wave4/Demographic_Background/Demographic_Background.parquet",
-      "metadata": "data/curated/2018-wave4/Demographic_Background/Demographic_Background.metadata.json",
+      "csv": "data/curated/2018-wave4/基本信息/Demographic_Background.csv",
+      "parquet": "data/curated/2018-wave4/基本信息/Demographic_Background.parquet",
+      "metadata": "data/curated/2018-wave4/基本信息/Demographic_Background.metadata.json",
       "rows": 19816,
       "columns": 110,
       "variable_label_count": 110,
@@ -1664,9 +1664,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Family_Information.dta",
-      "csv": "data/curated/2018-wave4/Family_Information/Family_Information.csv",
-      "parquet": "data/curated/2018-wave4/Family_Information/Family_Information.parquet",
-      "metadata": "data/curated/2018-wave4/Family_Information/Family_Information.metadata.json",
+      "csv": "data/curated/2018-wave4/家庭信息/Family_Information.csv",
+      "parquet": "data/curated/2018-wave4/家庭信息/Family_Information.parquet",
+      "metadata": "data/curated/2018-wave4/家庭信息/Family_Information.metadata.json",
       "rows": 11628,
       "columns": 1539,
       "variable_label_count": 1539,
@@ -1675,9 +1675,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Family_Transfer.dta",
-      "csv": "data/curated/2018-wave4/Family_Transfer/Family_Transfer.csv",
-      "parquet": "data/curated/2018-wave4/Family_Transfer/Family_Transfer.parquet",
-      "metadata": "data/curated/2018-wave4/Family_Transfer/Family_Transfer.metadata.json",
+      "csv": "data/curated/2018-wave4/家庭经济交往/Family_Transfer.csv",
+      "parquet": "data/curated/2018-wave4/家庭经济交往/Family_Transfer.parquet",
+      "metadata": "data/curated/2018-wave4/家庭经济交往/Family_Transfer.metadata.json",
       "rows": 11568,
       "columns": 1120,
       "variable_label_count": 1120,
@@ -1686,9 +1686,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Health_Care_and_Insurance.dta",
-      "csv": "data/curated/2018-wave4/Health_Care_and_Insurance/Health_Care_and_Insurance.csv",
-      "parquet": "data/curated/2018-wave4/Health_Care_and_Insurance/Health_Care_and_Insurance.parquet",
-      "metadata": "data/curated/2018-wave4/Health_Care_and_Insurance/Health_Care_and_Insurance.metadata.json",
+      "csv": "data/curated/2018-wave4/医疗保健与保险/Health_Care_and_Insurance.csv",
+      "parquet": "data/curated/2018-wave4/医疗保健与保险/Health_Care_and_Insurance.parquet",
+      "metadata": "data/curated/2018-wave4/医疗保健与保险/Health_Care_and_Insurance.metadata.json",
       "rows": 19776,
       "columns": 277,
       "variable_label_count": 277,
@@ -1697,9 +1697,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Health_Status_and_Functioning.dta",
-      "csv": "data/curated/2018-wave4/Health_Status_and_Functioning/Health_Status_and_Functioning.csv",
-      "parquet": "data/curated/2018-wave4/Health_Status_and_Functioning/Health_Status_and_Functioning.parquet",
-      "metadata": "data/curated/2018-wave4/Health_Status_and_Functioning/Health_Status_and_Functioning.metadata.json",
+      "csv": "data/curated/2018-wave4/健康状况与功能/Health_Status_and_Functioning.csv",
+      "parquet": "data/curated/2018-wave4/健康状况与功能/Health_Status_and_Functioning.parquet",
+      "metadata": "data/curated/2018-wave4/健康状况与功能/Health_Status_and_Functioning.metadata.json",
       "rows": 19752,
       "columns": 896,
       "variable_label_count": 896,
@@ -1708,9 +1708,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Household_Income.dta",
-      "csv": "data/curated/2018-wave4/Household_Income/Household_Income.csv",
-      "parquet": "data/curated/2018-wave4/Household_Income/Household_Income.parquet",
-      "metadata": "data/curated/2018-wave4/Household_Income/Household_Income.metadata.json",
+      "csv": "data/curated/2018-wave4/家户收入、支出及资产/Household_Income.csv",
+      "parquet": "data/curated/2018-wave4/家户收入、支出及资产/Household_Income.parquet",
+      "metadata": "data/curated/2018-wave4/家户收入、支出及资产/Household_Income.metadata.json",
       "rows": 11544,
       "columns": 576,
       "variable_label_count": 576,
@@ -1719,9 +1719,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Housing.dta",
-      "csv": "data/curated/2018-wave4/Housing/Housing.csv",
-      "parquet": "data/curated/2018-wave4/Housing/Housing.parquet",
-      "metadata": "data/curated/2018-wave4/Housing/Housing.metadata.json",
+      "csv": "data/curated/2018-wave4/房产和住房情况/Housing.csv",
+      "parquet": "data/curated/2018-wave4/房产和住房情况/Housing.parquet",
+      "metadata": "data/curated/2018-wave4/房产和住房情况/Housing.metadata.json",
       "rows": 11535,
       "columns": 1387,
       "variable_label_count": 1387,
@@ -1730,9 +1730,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Individual_Income.dta",
-      "csv": "data/curated/2018-wave4/Individual_Income/Individual_Income.csv",
-      "parquet": "data/curated/2018-wave4/Individual_Income/Individual_Income.parquet",
-      "metadata": "data/curated/2018-wave4/Individual_Income/Individual_Income.metadata.json",
+      "csv": "data/curated/2018-wave4/个人收入及资产/Individual_Income.csv",
+      "parquet": "data/curated/2018-wave4/个人收入及资产/Individual_Income.parquet",
+      "metadata": "data/curated/2018-wave4/个人收入及资产/Individual_Income.metadata.json",
       "rows": 19755,
       "columns": 124,
       "variable_label_count": 124,
@@ -1741,9 +1741,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Insider.dta",
-      "csv": "data/curated/2018-wave4/Insider/Insider.csv",
-      "parquet": "data/curated/2018-wave4/Insider/Insider.parquet",
-      "metadata": "data/curated/2018-wave4/Insider/Insider.metadata.json",
+      "csv": "data/curated/2018-wave4/知情人信息收集/Insider.csv",
+      "parquet": "data/curated/2018-wave4/知情人信息收集/Insider.parquet",
+      "metadata": "data/curated/2018-wave4/知情人信息收集/Insider.metadata.json",
       "rows": 11011,
       "columns": 70,
       "variable_label_count": 70,
@@ -1752,9 +1752,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Pension.dta",
-      "csv": "data/curated/2018-wave4/Pension/Pension.csv",
-      "parquet": "data/curated/2018-wave4/Pension/Pension.parquet",
-      "metadata": "data/curated/2018-wave4/Pension/Pension.metadata.json",
+      "csv": "data/curated/2018-wave4/养老金/Pension.csv",
+      "parquet": "data/curated/2018-wave4/养老金/Pension.parquet",
+      "metadata": "data/curated/2018-wave4/养老金/Pension.metadata.json",
       "rows": 19718,
       "columns": 395,
       "variable_label_count": 395,
@@ -1763,9 +1763,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Sample_Infor.dta",
-      "csv": "data/curated/2018-wave4/Sample_Infor/Sample_Infor.csv",
-      "parquet": "data/curated/2018-wave4/Sample_Infor/Sample_Infor.parquet",
-      "metadata": "data/curated/2018-wave4/Sample_Infor/Sample_Infor.metadata.json",
+      "csv": "data/curated/2018-wave4/样本信息/Sample_Infor.csv",
+      "parquet": "data/curated/2018-wave4/样本信息/Sample_Infor.parquet",
+      "metadata": "data/curated/2018-wave4/样本信息/Sample_Infor.metadata.json",
       "rows": 20813,
       "columns": 8,
       "variable_label_count": 8,
@@ -1774,9 +1774,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Weights.dta",
-      "csv": "data/curated/2018-wave4/Weights/Weights.csv",
-      "parquet": "data/curated/2018-wave4/Weights/Weights.parquet",
-      "metadata": "data/curated/2018-wave4/Weights/Weights.metadata.json",
+      "csv": "data/curated/2018-wave4/样本权重/Weights.csv",
+      "parquet": "data/curated/2018-wave4/样本权重/Weights.parquet",
+      "metadata": "data/curated/2018-wave4/样本权重/Weights.metadata.json",
       "rows": 17970,
       "columns": 8,
       "variable_label_count": 8,
@@ -1785,9 +1785,9 @@
     },
     {
       "source": "data/extracted/2018-wave4/Work_Retirement.dta",
-      "csv": "data/curated/2018-wave4/Work_Retirement/Work_Retirement.csv",
-      "parquet": "data/curated/2018-wave4/Work_Retirement/Work_Retirement.parquet",
-      "metadata": "data/curated/2018-wave4/Work_Retirement/Work_Retirement.metadata.json",
+      "csv": "data/curated/2018-wave4/工作和退休/Work_Retirement.csv",
+      "parquet": "data/curated/2018-wave4/工作和退休/Work_Retirement.parquet",
+      "metadata": "data/curated/2018-wave4/工作和退休/Work_Retirement.metadata.json",
       "rows": 19725,
       "columns": 321,
       "variable_label_count": 321,
@@ -1796,9 +1796,9 @@
     },
     {
       "source": "data/extracted/2020-wave5/COVID_Module.dta",
-      "csv": "data/curated/2020-wave5/COVID_Module/COVID_Module.csv",
-      "parquet": "data/curated/2020-wave5/COVID_Module/COVID_Module.parquet",
-      "metadata": "data/curated/2020-wave5/COVID_Module/COVID_Module.metadata.json",
+      "csv": "data/curated/2020-wave5/疫情模块/COVID_Module.csv",
+      "parquet": "data/curated/2020-wave5/疫情模块/COVID_Module.parquet",
+      "metadata": "data/curated/2020-wave5/疫情模块/COVID_Module.metadata.json",
       "rows": 19383,
       "columns": 100,
       "variable_label_count": 100,
@@ -1807,9 +1807,9 @@
     },
     {
       "source": "data/extracted/2020-wave5/Demographic_Background.dta",
-      "csv": "data/curated/2020-wave5/Demographic_Background/Demographic_Background.csv",
-      "parquet": "data/curated/2020-wave5/Demographic_Background/Demographic_Background.parquet",
-      "metadata": "data/curated/2020-wave5/Demographic_Background/Demographic_Background.metadata.json",
+      "csv": "data/curated/2020-wave5/基本信息/Demographic_Background.csv",
+      "parquet": "data/curated/2020-wave5/基本信息/Demographic_Background.parquet",
+      "metadata": "data/curated/2020-wave5/基本信息/Demographic_Background.metadata.json",
       "rows": 19395,
       "columns": 42,
       "variable_label_count": 42,
@@ -1818,9 +1818,9 @@
     },
     {
       "source": "data/extracted/2020-wave5/Exit_Module.dta",
-      "csv": "data/curated/2020-wave5/Exit_Module/Exit_Module.csv",
-      "parquet": "data/curated/2020-wave5/Exit_Module/Exit_Module.parquet",
-      "metadata": "data/curated/2020-wave5/Exit_Module/Exit_Module.metadata.json",
+      "csv": "data/curated/2020-wave5/退出问卷/Exit_Module.csv",
+      "parquet": "data/curated/2020-wave5/退出问卷/Exit_Module.parquet",
+      "metadata": "data/curated/2020-wave5/退出问卷/Exit_Module.metadata.json",
       "rows": 770,
       "columns": 1129,
       "variable_label_count": 1129,
@@ -1829,9 +1829,9 @@
     },
     {
       "source": "data/extracted/2020-wave5/Family_Information.dta",
-      "csv": "data/curated/2020-wave5/Family_Information/Family_Information.csv",
-      "parquet": "data/curated/2020-wave5/Family_Information/Family_Information.parquet",
-      "metadata": "data/curated/2020-wave5/Family_Information/Family_Information.metadata.json",
+      "csv": "data/curated/2020-wave5/家庭信息/Family_Information.csv",
+      "parquet": "data/curated/2020-wave5/家庭信息/Family_Information.parquet",
+      "metadata": "data/curated/2020-wave5/家庭信息/Family_Information.metadata.json",
       "rows": 11406,
       "columns": 789,
       "variable_label_count": 789,
@@ -1840,9 +1840,9 @@
     },
     {
       "source": "data/extracted/2020-wave5/Health_Status_and_Functioning.dta",
-      "csv": "data/curated/2020-wave5/Health_Status_and_Functioning/Health_Status_and_Functioning.csv",
-      "parquet": "data/curated/2020-wave5/Health_Status_and_Functioning/Health_Status_and_Functioning.parquet",
-      "metadata": "data/curated/2020-wave5/Health_Status_and_Functioning/Health_Status_and_Functioning.metadata.json",
+      "csv": "data/curated/2020-wave5/健康状况与功能/Health_Status_and_Functioning.csv",
+      "parquet": "data/curated/2020-wave5/健康状况与功能/Health_Status_and_Functioning.parquet",
+      "metadata": "data/curated/2020-wave5/健康状况与功能/Health_Status_and_Functioning.metadata.json",
       "rows": 19367,
       "columns": 936,
       "variable_label_count": 936,
@@ -1851,9 +1851,9 @@
     },
     {
       "source": "data/extracted/2020-wave5/Household_Income.dta",
-      "csv": "data/curated/2020-wave5/Household_Income/Household_Income.csv",
-      "parquet": "data/curated/2020-wave5/Household_Income/Household_Income.parquet",
-      "metadata": "data/curated/2020-wave5/Household_Income/Household_Income.metadata.json",
+      "csv": "data/curated/2020-wave5/家户收入与支出/Household_Income.csv",
+      "parquet": "data/curated/2020-wave5/家户收入与支出/Household_Income.parquet",
+      "metadata": "data/curated/2020-wave5/家户收入与支出/Household_Income.metadata.json",
       "rows": 11377,
       "columns": 855,
       "variable_label_count": 855,
@@ -1862,9 +1862,9 @@
     },
     {
       "source": "data/extracted/2020-wave5/Individual_Income.dta",
-      "csv": "data/curated/2020-wave5/Individual_Income/Individual_Income.csv",
-      "parquet": "data/curated/2020-wave5/Individual_Income/Individual_Income.parquet",
-      "metadata": "data/curated/2020-wave5/Individual_Income/Individual_Income.metadata.json",
+      "csv": "data/curated/2020-wave5/个人收入/Individual_Income.csv",
+      "parquet": "data/curated/2020-wave5/个人收入/Individual_Income.parquet",
+      "metadata": "data/curated/2020-wave5/个人收入/Individual_Income.metadata.json",
       "rows": 19349,
       "columns": 210,
       "variable_label_count": 210,
@@ -1873,9 +1873,9 @@
     },
     {
       "source": "data/extracted/2020-wave5/Sample_Infor.dta",
-      "csv": "data/curated/2020-wave5/Sample_Infor/Sample_Infor.csv",
-      "parquet": "data/curated/2020-wave5/Sample_Infor/Sample_Infor.parquet",
-      "metadata": "data/curated/2020-wave5/Sample_Infor/Sample_Infor.metadata.json",
+      "csv": "data/curated/2020-wave5/样本信息/Sample_Infor.csv",
+      "parquet": "data/curated/2020-wave5/样本信息/Sample_Infor.parquet",
+      "metadata": "data/curated/2020-wave5/样本信息/Sample_Infor.metadata.json",
       "rows": 20180,
       "columns": 8,
       "variable_label_count": 8,
@@ -1884,9 +1884,9 @@
     },
     {
       "source": "data/extracted/2020-wave5/Weights.dta",
-      "csv": "data/curated/2020-wave5/Weights/Weights.csv",
-      "parquet": "data/curated/2020-wave5/Weights/Weights.parquet",
-      "metadata": "data/curated/2020-wave5/Weights/Weights.metadata.json",
+      "csv": "data/curated/2020-wave5/样本权重/Weights.csv",
+      "parquet": "data/curated/2020-wave5/样本权重/Weights.parquet",
+      "metadata": "data/curated/2020-wave5/样本权重/Weights.metadata.json",
       "rows": 17364,
       "columns": 8,
       "variable_label_count": 8,
@@ -1895,14 +1895,250 @@
     },
     {
       "source": "data/extracted/2020-wave5/Work_Retirement.dta",
-      "csv": "data/curated/2020-wave5/Work_Retirement/Work_Retirement.csv",
-      "parquet": "data/curated/2020-wave5/Work_Retirement/Work_Retirement.parquet",
-      "metadata": "data/curated/2020-wave5/Work_Retirement/Work_Retirement.metadata.json",
+      "csv": "data/curated/2020-wave5/工作和退休/Work_Retirement.csv",
+      "parquet": "data/curated/2020-wave5/工作和退休/Work_Retirement.parquet",
+      "metadata": "data/curated/2020-wave5/工作和退休/Work_Retirement.metadata.json",
       "rows": 19361,
       "columns": 160,
       "variable_label_count": 160,
       "value_label_set_count": 35,
       "status": "ok"
+    }
+  ],
+  "document_results": [
+    {
+      "wave": "2011-wave1",
+      "source": "data/raw/2011-wave1/blood_user_guide_en_20140429.pdf",
+      "copied_to": [
+        "data/curated/2011-wave1/文档/blood_user_guide_en_20140429.pdf",
+        "data/curated/2011-wave1/血检数据/文档/blood_user_guide_en_20140429.pdf"
+      ],
+      "copy_count": 2,
+      "sha1": "51cb0cb21cf4f14b92130932788aba8b00cc2a5a"
+    },
+    {
+      "wave": "2011-wave1",
+      "source": "data/raw/2011-wave1/CHARLS2011________.doc",
+      "copied_to": [
+        "data/curated/2011-wave1/文档/CHARLS2011________.doc"
+      ],
+      "copy_count": 1,
+      "sha1": "18efb28804fdbc975e3d334c845a179493bb6221"
+    },
+    {
+      "wave": "2011-wave1",
+      "source": "data/raw/2011-wave1/CHARLS_codebook.rar",
+      "copied_to": [
+        "data/curated/2011-wave1/文档/CHARLS_codebook.rar"
+      ],
+      "copy_count": 1,
+      "sha1": "f9f4b2a7d72675182b33035eedbac6f6dc8dc0b3"
+    },
+    {
+      "wave": "2011-wave1",
+      "source": "data/raw/2011-wave1/Chinese_users__guide_20130407_.pdf",
+      "copied_to": [
+        "data/curated/2011-wave1/文档/Chinese_users__guide_20130407_.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "41dde3c19bed8f3864e4f06068949223601e099f"
+    },
+    {
+      "wave": "2011-wave1",
+      "source": "data/raw/2011-wave1/Community_questionnaire_C_and_E__20130312_.pdf",
+      "copied_to": [
+        "data/curated/2011-wave1/文档/Community_questionnaire_C_and_E__20130312_.pdf",
+        "data/curated/2011-wave1/社区问卷数据/文档/Community_questionnaire_C_and_E__20130312_.pdf"
+      ],
+      "copy_count": 2,
+      "sha1": "54ba9005eef06ca6e38a0aac1dfa033e35de51c1"
+    },
+    {
+      "wave": "2011-wave1",
+      "source": "data/raw/2011-wave1/Medical-questionnaire-2011.doc",
+      "copied_to": [
+        "data/curated/2011-wave1/文档/Medical-questionnaire-2011.doc",
+        "data/curated/2011-wave1/体检信息/文档/Medical-questionnaire-2011.doc"
+      ],
+      "copy_count": 2,
+      "sha1": "652087926efcacb2abf796371b1a2b9dbbfefee5"
+    },
+    {
+      "wave": "2013-wave2",
+      "source": "data/raw/2013-wave2/CHARLS_Wave2_Biomarker_Questionnaire.pdf",
+      "copied_to": [
+        "data/curated/2013-wave2/文档/CHARLS_Wave2_Biomarker_Questionnaire.pdf",
+        "data/curated/2013-wave2/体检信息/文档/CHARLS_Wave2_Biomarker_Questionnaire.pdf"
+      ],
+      "copy_count": 2,
+      "sha1": "7599805448e07e75680e6c15d92f4d7d78d886b2"
+    },
+    {
+      "wave": "2013-wave2",
+      "source": "data/raw/2013-wave2/CHARLS_Wave2_CodeBook.pdf",
+      "copied_to": [
+        "data/curated/2013-wave2/文档/CHARLS_Wave2_CodeBook.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "c9c5714dbffee02050343f9b100aba501050b7a3"
+    },
+    {
+      "wave": "2013-wave2",
+      "source": "data/raw/2013-wave2/CHARLS_Wave2_Exit_VA_Questionnaire.pdf",
+      "copied_to": [
+        "data/curated/2013-wave2/文档/CHARLS_Wave2_Exit_VA_Questionnaire.pdf",
+        "data/curated/2013-wave2/退出调查/文档/CHARLS_Wave2_Exit_VA_Questionnaire.pdf",
+        "data/curated/2013-wave2/死因信息/文档/CHARLS_Wave2_Exit_VA_Questionnaire.pdf"
+      ],
+      "copy_count": 3,
+      "sha1": "6ec50048ef1d0f23f6b63b9fb0fc937f484cd621"
+    },
+    {
+      "wave": "2013-wave2",
+      "source": "data/raw/2013-wave2/CHARLS_Wave2_Main_Questionnaire.pdf",
+      "copied_to": [
+        "data/curated/2013-wave2/文档/CHARLS_Wave2_Main_Questionnaire.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "d1132a289bb3a37b955ebc3f9d42d56dc072a1e4"
+    },
+    {
+      "wave": "2013-wave2",
+      "source": "data/raw/2013-wave2/CHARLS_Wave2_Release_Note.pdf",
+      "copied_to": [
+        "data/curated/2013-wave2/文档/CHARLS_Wave2_Release_Note.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "8f4a90c3dbadb49711333ab1e689bf2756583932"
+    },
+    {
+      "wave": "2015-wave3",
+      "source": "data/raw/2015-wave3/CHARLS_2015_Biomarker_Questionnaire.pdf",
+      "copied_to": [
+        "data/curated/2015-wave3/文档/CHARLS_2015_Biomarker_Questionnaire.pdf",
+        "data/curated/2015-wave3/体检信息/文档/CHARLS_2015_Biomarker_Questionnaire.pdf"
+      ],
+      "copy_count": 2,
+      "sha1": "df292d012cf75cce536727e9ec62e67b454f9946"
+    },
+    {
+      "wave": "2015-wave3",
+      "source": "data/raw/2015-wave3/CHARLS_2015_Blood_Data_Release_Note.pdf",
+      "copied_to": [
+        "data/curated/2015-wave3/文档/CHARLS_2015_Blood_Data_Release_Note.pdf",
+        "data/curated/2015-wave3/血检数据/文档/CHARLS_2015_Blood_Data_Release_Note.pdf"
+      ],
+      "copy_count": 2,
+      "sha1": "f48c549a7f1253230d4c11cbae1687966a3d39d5"
+    },
+    {
+      "wave": "2015-wave3",
+      "source": "data/raw/2015-wave3/CHARLS_2015_Codebook.pdf",
+      "copied_to": [
+        "data/curated/2015-wave3/文档/CHARLS_2015_Codebook.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "92e413c887c946a9d5c939cab736ff96d05fc020"
+    },
+    {
+      "wave": "2015-wave3",
+      "source": "data/raw/2015-wave3/CHARLS_2015_Questionnaire.pdf",
+      "copied_to": [
+        "data/curated/2015-wave3/文档/CHARLS_2015_Questionnaire.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "dffe2db15d6e13cbe5499d5bf2556b17cdc8c729"
+    },
+    {
+      "wave": "2015-wave3",
+      "source": "data/raw/2015-wave3/CHARLS_2015_Release_Note.pdf",
+      "copied_to": [
+        "data/curated/2015-wave3/文档/CHARLS_2015_Release_Note.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "05f2d352f856680830cbac7b044488f07b0f7538"
+    },
+    {
+      "wave": "2018-wave4",
+      "source": "data/raw/2018-wave4/CHARLS-HCAP-User-Guidance-cn.pdf",
+      "copied_to": [
+        "data/curated/2018-wave4/文档/CHARLS-HCAP-User-Guidance-cn.pdf",
+        "data/curated/2018-wave4/认知和抑郁/文档/CHARLS-HCAP-User-Guidance-cn.pdf"
+      ],
+      "copy_count": 2,
+      "sha1": "47079d5f1b4da50dd038f0244ec33dd918fc0f78"
+    },
+    {
+      "wave": "2018-wave4",
+      "source": "data/raw/2018-wave4/CHARLS_2018_Codebook.pdf",
+      "copied_to": [
+        "data/curated/2018-wave4/文档/CHARLS_2018_Codebook.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "8f8017cec22518e0251cf15ee3a700c9142a7a14"
+    },
+    {
+      "wave": "2018-wave4",
+      "source": "data/raw/2018-wave4/CHARLS_2018_Household_Questionnaire.pdf",
+      "copied_to": [
+        "data/curated/2018-wave4/文档/CHARLS_2018_Household_Questionnaire.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "6c547dde4240eae5f7fffb22556d26109186b974"
+    },
+    {
+      "wave": "2018-wave4",
+      "source": "data/raw/2018-wave4/CHARLS_2018_Users_Guide.pdf",
+      "copied_to": [
+        "data/curated/2018-wave4/文档/CHARLS_2018_Users_Guide.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "18d92656677464d10096377e1864db59bd4daa51"
+    },
+    {
+      "wave": "2018-wave4",
+      "source": "data/raw/2018-wave4/w2018-data-alert-cn.pdf",
+      "copied_to": [
+        "data/curated/2018-wave4/文档/w2018-data-alert-cn.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "f0be35e7d65b4bbb6938cf908fb7bb8e64238018"
+    },
+    {
+      "wave": "2020-wave5",
+      "source": "data/raw/2020-wave5/CHARLS_2020_Codebook.pdf",
+      "copied_to": [
+        "data/curated/2020-wave5/文档/CHARLS_2020_Codebook.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "bf669aa916daf7da68e32357d1e08f31a3a0dae7"
+    },
+    {
+      "wave": "2020-wave5",
+      "source": "data/raw/2020-wave5/CHARLS_2020_Flowchart_Chinese.pdf",
+      "copied_to": [
+        "data/curated/2020-wave5/文档/CHARLS_2020_Flowchart_Chinese.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "83da535e9542ad6974ff3474b7fe0fcded0ed0bd"
+    },
+    {
+      "wave": "2020-wave5",
+      "source": "data/raw/2020-wave5/CHARLS_2020_Questionnaire_Chinese.pdf",
+      "copied_to": [
+        "data/curated/2020-wave5/文档/CHARLS_2020_Questionnaire_Chinese.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "307fb0f902e76fd08e07222324a4ce5fa24fec99"
+    },
+    {
+      "wave": "2020-wave5",
+      "source": "data/raw/2020-wave5/CHARLS_2020_User_Guide_Chinese.pdf",
+      "copied_to": [
+        "data/curated/2020-wave5/文档/CHARLS_2020_User_Guide_Chinese.pdf"
+      ],
+      "copy_count": 1,
+      "sha1": "9bf1e673136f375beb097e88b6018bf88855f17b"
     }
   ],
   "coverage": [

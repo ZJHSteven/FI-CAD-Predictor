@@ -2841,9 +2841,11 @@
     "xchildnum": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2020-wave5/Individual_Income/Individual_Income.csv",
-  "parquet_file": "data/curated/2020-wave5/Individual_Income/Individual_Income.parquet",
-  "metadata_file": "data/curated/2020-wave5/Individual_Income/Individual_Income.metadata.json",
+  "csv_file": "data/curated/2020-wave5/个人收入/Individual_Income.csv",
+  "parquet_file": "data/curated/2020-wave5/个人收入/Individual_Income.parquet",
+  "metadata_file": "data/curated/2020-wave5/个人收入/Individual_Income.metadata.json",
+  "curated_table_dir": "data/curated/2020-wave5/个人收入",
+  "curated_table_name": "个人收入",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

@@ -134602,9 +134602,11 @@
     "familyr": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2013-wave2/Exit_Interview/Exit_Interview.csv",
-  "parquet_file": "data/curated/2013-wave2/Exit_Interview/Exit_Interview.parquet",
-  "metadata_file": "data/curated/2013-wave2/Exit_Interview/Exit_Interview.metadata.json",
+  "csv_file": "data/curated/2013-wave2/退出调查/Exit_Interview.csv",
+  "parquet_file": "data/curated/2013-wave2/退出调查/Exit_Interview.parquet",
+  "metadata_file": "data/curated/2013-wave2/退出调查/Exit_Interview.metadata.json",
+  "curated_table_dir": "data/curated/2013-wave2/退出调查",
+  "curated_table_name": "退出调查",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

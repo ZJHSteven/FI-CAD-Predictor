@@ -274,9 +274,11 @@
     "bl_hbalc": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2015-wave3/Blood/Blood.csv",
-  "parquet_file": "data/curated/2015-wave3/Blood/Blood.parquet",
-  "metadata_file": "data/curated/2015-wave3/Blood/Blood.metadata.json",
+  "csv_file": "data/curated/2015-wave3/血检数据/Blood.csv",
+  "parquet_file": "data/curated/2015-wave3/血检数据/Blood.parquet",
+  "metadata_file": "data/curated/2015-wave3/血检数据/Blood.metadata.json",
+  "curated_table_dir": "data/curated/2015-wave3/血检数据",
+  "curated_table_name": "血检数据",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

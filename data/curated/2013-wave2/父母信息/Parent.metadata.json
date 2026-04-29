@@ -812,9 +812,11 @@
     "zca007": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2013-wave2/Parent/Parent.csv",
-  "parquet_file": "data/curated/2013-wave2/Parent/Parent.parquet",
-  "metadata_file": "data/curated/2013-wave2/Parent/Parent.metadata.json",
+  "csv_file": "data/curated/2013-wave2/父母信息/Parent.csv",
+  "parquet_file": "data/curated/2013-wave2/父母信息/Parent.parquet",
+  "metadata_file": "data/curated/2013-wave2/父母信息/Parent.metadata.json",
+  "curated_table_dir": "data/curated/2013-wave2/父母信息",
+  "curated_table_name": "父母信息",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

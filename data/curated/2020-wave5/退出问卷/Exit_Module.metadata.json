@@ -18102,9 +18102,11 @@
     "xexgtotalvalue": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2020-wave5/Exit_Module/Exit_Module.csv",
-  "parquet_file": "data/curated/2020-wave5/Exit_Module/Exit_Module.parquet",
-  "metadata_file": "data/curated/2020-wave5/Exit_Module/Exit_Module.metadata.json",
+  "csv_file": "data/curated/2020-wave5/退出问卷/Exit_Module.csv",
+  "parquet_file": "data/curated/2020-wave5/退出问卷/Exit_Module.parquet",
+  "metadata_file": "data/curated/2020-wave5/退出问卷/Exit_Module.metadata.json",
+  "curated_table_dir": "data/curated/2020-wave5/退出问卷",
+  "curated_table_name": "退出问卷",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

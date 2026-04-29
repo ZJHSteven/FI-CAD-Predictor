@@ -12689,9 +12689,11 @@
     "xhhmemberage_14_": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2020-wave5/Household_Income/Household_Income.csv",
-  "parquet_file": "data/curated/2020-wave5/Household_Income/Household_Income.parquet",
-  "metadata_file": "data/curated/2020-wave5/Household_Income/Household_Income.metadata.json",
+  "csv_file": "data/curated/2020-wave5/家户收入与支出/Household_Income.csv",
+  "parquet_file": "data/curated/2020-wave5/家户收入与支出/Household_Income.parquet",
+  "metadata_file": "data/curated/2020-wave5/家户收入与支出/Household_Income.metadata.json",
+  "curated_table_dir": "data/curated/2020-wave5/家户收入与支出",
+  "curated_table_name": "家户收入与支出",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "householdID",

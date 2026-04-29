@@ -9573,9 +9573,11 @@
     "a025_12_": "unknown",
     "proxy": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/household_roster/household_roster.csv",
-  "parquet_file": "data/curated/2011-wave1/household_roster/household_roster.parquet",
-  "metadata_file": "data/curated/2011-wave1/household_roster/household_roster.metadata.json",
+  "csv_file": "data/curated/2011-wave1/家户登记表/household_roster.csv",
+  "parquet_file": "data/curated/2011-wave1/家户登记表/household_roster.parquet",
+  "metadata_file": "data/curated/2011-wave1/家户登记表/household_roster.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/家户登记表",
+  "curated_table_name": "家户登记表",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "householdID",

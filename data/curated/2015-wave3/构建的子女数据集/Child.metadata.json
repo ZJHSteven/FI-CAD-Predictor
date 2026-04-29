@@ -755,9 +755,11 @@
     "cb072_w3": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2015-wave3/Child/Child.csv",
-  "parquet_file": "data/curated/2015-wave3/Child/Child.parquet",
-  "metadata_file": "data/curated/2015-wave3/Child/Child.metadata.json",
+  "csv_file": "data/curated/2015-wave3/构建的子女数据集/Child.csv",
+  "parquet_file": "data/curated/2015-wave3/构建的子女数据集/Child.parquet",
+  "metadata_file": "data/curated/2015-wave3/构建的子女数据集/Child.metadata.json",
+  "curated_table_dir": "data/curated/2015-wave3/构建的子女数据集",
+  "curated_table_name": "构建的子女数据集",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

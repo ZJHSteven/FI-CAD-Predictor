@@ -5360,9 +5360,11 @@
     "dc070_w4": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2018-wave4/Cognition/Cognition.csv",
-  "parquet_file": "data/curated/2018-wave4/Cognition/Cognition.parquet",
-  "metadata_file": "data/curated/2018-wave4/Cognition/Cognition.metadata.json",
+  "csv_file": "data/curated/2018-wave4/认知和抑郁/Cognition.csv",
+  "parquet_file": "data/curated/2018-wave4/认知和抑郁/Cognition.parquet",
+  "metadata_file": "data/curated/2018-wave4/认知和抑郁/Cognition.metadata.json",
+  "curated_table_dir": "data/curated/2018-wave4/认知和抑郁",
+  "curated_table_name": "认知和抑郁",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

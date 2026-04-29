@@ -10567,9 +10567,11 @@
     "fn098_w2s11": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2013-wave2/Work_Retirement_and_Pension/Work_Retirement_and_Pension.csv",
-  "parquet_file": "data/curated/2013-wave2/Work_Retirement_and_Pension/Work_Retirement_and_Pension.parquet",
-  "metadata_file": "data/curated/2013-wave2/Work_Retirement_and_Pension/Work_Retirement_and_Pension.metadata.json",
+  "csv_file": "data/curated/2013-wave2/工作退休及养老金/Work_Retirement_and_Pension.csv",
+  "parquet_file": "data/curated/2013-wave2/工作退休及养老金/Work_Retirement_and_Pension.parquet",
+  "metadata_file": "data/curated/2013-wave2/工作退休及养老金/Work_Retirement_and_Pension.metadata.json",
+  "curated_table_dir": "data/curated/2013-wave2/工作退休及养老金",
+  "curated_table_name": "工作退休及养老金",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

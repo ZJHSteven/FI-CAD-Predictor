@@ -1762,9 +1762,11 @@
     "dd051_w4": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2018-wave4/Insider/Insider.csv",
-  "parquet_file": "data/curated/2018-wave4/Insider/Insider.parquet",
-  "metadata_file": "data/curated/2018-wave4/Insider/Insider.metadata.json",
+  "csv_file": "data/curated/2018-wave4/知情人信息收集/Insider.csv",
+  "parquet_file": "data/curated/2018-wave4/知情人信息收集/Insider.parquet",
+  "metadata_file": "data/curated/2018-wave4/知情人信息收集/Insider.metadata.json",
+  "curated_table_dir": "data/curated/2018-wave4/知情人信息收集",
+  "curated_table_name": "知情人信息收集",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

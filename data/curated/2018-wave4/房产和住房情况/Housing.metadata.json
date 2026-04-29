@@ -21332,9 +21332,11 @@
     "ziwtime": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2018-wave4/Housing/Housing.csv",
-  "parquet_file": "data/curated/2018-wave4/Housing/Housing.parquet",
-  "metadata_file": "data/curated/2018-wave4/Housing/Housing.metadata.json",
+  "csv_file": "data/curated/2018-wave4/房产和住房情况/Housing.csv",
+  "parquet_file": "data/curated/2018-wave4/房产和住房情况/Housing.parquet",
+  "metadata_file": "data/curated/2018-wave4/房产和住房情况/Housing.metadata.json",
+  "curated_table_dir": "data/curated/2018-wave4/房产和住房情况",
+  "curated_table_name": "房产和住房情况",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "householdID",

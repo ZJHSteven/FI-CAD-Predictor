@@ -35,6 +35,8 @@ RAW_ROOT = DATA_ROOT / "raw"
 EXTRACTED_ROOT = DATA_ROOT / "extracted"
 CURATED_ROOT = DATA_ROOT / "curated"
 AUDIT_ROOT = DATA_ROOT / "audit"
+DOCUMENT_EXTENSIONS = {".pdf", ".doc", ".docx", ".rtf", ".txt", ".xls", ".xlsx"}
+DOCUMENT_ARCHIVE_KEYWORDS = ("codebook",)
 
 
 @dataclass(frozen=True)
@@ -209,6 +211,16 @@ EXPECTED_TABLES: tuple[ExpectedTable, ...] = (
     ExpectedTable("2020", "样本信息", "Sample_Infor.dta", "bundle"),
     ExpectedTable("2020", "样本权重", "Weights.dta", "bundle"),
 )
+
+
+# 这个索引用于把 `Individual_Income.dta` 这类英文文件名，映射到“个人收入”这类人工可读目录。
+# 注意：同一个 DTA 文件名在不同波次可能对应不同中文名称，所以索引键必须同时包含 wave slug。
+TABLE_DIR_NAMES: dict[tuple[str, str], str] = {
+    (wave.slug, table.dta_name.removesuffix(".dta")): table.item.replace(" ", "")
+    for wave in WAVES
+    for table in EXPECTED_TABLES
+    if table.year == wave.year
+}
 
 
 CHECKLIST_YEAR_RE = re.compile(r"^##\s+(?P<year>\d{4})")
@@ -512,6 +524,29 @@ def make_parquet_safe_frame(frame: pd.DataFrame) -> tuple[pd.DataFrame, list[str
     return safe_frame, converted_columns
 
 
+def resolve_curated_table_dir(dta_path: Path, extracted_root: Path = EXTRACTED_ROOT, curated_root: Path = CURATED_ROOT) -> Path:
+    """根据 DTA 所属波次和文件名，返回 curated 层的人类可读目录。
+
+    输入：
+    - dta_path: extracted 层中的 `.dta` 文件路径。
+    - extracted_root: extracted 根目录，用来计算相对路径。
+    - curated_root: curated 根目录。
+
+    输出：
+    - `data/curated/<wave>/<中文表名>` 形式的目录路径。
+
+    核心逻辑：
+    - extracted 层保留官网 DTA 文件名，便于追溯原始文件。
+    - curated 层面向人工阅读和建模准备，所以目录名使用 `EXPECTED_TABLES` 中的中文条目名。
+    - 如果未来出现清单外 DTA，兜底使用原始 stem，避免脚本直接失败。
+    """
+
+    relative = dta_path.relative_to(extracted_root)
+    wave_slug = relative.parts[0]
+    table_name = TABLE_DIR_NAMES.get((wave_slug, relative.stem), relative.stem)
+    return curated_root / wave_slug / table_name
+
+
 def convert_dta_file(dta_path: Path, extracted_root: Path = EXTRACTED_ROOT, curated_root: Path = CURATED_ROOT) -> dict[str, Any]:
     """把一个 `.dta` 文件导出成 CSV、Parquet 和 metadata JSON。
 
@@ -522,7 +557,7 @@ def convert_dta_file(dta_path: Path, extracted_root: Path = EXTRACTED_ROOT, cura
     """
 
     relative = dta_path.relative_to(extracted_root)
-    table_dir = curated_root / relative.parent / relative.stem
+    table_dir = resolve_curated_table_dir(dta_path, extracted_root, curated_root)
     table_dir.mkdir(parents=True, exist_ok=True)
     csv_path = table_dir / f"{relative.stem}.csv"
     parquet_path = table_dir / f"{relative.stem}.parquet"
@@ -540,6 +575,8 @@ def convert_dta_file(dta_path: Path, extracted_root: Path = EXTRACTED_ROOT, cura
             "csv_file": csv_path.as_posix(),
             "parquet_file": parquet_path.as_posix(),
             "metadata_file": metadata_path.as_posix(),
+            "curated_table_dir": table_dir.as_posix(),
+            "curated_table_name": table_dir.name,
             "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
             "parquet_string_columns": parquet_string_columns,
             "parquet_note": (
@@ -590,6 +627,101 @@ def rebuild_curated(extracted_root: Path = EXTRACTED_ROOT, curated_root: Path = 
                 }
             )
     return results
+
+
+def is_reference_document(path: Path) -> bool:
+    """判断 RAW 文件是否属于“文档资产”。
+
+    说明：
+    - PDF/DOC/DOCX 等扩展名直接视为文档。
+    - 2011 的 `CHARLS_codebook.rar` 是文档压缩包，不是数据包；这里用文件名关键字单独纳入。
+    - 普通 `.zip/.rar` 数据包不会被复制到 curated 文档区，避免把数据压缩包误当文档。
+    """
+
+    suffix = path.suffix.lower()
+    if suffix in DOCUMENT_EXTENSIONS:
+        return True
+    lower_name = path.name.lower()
+    return suffix in {".zip", ".rar"} and any(keyword in lower_name for keyword in DOCUMENT_ARCHIVE_KEYWORDS)
+
+
+def document_target_dirs(document_path: Path, wave_slug: str, curated_root: Path = CURATED_ROOT) -> list[Path]:
+    """为单个文档计算 curated 层目标目录。
+
+    输入：
+    - document_path: RAW 层文档路径。
+    - wave_slug: `2011-wave1` 这类波次目录名。
+    - curated_root: curated 根目录。
+
+    输出：
+    - 一个或多个目标目录。多数文档进入 `文档`，明确针对单表的文档再额外进入表目录下的 `文档`。
+
+    取舍：
+    - 问卷、用户手册、codebook 往往覆盖多个表，集中放到 `data/curated/<wave>/文档`。
+    - 血检、体检、社区问卷、退出/死因问卷这类指向明确的文档，额外复制到对应表目录，减少人工查找成本。
+    """
+
+    wave_root = curated_root / wave_slug
+    targets = [wave_root / "文档"]
+    lower_name = document_path.name.lower()
+
+    def add_table_doc(table_item: str) -> None:
+        table_dir_name = table_item.replace(" ", "")
+        table_dir = wave_root / table_dir_name
+        if table_dir.exists():
+            targets.append(table_dir / "文档")
+
+    if "blood" in lower_name or "血检" in lower_name:
+        add_table_doc("血检数据")
+    if "biomarker" in lower_name or "medical-questionnaire" in lower_name or "体检" in lower_name:
+        add_table_doc("体检信息")
+    if "community_questionnaire" in lower_name or "社区" in lower_name:
+        add_table_doc("社区问卷数据")
+    if "exit" in lower_name:
+        add_table_doc("退出调查")
+        add_table_doc("退出问卷")
+    if "verbal" in lower_name or "_va_" in lower_name:
+        add_table_doc("死因信息")
+    if "hcap" in lower_name:
+        add_table_doc("认知和抑郁")
+
+    # 用 dict 去重并保持顺序，避免同一个文档因为多个关键词命中而重复复制到同一目录。
+    return list(dict.fromkeys(targets))
+
+
+def sync_reference_documents(raw_root: Path = RAW_ROOT, curated_root: Path = CURATED_ROOT) -> list[dict[str, Any]]:
+    """把 RAW 层文档同步到 curated 层，返回同步记录。
+
+    核心逻辑：
+    - RAW 仍然是原始下载真源，curated 里的文档只是便于使用的数据旁路副本。
+    - 每个波次都会有一个总的 `文档` 目录。
+    - 明确针对单表的文档，会额外放进 `<表目录>/文档`。
+    """
+
+    records: list[dict[str, Any]] = []
+    for wave in WAVES:
+        wave_raw = raw_root / wave.slug
+        if not wave_raw.exists():
+            continue
+        for document_path in iter_files(wave_raw):
+            if not is_reference_document(document_path):
+                continue
+            copied_to: list[str] = []
+            for target_dir in document_target_dirs(document_path, wave.slug, curated_root):
+                target_dir.mkdir(parents=True, exist_ok=True)
+                target_path = target_dir / document_path.name
+                shutil.copy2(document_path, target_path)
+                copied_to.append(target_path.as_posix())
+            records.append(
+                {
+                    "wave": wave.slug,
+                    "source": document_path.as_posix(),
+                    "copied_to": copied_to,
+                    "copy_count": len(copied_to),
+                    "sha1": compute_sha1(document_path),
+                }
+            )
+    return records
 
 
 def scan_existing_curated(curated_root: Path = CURATED_ROOT) -> list[dict[str, Any]]:
@@ -736,6 +868,7 @@ def write_audit_json(
     raw_files: Sequence[dict[str, Any]],
     extraction_results: Sequence[dict[str, Any]],
     curated_results: Sequence[dict[str, Any]],
+    document_results: Sequence[dict[str, Any]],
     coverage: Sequence[dict[str, Any]],
     audit_root: Path = AUDIT_ROOT,
 ) -> Path:
@@ -754,6 +887,7 @@ def write_audit_json(
         "raw_files": list(raw_files),
         "extraction_results": list(extraction_results),
         "curated_results": list(curated_results),
+        "document_results": list(document_results),
         "coverage": list(coverage),
         "curated_summary_by_wave": summarize_by_wave(curated_results),
         "coverage_summary": {
@@ -787,14 +921,16 @@ def run_pipeline(*, skip_extract: bool = False, skip_curate: bool = False) -> di
     else:
         curated_results = rebuild_curated()
 
+    document_results = sync_reference_documents()
     raw_files = build_raw_file_index()
     coverage = audit_checklist_coverage(checklist_entries, raw_files)
-    audit_path = write_audit_json(raw_files, extraction_results, curated_results, coverage)
+    audit_path = write_audit_json(raw_files, extraction_results, curated_results, document_results, coverage)
     return {
         "audit_path": audit_path,
         "raw_files": raw_files,
         "extraction_results": extraction_results,
         "curated_results": curated_results,
+        "document_results": document_results,
         "coverage": coverage,
     }
 
@@ -815,12 +951,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     result = run_pipeline(skip_extract=args.skip_extract, skip_curate=args.skip_curate)
     coverage = result["coverage"]
     curated_results = result["curated_results"]
+    document_results = result["document_results"]
     bad_coverage = [item for item in coverage if item["status"] in {"missing_sha1", "candidate_dta_but_sha_mismatch"}]
     bad_curated = [item for item in curated_results if item.get("status") != "ok"]
 
     print(f"已写出审计文件：{result['audit_path']}")
     print(f"清单条目：{len(coverage)}；需复核条目：{len(bad_coverage)}")
     print(f"curated 表：{sum(1 for item in curated_results if item.get('status') == 'ok')}；导出错误：{len(bad_curated)}")
+    print(f"同步文档：{len(document_results)} 个 RAW 文档条目")
     if bad_coverage:
         print("需复核的清单条目：")
         for item in bad_coverage:

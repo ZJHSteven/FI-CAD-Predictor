@@ -489,9 +489,11 @@
     "WEALTH_TOTAL": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2013-wave2/exp_income_wealth/exp_income_wealth.csv",
-  "parquet_file": "data/curated/2013-wave2/exp_income_wealth/exp_income_wealth.parquet",
-  "metadata_file": "data/curated/2013-wave2/exp_income_wealth/exp_income_wealth.metadata.json",
+  "csv_file": "data/curated/2013-wave2/构建的支出、收入和财富数据库/exp_income_wealth.csv",
+  "parquet_file": "data/curated/2013-wave2/构建的支出、收入和财富数据库/exp_income_wealth.parquet",
+  "metadata_file": "data/curated/2013-wave2/构建的支出、收入和财富数据库/exp_income_wealth.metadata.json",
+  "curated_table_dir": "data/curated/2013-wave2/构建的支出、收入和财富数据库",
+  "curated_table_name": "构建的支出、收入和财富数据库",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

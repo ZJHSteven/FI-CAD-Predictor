@@ -3801,9 +3801,11 @@
     "va4a190": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2013-wave2/Verbal_Autopsy/Verbal_Autopsy.csv",
-  "parquet_file": "data/curated/2013-wave2/Verbal_Autopsy/Verbal_Autopsy.parquet",
-  "metadata_file": "data/curated/2013-wave2/Verbal_Autopsy/Verbal_Autopsy.metadata.json",
+  "csv_file": "data/curated/2013-wave2/死因信息/Verbal_Autopsy.csv",
+  "parquet_file": "data/curated/2013-wave2/死因信息/Verbal_Autopsy.parquet",
+  "metadata_file": "data/curated/2013-wave2/死因信息/Verbal_Autopsy.metadata.json",
+  "curated_table_dir": "data/curated/2013-wave2/死因信息",
+  "curated_table_name": "死因信息",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

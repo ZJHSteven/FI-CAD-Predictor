@@ -512,9 +512,11 @@
     "cc006_w3": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2015-wave3/Spousal_Sibling/Spousal_Sibling.csv",
-  "parquet_file": "data/curated/2015-wave3/Spousal_Sibling/Spousal_Sibling.parquet",
-  "metadata_file": "data/curated/2015-wave3/Spousal_Sibling/Spousal_Sibling.metadata.json",
+  "csv_file": "data/curated/2015-wave3/构建的配偶的兄弟姐妹数据集/Spousal_Sibling.csv",
+  "parquet_file": "data/curated/2015-wave3/构建的配偶的兄弟姐妹数据集/Spousal_Sibling.parquet",
+  "metadata_file": "data/curated/2015-wave3/构建的配偶的兄弟姐妹数据集/Spousal_Sibling.metadata.json",
+  "curated_table_dir": "data/curated/2015-wave3/构建的配偶的兄弟姐妹数据集",
+  "curated_table_name": "构建的配偶的兄弟姐妹数据集",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

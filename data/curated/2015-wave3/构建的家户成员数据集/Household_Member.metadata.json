@@ -207,9 +207,11 @@
     "a006": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2015-wave3/Household_Member/Household_Member.csv",
-  "parquet_file": "data/curated/2015-wave3/Household_Member/Household_Member.parquet",
-  "metadata_file": "data/curated/2015-wave3/Household_Member/Household_Member.metadata.json",
+  "csv_file": "data/curated/2015-wave3/构建的家户成员数据集/Household_Member.csv",
+  "parquet_file": "data/curated/2015-wave3/构建的家户成员数据集/Household_Member.parquet",
+  "metadata_file": "data/curated/2015-wave3/构建的家户成员数据集/Household_Member.metadata.json",
+  "curated_table_dir": "data/curated/2015-wave3/构建的家户成员数据集",
+  "curated_table_name": "构建的家户成员数据集",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

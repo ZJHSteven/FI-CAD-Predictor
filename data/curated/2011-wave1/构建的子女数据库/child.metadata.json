@@ -1357,9 +1357,11 @@
     "a019": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/child/child.csv",
-  "parquet_file": "data/curated/2011-wave1/child/child.parquet",
-  "metadata_file": "data/curated/2011-wave1/child/child.metadata.json",
+  "csv_file": "data/curated/2011-wave1/构建的子女数据库/child.csv",
+  "parquet_file": "data/curated/2011-wave1/构建的子女数据库/child.parquet",
+  "metadata_file": "data/curated/2011-wave1/构建的子女数据库/child.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/构建的子女数据库",
+  "curated_table_name": "构建的子女数据库",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

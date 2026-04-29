@@ -6225,9 +6225,11 @@
     "qm005": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2015-wave3/Biomarker/Biomarker.csv",
-  "parquet_file": "data/curated/2015-wave3/Biomarker/Biomarker.parquet",
-  "metadata_file": "data/curated/2015-wave3/Biomarker/Biomarker.metadata.json",
+  "csv_file": "data/curated/2015-wave3/体检信息/Biomarker.csv",
+  "parquet_file": "data/curated/2015-wave3/体检信息/Biomarker.parquet",
+  "metadata_file": "data/curated/2015-wave3/体检信息/Biomarker.metadata.json",
+  "curated_table_dir": "data/curated/2015-wave3/体检信息",
+  "curated_table_name": "体检信息",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

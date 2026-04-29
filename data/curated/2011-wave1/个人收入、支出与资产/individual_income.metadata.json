@@ -3259,9 +3259,11 @@
     "hd011_6": "unknown",
     "hd012": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/individual_income/individual_income.csv",
-  "parquet_file": "data/curated/2011-wave1/individual_income/individual_income.parquet",
-  "metadata_file": "data/curated/2011-wave1/individual_income/individual_income.metadata.json",
+  "csv_file": "data/curated/2011-wave1/个人收入、支出与资产/individual_income.csv",
+  "parquet_file": "data/curated/2011-wave1/个人收入、支出与资产/individual_income.parquet",
+  "metadata_file": "data/curated/2011-wave1/个人收入、支出与资产/individual_income.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/个人收入、支出与资产",
+  "curated_table_name": "个人收入、支出与资产",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

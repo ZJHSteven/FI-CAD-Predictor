@@ -2104,9 +2104,11 @@
     "proxy": "unknown",
     "rgender": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/demographic_background/demographic_background.csv",
-  "parquet_file": "data/curated/2011-wave1/demographic_background/demographic_background.parquet",
-  "metadata_file": "data/curated/2011-wave1/demographic_background/demographic_background.metadata.json",
+  "csv_file": "data/curated/2011-wave1/基本信息/demographic_background.csv",
+  "parquet_file": "data/curated/2011-wave1/基本信息/demographic_background.parquet",
+  "metadata_file": "data/curated/2011-wave1/基本信息/demographic_background.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/基本信息",
+  "curated_table_name": "基本信息",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

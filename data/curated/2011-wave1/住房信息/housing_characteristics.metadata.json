@@ -719,9 +719,11 @@
     "i025": "unknown",
     "i026": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.csv",
-  "parquet_file": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.parquet",
-  "metadata_file": "data/curated/2011-wave1/housing_characteristics/housing_characteristics.metadata.json",
+  "csv_file": "data/curated/2011-wave1/住房信息/housing_characteristics.csv",
+  "parquet_file": "data/curated/2011-wave1/住房信息/housing_characteristics.parquet",
+  "metadata_file": "data/curated/2011-wave1/住房信息/housing_characteristics.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/住房信息",
+  "curated_table_name": "住房信息",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "householdID",

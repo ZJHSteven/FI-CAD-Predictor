@@ -6319,9 +6319,11 @@
     "qm004": "unknown",
     "qm005": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/biomarkers/biomarkers.csv",
-  "parquet_file": "data/curated/2011-wave1/biomarkers/biomarkers.parquet",
-  "metadata_file": "data/curated/2011-wave1/biomarkers/biomarkers.metadata.json",
+  "csv_file": "data/curated/2011-wave1/体检信息/biomarkers.csv",
+  "parquet_file": "data/curated/2011-wave1/体检信息/biomarkers.parquet",
+  "metadata_file": "data/curated/2011-wave1/体检信息/biomarkers.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/体检信息",
+  "curated_table_name": "体检信息",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

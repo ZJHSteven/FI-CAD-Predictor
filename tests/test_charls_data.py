@@ -31,6 +31,7 @@ from charls_data import (  # noqa: E402
     compute_sha1,
     list_archive_members,
     parse_checklist,
+    resolve_curated_table_dir,
 )
 
 
@@ -89,7 +90,7 @@ class CharlsDataPipelineTests(unittest.TestCase):
 
         for dta_path in (REPO_ROOT / EXTRACTED_ROOT).rglob("*.dta"):
             relative = dta_path.relative_to(REPO_ROOT / EXTRACTED_ROOT)
-            table_dir = REPO_ROOT / CURATED_ROOT / relative.parent / relative.stem
+            table_dir = resolve_curated_table_dir(dta_path, REPO_ROOT / EXTRACTED_ROOT, REPO_ROOT / CURATED_ROOT)
             self.assertTrue((table_dir / f"{relative.stem}.csv").exists(), msg=str(dta_path))
             self.assertTrue((table_dir / f"{relative.stem}.parquet").exists(), msg=str(dta_path))
             self.assertTrue((table_dir / f"{relative.stem}.metadata.json").exists(), msg=str(dta_path))
@@ -97,13 +98,59 @@ class CharlsDataPipelineTests(unittest.TestCase):
     def test_metadata_preserves_labels(self) -> None:
         """metadata 里必须保留变量标签和值标签。"""
 
-        metadata_path = REPO_ROOT / "data/curated/2013-wave2/Health_Status_and_Functioning/Health_Status_and_Functioning.metadata.json"
+        metadata_path = REPO_ROOT / "data/curated/2013-wave2/健康状况与功能/Health_Status_and_Functioning.metadata.json"
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
 
         self.assertGreater(metadata["row_count"], 0)
         self.assertGreater(metadata["column_count"], 0)
         self.assertGreater(len(metadata["column_names_to_labels"]), 0)
         self.assertGreater(len(metadata["value_labels"]), 0)
+
+    def test_metadata_paths_point_to_existing_files(self) -> None:
+        """metadata 内部记录的 CSV/Parquet/metadata 路径必须真实存在。"""
+
+        metadata_paths = list((REPO_ROOT / CURATED_ROOT).rglob("*.metadata.json"))
+        self.assertEqual(len(metadata_paths), 81)
+        for metadata_path in metadata_paths:
+            metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+            for key in ("csv_file", "parquet_file", "metadata_file"):
+                saved_path = REPO_ROOT / metadata[key]
+                self.assertTrue(saved_path.exists(), msg=f"{metadata_path}: {key} -> {saved_path}")
+
+    def test_reference_documents_are_synced_to_curated_layer(self) -> None:
+        """RAW 层文档要同步到 curated，且明确单表文档要放进对应表目录。"""
+
+        expected_wave_doc_counts = {
+            "2011-wave1": 6,
+            "2013-wave2": 5,
+            "2015-wave3": 5,
+            "2018-wave4": 5,
+            "2020-wave5": 4,
+        }
+        for wave, expected_count in expected_wave_doc_counts.items():
+            docs = [path for path in (REPO_ROOT / CURATED_ROOT / wave / "文档").iterdir() if path.is_file()]
+            self.assertEqual(len(docs), expected_count, msg=wave)
+
+        self.assertTrue(
+            (
+                REPO_ROOT
+                / CURATED_ROOT
+                / "2015-wave3"
+                / "血检数据"
+                / "文档"
+                / "CHARLS_2015_Blood_Data_Release_Note.pdf"
+            ).exists()
+        )
+        self.assertTrue(
+            (
+                REPO_ROOT
+                / CURATED_ROOT
+                / "2013-wave2"
+                / "体检信息"
+                / "文档"
+                / "CHARLS_Wave2_Biomarker_Questionnaire.pdf"
+            ).exists()
+        )
 
     def test_audit_has_no_missing_sha1_but_records_blood_review(self) -> None:
         """当前唯一未闭合项应是 2015 血检 RAW SHA1 复核。"""

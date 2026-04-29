@@ -33961,9 +33961,11 @@
     "ha076": "unknown",
     "proxy": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/household_income/household_income.csv",
-  "parquet_file": "data/curated/2011-wave1/household_income/household_income.parquet",
-  "metadata_file": "data/curated/2011-wave1/household_income/household_income.metadata.json",
+  "csv_file": "data/curated/2011-wave1/家庭收入、支出与资产/household_income.csv",
+  "parquet_file": "data/curated/2011-wave1/家庭收入、支出与资产/household_income.parquet",
+  "metadata_file": "data/curated/2011-wave1/家庭收入、支出与资产/household_income.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/家庭收入、支出与资产",
+  "curated_table_name": "家庭收入、支出与资产",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "householdID",

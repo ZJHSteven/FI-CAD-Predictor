@@ -1932,9 +1932,11 @@
     "hd012": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2013-wave2/Individual_Income/Individual_Income.csv",
-  "parquet_file": "data/curated/2013-wave2/Individual_Income/Individual_Income.parquet",
-  "metadata_file": "data/curated/2013-wave2/Individual_Income/Individual_Income.metadata.json",
+  "csv_file": "data/curated/2013-wave2/个人收入及资产/Individual_Income.csv",
+  "parquet_file": "data/curated/2013-wave2/个人收入及资产/Individual_Income.parquet",
+  "metadata_file": "data/curated/2013-wave2/个人收入及资产/Individual_Income.metadata.json",
+  "curated_table_dir": "data/curated/2013-wave2/个人收入及资产",
+  "curated_table_name": "个人收入及资产",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

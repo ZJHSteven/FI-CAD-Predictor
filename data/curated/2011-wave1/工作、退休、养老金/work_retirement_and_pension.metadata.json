@@ -9584,9 +9584,11 @@
     "fn083": "unknown",
     "proxy": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/work_retirement_and_pension/work_retirement_and_pension.csv",
-  "parquet_file": "data/curated/2011-wave1/work_retirement_and_pension/work_retirement_and_pension.parquet",
-  "metadata_file": "data/curated/2011-wave1/work_retirement_and_pension/work_retirement_and_pension.metadata.json",
+  "csv_file": "data/curated/2011-wave1/工作、退休、养老金/work_retirement_and_pension.csv",
+  "parquet_file": "data/curated/2011-wave1/工作、退休、养老金/work_retirement_and_pension.parquet",
+  "metadata_file": "data/curated/2011-wave1/工作、退休、养老金/work_retirement_and_pension.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/工作、退休、养老金",
+  "curated_table_name": "工作、退休、养老金",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

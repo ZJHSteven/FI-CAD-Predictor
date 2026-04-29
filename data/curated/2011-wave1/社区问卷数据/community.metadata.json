@@ -14064,9 +14064,11 @@
     "jk006": "unknown",
     "jk007": "unknown"
   },
-  "csv_file": "data/curated/2011-wave1/community/community.csv",
-  "parquet_file": "data/curated/2011-wave1/community/community.parquet",
-  "metadata_file": "data/curated/2011-wave1/community/community.metadata.json",
+  "csv_file": "data/curated/2011-wave1/社区问卷数据/community.csv",
+  "parquet_file": "data/curated/2011-wave1/社区问卷数据/community.parquet",
+  "metadata_file": "data/curated/2011-wave1/社区问卷数据/community.metadata.json",
+  "curated_table_dir": "data/curated/2011-wave1/社区问卷数据",
+  "curated_table_name": "社区问卷数据",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "communityID",

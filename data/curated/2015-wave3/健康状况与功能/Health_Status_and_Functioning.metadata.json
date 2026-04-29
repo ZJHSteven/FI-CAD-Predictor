@@ -23866,9 +23866,11 @@
     "proxy": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2015-wave3/Health_Status_and_Functioning/Health_Status_and_Functioning.csv",
-  "parquet_file": "data/curated/2015-wave3/Health_Status_and_Functioning/Health_Status_and_Functioning.parquet",
-  "metadata_file": "data/curated/2015-wave3/Health_Status_and_Functioning/Health_Status_and_Functioning.metadata.json",
+  "csv_file": "data/curated/2015-wave3/健康状况与功能/Health_Status_and_Functioning.csv",
+  "parquet_file": "data/curated/2015-wave3/健康状况与功能/Health_Status_and_Functioning.parquet",
+  "metadata_file": "data/curated/2015-wave3/健康状况与功能/Health_Status_and_Functioning.metadata.json",
+  "curated_table_dir": "data/curated/2015-wave3/健康状况与功能",
+  "curated_table_name": "健康状况与功能",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",

@@ -1731,9 +1731,11 @@
     "proxy_14": "unknown",
     "versionID": "unknown"
   },
-  "csv_file": "data/curated/2020-wave5/COVID_Module/COVID_Module.csv",
-  "parquet_file": "data/curated/2020-wave5/COVID_Module/COVID_Module.parquet",
-  "metadata_file": "data/curated/2020-wave5/COVID_Module/COVID_Module.metadata.json",
+  "csv_file": "data/curated/2020-wave5/疫情模块/COVID_Module.csv",
+  "parquet_file": "data/curated/2020-wave5/疫情模块/COVID_Module.parquet",
+  "metadata_file": "data/curated/2020-wave5/疫情模块/COVID_Module.metadata.json",
+  "curated_table_dir": "data/curated/2020-wave5/疫情模块",
+  "curated_table_name": "疫情模块",
   "curation_note": "CSV/Parquet 保留原始编码值；变量标签和值标签在 metadata JSON 中。",
   "parquet_string_columns": [
     "ID",
