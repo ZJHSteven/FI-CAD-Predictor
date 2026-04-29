@@ -20,6 +20,8 @@ run:
   valid_size: 0.20
   primary_metric: roc_auc
   threshold_strategy: balanced_youden_f1
+  min_auc_warning: 0.70
+  max_fpr_warning: 0.40
   min_recall_warning: 0.05
   all_negative_rate_warning: 0.98
 

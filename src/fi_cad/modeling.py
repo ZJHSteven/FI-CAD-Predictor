@@ -399,12 +399,73 @@ def model_diagnostic_status(metrics: dict[str, float], config: dict[str, Any]) -
     """根据测试集表现给模型打诊断状态。"""
 
     min_recall = float(config["run"].get("min_recall_warning", 0.05))
+    min_auc = float(config["run"].get("min_auc_warning", 0.70))
+    max_fpr = float(config["run"].get("max_fpr_warning", 0.40))
     max_negative = float(config["run"].get("all_negative_rate_warning", 0.98))
     if metrics["predicted_negative_rate"] >= max_negative:
         return "failed", "模型几乎全判负，需要检查阈值、类别不平衡和特征信号。"
     if metrics["recall"] <= min_recall:
         return "warning", "召回率过低，存在漏诊风险。"
+    warnings = []
+    if pd.notna(metrics["roc_auc"]) and metrics["roc_auc"] < min_auc:
+        warnings.append(f"ROC-AUC 低于 {min_auc:.2f}，区分度偏弱")
+    if metrics["fpr"] > max_fpr:
+        warnings.append(f"FPR 高于 {max_fpr:.2f}，误报偏多")
+    if warnings:
+        return "warning", "；".join(warnings) + "。"
     return "ok", "通过基础诊断。"
+
+
+def plot_dataset_diagnostics(dataset: pd.DataFrame, target_column: str, figure_dir: Path) -> dict[str, str]:
+    """输出数据集级别诊断图。
+
+    图表说明：
+    - FI 风险关系图：检查 FI 越高，事件率是否整体上升。
+    - 相关性热图：只展示与结局绝对相关最高的一组变量，避免 50 多个特征挤在一起无法阅读。
+    """
+
+    figure_dir.mkdir(parents=True, exist_ok=True)
+    paths: dict[str, str] = {}
+    if "fi_2011" in dataset.columns:
+        working = dataset[["fi_2011", target_column]].dropna().copy()
+        if not working.empty and working["fi_2011"].nunique() >= 3:
+            working["fi_bin"] = pd.qcut(working["fi_2011"], q=10, duplicates="drop")
+            grouped = working.groupby("fi_bin", observed=True).agg(
+                fi_mean=("fi_2011", "mean"),
+                event_rate=(target_column, "mean"),
+                n=(target_column, "size"),
+            )
+            plt.figure(figsize=(7, 5))
+            plt.plot(grouped["fi_mean"], grouped["event_rate"], marker="o")
+            for _, row in grouped.iterrows():
+                plt.text(row["fi_mean"], row["event_rate"], str(int(row["n"])), fontsize=8)
+            plt.xlabel("FI 2011 mean in bin")
+            plt.ylabel("Observed event rate")
+            plt.title("FI 2011 and incident heart-related event")
+            path = figure_dir / "dataset_fi_risk_curve.png"
+            plt.tight_layout()
+            plt.savefig(path, dpi=180)
+            plt.close()
+            paths["fi_risk_curve"] = str(path)
+
+    features = feature_columns(dataset, target_column)
+    numeric = dataset[[*features, target_column]].apply(pd.to_numeric, errors="coerce")
+    corr_to_target = numeric.corr(numeric_only=True)[target_column].drop(labels=[target_column], errors="ignore").abs()
+    top_features = corr_to_target.sort_values(ascending=False).head(20).index.tolist()
+    if len(top_features) >= 2:
+        corr = numeric[top_features].corr(numeric_only=True)
+        plt.figure(figsize=(9, 8))
+        image = plt.imshow(corr, cmap="coolwarm", vmin=-1, vmax=1)
+        plt.colorbar(image, fraction=0.046, pad=0.04)
+        plt.xticks(range(len(top_features)), top_features, rotation=90, fontsize=7)
+        plt.yticks(range(len(top_features)), top_features, fontsize=7)
+        plt.title("Top feature correlation heatmap")
+        path = figure_dir / "dataset_correlation_heatmap.png"
+        plt.tight_layout()
+        plt.savefig(path, dpi=180)
+        plt.close()
+        paths["correlation_heatmap"] = str(path)
+    return paths
 
 
 def plot_curves(model_name: str, y_true: pd.Series, y_score: np.ndarray, threshold: float, figure_dir: Path) -> dict[str, str]:
@@ -509,6 +570,7 @@ def train_all_models(config: dict[str, Any]) -> dict[str, Any]:
     for directory in [table_dir, model_dir, figure_dir, report_dir]:
         directory.mkdir(parents=True, exist_ok=True)
     split.split_table.to_csv(table_dir / "splits.csv", index=False, encoding="utf-8-sig")
+    dataset_figures = plot_dataset_diagnostics(dataset, target_column, figure_dir)
 
     metrics_rows: list[dict[str, Any]] = []
     threshold_rows: list[dict[str, Any]] = []
@@ -562,6 +624,7 @@ def train_all_models(config: dict[str, Any]) -> dict[str, Any]:
             "thresholds": str(thresholds_path),
             "splits": str(table_dir / "splits.csv"),
         },
+        "figures": dataset_figures,
         "models": model_outputs,
         "package_versions": package_versions(),
         "config": config,
