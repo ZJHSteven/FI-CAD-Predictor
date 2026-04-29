@@ -3,8 +3,8 @@
 ## 当前结论（必须最新）
 - 现状：CHARLS 五个波次已经按 RAW、extracted、curated、audit 四层整理完毕，第一版纵向建模代码已开始落地，目标是 2011 基线预测 2013/2015/2018/2020 新发心脏病相关事件。
 - 已完成：补入 2011 家户问卷文档、2013 构建支出收入财富数据、2015 血检候选包；删除 2011 重复包和 `.part` 残留；重建 81 张 `.dta`、81 份 CSV、81 份 Parquet、81 份 metadata JSON；curated 层中文目录、metadata 内部路径和官网文档副本已同步；新增 `src.fi_cad` 建模入口和配置骨架。
-- 正在做：进入第二轮建模改进；已确认上一版 `height_cm_2011` 错把中位数约 43 的 `qh006` 当作身高优先来源；FI 不再按“谁对谁错”定论，而是把旧文献 11 项 FI、探索性宽口径 FI 和后续加权 FI 作为候选定义比较。
-- 下一步：基于多套 FI 候选和敏感性特征集重新训练模型 run；历史 run 已提交保存，但只能作为 baseline 和问题定位材料，不能当最终论文结论。
+- 正在做：进入第三轮建模诊断；已完成多时间窗终点比较和一轮临床派生特征尝试。当前最好可解释主线是 2018 终点 `primary + logistic_regression`，ROC-AUC 约 0.674、PR-AUC 约 0.242，但仍未达到 0.70 警戒线。
+- 下一步：不要继续盲堆体型/血压派生特征；应转向终点定义复核、FI 缺陷项质量审查、阈值/校准策略和 SHAP 解释性输出。
 
 ## 关键决策与理由（防止“吃书”）
 - 决策A：目录统一使用 `2011-wave1` 这种命名，保留年份和波次信息。原因：既符合用户习惯，也方便后续按年份或波次检索。
@@ -27,6 +27,8 @@
 - 坑9：当前第一版模型已经避免全判负，但 Precision 约 0.19~0.21、FPR 可到 0.42，说明误报多；后续不能只汇报“训练成功”，必须继续做特征工程和终点复核。
 - 坑10：`qh006` 在当前 2011 体测表里中位数约 43，不是成人身高；身高应使用更符合厘米身高分布的 `qi002`，否则特征重要性会被错误变量名误导。
 - 坑11：旧分支指标不要误记成 AUC 0.9；`output/results/pycaret_model_metrics.csv` 显示 Logistic/GBDT/LDA 等 AUC 约 0.77，但旧流程有横断面、泄露风险和严重类别不均衡问题，只能作为历史参考。
+- 坑12：2013 累计终点 ROC-AUC 可到约 0.68，但阳性率只有约 1.68%，PR-AUC 约 0.047，不能因为 ROC-AUC 看起来高就作为论文主终点。
+- 坑13：2026-04-29 的临床派生特征 run `output/runs/20260429-221257` 没有优于多时间窗基线 run `output/runs/20260429-214500`；派生特征应作为负结果和诊断材料，不应在论文里包装成有效提升。
 
 ## 最近验证
 - `python -m unittest discover -s tests -p "test*.py" -v`：14 项通过。
@@ -37,3 +39,6 @@
 - `python -m src.fi_cad.make_report --config configs/modeling.yaml --run latest`：报告已生成。
 - `.venv\Scripts\python.exe -m unittest discover -s tests -p "test*.py" -v`：16 项通过。
 - `.venv\Scripts\python.exe -m src.fi_cad.build_dataset --config configs/modeling.yaml`：基于旧论文 11 项 FI 重新生成 14785 人建模表，阳性率 0.1340，特征数 57；`height_cm_2011` 中位数约 157.9，`fi_2011` 均值约 0.126。
+- `.venv\Scripts\python.exe -m unittest discover -s tests -p "test*.py" -v`：19 项通过。
+- `.venv\Scripts\python.exe -m src.fi_cad.train --config configs/modeling.yaml`：多时间窗基线 run `output/runs/20260429-214500` 已完成；2018 `primary + logistic_regression` ROC-AUC 0.6737、PR-AUC 0.2416，是当前更适合主线讨论的候选。
+- `.venv\Scripts\python.exe -m src.fi_cad.train --config configs/modeling.yaml`：临床派生特征 run `output/runs/20260429-221257` 已完成；2018 `primary + logistic_regression` ROC-AUC 0.6723、PR-AUC 0.2421，未形成实质提升。
