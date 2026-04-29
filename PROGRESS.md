@@ -4,7 +4,7 @@
 - 现状：CHARLS 五个波次已经按 RAW、extracted、curated、audit 四层整理完毕，第一版纵向建模代码已开始落地，目标是 2011 基线预测 2013/2015/2018/2020 新发心脏病相关事件。
 - 已完成：补入 2011 家户问卷文档、2013 构建支出收入财富数据、2015 血检候选包；删除 2011 重复包和 `.part` 残留；重建 81 张 `.dta`、81 份 CSV、81 份 Parquet、81 份 metadata JSON；curated 层中文目录、metadata 内部路径和官网文档副本已同步；新增 `src.fi_cad` 建模入口和配置骨架。
 - 正在做：进入第二轮建模改进；已确认上一版 `height_cm_2011` 错把中位数约 43 的 `qh006` 当作身高优先来源，且当前 `fi_2011` 已改回旧论文/旧分支可复核的 11 项等权 FI。
-- 下一步：必须重新构建数据集和模型 run；旧 run `output/runs/20260429-204720` 的 FI、身高和特征重要性解释已经过期，只能作为错误诊断参考。
+- 下一步：必须重新训练模型 run；旧 run `output/runs/20260429-204720` 的 FI、身高和特征重要性解释已经过期，只能作为错误诊断参考。
 
 ## 关键决策与理由（防止“吃书”）
 - 决策A：目录统一使用 `2011-wave1` 这种命名，保留年份和波次信息。原因：既符合用户习惯，也方便后续按年份或波次检索。
@@ -35,3 +35,5 @@
 - `python -m src.fi_cad.train --config configs/modeling.yaml`：最新 run `output/runs/20260429-204720`，Logistic、RandomForest、XGBoost、LightGBM、CatBoost 均完成训练。
 - `python -m src.fi_cad.evaluate --config configs/modeling.yaml --run latest`：指标表已生成，五模型均 warning。
 - `python -m src.fi_cad.make_report --config configs/modeling.yaml --run latest`：报告已生成。
+- `.venv\Scripts\python.exe -m unittest discover -s tests -p "test*.py" -v`：16 项通过。
+- `.venv\Scripts\python.exe -m src.fi_cad.build_dataset --config configs/modeling.yaml`：基于旧论文 11 项 FI 重新生成 14785 人建模表，阳性率 0.1340，特征数 57；`height_cm_2011` 中位数约 157.9，`fi_2011` 均值约 0.126。
