@@ -27,9 +27,17 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
+
+# 直接运行 `python scripts/generate_performance_collage.py` 时，
+# Python 默认只把 scripts 目录加入 import path，不会自动识别仓库根目录。
+# 这里把仓库根目录补进去，保证下面能稳定导入 `src.fi_cad`。
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 import matplotlib
 
