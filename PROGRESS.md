@@ -3,8 +3,8 @@
 ## 当前结论（必须最新）
 - 现状：CHARLS 五个波次已经按 RAW、extracted、curated、audit 四层整理完毕，第一版纵向建模代码已开始落地，目标是 2011 基线预测 2013/2015/2018/2020 新发心脏病相关事件。
 - 已完成：补入 2011 家户问卷文档、2013 构建支出收入财富数据、2015 血检候选包；删除 2011 重复包和 `.part` 残留；重建 81 张 `.dta`、81 份 CSV、81 份 Parquet、81 份 metadata JSON；curated 层中文目录、metadata 内部路径和官网文档副本已同步；新增 `src.fi_cad` 建模入口和配置骨架。
-- 正在做：进入第三轮建模诊断；已完成多时间窗终点比较和一轮临床派生特征尝试。当前最好可解释主线是 2018 终点 `primary + logistic_regression`，ROC-AUC 约 0.674、PR-AUC 约 0.242，但仍未达到 0.70 警戒线。
-- 下一步：不要继续盲堆体型/血压派生特征；应转向终点定义复核、FI 缺陷项质量审查、阈值/校准策略和 SHAP 解释性输出。
+- 正在做：进入第三轮建模诊断；已完成多时间窗终点比较、一轮临床派生特征尝试，以及基于 `output/runs/20260429-221257` 的综合性能拼图。当前最好可解释主线是 2018 终点 `primary + logistic_regression`，ROC-AUC 约 0.674、PR-AUC 约 0.242，但仍未达到 0.70 警戒线。
+- 下一步：不要继续盲堆体型/血压派生特征；应转向终点定义复核、FI 缺陷项质量审查、阈值/校准策略和 SHAP 解释性输出。拼图展示层已先完成，可用于阶段汇报，但不能替代后续模型改进。
 
 ## 关键决策与理由（防止“吃书”）
 - 决策A：目录统一使用 `2011-wave1` 这种命名，保留年份和波次信息。原因：既符合用户习惯，也方便后续按年份或波次检索。
@@ -42,3 +42,5 @@
 - `.venv\Scripts\python.exe -m unittest discover -s tests -p "test*.py" -v`：19 项通过。
 - `.venv\Scripts\python.exe -m src.fi_cad.train --config configs/modeling.yaml`：多时间窗基线 run `output/runs/20260429-214500` 已完成；2018 `primary + logistic_regression` ROC-AUC 0.6737、PR-AUC 0.2416，是当前更适合主线讨论的候选。
 - `.venv\Scripts\python.exe -m src.fi_cad.train --config configs/modeling.yaml`：临床派生特征 run `output/runs/20260429-221257` 已完成；2018 `primary + logistic_regression` ROC-AUC 0.6723、PR-AUC 0.2421，未形成实质提升。
+- `.venv\Scripts\python.exe scripts\generate_performance_collage.py --config configs\modeling.yaml --run output\runs\20260429-221257`：已生成综合性能拼图 `output/runs/20260429-221257/figures/performance_collage.png`，覆盖 AUC 时间窗折线图、F1 热力图、2020 混淆矩阵组图、2020 ROC 叠加图、Logistic 校准曲线和 2020 特征集 AUC 分组柱状图。
+- `PIL.Image` 文件级检查：`performance_collage.png` 尺寸 5303×5745，大小约 1.03 MB，灰度标准差 65.76，非空白；`performance_collage_sources.csv` 共 17 条来源记录，所有来源 CSV 路径均存在。
